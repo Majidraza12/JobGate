@@ -17,6 +17,8 @@ export interface ExtractionResult {
   costUsd: number;
   latencyMs: number;
   calls: number;
+  // Raw model text per call, kept so eval predictions can be replayed in tests.
+  responses: string[];
 }
 
 function validate(text: string, stopReason: string | null): { ok: true; value: ModelExtraction } | { ok: false; errors: string[] } {
@@ -45,6 +47,7 @@ export async function extractOne(llm: LlmClient, jdText: string, now = () => per
     costUsd: 0,
     latencyMs: 0,
     calls: 0,
+    responses: [],
   };
   const finish = (r: Partial<ExtractionResult>) => {
     Object.assign(out, r);
@@ -61,6 +64,7 @@ export async function extractOne(llm: LlmClient, jdText: string, now = () => per
       return finish({ status: "llm_failed", error: e instanceof Error ? e.message : String(e) });
     }
     out.calls++;
+    out.responses.push(res.text);
     out.inputTokens += res.inputTokens;
     out.outputTokens += res.outputTokens;
     if (res.stopReason === "refusal") return finish({ status: "llm_failed", error: "model refused" });

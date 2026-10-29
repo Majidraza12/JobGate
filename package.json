@@ -14,7 +14,8 @@
     "fetch-jds": "tsx pipeline/fetchJds.ts",
     "extract": "tsx pipeline/extractCli.ts",
     "eval:sample": "tsx eval/sampleCli.ts",
-    "label": "tsx eval/labelServer.ts"
+    "label": "tsx eval/labelServer.ts",
+    "eval:extract": "tsx eval/extractEval.ts"
   },
   "engines": {
     "node": ">=22"
