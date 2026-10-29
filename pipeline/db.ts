@@ -187,3 +187,54 @@ export async function replacePossibleDuplicates(db: pg.Client, dups: PossibleDup
     );
   }
 }
+
+export interface JdTargetRow {
+  id: number;
+  applyUrl: string;
+  ats: string | null;
+  atsTenant: string | null;
+  atsReqId: string | null;
+}
+
+// Open listings that need a JD fetch: never tried, or failed transiently fewer
+// than maxAttempts times in a row. With refreshDays, also re-fetch successful
+// ones older than that, so changed descriptions get a new hash.
+export async function jdFetchTargets(
+  db: pg.Client,
+  { maxAttempts = 3, refreshDays = null as number | null, ats = null as string | null, limit = null as number | null } = {},
+): Promise<JdTargetRow[]> {
+  const r = await db.query<{ id: string; apply_url: string; ats: string | null; ats_tenant: string | null; ats_req_id: string | null }>(
+    `select id, apply_url, ats, ats_tenant, ats_req_id from listings
+     where status = 'open'
+       and ($3::text is null or coalesce(ats, 'other') = $3)
+       and (jd_fetch_status is null
+            or (jd_fetch_status = 'error' and jd_fetch_attempts < $1)
+            or ($2::int is not null and jd_fetch_status = 'ok' and jd_fetched_at < now() - make_interval(days => $2::int)))
+     order by id
+     limit $4`,
+    [maxAttempts, refreshDays, ats, limit],
+  );
+  return r.rows.map((x) => ({ id: Number(x.id), applyUrl: x.apply_url, ats: x.ats, atsTenant: x.ats_tenant, atsReqId: x.ats_req_id }));
+}
+
+// jd_fetch_attempts counts consecutive failures (reset on success). A transient
+// 'error' on a listing that already has text keeps its previous status, so a
+// flaky refresh never turns a checked listing into Not checked.
+export async function saveJdFetch(
+  db: pg.Client,
+  id: number,
+  r: { status: string; text?: string; hash?: string; error?: string },
+) {
+  await db.query(
+    `update listings set
+       jd_fetch_status   = case when $2 = 'error' and jd_text is not null then jd_fetch_status else $2 end,
+       jd_fetch_error    = $3,
+       jd_fetch_attempts = case when $2 = 'ok' then 0 else jd_fetch_attempts + 1 end,
+       jd_text           = case when $2 = 'ok' then $4 else jd_text end,
+       jd_hash           = case when $2 = 'ok' then $5 else jd_hash end,
+       jd_fetched_at     = case when $2 = 'ok' then now() else jd_fetched_at end,
+       updated_at        = now()
+     where id = $1`,
+    [id, r.status, r.error ?? null, r.text ?? null, r.hash ?? null],
+  );
+}
