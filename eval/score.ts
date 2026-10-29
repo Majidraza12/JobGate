@@ -51,8 +51,20 @@ export function canonicalValue(field: Field, v: unknown): string {
   return JSON.stringify(v);
 }
 
-const mentioned = (s: string) => s === "stated" || s === "ambiguous";
-const claimed = (s: string) => mentioned(s) || s === "unverified";
+export const mentioned = (s: string) => s === "stated" || s === "ambiguous";
+export const claimed = (s: string) => mentioned(s) || s === "unverified";
+
+// Exact decision match: status, value, and strength. Strength means nothing on
+// an ambiguous field with no value, so it isn't compared there.
+export function decisionMatches(field: Field, gold: AnyField, pred: AnyField | null): boolean {
+  const vague = gold.status === "ambiguous" && gold.value === null;
+  return (
+    pred !== null &&
+    pred.status === gold.status &&
+    (vague || pred.strength === gold.strength) &&
+    canonicalValue(field, pred.value) === canonicalValue(field, gold.value)
+  );
+}
 
 export interface FieldScore {
   field: Field;
@@ -75,16 +87,7 @@ export function scoreField(field: Field, pairs: { gold: AnyField; pred: AnyField
     if (g && p) tp++;
     if (!g && p) fp++;
     if (g && !p) fn++;
-    // Strength means nothing on an ambiguous field with no value, so it
-    // isn't compared there.
-    const vague = gold.status === "ambiguous" && gold.value === null;
-    if (
-      pred &&
-      pred.status === gold.status &&
-      (vague || pred.strength === gold.strength) &&
-      canonicalValue(field, pred.value) === canonicalValue(field, gold.value)
-    )
-      exact++;
+    if (decisionMatches(field, gold, pred)) exact++;
     if (pred && gold.status === "stated" && pred.status === "stated") {
       valueN++;
       if (canonicalValue(field, pred.value) === canonicalValue(field, gold.value)) valueOk++;

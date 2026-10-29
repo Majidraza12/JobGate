@@ -16,7 +16,8 @@
     "eval:sample": "tsx eval/sampleCli.ts",
     "label": "tsx eval/labelServer.ts",
     "eval:extract": "tsx --env-file-if-exists=.env eval/extractEval.ts",
-    "label:import": "tsx eval/importLabels.ts"
+    "label:import": "tsx eval/importLabels.ts",
+    "eval:review": "tsx eval/reviewCli.ts"
   },
   "engines": {
     "node": ">=22"
