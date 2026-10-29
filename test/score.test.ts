@@ -61,6 +61,15 @@ describe("scoreField", () => {
     expect(s.valueAccuracy).toMatchObject({ k: 2, n: 2 });
     expect(s.unverified).toBe(1);
   });
+
+  it("ignores strength on an ambiguous field with no value, but not when there is a value", () => {
+    const amb = (value: unknown, strength: string | null) => ({ status: "ambiguous", value, strength });
+    const s = scoreField("grad_requirements", [
+      { gold: amb(null, "required"), pred: amb(null, null) }, // exact
+      { gold: amb(true, "required"), pred: amb(true, null) }, // strength differs
+    ]);
+    expect(s.decisionAccuracy).toMatchObject({ k: 1, n: 2 });
+  });
 });
 
 describe("scoreBaseline", () => {

@@ -75,10 +75,13 @@ export function scoreField(field: Field, pairs: { gold: AnyField; pred: AnyField
     if (g && p) tp++;
     if (!g && p) fp++;
     if (g && !p) fn++;
+    // Strength means nothing on an ambiguous field with no value, so it
+    // isn't compared there.
+    const vague = gold.status === "ambiguous" && gold.value === null;
     if (
       pred &&
       pred.status === gold.status &&
-      pred.strength === gold.strength &&
+      (vague || pred.strength === gold.strength) &&
       canonicalValue(field, pred.value) === canonicalValue(field, gold.value)
     )
       exact++;
