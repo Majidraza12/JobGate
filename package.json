@@ -12,7 +12,9 @@
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
     "fetch-jds": "tsx pipeline/fetchJds.ts",
-    "extract": "tsx pipeline/extractCli.ts"
+    "extract": "tsx pipeline/extractCli.ts",
+    "eval:sample": "tsx eval/sampleCli.ts",
+    "label": "tsx eval/labelServer.ts"
   },
   "engines": {
     "node": ">=22"

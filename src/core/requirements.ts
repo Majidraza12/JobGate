@@ -16,18 +16,26 @@ export const Month = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "expected YYYY-
 export const Degree = z.enum(["bs", "ms", "phd"]);
 export const ClassYear = z.enum(["freshman", "sophomore", "junior", "senior", "masters", "phd"]);
 
-export const GradRequirement = z
-  .object({
-    applies_to_degrees: z.array(Degree).min(1).nullable(), // null = applies to everyone
-    applies_to_start: z.string().min(1).nullable(), // e.g. "Summer 2027"; null = any start
-    earliest: Month.nullable(),
-    latest: Month.nullable(), // null bounds are open-ended
-    evidence: z.array(z.string().min(1)).min(1),
-  })
-  .refine((g) => g.earliest === null || g.latest === null || g.earliest <= g.latest, {
-    message: "earliest is after latest",
-  })
-  .refine((g) => g.earliest !== null || g.latest !== null, { message: "a window needs at least one bound" });
+export const GradWindowBase = z.object({
+  applies_to_degrees: z.array(Degree).min(1).nullable(), // null = applies to everyone
+  applies_to_start: z.string().min(1).nullable(), // e.g. "Summer 2027"; null = any start
+  earliest: Month.nullable(),
+  latest: Month.nullable(), // null bounds are open-ended
+  evidence: z.array(z.string().min(1)).min(1),
+});
+
+type Window = { earliest: string | null; latest: string | null };
+
+// Shared with gold labels, which use the same window shape.
+export function withWindowChecks<T extends z.ZodType<Window>>(schema: T) {
+  return schema
+    .refine((g) => g.earliest === null || g.latest === null || g.earliest <= g.latest, {
+      message: "earliest is after latest",
+    })
+    .refine((g) => g.earliest !== null || g.latest !== null, { message: "a window needs at least one bound" });
+}
+
+export const GradRequirement = withWindowChecks(GradWindowBase);
 
 export const Clearance = z.object({
   required: z.enum(["active", "ability_to_obtain", "preferred"]),
