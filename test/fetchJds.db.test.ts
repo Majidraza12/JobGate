@@ -73,12 +73,14 @@ describe.skipIf(!up)("fetch-jds against Postgres", () => {
     await db.query("truncate listings, pipeline_runs restart identity cascade");
   });
 
+  // SmartRecruiters-style listings (fetched as pages) so the fake network can
+  // serve them; the req id is the last path segment.
   const addListing = (url: string, status = "open") =>
     db.query(
-      `insert into listings (identity_key, identity_kind, company, title, apply_url, normalized_url, job_type,
-                             primary_source_id, primary_source_priority, status)
-       values ($1, 'url', 'Acme', 'Engineer', $1, $1, 'new_grad', 'simplify-newgrad', 1, $2)`,
-      [url, status],
+      `insert into listings (identity_key, identity_kind, ats, ats_tenant, ats_req_id, company, title, apply_url,
+                             normalized_url, job_type, primary_source_id, primary_source_priority, status)
+       values ($1, 'ats', 'smartrecruiters', 'acme', $2, 'Acme', 'Engineer', $1, $1, 'new_grad', 'simplify-newgrad', 1, $3)`,
+      [url, url.split("/").at(-1), status],
     );
   const row = async (url: string) =>
     (await db.query("select jd_fetch_status, jd_fetch_attempts, jd_hash, jd_text from listings where apply_url = $1", [url])).rows[0];
@@ -86,16 +88,16 @@ describe.skipIf(!up)("fetch-jds against Postgres", () => {
   it("saves text, hash, and status, and logs counts per kind on the run row", async () => {
     await addListing("https://a.com/1");
     await addListing("https://a.com/2");
-    await addListing("https://a.com/closed", "closed");
+    await addListing("https://a.com/9", "closed");
     routes = { "https://a.com/1": html(LONG), "https://a.com/2": status(403) };
     const r = await fetchJds();
-    expect(r.counts).toEqual({ other: { ok: 1, blocked: 1 } });
+    expect(r.counts).toEqual({ smartrecruiters: { ok: 1, blocked: 1 } });
     expect(await row("https://a.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_fetch_attempts: 0 });
     expect((await row("https://a.com/1")).jd_hash).toMatch(/^[0-9a-f]{64}$/);
     expect(await row("https://a.com/2")).toMatchObject({ jd_fetch_status: "blocked", jd_fetch_attempts: 1 });
-    expect(await row("https://a.com/closed")).toMatchObject({ jd_fetch_status: null });
+    expect(await row("https://a.com/9")).toMatchObject({ jd_fetch_status: null });
     const run = await db.query("select status, counts from pipeline_runs where id = $1", [r.runId]);
-    expect(run.rows[0]).toEqual({ status: "succeeded", counts: { step: "fetch_jd", byKind: { other: { ok: 1, blocked: 1 } } } });
+    expect(run.rows[0]).toEqual({ status: "succeeded", counts: { step: "fetch_jd", byKind: { smartrecruiters: { ok: 1, blocked: 1 } } } });
   });
 
   it("is idempotent: a second run fetches nothing that already succeeded or failed for good", async () => {
@@ -120,7 +122,7 @@ describe.skipIf(!up)("fetch-jds against Postgres", () => {
     const before = await row("https://a.com/1");
     await db.query("update listings set jd_fetched_at = now() - interval '10 days'");
     routes = { "https://a.com/1": status(503) };
-    expect((await fetchJds({ refreshDays: 7 })).counts).toEqual({ other: { error: 1 } });
+    expect((await fetchJds({ refreshDays: 7 })).counts).toEqual({ smartrecruiters: { error: 1 } });
     expect(await row("https://a.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_hash: before.jd_hash, jd_text: before.jd_text });
   });
 });

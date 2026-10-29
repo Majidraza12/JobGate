@@ -127,32 +127,42 @@ function oracle(t: JdTarget, u: URL): Plan | null {
   };
 }
 
-// Any HTML page, SmartRecruiters job pages included (its API host disallows
-// crawlers, so we only read the public page, and only where robots.txt allows).
-function page(kind: string, url: string): Plan {
-  return { kind, url, accept: "html", extract: (b, finalUrl) => pageToText(b as string, finalUrl) };
+// SmartRecruiters' API host disallows crawlers, so we read the public job page,
+// and only where robots.txt allows it. An expired posting can redirect to the
+// company's landing page; if the final URL no longer names this posting, treat
+// it as not found rather than reading the landing page as the description.
+function smartrecruiters(t: JdTarget): Plan {
+  return {
+    kind: "smartrecruiters",
+    url: t.applyUrl,
+    accept: "html",
+    extract: (b, finalUrl) => (t.atsReqId && finalUrl.includes(t.atsReqId) ? pageToText(b as string, finalUrl) : null),
+  };
 }
 
-export function planFetch(t: JdTarget): Plan {
+// Null means we don't fetch this listing (recorded as 'unsupported', shown as
+// Not checked). Generic career pages are deliberately excluded: most render the
+// description with JavaScript, and scraping them often returns the wrong page
+// (a careers landing page) with no way to tell, which would produce a false
+// "No restrictions found". See the 2026-10-28 decision in CLAUDE.md.
+export function planFetch(t: JdTarget): Plan | null {
   const u = new URL(t.applyUrl);
   const hasIds = t.atsTenant !== null && t.atsReqId !== null;
+  if (!hasIds) return null;
   switch (t.ats) {
     case "greenhouse":
-      if (hasIds) return greenhouse(t);
-      break;
+      return greenhouse(t);
     case "lever":
-      if (hasIds) return lever(t, u);
-      break;
+      return lever(t, u);
     case "ashby":
-      if (hasIds) return ashby(t, u);
-      break;
+      return ashby(t, u);
     case "workday":
-      return workday(u) ?? page("workday", t.applyUrl);
+      return workday(u);
     case "oracle":
-      if (hasIds) return oracle(t, u) ?? page("oracle", t.applyUrl);
-      break;
+      return oracle(t, u);
     case "smartrecruiters":
-      return page("smartrecruiters", t.applyUrl);
+      return smartrecruiters(t);
+    default:
+      return null;
   }
-  return page(t.ats ?? "other", t.applyUrl);
 }

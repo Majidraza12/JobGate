@@ -66,12 +66,14 @@ export class JdFetcher {
   }
 
   async fetch(target: JdTarget): Promise<JdFetchResult> {
-    let plan: Plan;
+    const kind = target.ats ?? "other";
+    let plan: Plan | null;
     try {
       plan = planFetch(target);
     } catch (e) {
-      return { kind: target.ats ?? "other", status: "unsupported", error: String(e) };
+      return { kind, status: "unsupported", error: String(e) };
     }
+    if (!plan) return { kind, status: "unsupported", error: "no fetcher for this ATS or host" };
     try {
       let memo = plan.shared ? this.bodies.get(plan.url) : undefined;
       if (!memo) {

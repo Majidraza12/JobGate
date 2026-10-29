@@ -6,6 +6,11 @@ import { JdFetcher } from "../pipeline/jd/fetchJd";
 import { planFetch, type JdTarget } from "../pipeline/jd/plans";
 import { cleanText, decodeEntities, htmlToText, sha256 } from "../pipeline/jd/text";
 
+const plan = (t: JdTarget) => {
+  const p = planFetch(t);
+  if (!p) throw new Error(`no plan for ${t.applyUrl}`);
+  return p;
+};
 const fixture = (name: string) => readFileSync(`test/fixtures/jd/${name}`, "utf8");
 const json = (name: string) => JSON.parse(fixture(name));
 
@@ -74,19 +79,19 @@ describe("htmlToText", () => {
 
 describe("planFetch request URLs", () => {
   it("builds each ATS API URL", () => {
-    expect(planFetch(GREENHOUSE).url).toBe("https://boards-api.greenhouse.io/v1/boards/asteralabs/jobs/4718443005");
-    expect(planFetch(LEVER).url).toBe("https://api.lever.co/v0/postings/kitware/ff25a349-a362-45d2-b1e4-2487c1df4f75");
-    expect(planFetch(ASHBY).url).toBe("https://api.ashbyhq.com/posting-api/job-board/hadrian-automation");
-    expect(planFetch(WORKDAY).url).toBe(
+    expect(plan(GREENHOUSE).url).toBe("https://boards-api.greenhouse.io/v1/boards/asteralabs/jobs/4718443005");
+    expect(plan(LEVER).url).toBe("https://api.lever.co/v0/postings/kitware/ff25a349-a362-45d2-b1e4-2487c1df4f75");
+    expect(plan(ASHBY).url).toBe("https://api.ashbyhq.com/posting-api/job-board/hadrian-automation");
+    expect(plan(WORKDAY).url).toBe(
       "https://leidos.wd5.myworkdayjobs.com/wday/cxs/leidos/External/job/Laurel-MD/Junior-Software-Engineer_R-00190592",
     );
-    expect(planFetch(ORACLE).url).toBe(
+    expect(plan(ORACLE).url).toBe(
       "https://egug.fa.us2.oraclecloud.com/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=ById;siteNumber=CX_1,Id=%2226011784%22",
     );
   });
 
   it("uses the Greenhouse API for postings hosted on the employer's own domain", () => {
-    const p = planFetch({
+    const p = plan({
       applyUrl: "https://www.mongodb.com/careers/job/?gh_jid=8209134",
       ats: "greenhouse",
       atsTenant: "mongodb",
@@ -96,11 +101,11 @@ describe("planFetch request URLs", () => {
   });
 
   it("uses the EU Lever API for EU postings", () => {
-    expect(planFetch({ ...LEVER, applyUrl: "https://jobs.eu.lever.co/kitware/x" }).url).toMatch(/^https:\/\/api\.eu\.lever\.co\//);
+    expect(plan({ ...LEVER, applyUrl: "https://jobs.eu.lever.co/kitware/x" }).url).toMatch(/^https:\/\/api\.eu\.lever\.co\//);
   });
 
   it("keeps the Ashby board's original capitalization", () => {
-    const p = planFetch({
+    const p = plan({
       applyUrl: "https://jobs.ashbyhq.com/Preference-Model/44642065-e592-44ba-810d-a019703463b6/application",
       ats: "ashby",
       atsTenant: "preference-model",
@@ -111,7 +116,7 @@ describe("planFetch request URLs", () => {
   });
 
   it("strips the Workday locale and apply segments", () => {
-    const p = planFetch({
+    const p = plan({
       applyUrl: "https://brambles.wd5.myworkdayjobs.com/en-US/Brambles_Careers/job/Orlando-Florida-USA/Data-Analyst_JR24773/apply",
       ats: "workday",
       atsTenant: "brambles",
@@ -120,15 +125,19 @@ describe("planFetch request URLs", () => {
     expect(p.url).toBe("https://brambles.wd5.myworkdayjobs.com/wday/cxs/brambles/Brambles_Careers/job/Orlando-Florida-USA/Data-Analyst_JR24773");
   });
 
-  it("reads SmartRecruiters and unknown hosts as HTML pages", () => {
-    expect(planFetch(SMARTRECRUITERS)).toMatchObject({ kind: "smartrecruiters", accept: "html", url: SMARTRECRUITERS.applyUrl });
-    const other = planFetch({ applyUrl: "https://careers.example.com/jobs/1", ats: null, atsTenant: null, atsReqId: null });
-    expect(other).toMatchObject({ kind: "other", accept: "html" });
+  it("reads SmartRecruiters job pages as HTML", () => {
+    expect(plan(SMARTRECRUITERS)).toMatchObject({ kind: "smartrecruiters", accept: "html", url: SMARTRECRUITERS.applyUrl });
+  });
+
+  it("has no plan for generic career pages or ATSs without a fetcher", () => {
+    expect(planFetch({ applyUrl: "https://careers.example.com/jobs/1", ats: null, atsTenant: null, atsReqId: null })).toBeNull();
+    expect(planFetch({ applyUrl: "https://apply.workable.com/acme/j/ABC123", ats: "workable", atsTenant: "acme", atsReqId: "abc123" })).toBeNull();
+    expect(planFetch({ ...WORKDAY, applyUrl: "https://leidos.wd5.myworkdayjobs.com/External" })).toBeNull();
   });
 });
 
 describe("planFetch extraction from saved responses", () => {
-  const text = (t: JdTarget, body: unknown) => planFetch(t).extract(body, t.applyUrl)!;
+  const text = (t: JdTarget, body: unknown) => plan(t).extract(body, t.applyUrl)!;
 
   it("Greenhouse: decodes the escaped HTML", () => {
     const t = text(GREENHOUSE, json("greenhouse.json"));
@@ -144,7 +153,7 @@ describe("planFetch extraction from saved responses", () => {
 
   it("Ashby: picks the posting by id from the board", () => {
     expect(text(ASHBY, json("ashby.json"))).toContain("International Traffic in Arms Regulations (ITAR)");
-    expect(planFetch({ ...ASHBY, atsReqId: "00000000-0000-0000-0000-000000000000" }).extract(json("ashby.json"), "")).toBeNull();
+    expect(plan({ ...ASHBY, atsReqId: "00000000-0000-0000-0000-000000000000" }).extract(json("ashby.json"), "")).toBeNull();
   });
 
   it("Workday: reads jobPostingInfo.jobDescription", () => {
@@ -155,13 +164,17 @@ describe("planFetch extraction from saved responses", () => {
     const t = text(ORACLE, json("oracle.json"));
     expect(t).toContain("expected graduation date between December 2027 and June 2028");
     expect(t).toContain("will not pursue visa sponsorship");
-    expect(planFetch(ORACLE).extract({ items: [] }, "")).toBeNull();
+    expect(plan(ORACLE).extract({ items: [] }, "")).toBeNull();
   });
 
   it("SmartRecruiters: extracts the main content from the page", () => {
     const t = text(SMARTRECRUITERS, fixture("smartrecruiters.html"));
     expect(t).toContain("Required Qualifications:");
     expect(t).not.toMatch(/<\/?[a-z]+>/);
+  });
+
+  it("SmartRecruiters: a redirect away from the posting is not_found, not the landing page", () => {
+    expect(plan(SMARTRECRUITERS).extract(fixture("smartrecruiters.html"), "https://jobs.smartrecruiters.com/BoschGroup")).toBeNull();
   });
 });
 
@@ -183,7 +196,7 @@ const ok = (body: string, type = "text/html; charset=utf-8") => () => new Respon
 const status = (n: number, headers: Record<string, string> = {}) => () => new Response(null, { status: n, headers });
 const jsonRes = (body: unknown) => ok(JSON.stringify(body), "application/json");
 const LONG = "<p>" + "Must be a U.S. citizen to apply for this role. ".repeat(10) + "</p>";
-const page = (url: string): JdTarget => ({ applyUrl: url, ats: null, atsTenant: null, atsReqId: null });
+const page = (url: string): JdTarget => ({ applyUrl: url, ats: "smartrecruiters", atsTenant: "a", atsReqId: url.split("/").at(-1)! });
 
 describe("JdFetcher", () => {
   it("fetches, cleans, and hashes a page that robots.txt allows", async () => {
@@ -273,6 +286,13 @@ describe("JdFetcher", () => {
     const results = await Promise.all([fetcher.fetch(ASHBY), fetcher.fetch(other), fetcher.fetch(missing)]);
     expect(results.map((r) => r.status)).toEqual(["ok", "ok", "not_found"]);
     expect(calls.filter((c) => c.url.includes("job-board"))).toHaveLength(1);
+  });
+
+  it("records generic career pages as unsupported without any request", async () => {
+    const { fetcher, calls } = fakeNet({});
+    const r = await fetcher.fetch({ applyUrl: "https://careers.example.com/jobs/1", ats: null, atsTenant: null, atsReqId: null });
+    expect(r).toMatchObject({ kind: "other", status: "unsupported" });
+    expect(calls).toHaveLength(0);
   });
 
   it("reports a network failure as error instead of throwing", async () => {
