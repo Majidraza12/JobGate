@@ -238,3 +238,107 @@ export async function saveJdFetch(
     [id, r.status, r.error ?? null, r.text ?? null, r.hash ?? null],
   );
 }
+
+// Spend so far today (UTC), across every extraction run.
+export async function spentTodayUsd(db: pg.Client): Promise<number> {
+  const r = await db.query<{ usd: string }>(
+    `select coalesce(sum(cost_usd), 0) as usd from extraction_runs
+     where started_at >= (date_trunc('day', now() at time zone 'utc') at time zone 'utc')`,
+  );
+  return Number(r.rows[0]!.usd);
+}
+
+export interface ExtractionTarget {
+  jdHash: string;
+  jdText: string;
+  listings: number;
+}
+
+// Distinct JD texts of open listings that have no usable extraction for this
+// prompt version and model. llm_failed rows are retried (transient);
+// schema_invalid rows are not, since the same input would likely fail again.
+export async function extractionTargets(
+  db: pg.Client,
+  model: string,
+  promptVersion: string,
+  limit: number | null = null,
+): Promise<ExtractionTarget[]> {
+  const r = await db.query<{ jd_hash: string; jd_text: string; listings: string }>(
+    `select l.jd_hash, min(l.jd_text) as jd_text, count(*) as listings
+     from listings l
+     where l.status = 'open' and l.jd_fetch_status = 'ok' and l.jd_hash is not null
+       and not exists (
+         select 1 from requirements r
+         where r.jd_hash = l.jd_hash and r.prompt_version = $2 and r.model = $1
+           and r.extraction_status <> 'llm_failed')
+     group by l.jd_hash
+     order by min(l.id)
+     limit $3`,
+    [model, promptVersion, limit],
+  );
+  return r.rows.map((x) => ({ jdHash: x.jd_hash, jdText: x.jd_text, listings: Number(x.listings) }));
+}
+
+export async function startExtractionRun(db: pg.Client, model: string, promptVersion: string): Promise<number> {
+  const r = await db.query<{ id: string }>(
+    "insert into extraction_runs (model, prompt_version) values ($1, $2) returning id",
+    [model, promptVersion],
+  );
+  return Number(r.rows[0]!.id);
+}
+
+// Called after every API-backed extraction so a crashed run still counts
+// toward the daily cap.
+export async function addExtractionRunUsage(db: pg.Client, runId: number, inputTokens: number, outputTokens: number, usd: number) {
+  await db.query(
+    `update extraction_runs set input_tokens = input_tokens + $2, output_tokens = output_tokens + $3,
+       cost_usd = cost_usd + $4 where id = $1`,
+    [runId, inputTokens, outputTokens, usd],
+  );
+}
+
+export async function finishExtractionRun(
+  db: pg.Client,
+  runId: number,
+  status: "succeeded" | "partial" | "failed" | "cap_reached",
+  counts: object,
+  errors: object[],
+) {
+  await db.query(
+    "update extraction_runs set status = $2, finished_at = now(), counts = $3, errors = $4 where id = $1",
+    [runId, status, JSON.stringify(counts), JSON.stringify(errors)],
+  );
+}
+
+export interface RequirementRow {
+  jdHash: string;
+  promptVersion: string;
+  model: string;
+  status: "ok" | "llm_failed" | "schema_invalid";
+  extracted: object | null;
+  quoteFailures: number;
+  error: string | null;
+  inputTokens: number;
+  outputTokens: number;
+  costUsd: number;
+  latencyMs: number;
+  runId: number;
+}
+
+export async function upsertRequirement(db: pg.Client, r: RequirementRow) {
+  await db.query(
+    `insert into requirements (jd_hash, prompt_version, model, extraction_status, extracted, quote_failures, error,
+                               input_tokens, output_tokens, cost_usd, latency_ms, run_id)
+     values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+     on conflict (jd_hash, prompt_version, model) do update set
+       extraction_status = excluded.extraction_status, extracted = excluded.extracted,
+       quote_failures = excluded.quote_failures, error = excluded.error,
+       input_tokens = excluded.input_tokens, output_tokens = excluded.output_tokens,
+       cost_usd = excluded.cost_usd, latency_ms = excluded.latency_ms, run_id = excluded.run_id,
+       extracted_at = now()`,
+    [
+      r.jdHash, r.promptVersion, r.model, r.status, r.extracted === null ? null : JSON.stringify(r.extracted),
+      r.quoteFailures, r.error, r.inputTokens, r.outputTokens, r.costUsd, r.latencyMs, r.runId,
+    ],
+  );
+}

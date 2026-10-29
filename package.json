@@ -11,7 +11,8 @@
     "db:start": "supabase start",
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
-    "fetch-jds": "tsx pipeline/fetchJds.ts"
+    "fetch-jds": "tsx pipeline/fetchJds.ts",
+    "extract": "tsx pipeline/extractCli.ts"
   },
   "engines": {
     "node": ">=22"
