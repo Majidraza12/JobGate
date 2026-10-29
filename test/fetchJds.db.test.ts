@@ -138,4 +138,10 @@ describe("interleaveByHost", () => {
       "https://a.com/3",
     ]);
   });
+
+  it("groups by the host actually requested, not the apply URL's host", () => {
+    const items = ["https://x.com/1", "https://y.com/1", "https://b.com/1"].map((applyUrl) => ({ applyUrl }));
+    const api = (t: { applyUrl: string }) => (t.applyUrl.includes("b.com") ? t.applyUrl : "https://api.example/x");
+    expect(interleaveByHost(items, api).map((x) => x.applyUrl)).toEqual(["https://x.com/1", "https://b.com/1", "https://y.com/1"]);
+  });
 });

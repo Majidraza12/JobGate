@@ -4,6 +4,7 @@
 
 import * as db from "./db";
 import { JdFetcher, type FetcherOptions, type JdFetchStatus } from "./jd/fetchJd";
+import { planFetch } from "./jd/plans";
 
 export interface FetchJdsOptions {
   trigger: "schedule" | "manual" | "local";
@@ -33,12 +34,13 @@ const hostOf = (url: string) => {
   }
 };
 
-// Round-robin across hosts so workers spread over many hosts instead of all
-// queueing behind one host's delay.
-export function interleaveByHost<T extends { applyUrl: string }>(items: T[]): T[] {
+// Round-robin across the hosts we will actually request (every Greenhouse job
+// goes to boards-api.greenhouse.io whatever its apply URL), so workers spread
+// over many hosts instead of all queueing behind one host's delay.
+export function interleaveByHost<T extends { applyUrl: string }>(items: T[], requestUrl = (t: T) => t.applyUrl): T[] {
   const groups = new Map<string, T[]>();
   for (const it of items) {
-    const h = hostOf(it.applyUrl);
+    const h = hostOf(requestUrl(it));
     groups.set(h, [...(groups.get(h) ?? []), it]);
   }
   const queues = [...groups.values()];
@@ -61,6 +63,7 @@ export async function runFetchJds(o: FetchJdsOptions): Promise<FetchJdsResult> {
     try {
       const targets = interleaveByHost(
         await db.jdFetchTargets(client, { ats: o.ats ?? null, limit: o.limit ?? null, refreshDays: o.refreshDays ?? null }),
+        (t) => planFetch(t)?.url ?? t.applyUrl,
       );
       if (log) console.log(`Fetching ${targets.length} job descriptions...`);
       const fetcher = new JdFetcher(o.fetcher);
