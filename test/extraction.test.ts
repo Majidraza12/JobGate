@@ -4,28 +4,7 @@ import { describe, expect, expectTypeOf, it } from "vitest";
 import { ModelExtraction, StoredExtraction } from "@core/requirements";
 import { normalizeForMatch, verifyQuotes } from "../pipeline/extract/verify";
 import { planFetch } from "../pipeline/jd/plans";
-
-const none = { status: "not_mentioned", value: null, evidence: [], strength: null } as const;
-
-// Every gate not mentioned; tests override what they need.
-function blank(): ModelExtraction {
-  return {
-    grad_requirements: { ...none, evidence: [] },
-    must_return_to_school: { ...none, evidence: [] },
-    class_years: { ...none, evidence: [] },
-    degree_levels: { ...none, evidence: [] },
-    start_options: { ...none, evidence: [] },
-    citizenship_required: { ...none, evidence: [] },
-    us_person_required: { ...none, evidence: [] },
-    sponsorship_now_unavailable: { ...none, evidence: [] },
-    sponsorship_future_unavailable: { ...none, evidence: [] },
-    clearance: { ...none, evidence: [] },
-    locations: { cities: [], remote: null, hybrid: null },
-    employment_type: null,
-    season: null,
-    role_family: null,
-  };
-}
+import { blank } from "./helpers/extraction";
 
 const errors = (x: unknown) => {
   const r = ModelExtraction.safeParse(x);
