@@ -93,9 +93,10 @@ function judgeGrad(windows: Grad[], p: EligibilityProfile): Judgment {
   const forDegree = windows.filter((w) => w.applies_to_degrees === null || w.applies_to_degrees.includes(p.degree));
   const applies = forDegree.filter((w) => w.applies_to_start === null || startApplies(w.applies_to_start, p.starts) === true);
   const maybe = forDegree.filter((w) => w.applies_to_start !== null && startApplies(w.applies_to_start, p.starts) === null);
-  const range = (w: Grad) => `${w.earliest ?? "any time"} to ${w.latest ?? "any time"}`;
+  const range = (w: Grad) =>
+    w.earliest === null ? `by ${w.latest}` : w.latest === null ? `${w.earliest} or later` : `${w.earliest} to ${w.latest}`;
   const hit = applies.find(fits);
-  if (hit) return meets(`Your graduation (${p.grad_month}) is inside the window ${range(hit)}.`);
+  if (hit) return meets(`Your graduation (${p.grad_month}) fits the window ${range(hit)}.`);
   if (maybe.some(fits)) return unknown("A window you fit applies to a start term we couldn't match to yours.");
   if (applies.length) return fails(`Your graduation (${p.grad_month}) is outside ${applies.map(range).join(" and ")}.`);
   return unknown("The posting's graduation windows are for other degrees or start terms.");
@@ -140,6 +141,8 @@ function judgeClassYears(years: string[], x: StoredExtraction, p: EligibilityPro
   );
 }
 
+const DEGREE_NAMES: Record<string, string> = { bs: "bachelor's", ms: "master's", phd: "PhD" };
+
 const LEVELS = ["secret", "top_secret", "ts_sci"];
 
 function judgeClearance(c: { required: string; level: string | null }, p: EligibilityProfile): Judgment {
@@ -167,7 +170,10 @@ function judge(field: GateField, value: unknown, x: StoredExtraction, p: Eligibi
       return judgeClassYears(value as string[], x, p);
     case "degree_levels": {
       const ds = value as string[];
-      return ds.includes(p.degree) ? meets(`Open to ${p.degree} students.`) : fails(`Limited to ${ds.join(", ")}; you're ${p.degree}.`);
+      const name = (d: string) => DEGREE_NAMES[d] ?? d;
+      return ds.includes(p.degree)
+        ? meets(`Open to ${name(p.degree)} students.`)
+        : fails(`Limited to ${ds.map(name).join(", ")}; you're a ${name(p.degree)} student.`);
     }
     case "citizenship_required":
       if (!value) return meets("The posting says citizenship isn't required.");
