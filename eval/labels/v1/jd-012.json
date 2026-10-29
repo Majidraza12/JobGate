@@ -1,0 +1,98 @@
+{
+  "id": "jd-012",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.522Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-06",
+          "latest": null,
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Must be a continuing college or university student in good standing"
+      ]
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "pursuing an undergraduate degree in Engineering or other related fields"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-05-17 to 2027-06-21",
+          "month": "2027-05"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "a range of start dates between May 17, 2027, and June 21, 2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "this work must be performed by a U.S. person"
+      ]
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "itar_vs_citizenship",
+    "multiple_windows_or_starts"
+  ],
+  "notes": "Baseline says citizens-only but posting requires U.S. person (includes LPR, refugee, asylee). Clearance explicitly not required; schema has no 'not required' option, so value set to 'none required'."
+}

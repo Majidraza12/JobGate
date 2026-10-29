@@ -1,0 +1,91 @@
+{
+  "id": "jd-031",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2028-08",
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "Scheduled to obtain a Master's degree in a Technology, Engineering, or Mathematics field by Summer 2028"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "ms"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Scheduled to obtain a Master's degree"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": "secret"
+      },
+      "strength": "required",
+      "evidence": [
+        "Ability to obtain a Secret clearance"
+      ]
+    }
+  },
+  "tags": [
+    "boundary_grad_date"
+  ],
+  "notes": "'by Summer 2028' has no lower bound and a vague upper bound. Secret implies citizenship but posting never says so."
+}

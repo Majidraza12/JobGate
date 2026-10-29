@@ -1,0 +1,86 @@
+{
+  "id": "jd-015",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.523Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "strength": "required",
+      "evidence": [
+        "graduating May 2027 and December 2026 or a recent graduate (0-2 years)"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-06",
+          "month": "2027-06"
+        },
+        {
+          "label": "other dates available",
+          "month": null
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "The start date for this program will be June 2027, but other start dates are available."
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "multiple_windows_or_starts",
+    "boundary_grad_date"
+  ],
+  "notes": "Programs listed by major, no degree level named."
+}

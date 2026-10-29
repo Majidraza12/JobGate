@@ -1,0 +1,106 @@
+{
+  "id": "jd-007",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.520Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "February 2027",
+          "earliest": null,
+          "latest": "2027-02",
+          "evidence": []
+        },
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "August 2027",
+          "earliest": null,
+          "latest": "2027-08",
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "completed to start full time in February or August 2027"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "strength": "required",
+      "evidence": [
+        "PhD, Master's or Bachelor’s degree"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-02",
+          "month": "2027-02"
+        },
+        {
+          "label": "2027-08",
+          "month": "2027-08"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "completed to start full time in February or August 2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "multiple_windows_or_starts"
+  ],
+  "notes": "Current postdocs also eligible."
+}

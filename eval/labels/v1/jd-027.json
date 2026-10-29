@@ -1,0 +1,107 @@
+{
+  "id": "jd-027",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-05",
+          "latest": null,
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "must not have a graduation date prior to the start of the co-op term"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "ambiguous",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Considered a student during the co-op term"
+      ]
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "sophomore",
+        "junior",
+        "senior",
+        "masters"
+      ],
+      "strength": "required",
+      "evidence": [
+        "class standing of a sophomore or above"
+      ]
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "strength": "required",
+      "evidence": [
+        "pursuing a Bachelor’s or Master’s degree"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-05-10",
+          "month": "2027-05"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      ]
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "boundary_grad_date"
+  ],
+  "notes": "Must still be a student during term; 'returning to school' appears only in a rotations sentence, so return marked Ambiguous. Explicitly excludes CPT/OPT/STEM OPT. Sponsorship text duplicated."
+}

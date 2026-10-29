@@ -1,0 +1,91 @@
+{
+  "id": "jd-046",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.525Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "junior",
+        "senior"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Students entering their Junior or Senior year at the start of the upcoming academic term."
+      ]
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Must be currently enrolled in an undergraduate or graduate degree program"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": null
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "AI Agent Architect Intern to join our team in Farmington Hills, MI"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Sponsorship: Not Available"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "contradiction"
+  ],
+  "notes": "Graduate students allowed but class years limited to junior/senior. Location says Farmington Hills, MI but requires onsite in Franklin, TN. Start quote is weak; Summer 2027 only in title, consider Not mentioned."
+}

@@ -1,0 +1,1625 @@
+{
+  "version": "v1",
+  "source": "seed 20261028, items jd-001 to jd-060",
+  "conventions": {
+    "omitted_field": "not_mentioned",
+    "status": [
+      "stated",
+      "ambiguous"
+    ],
+    "strength": [
+      "required",
+      "preferred"
+    ],
+    "boolean_value": [
+      "yes",
+      "no"
+    ],
+    "noSponsorFuture": "only 'stated' when the posting explicitly covers future sponsorship; otherwise not_mentioned (omit)",
+    "gradWindow": "value is a list of {earliest, latest, degrees?, start?} with inclusive YYYY-MM bounds (null = open); 'X or Y' months become one range; Spring = 05, Summer = 08 as bounds; windows tied to an unstated date are ambiguous with value null",
+    "startOptions": "a value starting with YYYY-MM sets the month; anything else is a label with no month"
+  },
+  "items": [
+    {
+      "id": "jd-001",
+      "company": "Notion",
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "immediate full time"
+        ],
+        "quote": "can start full time right away"
+      },
+      "tags": [],
+      "notes": "Says NOT a new grad role but gives no grad date; the real gate is immediate start. 0-2 YOE vs 'less than two years' is a minor boundary mismatch. No degree requirement."
+    },
+    {
+      "id": "jd-002",
+      "company": "Merck",
+      "classYears": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "phd"
+        ],
+        "quote": "Must be currently enrolled in a PhD program"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "phd"
+        ],
+        "quote": "Must be currently enrolled in a PhD program"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-05",
+          "2027-06"
+        ],
+        "quote": "beginning in May or June of 2027"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "VISA Sponsorship:\nNo"
+      },
+      "tags": [
+        "contradiction",
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Duration 10-12 weeks in intro vs 9-12 weeks in requirements. Sponsorship comes from Workday metadata field. 'US and Puerto Rico Residents Only' is an EEO header, not a gate."
+    },
+    {
+      "id": "jd-003",
+      "company": "Datadog",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "Targeting a 2028 full-time start date"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-05-24 to 2027-08-20",
+          "2027-05-24 to 2027-08-27",
+          "2027-06-07 to 2027-09-03"
+        ],
+        "quote": "May 24 - Aug 20, 2027"
+      },
+      "usPerson": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": "yes",
+        "quote": "some of these roles may require candidates to be eligible for any required authorizations from the US government"
+      },
+      "tags": [
+        "boundary_grad_date",
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Full-time start year, not a grad date. Export control is conditional EAR-style language. 'citizenship' appears only in EEO list. Degree level not named; equivalent experience accepted."
+    },
+    {
+      "id": "jd-004",
+      "company": "Auto-Owners Insurance",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "Bachelor’s degree or higher in Mathematics, Statistics, Actuarial Science, or another related technical field is required"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "the ability to work in the U.S. without current or future sponsorship is a requirement"
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "the ability to work in the U.S. without current or future sponsorship is a requirement"
+      },
+      "tags": [
+        "preferred_sounds_required"
+      ],
+      "notes": "Degree line sits under a 'Desired Skills & Experience' header but itself says 'is required'. Labeled Required."
+    },
+    {
+      "id": "jd-005",
+      "company": "HP IQ",
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-05",
+          "2027-06"
+        ],
+        "quote": "2027 Internship Program Dates: May/June–August/September 2027"
+      },
+      "tags": [
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Final dates based on student schedules. Degree level not named; equivalent experience accepted. 'citizenship' only in EEO list."
+    },
+    {
+      "id": "jd-006",
+      "company": "Visa",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s degree, OR 3+ years of relevant work experience."
+      },
+      "tags": [],
+      "notes": "Degree has an experience alternative. Company name 'Visa' will false-positive the \\bvisa\\b keyword; no sponsorship language present."
+    },
+    {
+      "id": "jd-007",
+      "company": "IMC Trading",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": null,
+            "latest": "2027-02",
+            "start": "February 2027"
+          },
+          {
+            "earliest": null,
+            "latest": "2027-08",
+            "start": "August 2027"
+          }
+        ],
+        "quote": "completed to start full time in February or August 2027"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "PhD, Master's or Bachelor’s degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-02",
+          "2027-08"
+        ],
+        "quote": "completed to start full time in February or August 2027"
+      },
+      "tags": [
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Current postdocs also eligible."
+    },
+    {
+      "id": "jd-008",
+      "company": "Hewlett Packard Enterprise",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "(Graduated within 1 year of the start date)"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Bachelor's or Master's degree in Electrical Engineering."
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "Window is relative to a start date the posting never gives."
+    },
+    {
+      "id": "jd-009",
+      "company": "TransMarket Group",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2026-12",
+            "latest": "2027-05"
+          }
+        ],
+        "quote": "graduation date between December 2026 and Spring 2027"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "Bachelor’s, Master’s, or Doctorate degree"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "'Spring 2027' end bound is vague. Onsite Chicago."
+    },
+    {
+      "id": "jd-010",
+      "company": "Figure",
+      "tags": [],
+      "notes": "No eligibility gates. Contract-to-hire, overnight shift."
+    },
+    {
+      "id": "jd-011",
+      "company": "Fidelity Investments",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": null,
+            "latest": "2027-07"
+          }
+        ],
+        "quote": "must have earned or be on track to earn a bachelor’s degree in computer science, Software Engineering, or a related field by the start date"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "must have earned or be on track to earn a bachelor’s degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-07-12"
+        ],
+        "quote": "This Position starts on July 12, 2027"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Fidelity will not provide immigration sponsorship for this position."
+      },
+      "tags": [],
+      "notes": "Sponsorship sentence appears twice. Grad window is tied to the stated start date."
+    },
+    {
+      "id": "jd-012",
+      "company": "LLNL",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2027-06",
+            "latest": null
+          }
+        ],
+        "quote": "If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern"
+      },
+      "mustReturnToSchool": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Must be a continuing college or university student in good standing"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "pursuing an undergraduate degree in Engineering or other related fields"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-05-17 to 2027-06-21"
+        ],
+        "quote": "a range of start dates between May 17, 2027, and June 21, 2027"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "this work must be performed by a U.S. person"
+      },
+      "tags": [
+        "itar_vs_citizenship",
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Baseline says citizens-only but posting requires U.S. person (includes LPR, refugee, asylee). Clearance explicitly not required; schema has no 'not required' option, so value set to 'none required'."
+    },
+    {
+      "id": "jd-013",
+      "company": "The Hartford",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2028-05",
+            "latest": "2028-05"
+          }
+        ],
+        "quote": "expecting to graduate in May 2028"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "with a Bachelor's or Master's degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "Summer 2027"
+        ],
+        "quote": "Tech & Data Program Summer 2027 – Data Engineer Intern"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Candidate must be authorized to work in the US without company sponsorship."
+      },
+      "tags": [],
+      "notes": "Garbled fragment 'hybrid position in Hartford, CT. or in the future.' likely belongs to a 'now or in the future' sponsorship sentence. No STEM OPT support points toward future too."
+    },
+    {
+      "id": "jd-014",
+      "company": "Mass General Brigham",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's degree required."
+      },
+      "tags": [],
+      "notes": "Master's is separately Preferred: 'Master's Degree a plus'. Per diem, 5-10 hrs/week."
+    },
+    {
+      "id": "jd-015",
+      "company": "NOV",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "graduating May 2027 and December 2026 or a recent graduate (0-2 years)"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-06",
+          "other dates available"
+        ],
+        "quote": "The start date for this program will be June 2027, but other start dates are available."
+      },
+      "tags": [
+        "multiple_windows_or_starts",
+        "boundary_grad_date"
+      ],
+      "notes": "Programs listed by major, no degree level named."
+    },
+    {
+      "id": "jd-016",
+      "company": "Texas Instruments (posting is Pella Corporation)",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Currently pursuing a bachelor's degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "end of May"
+        ],
+        "quote": "Program Duration: End of May - Early August"
+      },
+      "tags": [],
+      "notes": "DATA ISSUE: company field says Texas Instruments but the text is a Pella Corporation posting in Iowa. E-Verify line is not a sponsorship gate."
+    },
+    {
+      "id": "jd-017",
+      "company": "Hewlett Packard Enterprise",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Enrolled in a Bachelor’s or Master’s degree program"
+      },
+      "tags": [
+        "contradiction"
+      ],
+      "notes": "Intro invites 'students or early-career professionals' but requirements say enrolled in a degree program."
+    },
+    {
+      "id": "jd-018",
+      "company": "McKesson",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Currently pursuing a Bachelor's or Master's degree"
+      },
+      "tags": [],
+      "notes": "Summer 2027 in title only."
+    },
+    {
+      "id": "jd-019",
+      "company": "Cambridge Investment Research",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Current undergraduate student"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "May 17 (year not stated)"
+        ],
+        "quote": "May 17 – July 30"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT)."
+      },
+      "tags": [],
+      "notes": "Excludes CPT/OPT outright, which is stricter than typical no-sponsorship language. Program year never stated."
+    },
+    {
+      "id": "jd-020",
+      "company": "Ancestry",
+      "tags": [],
+      "notes": "No eligibility gates. 'citizenship' only in EEO list. Temp contract."
+    },
+    {
+      "id": "jd-021",
+      "company": "American Express",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": null,
+            "latest": "2027-05"
+          }
+        ],
+        "quote": "or another technical field before June 2027"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "ms"
+        ],
+        "quote": "Must have earned a Master’s degree"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "the company will not pursue visa sponsorship for these positions"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "'before June 2027' is exclusive; a June 2027 grad is technically out."
+    },
+    {
+      "id": "jd-022",
+      "company": "Bot Auto",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "(including upcoming graduates)"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "A Bachelor's, Master's, or Ph.D."
+      },
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": "jd-023",
+      "company": "10Beauty",
+      "tags": [],
+      "notes": "Requires high school diploma, prefers associate's. Neither fits bs/ms/phd, so Degree levels left Not mentioned."
+    },
+    {
+      "id": "jd-024",
+      "company": "The Boeing Company",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "A Bachelor of Science degree in Engineering"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "for which the U.S. Government requires U.S. Citizenship"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "as defined by 22 C.F.R. §120.62 is required"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Employer will not sponsor applicants for employment visa status."
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": "secret",
+        "quote": "An interim and/or final U.S. Secret Clearance Post-Start is required."
+      },
+      "tags": [
+        "itar_vs_citizenship",
+        "ability_vs_active_clearance"
+      ],
+      "notes": "Export control alone allows U.S. persons, but clearance requirement forces citizenship. Clearance is post-start, not active at hire. Master's Preferred. Associate level typically 2+ yrs."
+    },
+    {
+      "id": "jd-025",
+      "company": "Sopra Steria (CS Group USA)",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's or degree in Electrical Engineering, Computer Engineering"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "U.S. Citizenship is required."
+      },
+      "tags": [],
+      "notes": "Degree line is garbled in source. Dual citizenship must be disclosed."
+    },
+    {
+      "id": "jd-026",
+      "company": "Motorola Solutions",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Must be pursuing a Bachelors or Masters Degree"
+      },
+      "tags": [],
+      "notes": "Summer 2027 in title only."
+    },
+    {
+      "id": "jd-027",
+      "company": "Johnson & Johnson",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2027-05",
+            "latest": null
+          }
+        ],
+        "quote": "must not have a graduation date prior to the start of the co-op term"
+      },
+      "mustReturnToSchool": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Considered a student during the co-op term"
+      },
+      "classYears": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "sophomore",
+          "junior",
+          "senior",
+          "masters"
+        ],
+        "quote": "class standing of a sophomore or above"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "pursuing a Bachelor’s or Master’s degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-05-10"
+        ],
+        "quote": "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "Must still be a student during term; 'returning to school' appears only in a rotations sentence, so return marked Ambiguous. Explicitly excludes CPT/OPT/STEM OPT. Sponsorship text duplicated."
+    },
+    {
+      "id": "jd-028",
+      "company": "Perplexity AI",
+      "tags": [],
+      "notes": "New grads welcome. 2-year commitment ('entering class of 2028 or later') refers to future law/PhD school, not graduation."
+    },
+    {
+      "id": "jd-029",
+      "company": "Veeva Systems",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "This role is designed for upcoming or recent graduates"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s degree (any major)"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "2027-07"
+        ],
+        "quote": "The anticipated start date is July 2027."
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Veeva does not provide sponsorship for employment visa status (e.g., H-1B, OPT, or TN status)"
+      },
+      "tags": [],
+      "notes": "Listing H-1B implies future too, but no explicit 'future' wording. Must live within NYC commute by start."
+    },
+    {
+      "id": "jd-030",
+      "company": "ICF",
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "June 2027"
+        ],
+        "quote": "expected to begin in June and end in August"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Candidate must be a US citizen"
+      },
+      "tags": [],
+      "notes": "Gate is 30 completed credit hours by start, which is roughly sophomore+ but not a class year, so Class years left Not mentioned. Year comes from title."
+    },
+    {
+      "id": "jd-031",
+      "company": "Booz Allen",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": null,
+            "latest": "2028-08"
+          }
+        ],
+        "quote": "Scheduled to obtain a Master's degree in a Technology, Engineering, or Mathematics field by Summer 2028"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "ms"
+        ],
+        "quote": "Scheduled to obtain a Master's degree"
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": "secret",
+        "quote": "Ability to obtain a Secret clearance"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "'by Summer 2028' has no lower bound and a vague upper bound. Secret implies citizenship but posting never says so."
+    },
+    {
+      "id": "jd-032",
+      "company": "Cowboy Space",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "Currently enrolled as an undergraduate or graduate student"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "applicants must be a U.S. citizen, lawful permanent resident of the U.S., protected individual"
+      },
+      "tags": [
+        "itar_vs_citizenship"
+      ],
+      "notes": "Baseline says citizens-only but posting allows LPR and protected individuals, plus 'eligible to obtain the required authorizations'. 'Graduate' could be ms or phd."
+    },
+    {
+      "id": "jd-033",
+      "company": "Klaviyo",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2027-12",
+            "latest": "2028-06"
+          }
+        ],
+        "quote": "Graduating in December 2027 or May/June 2028"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "ms",
+          "phd"
+        ],
+        "quote": "Pursuing an advanced degree Phd preferred"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "June 1"
+        ],
+        "quote": "11-week paid experience [June 1–August 13]"
+      },
+      "tags": [
+        "multiple_windows_or_starts",
+        "preferred_sounds_required"
+      ],
+      "notes": "'Phd preferred' is embedded in the required degree line; advanced degree Required, PhD Preferred."
+    },
+    {
+      "id": "jd-034",
+      "company": "American Family Insurance",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2027-08",
+            "latest": null
+          }
+        ],
+        "quote": "graduating August 2027 or later"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms",
+          "phd"
+        ],
+        "quote": "Must be pursuing a Bachelors, Masters, or PhD."
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "mid to late May"
+        ],
+        "quote": "starts in mid to late May and ends in August"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "we are unable to consider candidates who may require visa sponsorship"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "Separate Preferred grad windows: Aug 2027, Dec 2027, May 2028. Aug 2027 grad overlaps internship end."
+    },
+    {
+      "id": "jd-035",
+      "company": "9to9 Software Solutions",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "A Bachelor's or Associate’s degree in Computer Science or related field."
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": "secret",
+        "quote": "Possess a SECRET clearance or have the ability to obtain one."
+      },
+      "tags": [
+        "ability_vs_active_clearance"
+      ],
+      "notes": "Ability to obtain accepted, but 'Must have at least an interim SECRET to begin work'. Associate's also accepted. Security+ required."
+    },
+    {
+      "id": "jd-036",
+      "company": "Astranis",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "designed for new grads who have who have graduated from a four-year university"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Hold a B.S. or M.S."
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "Winter 2027"
+        ],
+        "quote": "FPGA Associate (Winter 2027)"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual"
+      },
+      "tags": [
+        "itar_vs_citizenship"
+      ],
+      "notes": "Header reads like a citizenship requirement but includes LPR and refugee/asylee. 12-week salaried role. 'Apply even if you do not meet all these criteria.'"
+    },
+    {
+      "id": "jd-037",
+      "company": "SpaceX (Starshield)",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's degree in computer science, engineering, math, or STEM discipline"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "applicant must be a (i) U.S. citizen or national"
+      },
+      "clearance": {
+        "status": "ambiguous",
+        "strength": "preferred",
+        "value": "active",
+        "level": null,
+        "quote": "an active clearance may provide the opportunity for you to work on sensitive SpaceX missions"
+      },
+      "tags": [
+        "itar_vs_citizenship"
+      ],
+      "notes": "Degree has 2+ yrs experience alternative. Clearance is a benefit, not a gate."
+    },
+    {
+      "id": "jd-038",
+      "company": "Oshkosh",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Pursuing a Bachelor’s or Master’s degree"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "Summer 2027"
+        ],
+        "quote": "As an AI Engineer Intern in Summer 2027"
+      },
+      "usPerson": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Applicants for these positions may need to be"
+      },
+      "tags": [],
+      "notes": "Export control is boilerplate for 'certain positions', not this role specifically."
+    },
+    {
+      "id": "jd-039",
+      "company": "Intel",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "ms"
+        ],
+        "quote": "Must possess a Master’s degree"
+      },
+      "tags": [],
+      "notes": "Sponsorship only referenced via a link to guidelines; left Not mentioned. Job type College Grad."
+    },
+    {
+      "id": "jd-040",
+      "company": "Penn State ARL",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's Degree - Engineering or Science"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "You must be a U.S. citizen to apply."
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": null,
+        "quote": "Employees must be eligible to obtain a government security clearance"
+      },
+      "tags": [
+        "ability_vs_active_clearance"
+      ],
+      "notes": "Current Secret-or-higher eligibility listed as Preferred; TS/SCI upgrade possible."
+    },
+    {
+      "id": "jd-041",
+      "company": "Adobe",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2026-12",
+            "latest": "2027-06"
+          }
+        ],
+        "quote": "with an expected graduation date of December 2026 – June 2027"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Bachelor’s or Master’s degree in Computer Science, Computer Engineering, or a related technical field"
+      },
+      "tags": [],
+      "notes": ""
+    },
+    {
+      "id": "jd-042",
+      "company": "Stryker",
+      "mustReturnToSchool": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "must remain enrolled in a degree-seeking program after the internship"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Currently pursuing a Bachelor’s or Master’s degree"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "not require sponsorship now or in the future"
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "not require sponsorship now or in the future"
+      },
+      "tags": [],
+      "notes": "Summer 2027 in title only."
+    },
+    {
+      "id": "jd-043",
+      "company": "Micron Technology",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Bachelor’s degree in Computer Engineering, Electrical Engineering, Electronics Engineering, or a related field with 5 years of progressive post-baccalaureate experience"
+      },
+      "tags": [
+        "contradiction"
+      ],
+      "notes": "Title says New Grad but minimums are 5 yrs (BS) or 3 yrs (MS) experience."
+    },
+    {
+      "id": "jd-044",
+      "company": "Sim",
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "no",
+        "quote": "We sponsor visas."
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "no",
+        "quote": "We sponsor visas."
+      },
+      "tags": [],
+      "notes": "Positive sponsorship statement. New grads welcome."
+    },
+    {
+      "id": "jd-045",
+      "company": "SpaceX (Starlink)",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s degree in computer science, engineering, math, or science discipline"
+      },
+      "usPerson": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "applicant must be a (i) U.S. citizen or national"
+      },
+      "tags": [
+        "itar_vs_citizenship"
+      ],
+      "notes": "Degree has 2+ yrs experience alternative (internships count)."
+    },
+    {
+      "id": "jd-046",
+      "company": "Nissan",
+      "classYears": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "junior",
+          "senior"
+        ],
+        "quote": "Students entering their Junior or Senior year at the start of the upcoming academic term."
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Must be currently enrolled in an undergraduate or graduate degree program"
+      },
+      "startOptions": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "Summer 2027"
+        ],
+        "quote": "AI Agent Architect Intern to join our team in Farmington Hills, MI"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Sponsorship: Not Available"
+      },
+      "tags": [
+        "contradiction"
+      ],
+      "notes": "Graduate students allowed but class years limited to junior/senior. Location says Farmington Hills, MI but requires onsite in Franklin, TN. Start quote is weak; Summer 2027 only in title, consider Not mentioned."
+    },
+    {
+      "id": "jd-047",
+      "company": "Penn State ARL",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "A Bachelor’s degree in an Engineering or Science discipline"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "You must be a U.S. citizen to apply."
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": null,
+        "quote": "Employees must be eligible to obtain a government security clearance"
+      },
+      "tags": [
+        "ability_vs_active_clearance"
+      ],
+      "notes": "Current Secret-or-higher eligibility listed as Preferred."
+    },
+    {
+      "id": "jd-048",
+      "company": "Booz Allen",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": null,
+            "latest": "2029-08"
+          }
+        ],
+        "quote": "by Summer 2028 or Summer 2029"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Scheduled to obtain a Bachelor’s degree"
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": "secret",
+        "quote": "Ability to obtain a Secret clearance"
+      },
+      "tags": [
+        "multiple_windows_or_starts",
+        "boundary_grad_date"
+      ],
+      "notes": "Baseline says citizens-only but the posting never states citizenship; it is only implied by Secret."
+    },
+    {
+      "id": "jd-049",
+      "company": "The Aerospace Corporation",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "(pursuing or conferred within last 12 months)"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's degree from an accredited college/university program"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "U.S. citizenship is required to obtain a security clearance."
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": null,
+        "quote": "This position requires ability to obtain and maintain a security clearance"
+      },
+      "tags": [
+        "boundary_grad_date"
+      ],
+      "notes": "Window is relative to application date."
+    },
+    {
+      "id": "jd-050",
+      "company": "PTC",
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Applicants must be authorized to work in the United States without requiring current or future sponsorship from PTC."
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Applicants must be authorized to work in the United States without requiring current or future sponsorship from PTC."
+      },
+      "tags": [],
+      "notes": "No degree requirement stated."
+    },
+    {
+      "id": "jd-051",
+      "company": "Accenture Federal Services",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s Degree in Engineering, Mathematics, Computer Science or Information Systems required"
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Must be a U.S. Citizen"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "does not now or in the future require sponsorship of a visa"
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "does not now or in the future require sponsorship of a visa"
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "active",
+        "level": "top_secret",
+        "quote": "Must hold Top Secret Clearance"
+      },
+      "tags": [],
+      "notes": "Hire-to-train program but requires an active TS at hire."
+    },
+    {
+      "id": "jd-052",
+      "company": "Klaviyo",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2026-12",
+            "latest": "2027-06"
+          }
+        ],
+        "quote": "Graduating in December 2026 or May/June 2027"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "ms",
+          "phd"
+        ],
+        "quote": "Pursuing an advanced degree"
+      },
+      "tags": [
+        "multiple_windows_or_starts"
+      ],
+      "notes": "Full-time role despite 'pursuing' wording."
+    },
+    {
+      "id": "jd-053",
+      "company": "BNY",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2026-12",
+            "latest": "2027-05"
+          }
+        ],
+        "quote": "Graduating in Dec 2026 or May 2027 (U.S.)"
+      },
+      "degreeLevels": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Enrollment in a 4-year undergraduate degree program"
+      },
+      "noSponsorNow": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Does not require sponsorship for employment visa status (now or in the future)"
+      },
+      "noSponsorFuture": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Does not require sponsorship for employment visa status (now or in the future)"
+      },
+      "tags": [
+        "multiple_windows_or_starts",
+        "preferred_sounds_required"
+      ],
+      "notes": "Degree line ends in 'preferred', which may apply only to the majors or to the whole line."
+    },
+    {
+      "id": "jd-054",
+      "company": "Life Fitness",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2028-01",
+            "latest": "2029-12"
+          }
+        ],
+        "quote": "with an expected graduation date in 2028 or 2029"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Currently enrolled in a full-time bachelor's or master's degree program"
+      },
+      "tags": [
+        "multiple_windows_or_starts",
+        "preferred_sounds_required"
+      ],
+      "notes": "GPA line says 'preferred' then 'minimum 3.5'. Must be local to Chicagoland."
+    },
+    {
+      "id": "jd-055",
+      "company": "General Matter",
+      "gradWindow": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": null,
+        "quote": "completed by the start date"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s degree in Computer Science, Computer Engineering, Electrical Engineering, or a related technical field completed by the start date."
+      },
+      "usCitizenship": {
+        "status": "stated",
+        "strength": "required",
+        "value": "yes",
+        "quote": "Currently a US Citizen"
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "ability_to_obtain",
+        "level": null,
+        "quote": "capability to obtain and maintain a US Q clearance"
+      },
+      "tags": [],
+      "notes": "Q is a DOE clearance; schema has no Q level."
+    },
+    {
+      "id": "jd-056",
+      "company": "Axos Bank",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor’s degree in information systems, Computer Science, Data Analytics, Business Technology, or a related field"
+      },
+      "tags": [],
+      "notes": "Equivalent education/experience accepted. 'citizenship status' only in EEO list."
+    },
+    {
+      "id": "jd-057",
+      "company": "KBR",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "BA/BS in Computer Science, Software Engineering or related field"
+      },
+      "clearance": {
+        "status": "stated",
+        "strength": "required",
+        "value": "active",
+        "level": "ts_sci",
+        "quote": "Active TS/SCI clearance"
+      },
+      "tags": [],
+      "notes": "Also requires ability to pass a CI polygraph. AA or experience alternatives accepted."
+    },
+    {
+      "id": "jd-058",
+      "company": "Anduril",
+      "gradWindow": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          {
+            "earliest": "2027-12",
+            "latest": "2028-06"
+          }
+        ],
+        "quote": "graduating between [December 2027 and June 2028]"
+      },
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs",
+          "ms"
+        ],
+        "quote": "Currently pursuing a Bachelor's or Master's degree"
+      },
+      "tags": [],
+      "notes": "'Must be authorized to work in the United States' is not a sponsorship gate. Brackets around dates look like an unfilled template."
+    },
+    {
+      "id": "jd-059",
+      "company": "Graham Capital Management",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Bachelor's degree in computer science or a related field"
+      },
+      "tags": [],
+      "notes": "1-5 yrs experience, strong new grads considered."
+    },
+    {
+      "id": "jd-060",
+      "company": "Spry Methods",
+      "degreeLevels": {
+        "status": "stated",
+        "strength": "required",
+        "value": [
+          "bs"
+        ],
+        "quote": "Candidates will have a bachelor's degree"
+      },
+      "clearance": {
+        "status": "ambiguous",
+        "strength": "required",
+        "value": "active",
+        "level": "top_secret",
+        "quote": "Top Secret Clearance is required"
+      },
+      "tags": [],
+      "notes": "'is required' most likely means held at hire but does not say active. Degree has 3+ yrs experience alternative."
+    }
+  ]
+}
