@@ -1,0 +1,95 @@
+{
+  "id": "jd-033",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-12",
+          "latest": "2028-06",
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "Graduating in December 2027 or May/June 2028"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "ms",
+        "phd"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Pursuing an advanced degree Phd preferred"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "June 1",
+          "month": null
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "11-week paid experience [June 1–August 13]"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "multiple_windows_or_starts",
+    "preferred_sounds_required"
+  ],
+  "notes": "'Phd preferred' is embedded in the required degree line; advanced degree Required, PhD Preferred."
+}

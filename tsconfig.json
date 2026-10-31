@@ -9,8 +9,19 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "types": ["node"],
-    "paths": { "@core/*": ["./src/core/*"] }
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@core/*": [
+        "./src/core/*"
+      ]
+    }
   },
-  "include": ["src", "pipeline", "test"]
+  "include": [
+    "src",
+    "pipeline",
+    "test",
+    "eval"
+  ]
 }

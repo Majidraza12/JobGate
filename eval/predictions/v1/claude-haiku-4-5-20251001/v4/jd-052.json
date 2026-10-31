@@ -1,0 +1,101 @@
+{
+  "id": "jd-052",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-06",
+          "evidence": [
+            "Graduating in December 2026 or May/June 2027"
+          ]
+        }
+      ],
+      "evidence": [
+        "Graduating in December 2026 or May/June 2027"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "ms",
+        "phd"
+      ],
+      "evidence": [
+        "Pursuing an advanced degree in Computer Science, Artificial Intelligence, Machine Learning, or a related field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006876,
+  "latencyMs": 5264,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-06\",\n        \"evidence\": [\n          \"Graduating in December 2026 or May/June 2027\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Graduating in December 2026 or May/June 2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"ms\",\n      \"phd\"\n    ],\n    \"evidence\": [\n      \"Pursuing an advanced degree in Computer Science, Artificial Intelligence, Machine Learning, or a related field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": null,\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3786,
+  "outputTokens": 618,
+  "at": "2026-10-31T19:47:59.015Z"
+}

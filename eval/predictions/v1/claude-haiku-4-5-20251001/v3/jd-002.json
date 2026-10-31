@@ -1,0 +1,119 @@
+{
+  "id": "jd-002",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "phd"
+          ],
+          "applies_to_start": null,
+          "earliest": "2027-05",
+          "latest": "2027-06",
+          "evidence": [
+            "Must be available to work full-time for 9-12 weeks beginning in May or June of 2027."
+          ]
+        }
+      ],
+      "evidence": [
+        "Must be available to work full-time for 9-12 weeks beginning in May or June of 2027."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "phd"
+      ],
+      "evidence": [
+        "Must be currently enrolled in a PhD program in Computer science, AI/ML, Computational biology, Biomedical Engineering, Bioinformatics, Statistics or a related field of study."
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "phd"
+      ],
+      "evidence": [
+        "Must be currently enrolled in a PhD program in Computer science, AI/ML, Computational biology, Biomedical Engineering, Bioinformatics, Statistics or a related field of study."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "June 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "Must be available to work full-time for 9-12 weeks beginning in May or June of 2027."
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "VISA Sponsorship: No"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "summer",
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006934,
+  "latencyMs": 6501,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"phd\"],\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-05\",\n        \"latest\": \"2027-06\",\n        \"evidence\": [\n          \"Must be available to work full-time for 9-12 weeks beginning in May or June of 2027.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Must be available to work full-time for 9-12 weeks beginning in May or June of 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\"phd\"],\n    \"evidence\": [\n      \"Must be currently enrolled in a PhD program in Computer science, AI/ML, Computational biology, Biomedical Engineering, Bioinformatics, Statistics or a related field of study.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"phd\"],\n    \"evidence\": [\n      \"Must be currently enrolled in a PhD program in Computer science, AI/ML, Computational biology, Biomedical Engineering, Bioinformatics, Statistics or a related field of study.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 2027\",\n        \"month\": \"2027-05\"\n      },\n      {\n        \"label\": \"June 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"Must be available to work full-time for 9-12 weeks beginning in May or June of 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"VISA Sponsorship: No\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"summer\",\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 2924,
+  "outputTokens": 802,
+  "at": "2026-10-31T19:27:44.121Z"
+}

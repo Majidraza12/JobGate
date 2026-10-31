@@ -1,0 +1,110 @@
+{
+  "id": "jd-019",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "freshman",
+        "sophomore",
+        "junior",
+        "senior"
+      ],
+      "evidence": [
+        "Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program."
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Current undergraduate student"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2025",
+          "month": "2025-05"
+        }
+      ],
+      "evidence": [
+        "11-week paid summer internship program (May 17 – July 30)"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": false,
+      "evidence": [
+        "Applicants must be authorized to work for any employer in the United States"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT)."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Phoenix, AZ",
+        "Fairfield, IA",
+        "West Des Moines, IA"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "summer",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.005889,
+  "latencyMs": 5289,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\"freshman\", \"sophomore\", \"junior\", \"senior\"],\n    \"evidence\": [\"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\"],\n    \"evidence\": [\"Current undergraduate student\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [{\"label\": \"Summer 2025\", \"month\": \"2025-05\"}],\n    \"evidence\": [\"11-week paid summer internship program (May 17 – July 30)\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\"Applicants must be authorized to work for any employer in the United States\"],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT).\"],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Phoenix, AZ\", \"Fairfield, IA\", \"West Des Moines, IA\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"summer\",\n  \"role_family\": \"other\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 2674,
+  "outputTokens": 643,
+  "at": "2026-10-31T19:29:26.133Z"
+}

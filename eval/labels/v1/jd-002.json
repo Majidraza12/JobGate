@@ -1,0 +1,94 @@
+{
+  "id": "jd-002",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.519Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "phd"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Must be currently enrolled in a PhD program"
+      ]
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "phd"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Must be currently enrolled in a PhD program"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-05",
+          "month": "2027-05"
+        },
+        {
+          "label": "2027-06",
+          "month": "2027-06"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "beginning in May or June of 2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "VISA Sponsorship:\nNo"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "contradiction",
+    "multiple_windows_or_starts"
+  ],
+  "notes": "Duration 10-12 weeks in intro vs 9-12 weeks in requirements. Sponsorship comes from Workday metadata field. 'US and Puerto Rico Residents Only' is an EEO header, not a gate."
+}

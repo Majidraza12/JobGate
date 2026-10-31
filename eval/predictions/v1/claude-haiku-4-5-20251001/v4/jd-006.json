@@ -1,0 +1,89 @@
+{
+  "id": "jd-006",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor's degree, OR 3+ years of relevant work experience."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "fullstack"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.01202,
+  "latencyMs": 7893,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\"],\n    \"evidence\": [\"Bachelor's degree, OR 3+ years of relevant work experience.\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"fullstack\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\"],\n    \"evidence\": [\"Bachelor's degree, OR 3+ years of relevant work experience.\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"fullstack\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 7040,
+  "outputTokens": 996,
+  "at": "2026-10-31T19:42:23.955Z"
+}

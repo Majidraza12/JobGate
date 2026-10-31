@@ -1,0 +1,76 @@
+{
+  "id": "jd-025",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Bachelor's or degree in Electrical Engineering, Computer Engineering"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "U.S. Citizenship is required."
+      ]
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [],
+  "notes": "Degree line is garbled in source. Dual citizenship must be disclosed."
+}

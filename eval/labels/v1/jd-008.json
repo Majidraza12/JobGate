@@ -1,0 +1,79 @@
+{
+  "id": "jd-008",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.522Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "strength": "required",
+      "evidence": [
+        "(Graduated within 1 year of the start date)"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Bachelor's or Master's degree in Electrical Engineering."
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "boundary_grad_date"
+  ],
+  "notes": "Window is relative to a start date the posting never gives."
+}

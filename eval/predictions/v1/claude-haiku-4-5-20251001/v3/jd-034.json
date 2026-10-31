@@ -1,0 +1,127 @@
+{
+  "id": "jd-034",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-08",
+          "latest": null,
+          "evidence": [
+            "graduating August 2027 or later"
+          ]
+        },
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-08",
+          "latest": "2028-05",
+          "evidence": [
+            "Strongly prefer candidates graduating in August 2027, December 2027 or May 2028"
+          ]
+        }
+      ],
+      "evidence": [
+        "Must be in student status at an accredited 4-year college or university during the internship, graduating August 2027 or later",
+        "Strongly prefer candidates graduating in August 2027, December 2027 or May 2028"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be in student status at an accredited 4-year college or university during the internship"
+      ],
+      "strength": "required"
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "evidence": [
+        "Must be pursuing a Bachelors, Masters, or PhD"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-05"
+        }
+      ],
+      "evidence": [
+        "a 10 to 14 week program that starts in mid to late May and ends in August"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Sponsorship will not be considered for this position unless specified in the posting",
+        "Due to the nature of this role, we are unable to consider candidates who may require visa sponsorship"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Madison, WI"
+      ],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.013908,
+  "latencyMs": 12001,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-08\",\n        \"latest\": null,\n        \"evidence\": [\"graduating August 2027 or later\"]\n      },\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-08\",\n        \"latest\": \"2028-05\",\n        \"evidence\": [\"Strongly prefer candidates graduating in August 2027, December 2027 or May 2028\"]\n      }\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Must be in student status at an accredited 4-year college or university during the internship\"],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\", \"phd\"],\n    \"evidence\": [\"Must be pursuing a Bachelors, Masters, or PhD\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-05\"\n      }\n    ],\n    \"evidence\": [\"a 10 to 14 week program that starts in mid to late May and ends in August\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Sponsorship will not be considered for this position unless specified in the posting\", \"Due to the nature of this role, we are unable to consider candidates who may require visa sponsorship\"],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Madison, WI\"],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-08\",\n        \"latest\": null,\n        \"evidence\": [\"graduating August 2027 or later\"]\n      },\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-08\",\n        \"latest\": \"2028-05\",\n        \"evidence\": [\"Strongly prefer candidates graduating in August 2027, December 2027 or May 2028\"]\n      }\n    ],\n    \"evidence\": [\"Must be in student status at an accredited 4-year college or university during the internship, graduating August 2027 or later\", \"Strongly prefer candidates graduating in August 2027, December 2027 or May 2028\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Must be in student status at an accredited 4-year college or university during the internship\"],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\", \"phd\"],\n    \"evidence\": [\"Must be pursuing a Bachelors, Masters, or PhD\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-05\"\n      }\n    ],\n    \"evidence\": [\"a 10 to 14 week program that starts in mid to late May and ends in August\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Sponsorship will not be considered for this position unless specified in the posting\", \"Due to the nature of this role, we are unable to consider candidates who may require visa sponsorship\"],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Madison, WI\"],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 6043,
+  "outputTokens": 1573,
+  "at": "2026-10-31T19:31:10.172Z"
+}

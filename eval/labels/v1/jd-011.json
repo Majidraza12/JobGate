@@ -1,0 +1,93 @@
+{
+  "id": "jd-011",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.522Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-07",
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "must have earned or be on track to earn a bachelor’s degree in computer science, Software Engineering, or a related field by the start date"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "must have earned or be on track to earn a bachelor’s degree"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-07-12",
+          "month": "2027-07"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "This Position starts on July 12, 2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Fidelity will not provide immigration sponsorship for this position."
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [],
+  "notes": "Sponsorship sentence appears twice. Grad window is tied to the stated start date."
+}

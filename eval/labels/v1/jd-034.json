@@ -1,0 +1,97 @@
+{
+  "id": "jd-034",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-08",
+          "latest": null,
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "graduating August 2027 or later"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Must be pursuing a Bachelors, Masters, or PhD."
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "mid to late May",
+          "month": null
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "starts in mid to late May and ends in August"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "we are unable to consider candidates who may require visa sponsorship"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "boundary_grad_date"
+  ],
+  "notes": "Separate Preferred grad windows: Aug 2027, Dec 2027, May 2028. Aug 2027 grad overlaps internship end."
+}

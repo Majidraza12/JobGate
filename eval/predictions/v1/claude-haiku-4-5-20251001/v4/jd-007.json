@@ -1,0 +1,122 @@
+{
+  "id": "jd-007",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-02",
+          "evidence": [
+            "PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)"
+          ]
+        },
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-08",
+          "evidence": [
+            "PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)"
+          ]
+        }
+      ],
+      "evidence": [
+        "PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "evidence": [
+        "PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position) in Computer Science, Machine Learning, Artificial Intelligence, Mathematics, Statistics, Engineering, or a related quantitative field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "February 2027",
+          "month": "2027-02"
+        },
+        {
+          "label": "August 2027",
+          "month": "2027-08"
+        }
+      ],
+      "evidence": [
+        "completed to start full time in February or August 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.007096,
+  "latencyMs": 6532,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-02\",\n        \"evidence\": [\"PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)\"]\n      },\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-08\",\n        \"evidence\": [\"PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)\"]\n      }\n    ],\n    \"evidence\": [\"PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position)\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\", \"phd\"],\n    \"evidence\": [\"PhD, Master's or Bachelor's degree (completed to start full time in February or August 2027, or currently in a postdoctoral position) in Computer Science, Machine Learning, Artificial Intelligence, Mathematics, Statistics, Engineering, or a related quantitative field\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"February 2027\",\n        \"month\": \"2027-02\"\n      },\n      {\n        \"label\": \"August 2027\",\n        \"month\": \"2027-08\"\n      }\n    ],\n    \"evidence\": [\"completed to start full time in February or August 2027\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 2991,
+  "outputTokens": 821,
+  "at": "2026-10-31T19:42:30.491Z"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "jd-029",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.524Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "strength": "required",
+      "evidence": [
+        "This role is designed for upcoming or recent graduates"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Bachelor’s degree (any major)"
+      ]
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-07",
+          "month": "2027-07"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "The anticipated start date is July 2027."
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Veeva does not provide sponsorship for employment visa status (e.g., H-1B, OPT, or TN status)"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [],
+  "notes": "Listing H-1B implies future too, but no explicit 'future' wording. Must live within NYC commute by start."
+}

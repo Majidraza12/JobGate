@@ -1,0 +1,110 @@
+{
+  "id": "jd-033",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "Summer 2025",
+          "earliest": null,
+          "latest": "2028-06",
+          "evidence": [
+            "Graduating in December 2027 or May/June 2028"
+          ]
+        }
+      ],
+      "evidence": [
+        "Graduating in December 2027 or May/June 2028"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "phd"
+      ],
+      "evidence": [
+        "Pursuing an advanced degree Phd preferred in Computer Science, Artificial Intelligence, Machine Learning, or a related field"
+      ],
+      "strength": "preferred"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2025",
+          "month": "2025-06"
+        }
+      ],
+      "evidence": [
+        "Our Summer Machine Learning Internship Program is an 11-week paid experience [June 1–August 13]"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Palo Alto"
+      ],
+      "remote": false,
+      "hybrid": false
+    },
+    "employment_type": "internship",
+    "season": "Summer 2025",
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.015148,
+  "latencyMs": 10785,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2025\",\n        \"earliest\": null,\n        \"latest\": \"2028-06\",\n        \"evidence\": [\"Graduating in December 2027 or May/June 2028\"]\n      }\n    ],\n    \"evidence\": [\"Graduating in December 2027 or May/June 2028\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"phd\"],\n    \"evidence\": [\"Pursuing an advanced degree Phd preferred in Computer Science, Artificial Intelligence, Machine Learning, or a related field\"],\n    \"strength\": \"preferred\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2025\",\n        \"month\": \"2025-06\"\n      }\n    ],\n    \"evidence\": [\"Our Summer Machine Learning Internship Program is an 11-week paid experience [June 1–August 13]\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Palo Alto\"],\n    \"remote\": false,\n    \"hybrid\": false\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2025\",\n  \"role_family\": \"ml\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2025\",\n        \"earliest\": null,\n        \"latest\": \"2028-06\",\n        \"evidence\": [\"Graduating in December 2027 or May/June 2028\"]\n      }\n    ],\n    \"evidence\": [\"Graduating in December 2027 or May/June 2028\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"phd\"],\n    \"evidence\": [\"Pursuing an advanced degree Phd preferred in Computer Science, Artificial Intelligence, Machine Learning, or a related field\"],\n    \"strength\": \"preferred\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2025\",\n        \"month\": \"2025-06\"\n      }\n    ],\n    \"evidence\": [\"Our Summer Machine Learning Internship Program is an 11-week paid experience [June 1–August 13]\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Palo Alto\"],\n    \"remote\": false,\n    \"hybrid\": false\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2025\",\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 8453,
+  "outputTokens": 1339,
+  "at": "2026-10-31T19:45:48.662Z"
+}

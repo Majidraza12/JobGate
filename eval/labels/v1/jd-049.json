@@ -1,0 +1,85 @@
+{
+  "id": "jd-049",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.525Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "strength": "required",
+      "evidence": [
+        "(pursuing or conferred within last 12 months)"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Bachelor's degree from an accredited college/university program"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "U.S. citizenship is required to obtain a security clearance."
+      ]
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": null
+      },
+      "strength": "required",
+      "evidence": [
+        "This position requires ability to obtain and maintain a security clearance"
+      ]
+    }
+  },
+  "tags": [
+    "boundary_grad_date"
+  ],
+  "notes": "Window is relative to application date."
+}

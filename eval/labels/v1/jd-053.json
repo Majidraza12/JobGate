@@ -1,0 +1,91 @@
+{
+  "id": "jd-053",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.526Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2026-12",
+          "latest": "2027-05",
+          "evidence": []
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "Graduating in Dec 2026 or May 2027 (U.S.)"
+      ]
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "ambiguous",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Enrollment in a 4-year undergraduate degree program"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Does not require sponsorship for employment visa status (now or in the future)"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Does not require sponsorship for employment visa status (now or in the future)"
+      ]
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "multiple_windows_or_starts",
+    "preferred_sounds_required"
+  ],
+  "notes": "Degree line ends in 'preferred', which may apply only to the majors or to the whole line."
+}

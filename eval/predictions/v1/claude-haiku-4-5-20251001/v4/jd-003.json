@@ -1,0 +1,122 @@
+{
+  "id": "jd-003",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2028-01",
+          "latest": "2028-12",
+          "evidence": [
+            "Targeting a 2028 full-time start date"
+          ]
+        }
+      ],
+      "evidence": [
+        "Targeting a 2028 full-time start date"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Pursuing a degree in Computer Science, Software Engineering, or a related technical field, or have equivalent practical experience"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 24 - Aug 20, 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "May 24 - Aug 27, 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "June 7 - Sep 3, 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "May 24 - Aug 20, 2027",
+        "May 24 - Aug 27, 2027",
+        "June 7 - Sep 3, 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "to conform to US export control regulations, some of these roles may require candidates to be eligible for any required authorizations from the US government"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "New York",
+        "Boston"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.007578,
+  "latencyMs": 6998,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2028-01\",\n        \"latest\": \"2028-12\",\n        \"evidence\": [\n          \"Targeting a 2028 full-time start date\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Targeting a 2028 full-time start date\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Pursuing a degree in Computer Science, Software Engineering, or a related technical field, or have equivalent practical experience\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 24 - Aug 20, 2027\",\n        \"month\": \"2027-05\"\n      },\n      {\n        \"label\": \"May 24 - Aug 27, 2027\",\n        \"month\": \"2027-05\"\n      },\n      {\n        \"label\": \"June 7 - Sep 3, 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"May 24 - Aug 20, 2027\",\n      \"May 24 - Aug 27, 2027\",\n      \"June 7 - Sep 3, 2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"ambiguous\",\n    \"value\": null,\n    \"evidence\": [\n      \"to conform to US export control regulations, some of these roles may require candidates to be eligible for any required authorizations from the US government\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"New York\",\n      \"Boston\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3368,
+  "outputTokens": 842,
+  "at": "2026-10-31T19:49:55.073Z"
+}

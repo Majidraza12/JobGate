@@ -1,0 +1,121 @@
+{
+  "id": "jd-019",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "Summer 2025",
+          "earliest": "2025-05",
+          "latest": "2025-07",
+          "evidence": [
+            "Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)"
+          ]
+        }
+      ],
+      "evidence": [
+        "Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "freshman",
+        "sophomore",
+        "junior",
+        "senior"
+      ],
+      "evidence": [
+        "Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program."
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 17 – July 30",
+          "month": "2025-05"
+        }
+      ],
+      "evidence": [
+        "Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Applicants must be authorized to work for any employer in the United States. We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT)."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Phoenix, AZ",
+        "Fairfield, IA",
+        "West Des Moines, IA"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2025",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.015993,
+  "latencyMs": 13064,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2025\",\n        \"earliest\": \"2025-05\",\n        \"latest\": \"2025-07\",\n        \"evidence\": [\n          \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"freshman\",\n      \"sophomore\",\n      \"junior\",\n      \"senior\"\n    ],\n    \"evidence\": [\n      \"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 17 – July 30\",\n        \"month\": \"2025-05\"\n      }\n    ],\n    \"evidence\": [\n      \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Applicants must be authorized to work for any employer in the United States. We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Phoenix, AZ\",\n      \"Fairfield, IA\",\n      \"West Des Moines, IA\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2025\",\n  \"role_family\": \"other\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2025\",\n        \"earliest\": \"2025-05\",\n        \"latest\": \"2025-07\",\n        \"evidence\": [\n          \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"freshman\",\n      \"sophomore\",\n      \"junior\",\n      \"senior\"\n    ],\n    \"evidence\": [\n      \"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 17 – July 30\",\n        \"month\": \"2025-05\"\n      }\n    ],\n    \"evidence\": [\n      \"Cambridge's Next Step 11-week paid summer internship program (May 17 – July 30)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Applicants must be authorized to work for any employer in the United States. We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Phoenix, AZ\",\n      \"Fairfield, IA\",\n      \"West Des Moines, IA\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2025\",\n  \"role_family\": \"other\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 7228,
+  "outputTokens": 1753,
+  "at": "2026-10-31T19:44:08.072Z"
+}

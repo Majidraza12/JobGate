@@ -1,0 +1,118 @@
+{
+  "id": "jd-013",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "bs",
+            "ms"
+          ],
+          "applies_to_start": "Summer 2027",
+          "earliest": "2028-05",
+          "latest": "2028-05",
+          "evidence": [
+            "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree"
+          ]
+        }
+      ],
+      "evidence": [
+        "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "Tech & Data Program Summer 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": false,
+      "evidence": [
+        "Candidate must be authorized to work in the US without company sponsorship"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Candidate must be authorized to work in the US without company sponsorship",
+        "The company will not support the STEM OPT I-983 Training Plan endorsement for this position"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Hartford"
+      ],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006593,
+  "latencyMs": 4931,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"bs\", \"ms\"],\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": \"2028-05\",\n        \"latest\": \"2028-05\",\n        \"evidence\": [\"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree\"]\n      }\n    ],\n    \"evidence\": [\"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\"Tech & Data Program Summer 2027\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\"Candidate must be authorized to work in the US without company sponsorship\"],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Candidate must be authorized to work in the US without company sponsorship\", \"The company will not support the STEM OPT I-983 Training Plan endorsement for this position\"],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Hartford\"],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3003,
+  "outputTokens": 718,
+  "at": "2026-10-31T19:28:54.264Z"
+}

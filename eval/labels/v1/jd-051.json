@@ -1,0 +1,85 @@
+{
+  "id": "jd-051",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.526Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "Bachelor’s Degree in Engineering, Mathematics, Computer Science or Information Systems required"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "Must be a U.S. Citizen"
+      ]
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "does not now or in the future require sponsorship of a visa"
+      ]
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "does not now or in the future require sponsorship of a visa"
+      ]
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "active",
+        "level": "top_secret"
+      },
+      "strength": "required",
+      "evidence": [
+        "Must hold Top Secret Clearance"
+      ]
+    }
+  },
+  "tags": [],
+  "notes": "Hire-to-train program but requires an active TS at hire."
+}

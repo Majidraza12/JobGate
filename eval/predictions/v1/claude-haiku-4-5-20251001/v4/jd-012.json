@@ -1,0 +1,118 @@
+{
+  "id": "jd-012",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-05",
+          "evidence": [
+            "Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields. If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position."
+          ]
+        }
+      ],
+      "evidence": [
+        "Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields. If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree"
+      ],
+      "strength": "required"
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 17, 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "June 21, 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "The 2027 CSI program will run during the summer with a range of start dates between May 17, 2027, and June 21, 2027, and flexible end dates through September 24, 2027."
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": false,
+      "evidence": [
+        "this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee))."
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "this position involves U.S. Export Control; this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee))."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "summer",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.018625,
+  "latencyMs": 15584,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-05\",\n        \"evidence\": [\n          \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields. If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position.\"\n        ]\n      }\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 17, 2027\",\n        \"month\": \"2027-05\"\n      },\n      {\n        \"label\": \"June 21, 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"The 2027 CSI program will run during the summer with a range of start dates between May 17, 2027, and June 21, 2027, and flexible end dates through September 24, 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee)).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"this position involves U.S. Export Control; this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee)).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [\n      \"None required.\"\n    ],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"summer\",\n  \"role_family\": \"other\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-05\",\n        \"evidence\": [\n          \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields. If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position.\"\n        ]\n      }\n    ],\n    \"strength\": \"required\",\n    \"evidence\": [\n      \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields. If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position.\"\n    ]\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Must be a continuing college or university student in good standing at an accredited institution pursuing an undergraduate degree in Engineering or other related fields.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"May 17, 2027\",\n        \"month\": \"2027-05\"\n      },\n      {\n        \"label\": \"June 21, 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"The 2027 CSI program will run during the summer with a range of start dates between May 17, 2027, and June 21, 2027, and flexible end dates through September 24, 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee)).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"this position involves U.S. Export Control; this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee)).\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"summer\",\n  \"role_family\": \"other\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 8710,
+  "outputTokens": 1983,
+  "at": "2026-10-31T19:50:17.183Z"
+}

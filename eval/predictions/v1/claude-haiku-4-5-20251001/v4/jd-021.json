@@ -1,0 +1,105 @@
+{
+  "id": "jd-021",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "ms"
+          ],
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2027-06",
+          "evidence": [
+            "Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027."
+          ]
+        }
+      ],
+      "evidence": [
+        "Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "ms"
+      ],
+      "evidence": [
+        "Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Employment eligibility to work with American Express in the United States is required as the company will not pursue visa sponsorship for these positions."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.015544,
+  "latencyMs": 11019,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"ms\"],\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-06\",\n        \"evidence\": [\n          \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"ms\"],\n    \"evidence\": [\n      \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Employment eligibility to work with American Express in the United States is required as the company will not pursue visa sponsorship for these positions.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"ml\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"ms\"],\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2027-06\",\n        \"evidence\": [\n          \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"ms\"],\n    \"evidence\": [\n      \"Must have earned a Master's degree in Computer Science, Machine Learning, Data Science, Artificial Intelligence, Computer Engineering, Software Engineering, or another technical field before June 2027.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Employment eligibility to work with American Express in the United States is required as the company will not pursue visa sponsorship for these positions.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 8404,
+  "outputTokens": 1428,
+  "at": "2026-10-31T19:50:34.880Z"
+}

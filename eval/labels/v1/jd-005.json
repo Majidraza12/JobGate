@@ -1,0 +1,83 @@
+{
+  "id": "jd-005",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.520Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "2027-05",
+          "month": "2027-05"
+        },
+        {
+          "label": "2027-06",
+          "month": "2027-06"
+        }
+      ],
+      "strength": "required",
+      "evidence": [
+        "2027 Internship Program Dates: May/June–August/September 2027"
+      ]
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    }
+  },
+  "tags": [
+    "multiple_windows_or_starts"
+  ],
+  "notes": "Final dates based on student schedules. Degree level not named; equivalent experience accepted. 'citizenship' only in EEO list."
+}

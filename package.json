@@ -10,16 +10,28 @@
     "typecheck": "tsc --noEmit",
     "db:start": "supabase start",
     "db:stop": "supabase stop",
-    "db:reset": "supabase db reset"
+    "db:reset": "supabase db reset",
+    "fetch-jds": "tsx --env-file-if-exists=.env pipeline/fetchJds.ts",
+    "extract": "tsx --env-file-if-exists=.env pipeline/extractCli.ts",
+    "eval:sample": "tsx eval/sampleCli.ts",
+    "label": "tsx eval/labelServer.ts",
+    "eval:extract": "tsx --env-file-if-exists=.env eval/extractEval.ts",
+    "label:import": "tsx eval/importLabels.ts",
+    "eval:review": "tsx eval/reviewCli.ts"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.3.0",
+    "@mozilla/readability": "^0.6.0",
+    "jsdom": "^28.1.0",
     "pg": "^8.23.1",
+    "robots-parser": "^3.0.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^26.6.5",
     "@types/pg": "^8.23.1",
     "supabase": "^2.122.0",

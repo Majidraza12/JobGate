@@ -1,0 +1,113 @@
+{
+  "id": "jd-054",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2028-01",
+          "latest": "2029-12",
+          "evidence": [
+            "Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029."
+          ]
+        }
+      ],
+      "evidence": [
+        "Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Currently enrolled in a full-time bachelor's or master's degree program"
+      ],
+      "strength": "required"
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "ambiguous",
+      "value": [
+        {
+          "label": "2027",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "The Life Fitness / Hammer Strength Internship Program 2027",
+        "Collaborate with fellow interns on a 12-week cross-functional case study project"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Chicagoland"
+      ],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.00701,
+  "latencyMs": 6107,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2028-01\",\n        \"latest\": \"2029-12\",\n        \"evidence\": [\"Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029.\"]\n      }\n    ],\n    \"evidence\": [\"Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029.\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"Currently enrolled in a full-time bachelor's or master's degree program\"],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\"Currently enrolled in a full-time bachelor's or master's degree program with an expected graduation date in 2028 or 2029.\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"ambiguous\",\n    \"value\": [\n      {\n        \"label\": \"2027\",\n        \"month\": null\n      }\n    ],\n    \"evidence\": [\"The Life Fitness / Hammer Strength Internship Program 2027\", \"Collaborate with fellow interns on a 12-week cross-functional case study project\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Chicagoland\"],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"2027\",\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3425,
+  "outputTokens": 717,
+  "at": "2026-10-31T19:48:09.596Z"
+}

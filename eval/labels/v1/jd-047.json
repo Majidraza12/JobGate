@@ -1,0 +1,83 @@
+{
+  "id": "jd-047",
+  "datasetVersion": "v1",
+  "labeler": "majid",
+  "labeledAt": "2026-10-29T15:49:41.525Z",
+  "fields": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "strength": "required",
+      "evidence": [
+        "A Bachelor’s degree in an Engineering or Science discipline"
+      ]
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "strength": "required",
+      "evidence": [
+        "You must be a U.S. citizen to apply."
+      ]
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "strength": null,
+      "evidence": []
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": null
+      },
+      "strength": "required",
+      "evidence": [
+        "Employees must be eligible to obtain a government security clearance"
+      ]
+    }
+  },
+  "tags": [
+    "ability_vs_active_clearance"
+  ],
+  "notes": "Current Secret-or-higher eligibility listed as Preferred."
+}
