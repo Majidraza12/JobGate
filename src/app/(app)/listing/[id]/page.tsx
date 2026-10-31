@@ -39,7 +39,7 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
         </div>
         <div className="flex flex-none gap-2">
           <AppliedButton listingId={id} applied={Boolean(application)} />
-          <a href={listing.apply_url} target="_blank" rel="noopener noreferrer" className="flex h-9 items-center rounded-control bg-ink px-4 text-[14px] font-medium text-white hover:bg-ink/85">
+          <a href={listing.apply_url} target="_blank" rel="noopener noreferrer" className="flex h-9 items-center rounded-control bg-brand px-4 text-[14px] font-medium text-on-brand hover:bg-brand-hover">
             Apply on company site
           </a>
         </div>

@@ -10,7 +10,7 @@ export function AppliedButton({ listingId, applied }: { listingId: number; appli
       disabled={pending}
       onClick={() => start(() => setApplied(listingId, !applied))}
       aria-pressed={applied}
-      className={`h-9 rounded-control border px-4 text-[14px] font-medium disabled:opacity-60 ${applied ? "border-transparent bg-mint text-mint-ink" : "border-control bg-surface hover:border-ink"}`}
+      className={`h-9 rounded-control border px-4 text-[14px] font-medium disabled:opacity-60 ${applied ? "border-transparent bg-mint text-mint-ink" : "border-control bg-surface hover:border-brand-text"}`}
     >
       {pending ? "Saving…" : applied ? "Applied ✓" : "Mark applied"}
     </button>
@@ -24,7 +24,7 @@ export function PostingText({ text }: { text: string | null }) {
       <div className="flex items-center justify-between px-5 py-3">
         <h2 className="text-[16px] font-medium">Posting text</h2>
         {text && (
-          <button onClick={() => setOpen(!open)} aria-expanded={open} className="text-[14px] text-brand hover:underline">
+          <button onClick={() => setOpen(!open)} aria-expanded={open} className="text-[14px] text-brand-text hover:underline">
             {open ? "Hide" : "Show the full posting"}
           </button>
         )}
@@ -62,7 +62,7 @@ export function FeedbackForm({ listingId, verdictShown, fields }: { listingId: n
           </label>
           <textarea id="fb-comment" name="comment" rows={3} maxLength={2000} className="mt-2 w-full rounded-control border border-control bg-surface px-3 py-2 text-[14px]" />
           {state.error && <p className="mt-2 text-[13px] text-bad-ink">{state.error}</p>}
-          <button disabled={pending} className="mt-3 h-9 rounded-control border border-control bg-surface px-4 text-[14px] font-medium hover:border-ink disabled:opacity-60">
+          <button disabled={pending} className="mt-3 h-9 rounded-control border border-control bg-surface px-4 text-[14px] font-medium hover:border-brand-text disabled:opacity-60">
             {pending ? "Sending…" : "Send report"}
           </button>
         </form>

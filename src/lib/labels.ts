@@ -33,14 +33,14 @@ export const VERDICTS: Record<Verdict, { label: string; tip: string; badge: stri
 
 // Solid dots for the filter chips: the pale badge fills vanish at 8px.
 export const VERDICT_DOT: Record<Verdict, string> = {
-  eligible: "bg-[#2fbf7f]",
-  no_restrictions_found: "bg-brand",
-  check: "bg-[#d97706]",
-  not_checked: "bg-[#9a9a9a]",
-  not_eligible: "bg-[#c4242a]",
+  eligible: "bg-mint",
+  no_restrictions_found: "bg-brand-text",
+  check: "bg-[#f5a524]",
+  not_checked: "bg-[#6b6b85]",
+  not_eligible: "bg-[#ff5c5c]",
 };
 
-export const VERDICT_ORDER: Verdict[] =["eligible", "no_restrictions_found", "check", "not_checked", "not_eligible"];
+export const VERDICT_ORDER: Verdict[] = ["eligible", "no_restrictions_found", "check", "not_checked", "not_eligible"];
 
 export const ROW_STATUS: Record<RowStatus, { label: string; badge: string }> = {
   satisfied: { label: "Meets", badge: "bg-ok-bg text-ok-ink" },

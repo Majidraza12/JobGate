@@ -33,7 +33,7 @@ export function Sidebar({ email, appliedCount }: { email: string; appliedCount: 
           href={n.href}
           onClick={() => setOpen(false)}
           aria-current={active(n.href) ? "page" : undefined}
-          className={`flex h-8 items-center gap-2.5 rounded-control px-2.5 text-[14px] ${active(n.href) ? "bg-raised text-ink" : "text-muted hover:bg-raised/60 hover:text-ink"}`}
+          className={`flex h-8 items-center gap-2.5 rounded-control px-2.5 text-[14px] ${active(n.href) ? "bg-brand-soft text-ink" : "text-muted hover:bg-raised hover:text-ink"}`}
         >
           <Icon d={n.icon} />
           <span className="flex-1">{n.label}</span>
@@ -49,7 +49,7 @@ export function Sidebar({ email, appliedCount }: { email: string; appliedCount: 
         {email}
       </p>
       <form action={signOut}>
-        <button className="mt-1 h-8 w-full rounded-control px-2.5 text-left text-[14px] text-muted hover:bg-raised/60 hover:text-ink">Sign out</button>
+        <button className="mt-1 h-8 w-full rounded-control px-2.5 text-left text-[14px] text-muted hover:bg-raised hover:text-ink">Sign out</button>
       </form>
     </div>
   );

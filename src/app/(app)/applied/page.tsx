@@ -47,7 +47,7 @@ export default async function AppliedPage() {
         </>
       )}
       {apps.length === 0 && (
-        <Link href="/" className="mt-6 inline-flex h-9 items-center rounded-control bg-ink px-4 text-[14px] font-medium text-white hover:bg-ink/85">
+        <Link href="/" className="mt-6 inline-flex h-9 items-center rounded-control bg-brand px-4 text-[14px] font-medium text-on-brand hover:bg-brand-hover">
           Go to the feed
         </Link>
       )}

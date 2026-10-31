@@ -22,7 +22,7 @@ export function LoginForm() {
             role="tab"
             aria-selected={mode === m}
             onClick={() => setMode(m)}
-            className={`h-8 flex-1 rounded-[4px] text-[14px] ${mode === m ? "bg-surface font-medium" : "text-muted hover:text-ink"}`}
+            className={`h-8 flex-1 rounded-[4px] text-[14px] ${mode === m ? "bg-brand font-medium text-on-brand" : "text-muted hover:text-ink"}`}
           >
             {m === "in" ? "Sign in" : "Create account"}
           </button>
@@ -56,7 +56,7 @@ export function LoginForm() {
       {state.error && <p className="mt-4 rounded-control bg-bad-bg px-3 py-2 text-[13px] text-bad-ink">{state.error}</p>}
       {state.notice && <p className="mt-4 rounded-control bg-warn-bg px-3 py-2 text-[13px] text-warn-ink">{state.notice}</p>}
 
-      <button disabled={pending} className="mt-6 h-10 w-full rounded-control bg-ink font-medium text-white hover:bg-ink/85 disabled:opacity-60">
+      <button disabled={pending} className="mt-6 h-10 w-full rounded-control bg-brand font-medium text-on-brand hover:bg-brand-hover disabled:opacity-60">
         {pending ? "Working…" : mode === "in" ? "Sign in" : "Create account"}
       </button>
     </form>
