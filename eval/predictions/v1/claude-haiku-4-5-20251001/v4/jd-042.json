@@ -1,0 +1,100 @@
+{
+  "id": "jd-042",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "Currently pursuing a Bachelor's or Master's degree in a related field; must remain enrolled in a degree-seeking program after the internship."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "must remain enrolled in a degree-seeking program after the internship."
+      ],
+      "strength": "required"
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Currently pursuing a Bachelor's or Master's degree in a related field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": false,
+      "evidence": [
+        "Must be legally authorized to work in the U.S. and not require sponsorship now or in the future."
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be legally authorized to work in the U.S. and not require sponsorship now or in the future."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be legally authorized to work in the U.S. and not require sponsorship now or in the future."
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": true,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.014177,
+  "latencyMs": 7761,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": null,\n        \"evidence\": [\n          \"Currently pursuing a Bachelor's or Master's degree in a related field; must remain enrolled in a degree-seeking program after the internship.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in a related field; must remain enrolled in a degree-seeking program after the internship.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"must remain enrolled in a degree-seeking program after the internship.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in a related field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": true,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": null,\n  \"role_family\": \"data\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"ambiguous\",\n    \"value\": null,\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in a related field; must remain enrolled in a degree-seeking program after the internship.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"must remain enrolled in a degree-seeking program after the internship.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in a related field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be legally authorized to work in the U.S. and not require sponsorship now or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": true,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": null,\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 7222,
+  "outputTokens": 1391,
+  "at": "2026-10-31T19:47:01.485Z"
+}

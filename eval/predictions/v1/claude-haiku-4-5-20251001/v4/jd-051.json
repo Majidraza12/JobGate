@@ -1,0 +1,102 @@
+{
+  "id": "jd-051",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor's Degree in Engineering, Mathematics, Computer Science or Information Systems required"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be a U.S. Citizen"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States."
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "active",
+        "level": "top_secret"
+      },
+      "evidence": [
+        "Must hold Top Secret Clearance",
+        "Top Secret Clearance"
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "Washington, DC"
+      ],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006972,
+  "latencyMs": 5689,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Bachelor's Degree in Engineering, Mathematics, Computer Science or Information Systems required\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Must be a U.S. Citizen\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"clearance\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"required\": \"active\",\n      \"level\": \"top_secret\"\n    },\n    \"evidence\": [\n      \"Must hold Top Secret Clearance\",\n      \"Top Secret Clearance\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Washington, DC\"\n    ],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3672,
+  "outputTokens": 660,
+  "at": "2026-10-31T19:47:53.748Z"
+}

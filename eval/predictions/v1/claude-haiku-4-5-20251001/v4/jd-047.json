@@ -1,0 +1,99 @@
+{
+  "id": "jd-047",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor's degree in an Engineering or Science discipline",
+        "Bachelor's Degree - Engineering or Science"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "You must be a U.S. citizen to apply."
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": "secret"
+      },
+      "evidence": [
+        "Employees must be eligible to obtain a government security clearance",
+        "Current eligibility for access to classified information at the Secret level or higher and may be subject to a government background investigation to upgrade clearance eligibility, if required"
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "State College, PA"
+      ],
+      "remote": false,
+      "hybrid": false
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006435,
+  "latencyMs": 5086,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\"],\n    \"evidence\": [\"Bachelor's degree in an Engineering or Science discipline\", \"Bachelor's Degree - Engineering or Science\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\"You must be a U.S. citizen to apply.\"],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"required\": \"ability_to_obtain\",\n      \"level\": \"secret\"\n    },\n    \"evidence\": [\"Employees must be eligible to obtain a government security clearance\", \"Current eligibility for access to classified information at the Secret level or higher and may be subject to a government background investigation to upgrade clearance eligibility, if required\"],\n    \"strength\": \"required\"\n  },\n  \"locations\": {\n    \"cities\": [\"State College, PA\"],\n    \"remote\": false,\n    \"hybrid\": false\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3485,
+  "outputTokens": 590,
+  "at": "2026-10-31T19:47:28.650Z"
+}
