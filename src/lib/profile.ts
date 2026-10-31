@@ -4,8 +4,8 @@ import { EligibilityProfile } from "@core/profile";
 
 export type ProfileRow = {
   id: string;
-  grad_month: string;
-  degree: "bs" | "ms" | "phd";
+  grad_month: string | null; // null only when degree is "none"
+  degree: "bs" | "ms" | "phd" | "none";
   us_citizen: boolean;
   permanent_resident: boolean;
   authorized_now_without_sponsorship: boolean;

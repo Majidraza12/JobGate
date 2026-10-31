@@ -1,7 +1,7 @@
 // Matching engine: every case CLAUDE.md section 12 requires.
 import { describe, expect, it } from "vitest";
 import { classYearAt, match, parseStart, type JobType, type StoredRequirements } from "@core/match";
-import type { EligibilityProfile } from "@core/profile";
+import { EligibilityProfile } from "@core/profile";
 import type { StoredExtraction } from "@core/requirements";
 import { blank } from "./helpers/extraction";
 
@@ -155,6 +155,34 @@ describe("degree levels", () => {
     expect(rowOf({ degree_levels: stated(["bs", "ms"]) }, "degree_levels").status).toBe("satisfied");
     expect(rowOf({ degree_levels: stated(["ms", "phd"]) }, "degree_levels").status).toBe("conflict");
     expect(rowOf({ degree_levels: stated(["ms"], "q", "preferred") }, "degree_levels").status).toBe("unclear");
+  });
+});
+
+describe("not in a degree program", () => {
+  const none = as({ degree: "none", grad_month: null });
+  const summer = { start_options: stated([{ label: "Summer 2027", month: "2027-06" }]) };
+
+  it("is unclear, never a conflict, against graduation windows and class years", () => {
+    expect(rowOf({ grad_requirements: stated([win("2027-05", "2027-12")]) }, "grad_requirements", none).status).toBe("unclear");
+    expect(rowOf({ grad_requirements: stated([win(null, "2027-04")]) }, "grad_requirements", none).status).toBe("unclear");
+    expect(rowOf({ ...summer, class_years: stated(["senior"]) }, "class_years", none).status).toBe("unclear");
+    expect(classYearAt("2027-06", none)).toBeNull();
+  });
+
+  it("conflicts with a required degree and with returning to school", () => {
+    expect(rowOf({ degree_levels: stated(["bs"]) }, "degree_levels", none).status).toBe("conflict");
+    expect(rowOf({ degree_levels: stated(["bs"], "q", "preferred") }, "degree_levels", none).status).toBe("unclear");
+    expect(rowOf({ ...summer, must_return_to_school: stated(true) }, "must_return_to_school", none).status).toBe("conflict");
+  });
+
+  it("has a graduation month exactly when it has a degree", () => {
+    expect(EligibilityProfile.safeParse(none).success).toBe(true);
+    expect(EligibilityProfile.safeParse(as({ grad_month: null })).success).toBe(false);
+    expect(EligibilityProfile.safeParse(as({ degree: "none" })).success).toBe(false);
+  });
+
+  it("an internship with only a graduation window is Check, not Not eligible", () => {
+    expect(run({ grad_requirements: stated([win("2027-12", "2028-06")]) }, none).verdict).toBe("check");
   });
 });
 

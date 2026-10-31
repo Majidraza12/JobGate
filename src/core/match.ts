@@ -89,8 +89,13 @@ function bestOf(js: Judgment[]): Judgment {
 type Grad = NonNullable<StoredExtraction["grad_requirements"]["value"]>[number];
 
 function judgeGrad(windows: Grad[], p: EligibilityProfile): Judgment {
-  const fits = (w: Grad) => (w.earliest === null || w.earliest <= p.grad_month) && (w.latest === null || p.grad_month <= w.latest);
-  const forDegree = windows.filter((w) => w.applies_to_degrees === null || w.applies_to_degrees.includes(p.degree));
+  // Not in a degree program: there is no graduation month to compare. Unclear,
+  // never conflict, because wrongly hiding a job is the worst error.
+  if (p.degree === "none" || p.grad_month === null) return unknown("The posting has a graduation window, and you aren't in a degree program.");
+  const grad = p.grad_month;
+  const degree = p.degree;
+  const fits = (w: Grad) => (w.earliest === null || w.earliest <= grad) && (w.latest === null || grad <= w.latest);
+  const forDegree = windows.filter((w) => w.applies_to_degrees === null || w.applies_to_degrees.includes(degree));
   const applies = forDegree.filter((w) => w.applies_to_start === null || startApplies(w.applies_to_start, p.starts) === true);
   const maybe = forDegree.filter((w) => w.applies_to_start !== null && startApplies(w.applies_to_start, p.starts) === null);
   const range = (w: Grad) =>
@@ -106,11 +111,13 @@ function judgeGrad(windows: Grad[], p: EligibilityProfile): Judgment {
 // after it is unclear (the end date isn't known); later is satisfied.
 function judgeReturn(required: boolean, x: StoredExtraction, p: EligibilityProfile): Judgment {
   if (!required) return meets("The posting says returning to school isn't required.");
+  if (p.grad_month === null) return fails("Requires returning to school after the internship, and you aren't in school.");
+  const grad = p.grad_month;
   const starts = startMonths(x);
   if (!starts.length) return unknown("Requires returning to school, but the internship dates aren't stated.");
   return bestOf(
     starts.map((s) => {
-      const after = monthsBetween(s, p.grad_month);
+      const after = monthsBetween(s, grad);
       if (after < 0) return fails(`You graduate (${p.grad_month}) before the ${s} start, so you can't return to school after it.`);
       if (after <= 3) return unknown(`You graduate (${p.grad_month}) close to the ${s} start; it depends on when the internship ends.`);
       return meets(`You graduate (${p.grad_month}) well after the ${s} start.`);
@@ -122,6 +129,7 @@ function judgeReturn(required: boolean, x: StoredExtraction, p: EligibilityProfi
 // 2026-10-29) instead of asking for it: a bachelor's student with 12 or fewer
 // months left is a senior, and so on.
 export function classYearAt(start: string, p: EligibilityProfile): string | null {
+  if (p.grad_month === null) return null;
   const left = monthsBetween(start, p.grad_month);
   if (left < 0) return null;
   if (p.degree === "ms") return "masters";
@@ -130,6 +138,7 @@ export function classYearAt(start: string, p: EligibilityProfile): string | null
 }
 
 function judgeClassYears(years: string[], x: StoredExtraction, p: EligibilityProfile): Judgment {
+  if (p.degree === "none") return unknown(`Asks for ${years.join(" or ")} standing, and you aren't in a degree program.`);
   const starts = startMonths(x);
   if (!starts.length) return unknown(`Requires ${years.join(" or ")} standing, but the start date isn't stated.`);
   return bestOf(
@@ -142,6 +151,7 @@ function judgeClassYears(years: string[], x: StoredExtraction, p: EligibilityPro
 }
 
 const DEGREE_NAMES: Record<string, string> = { bs: "bachelor's", ms: "master's", phd: "PhD" };
+const degreeName = (d: string) => DEGREE_NAMES[d] ?? d;
 
 const LEVELS = ["secret", "top_secret", "ts_sci"];
 
@@ -170,10 +180,10 @@ function judge(field: GateField, value: unknown, x: StoredExtraction, p: Eligibi
       return judgeClassYears(value as string[], x, p);
     case "degree_levels": {
       const ds = value as string[];
-      const name = (d: string) => DEGREE_NAMES[d] ?? d;
+      if (p.degree === "none") return fails(`Limited to ${ds.map(degreeName).join(", ")} students; you aren't in a degree program.`);
       return ds.includes(p.degree)
-        ? meets(`Open to ${name(p.degree)} students.`)
-        : fails(`Limited to ${ds.map(name).join(", ")}; you're a ${name(p.degree)} student.`);
+        ? meets(`Open to ${degreeName(p.degree)} students.`)
+        : fails(`Limited to ${ds.map(degreeName).join(", ")}; you're a ${degreeName(p.degree)} student.`);
     }
     case "citizenship_required":
       if (!value) return meets("The posting says citizenship isn't required.");
