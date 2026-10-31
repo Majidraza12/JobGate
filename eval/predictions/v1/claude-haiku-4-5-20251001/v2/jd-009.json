@@ -1,0 +1,108 @@
+{
+  "id": "jd-009",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "bs",
+            "ms",
+            "phd"
+          ],
+          "applies_to_start": null,
+          "earliest": "2026-12",
+          "latest": "2027-05",
+          "evidence": [
+            "Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance with a graduation date between December 2026 and Spring 2027"
+          ]
+        }
+      ],
+      "evidence": [
+        "Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance with a graduation date between December 2026 and Spring 2027"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "evidence": [
+        "Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Chicago"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "quant"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.00577,
+  "latencyMs": 5507,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"bs\", \"ms\", \"phd\"],\n        \"applies_to_start\": null,\n        \"earliest\": \"2026-12\",\n        \"latest\": \"2027-05\",\n        \"evidence\": [\"Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance with a graduation date between December 2026 and Spring 2027\"]\n      }\n    ],\n    \"evidence\": [\"Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance with a graduation date between December 2026 and Spring 2027\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\", \"phd\"],\n    \"evidence\": [\"Bachelor's, Master's, or Doctorate degree in a technical or industry related field such as, but not limited to, mathematics, statistics or mathematical finance\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Chicago\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"quant\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 2350,
+  "outputTokens": 684,
+  "at": "2026-10-31T19:18:23.742Z"
+}

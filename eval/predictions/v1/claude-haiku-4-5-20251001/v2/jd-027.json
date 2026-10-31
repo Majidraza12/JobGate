@@ -1,0 +1,129 @@
+{
+  "id": "jd-027",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "Summer 2027",
+          "earliest": "2027-05",
+          "latest": "2027-08",
+          "evidence": [
+            "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027",
+            "Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term."
+          ]
+        }
+      ],
+      "evidence": [
+        "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027",
+        "Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term."
+      ],
+      "strength": "required"
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "sophomore",
+        "junior",
+        "senior",
+        "masters"
+      ],
+      "evidence": [
+        "Must have completed a minimum of two semesters in school prior to the beginning of the co-op term (class standing of a sophomore or above).",
+        "Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree"
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree in Engineering (Mechanical, Electrical, Biomedical, or similar) or in a Computing discipline (Computer Science, Data Science, Statistics, or similar)"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-05"
+        }
+      ],
+      "evidence": [
+        "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": false,
+      "evidence": [
+        "Must be legally authorized to work in the United States for the full duration of the co-op term."
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future."
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Cincinnati, Ohio"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "co-op",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.018602,
+  "latencyMs": 14980,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": \"2027-05-10\",\n        \"latest\": \"2027-08-13\",\n        \"evidence\": [\n          \"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\",\n          \"Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term.\"\n        ]\n      }\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"sophomore\",\n      \"junior\",\n      \"senior\",\n      \"masters\"\n    ],\n    \"evidence\": [\n      \"Must have completed a minimum of two semesters in school prior to the beginning of the co-op term (class standing of a sophomore or above).\",\n      \"Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree in Engineering (Mechanical, Electrical, Biomedical, or similar) or in a Computing discipline (Computer Science, Data Science, Statistics, or similar)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-05-10\"\n      }\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"Must be legally authorized to work in the United States for the full duration of the co-op term.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Cincinnati, Ohio\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"co-op\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": \"2027-05\",\n        \"latest\": \"2027-08\",\n        \"evidence\": [\n          \"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\",\n          \"Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\",\n      \"Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Considered a student during the co-op term, must not have a graduation date prior to the start of the co-op term.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"sophomore\",\n      \"junior\",\n      \"senior\",\n      \"masters\"\n    ],\n    \"evidence\": [\n      \"Must have completed a minimum of two semesters in school prior to the beginning of the co-op term (class standing of a sophomore or above).\",\n      \"Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Be enrolled in an accredited college/institution pursuing a Bachelor's or Master's degree in Engineering (Mechanical, Electrical, Biomedical, or similar) or in a Computing discipline (Computer Science, Data Science, Statistics, or similar)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-05\"\n      }\n    ],\n    \"evidence\": [\n      \"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": false,\n    \"evidence\": [\n      \"Must be legally authorized to work in the United States for the full duration of the co-op term.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Permanently authorized to work in the U.S., must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Cincinnati, Ohio\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"co-op\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 8547,
+  "outputTokens": 2011,
+  "at": "2026-10-31T19:20:50.625Z"
+}
