@@ -2,7 +2,7 @@
 // with the ingest tests). The network is faked. Skipped when the local
 // Supabase Postgres isn't running.
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { readFileSync, readdirSync } from "node:fs";
+import { applyMigrations } from "./helpers/migrate";
 import pg from "pg";
 import { LOCAL_DATABASE_URL } from "../pipeline/db";
 import { interleaveByHost, runFetchJds } from "../pipeline/runFetchJds";
@@ -56,8 +56,7 @@ describe.skipIf(!up)("fetch-jds against Postgres", () => {
     await admin.end();
     db = new pg.Client({ connectionString: testUrl });
     await db.connect();
-    const dir = new URL("../supabase/migrations/", import.meta.url);
-    for (const f of readdirSync(dir).sort()) await db.query(readFileSync(new URL(f, dir), "utf8"));
+    await applyMigrations(db);
   });
 
   afterAll(async () => {
