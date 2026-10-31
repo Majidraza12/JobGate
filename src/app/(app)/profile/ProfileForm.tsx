@@ -1,6 +1,8 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { CityPicker, type CityOption } from "@/components/CityPicker";
+import { MonthPicker } from "@/components/MonthPicker";
 import type { ProfileRow } from "@/lib/profile";
 import { saveProfile, type ProfileState } from "./actions";
 
@@ -13,22 +15,22 @@ function Section({ title, why, children }: { title: string; why: string; childre
         <h2 className="text-[16px] font-medium">{title}</h2>
         <p className="mt-1 text-muted">{why}</p>
       </div>
-      <div className="rounded-[16px] bg-[#fafafa] p-4 md:p-5">{children}</div>
+      <div className="rounded-[14px] border border-line bg-surface p-4 md:p-5">{children}</div>
     </section>
   );
 }
 
-function YesNo({ name, label, value, onChange, disabled, note }: { name: string; label: string; value: boolean; onChange?: (v: boolean) => void; disabled?: boolean; note?: string }) {
+function YesNo({ name, label, value, onChange, note }: { name: string; label: string; value: boolean; onChange: (v: boolean) => void; note?: string }) {
   return (
-    <fieldset className="mt-4 first:mt-0" disabled={disabled}>
+    <fieldset className="mt-5 first:mt-0">
       <legend className="text-[14px] font-medium">{label}</legend>
       <div className="mt-2 flex gap-2">
         {[true, false].map((v) => (
           <label
             key={String(v)}
-            className={`flex h-9 cursor-pointer items-center rounded-control border px-4 text-[14px] ${value === v ? "border-ink bg-surface font-medium" : "border-line bg-surface text-muted"} ${disabled ? "cursor-not-allowed opacity-70" : ""}`}
+            className={`flex h-9 items-center rounded-control border px-4 text-[14px] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-text ${value === v ? "border-brand bg-brand-soft font-medium text-ink" : "border-line bg-surface text-muted hover:border-control hover:text-ink"}`}
           >
-            <input type="radio" name={name} value={v ? "yes" : "no"} checked={value === v} onChange={() => onChange?.(v)} className="sr-only" />
+            <input type="radio" name={name} value={v ? "yes" : "no"} checked={value === v} onChange={() => onChange(v)} className="sr-only" />
             {v ? "Yes" : "No"}
           </label>
         ))}
@@ -38,60 +40,75 @@ function YesNo({ name, label, value, onChange, disabled, note }: { name: string;
   );
 }
 
-export function ProfileForm({ profile }: { profile: ProfileRow | null }) {
+// What an earlier answer settles, said once instead of asked again.
+function Settled({ children }: { children: React.ReactNode }) {
+  return <p className="mt-5 rounded-control border border-line bg-raised px-3 py-2.5 text-[13px] text-muted">{children}</p>;
+}
+
+export function ProfileForm({ profile, cityOptions }: { profile: ProfileRow | null; cityOptions: CityOption[] }) {
   const [state, action, pending] = useActionState<ProfileState, FormData>(saveProfile, { error: null });
+  const [degree, setDegree] = useState(profile?.degree ?? "bs");
   const [citizen, setCitizen] = useState(profile?.us_citizen ?? false);
   const [pr, setPr] = useState(profile?.permanent_resident ?? false);
   const [authNow, setAuthNow] = useState(profile?.authorized_now_without_sponsorship ?? true);
   const [future, setFuture] = useState(profile?.needs_sponsorship_future ?? false);
-  const citizenOrPr = citizen || pr;
   const clearance = profile ? (profile.clearance_status === "active" ? `active:${profile.clearance_level}` : profile.clearance_status) : "none";
   const jobTypes = profile?.job_types ?? ["internship", "co-op", "new_grad"];
 
   return (
     <form action={action} className="mt-6">
       <Section title="Graduation" why="Internships often limit who can apply by graduation date. A bachelor's student is never matched against a master's-only window.">
-        <label className="block text-[14px] font-medium" htmlFor="grad_month">
-          Graduation month
+        <label className="block text-[14px] font-medium" htmlFor="degree">
+          Degree
         </label>
-        <input id="grad_month" name="grad_month" type="month" required defaultValue={profile?.grad_month ?? ""} className={input} />
-        <label className="mt-4 block text-[14px] font-medium" htmlFor="degree">
-          Degree you're pursuing
-        </label>
-        <select id="degree" name="degree" defaultValue={profile?.degree ?? "bs"} className={input}>
+        <select id="degree" name="degree" value={degree} onChange={(e) => setDegree(e.target.value as typeof degree)} className={input}>
           <option value="bs">Bachelor's</option>
           <option value="ms">Master's</option>
           <option value="phd">PhD</option>
+          <option value="none">No degree / not in school</option>
         </select>
+        {degree === "none" ? (
+          <Settled>
+            No graduation month needed. Postings that limit by graduation date or class year show as Check, and postings that require a degree show as Not
+            eligible, with the quote.
+          </Settled>
+        ) : (
+          <>
+            <label className="mt-5 block text-[14px] font-medium" htmlFor="grad_month">
+              Graduation month
+            </label>
+            <MonthPicker id="grad_month" name="grad_month" defaultValue={profile?.grad_month} />
+            <p className="mt-1.5 text-[12px] text-muted">Already graduated? Pick the month you did.</p>
+          </>
+        )}
       </Section>
 
       <Section
         title="Work authorization"
         why="Asked separately because the rules differ: a permanent resident counts as a U.S. person under ITAR but isn't a citizen, and is never affected by no-sponsorship language. Never shown to anyone else."
       >
+        {/* Each answer can settle the ones after it, and settled questions aren't
+            asked. The server derives the same values (actions.ts). */}
         <YesNo name="us_citizen" label="Are you a U.S. citizen?" value={citizen} onChange={setCitizen} />
-        <YesNo name="permanent_resident" label="Are you a permanent resident (green card)?" value={pr} onChange={setPr} />
-        <YesNo
-          name="authorized_now_without_sponsorship"
-          label="Can you work in the U.S. now without sponsorship?"
-          value={citizenOrPr || authNow}
-          onChange={setAuthNow}
-          disabled={citizenOrPr}
-          note={citizenOrPr ? "Yes for citizens and permanent residents." : "Yes for most F-1 students on OPT or CPT."}
-        />
-        <YesNo
-          name="needs_sponsorship_future"
-          label="Will you need visa sponsorship later (for example H-1B)?"
-          value={citizenOrPr ? false : future}
-          onChange={setFuture}
-          disabled={citizenOrPr}
-          note={citizenOrPr ? "Not needed for citizens and permanent residents." : undefined}
-        />
-        {/* Disabled fieldsets don't submit, so send the derived values explicitly. */}
-        {citizenOrPr && (
+        {citizen ? (
+          <Settled>As a citizen you can work without sponsorship and won&apos;t need it later. Nothing else to answer here.</Settled>
+        ) : (
           <>
-            <input type="hidden" name="authorized_now_without_sponsorship" value="yes" />
-            <input type="hidden" name="needs_sponsorship_future" value="no" />
+            <YesNo name="permanent_resident" label="Are you a permanent resident (green card)?" value={pr} onChange={setPr} />
+            {pr ? (
+              <Settled>As a permanent resident you can work without sponsorship and won&apos;t need it later.</Settled>
+            ) : (
+              <>
+                <YesNo
+                  name="authorized_now_without_sponsorship"
+                  label="Can you work in the U.S. now without sponsorship?"
+                  value={authNow}
+                  onChange={setAuthNow}
+                  note="Yes for most F-1 students on OPT or CPT."
+                />
+                <YesNo name="needs_sponsorship_future" label="Will you need visa sponsorship later (for example H-1B)?" value={future} onChange={setFuture} />
+              </>
+            )}
           </>
         )}
       </Section>
@@ -119,7 +136,7 @@ export function ProfileForm({ profile }: { profile: ProfileRow | null }) {
               ["new_grad", "New grad full-time"],
             ].map(([v, l]) => (
               <label key={v} className="flex items-center gap-2 text-[14px]">
-                <input type="checkbox" name="job_types" value={v} defaultChecked={jobTypes.includes(v!)} className="size-4 accent-ink" />
+                <input type="checkbox" name="job_types" value={v} defaultChecked={jobTypes.includes(v!)} className="size-4 accent-brand" />
                 {l}
               </label>
             ))}
@@ -132,19 +149,17 @@ export function ProfileForm({ profile }: { profile: ProfileRow | null }) {
         <p id="starts-note" className="mt-1.5 text-[12px] text-muted">
           Separate with commas, for example Summer 2027, Fall 2027.
         </p>
-        <label className="mt-4 block text-[14px] font-medium" htmlFor="locations">
-          Cities
-        </label>
-        <input id="locations" name="locations" defaultValue={(profile?.locations ?? []).join(", ")} placeholder="Chicago, New York" className={input} />
+        <p className="mt-5 text-[14px] font-medium">Cities</p>
+        <CityPicker name="locations" options={cityOptions} defaultValue={profile?.locations ?? []} />
         <label className="mt-4 flex items-center gap-2 text-[14px]">
-          <input type="checkbox" name="remote_ok" defaultChecked={profile?.remote_ok ?? true} className="size-4 accent-ink" />
+          <input type="checkbox" name="remote_ok" defaultChecked={profile?.remote_ok ?? true} className="size-4 accent-brand" />
           Remote is fine
         </label>
       </Section>
 
       <div className="flex items-center justify-end gap-4 border-t border-line pt-6">
         {state.error && <p className="text-[13px] text-bad-ink">{state.error}</p>}
-        <button disabled={pending} className="h-10 rounded-control bg-ink px-5 font-medium text-white hover:bg-ink/85 disabled:opacity-60">
+        <button disabled={pending} className="h-10 rounded-control bg-brand px-5 font-medium text-on-brand hover:bg-brand-hover disabled:opacity-60">
           {pending ? "Saving…" : profile ? "Save profile" : "Save and see my feed"}
         </button>
       </div>

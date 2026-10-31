@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { cityOf } from "@core/cities";
 import { loadFeed, type FeedItem } from "@/lib/feed";
 import { toEligibility, type ProfileRow } from "@/lib/profile";
 import { FeedView, type FeedCard } from "./FeedView";
@@ -43,6 +44,7 @@ export default async function FeedPage() {
       company: i.company,
       title: i.title,
       locations: i.locations,
+      cities: i.locations.map(cityOf).filter((c): c is string => c !== null),
       remote: i.remote === true,
       jobType: i.job_type,
       postedAt: i.posted_at,

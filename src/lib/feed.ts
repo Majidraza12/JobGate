@@ -35,7 +35,7 @@ export const jobTypeOf = (t: ListingRow["job_type"]): JobType => (t === "new_gra
 
 const PAGE = 1000; // PostgREST's default row cap per request
 
-async function all<T>(query: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>) {
+export async function all<T>(query: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: { message: string } | null }>) {
   const out: T[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await query(from, from + PAGE - 1);

@@ -11,6 +11,7 @@ export type FeedCard = {
   company: string;
   title: string;
   locations: string[];
+  cities: string[]; // canonical "City, ST", matched against the profile's cities
   remote: boolean;
   jobType: "internship" | "co-op" | "new_grad";
   postedAt: string | null;
@@ -46,11 +47,13 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
 
   const base = useMemo(() => {
     const needle = q.trim().toLowerCase();
-    const cityNeedles = cities.map((c) => c.toLowerCase());
+    const mine = new Set(cities);
+    // Older profiles saved free-text cities; those still match by substring.
+    const legacy = cities.filter((c) => !c.includes(", ")).map((c) => c.toLowerCase());
     return cards
       .filter((c) => !jobType || jobType.split(",").includes(c.jobType))
       .filter((c) => !needle || `${c.company} ${c.title}`.toLowerCase().includes(needle))
-      .filter((c) => !myCities || (remoteOk && c.remote) || c.locations.some((l) => cityNeedles.some((n) => l.toLowerCase().includes(n))))
+      .filter((c) => !myCities || (remoteOk && c.remote) || c.cities.some((x) => mine.has(x)) || c.locations.some((l) => legacy.some((n) => l.toLowerCase().includes(n))))
       .filter((c) => !within || (c.postedAt !== null && now - Date.parse(c.postedAt) <= within * DAY))
       .filter((c) => !hideApplied || !c.applied)
       .sort((a, b) => (b.postedAt ?? "").localeCompare(a.postedAt ?? ""));
@@ -91,7 +94,7 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
             onClick={() => toggle(v)}
             aria-pressed={shown.has(v)}
             title={VERDICTS[v].tip}
-            className={`flex h-8 items-center gap-2 rounded-full border px-3 text-[13px] ${shown.has(v) ? "border-ink bg-surface text-ink" : "border-line bg-transparent text-muted hover:text-ink"}`}
+            className={`flex h-8 items-center gap-2 rounded-full border px-3 text-[13px] ${shown.has(v) ? "border-brand bg-brand-soft text-ink" : "border-line bg-transparent text-muted hover:border-control hover:text-ink"}`}
           >
             <span className={`size-2 rounded-full ${VERDICT_DOT[v]}`} aria-hidden="true" />
             {VERDICTS[v].label}
@@ -115,12 +118,12 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
         </select>
         {cities.length > 0 && (
           <label className="flex h-9 items-center gap-2 px-1 text-[14px]">
-            <input type="checkbox" checked={myCities} onChange={(e) => setMyCities(e.target.checked)} className="size-4 accent-ink" />
+            <input type="checkbox" checked={myCities} onChange={(e) => setMyCities(e.target.checked)} className="size-4 accent-brand" />
             My cities{remoteOk ? " and remote" : ""}
           </label>
         )}
         <label className="flex h-9 items-center gap-2 px-1 text-[14px]">
-          <input type="checkbox" checked={hideApplied} onChange={(e) => setHideApplied(e.target.checked)} className="size-4 accent-ink" />
+          <input type="checkbox" checked={hideApplied} onChange={(e) => setHideApplied(e.target.checked)} className="size-4 accent-brand" />
           Hide applied
         </label>
       </div>
@@ -138,7 +141,7 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
           <ul>
             {list.slice(0, limit).map((c) => (
               <li key={c.id} className="border-b border-rule last:border-0">
-                <Link href={`/listing/${c.id}`} className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 px-5 py-3.5 hover:bg-[#fafafa] md:grid-cols-[150px_minmax(0,1fr)_auto]">
+                <Link href={`/listing/${c.id}`} className="grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 px-5 py-3.5 hover:bg-hover md:grid-cols-[150px_minmax(0,1fr)_auto]">
                   <span className="md:pt-0.5">
                     <span className={`inline-flex h-6 items-center whitespace-nowrap rounded-full px-2.5 text-[12px] font-medium ${VERDICTS[c.verdict].badge}`}>
                       {c.unchecked === "not_read_yet" ? "Not read yet" : VERDICTS[c.verdict].label}
@@ -150,7 +153,7 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
                     <span className="block truncate text-[13px] text-muted">
                       {c.company} · {c.locations.slice(0, 2).join("; ") || "Location not listed"}
                       {c.locations.length > 2 ? ` +${c.locations.length - 2}` : ""} · {JOB_TYPES[c.jobType]}
-                      {c.applied ? " · Applied" : ""}
+                      {c.applied && <span className="text-mint"> · Applied</span>}
                     </span>
                     {c.quote && (
                       <span className="mt-1.5 line-clamp-3 text-[13px] leading-5 text-ink/80">
@@ -165,7 +168,7 @@ export function FeedView({ cards, defaultJobTypes, cities, remoteOk }: { cards: 
           </ul>
         )}
         {list.length > limit && (
-          <button onClick={() => setLimit(limit + PAGE)} className="h-11 w-full border-t border-line text-[14px] font-medium hover:bg-[#fafafa]">
+          <button onClick={() => setLimit(limit + PAGE)} className="h-11 w-full border-t border-line text-[14px] font-medium hover:bg-hover">
             Show {Math.min(PAGE, list.length - limit)} more of {(list.length - limit).toLocaleString()}
           </button>
         )}
