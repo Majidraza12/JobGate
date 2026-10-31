@@ -1,0 +1,104 @@
+{
+  "id": "jd-058",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-12",
+          "latest": "2028-06",
+          "evidence": [
+            "graduating between [December 2027 and June 2028]"
+          ]
+        }
+      ],
+      "evidence": [
+        "graduating between [December 2027 and June 2028]"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Currently pursuing a Bachelor's or Master's degree in Finance, Accounting, Economics, Data Science, Statistics, Computer Science, Information Systems, or a related field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "Must be authorized to work in the United States"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.015194,
+  "latencyMs": 7988,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-12\",\n        \"latest\": \"2028-06\",\n        \"evidence\": [\n          \"graduating between [December 2027 and June 2028]\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"graduating between [December 2027 and June 2028]\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in Finance, Accounting, Economics, Data Science, Statistics, Computer Science, Information Systems, or a related field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"ambiguous\",\n    \"value\": null,\n    \"evidence\": [\n      \"Must be authorized to work in the United States\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": null,\n  \"role_family\": \"data\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2027-12\",\n        \"latest\": \"2028-06\",\n        \"evidence\": [\n          \"graduating between [December 2027 and June 2028]\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"graduating between [December 2027 and June 2028]\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Currently pursuing a Bachelor's or Master's degree in Finance, Accounting, Economics, Data Science, Statistics, Computer Science, Information Systems, or a related field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"ambiguous\",\n    \"value\": null,\n    \"evidence\": [\n      \"Must be authorized to work in the United States\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": null,\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 8639,
+  "outputTokens": 1311,
+  "at": "2026-10-31T19:48:38.924Z"
+}

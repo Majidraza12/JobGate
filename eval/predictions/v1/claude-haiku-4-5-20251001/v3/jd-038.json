@@ -1,0 +1,118 @@
+{
+  "id": "jd-038",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "bs",
+            "ms"
+          ],
+          "applies_to_start": "Summer 2027",
+          "earliest": "2027-06",
+          "latest": "2027-08",
+          "evidence": [
+            "Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field",
+            "As an AI Engineer Intern in Summer 2027"
+          ]
+        }
+      ],
+      "evidence": [
+        "Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field",
+        "As an AI Engineer Intern in Summer 2027"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "As an AI Engineer Intern in Summer 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Certain positions with Oshkosh Corporation require access to controlled goods and technologies subject to the International Traffic in Arms Regulations or the Export Administration Regulations. Applicants for these positions may need to be \"U.S. Persons,\" as defined in these regulations. Generally, a \"U.S. Person\" is a U.S. citizen, lawful permanent resident, or an individual who has been admitted as a refugee or granted asylum."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Oshkosh, WI"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.014967,
+  "latencyMs": 12486,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"bs\", \"ms\"],\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": \"2027-06\",\n        \"latest\": \"2027-08\",\n        \"evidence\": [\n          \"Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\",\n          \"As an AI Engineer Intern in Summer 2027\"\n        ]\n      }\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\n      \"Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"As an AI Engineer Intern in Summer 2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Certain positions with Oshkosh Corporation require access to controlled goods and technologies subject to the International Traffic in Arms Regulations or the Export Administration Regulations. Applicants for these positions may need to be \\\"U.S. Persons,\\\" as defined in these regulations. Generally, a \\\"U.S. Person\\\" is a U.S. citizen, lawful permanent resident, or an individual who has been admitted as a refugee or granted asylum.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Oshkosh, WI\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"ml\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"bs\", \"ms\"],\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": \"2027-06\",\n        \"latest\": \"2027-08\",\n        \"evidence\": [\n          \"Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\",\n          \"As an AI Engineer Intern in Summer 2027\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\",\n      \"As an AI Engineer Intern in Summer 2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\n      \"Pursuing a Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"As an AI Engineer Intern in Summer 2027\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Certain positions with Oshkosh Corporation require access to controlled goods and technologies subject to the International Traffic in Arms Regulations or the Export Administration Regulations. Applicants for these positions may need to be \\\"U.S. Persons,\\\" as defined in these regulations. Generally, a \\\"U.S. Person\\\" is a U.S. citizen, lawful permanent resident, or an individual who has been admitted as a refugee or granted asylum.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Oshkosh, WI\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"ml\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 6702,
+  "outputTokens": 1653,
+  "at": "2026-10-31T19:31:52.337Z"
+}

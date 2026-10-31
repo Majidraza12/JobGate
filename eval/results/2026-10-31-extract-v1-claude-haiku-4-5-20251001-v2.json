@@ -1,0 +1,1228 @@
+{
+  "kind": "extraction",
+  "date": "2026-10-31",
+  "model": "claude-haiku-4-5-20251001",
+  "promptVersion": "v2",
+  "datasetVersion": "v1",
+  "datasetSeed": 20261028,
+  "labeled": 60,
+  "predicted": 60,
+  "strata": [
+    {
+      "stratum": "all",
+      "jds": 60,
+      "extractionFailure": {
+        "k": 21,
+        "n": 60,
+        "rate": 0.35,
+        "low": 0.24167774406017556,
+        "high": 0.47637381158245135
+      },
+      "quoteFailedFields": {
+        "k": 2,
+        "n": 114,
+        "rate": 0.017543859649122806,
+        "low": 0.004824418781068852,
+        "high": 0.061718026459918675
+      },
+      "fields": [
+        {
+          "field": "grad_requirements",
+          "n": 60,
+          "goldPositive": 24,
+          "detectionPrecision": {
+            "k": 16,
+            "n": 24,
+            "rate": 0.6666666666666666,
+            "low": 0.4670631683813174,
+            "high": 0.8202780967270225
+          },
+          "detectionRecall": {
+            "k": 16,
+            "n": 24,
+            "rate": 0.6666666666666666,
+            "low": 0.4670631683813174,
+            "high": 0.8202780967270225
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 60,
+            "rate": 0.3,
+            "low": 0.19898166138769108,
+            "high": 0.42508707946914487
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 11,
+            "rate": 0.09090909090909091,
+            "low": 0.016232172885884855,
+            "high": 0.37735843645159567
+          },
+          "unverified": 0
+        },
+        {
+          "field": "must_return_to_school",
+          "n": 60,
+          "goldPositive": 3,
+          "detectionPrecision": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6666666666666666,
+            "low": 0.2076596008020477,
+            "high": 0.9385080552796037
+          },
+          "detectionRecall": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6666666666666666,
+            "low": 0.2076596008020477,
+            "high": 0.9385080552796037
+          },
+          "decisionAccuracy": {
+            "k": 37,
+            "n": 60,
+            "rate": 0.6166666666666667,
+            "low": 0.49017595824099924,
+            "high": 0.7291172762591798
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "class_years",
+          "n": 60,
+          "goldPositive": 3,
+          "detectionPrecision": {
+            "k": 3,
+            "n": 7,
+            "rate": 0.42857142857142855,
+            "low": 0.15821985525146975,
+            "high": 0.7495416354723428
+          },
+          "detectionRecall": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "decisionAccuracy": {
+            "k": 35,
+            "n": 60,
+            "rate": 0.5833333333333334,
+            "low": 0.45728081022640116,
+            "high": 0.6993572144165838
+          },
+          "valueAccuracy": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "degree_levels",
+          "n": 60,
+          "goldPositive": 49,
+          "detectionPrecision": {
+            "k": 28,
+            "n": 31,
+            "rate": 0.9032258064516129,
+            "low": 0.7510006155660716,
+            "high": 0.9665353558368026
+          },
+          "detectionRecall": {
+            "k": 28,
+            "n": 49,
+            "rate": 0.5714285714285714,
+            "low": 0.4327049309001736,
+            "high": 0.699766809211184
+          },
+          "decisionAccuracy": {
+            "k": 31,
+            "n": 60,
+            "rate": 0.5166666666666667,
+            "low": 0.39307810032592494,
+            "high": 0.6382495046026722
+          },
+          "valueAccuracy": {
+            "k": 25,
+            "n": 27,
+            "rate": 0.9259259259259259,
+            "low": 0.7663040731697686,
+            "high": 0.9794453459390113
+          },
+          "unverified": 1
+        },
+        {
+          "field": "start_options",
+          "n": 60,
+          "goldPositive": 19,
+          "detectionPrecision": {
+            "k": 10,
+            "n": 12,
+            "rate": 0.8333333333333334,
+            "low": 0.5519691377470266,
+            "high": 0.9530348578161463
+          },
+          "detectionRecall": {
+            "k": 10,
+            "n": 19,
+            "rate": 0.5263157894736842,
+            "low": 0.3170780924511316,
+            "high": 0.7267019483882042
+          },
+          "decisionAccuracy": {
+            "k": 32,
+            "n": 60,
+            "rate": 0.5333333333333333,
+            "low": 0.4089342702715789,
+            "high": 0.6537209395856151
+          },
+          "valueAccuracy": {
+            "k": 6,
+            "n": 10,
+            "rate": 0.6,
+            "low": 0.31267376973365824,
+            "high": 0.8318196702937638
+          },
+          "unverified": 0
+        },
+        {
+          "field": "citizenship_required",
+          "n": 60,
+          "goldPositive": 8,
+          "detectionPrecision": {
+            "k": 3,
+            "n": 12,
+            "rate": 0.25,
+            "low": 0.08894166839405471,
+            "high": 0.5323053349335657
+          },
+          "detectionRecall": {
+            "k": 3,
+            "n": 8,
+            "rate": 0.375,
+            "low": 0.13684428582359742,
+            "high": 0.6942576053973727
+          },
+          "decisionAccuracy": {
+            "k": 30,
+            "n": 60,
+            "rate": 0.5,
+            "low": 0.3773502424155577,
+            "high": 0.6226497575844423
+          },
+          "valueAccuracy": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "us_person_required",
+          "n": 60,
+          "goldPositive": 8,
+          "detectionPrecision": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "low": 0.37553462976252533,
+            "high": 0.9637758913675698
+          },
+          "detectionRecall": {
+            "k": 4,
+            "n": 8,
+            "rate": 0.5,
+            "low": 0.21521606221387757,
+            "high": 0.7847839377861224
+          },
+          "decisionAccuracy": {
+            "k": 38,
+            "n": 60,
+            "rate": 0.6333333333333333,
+            "low": 0.5068300063010303,
+            "high": 0.7437908331277456
+          },
+          "valueAccuracy": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "sponsorship_now_unavailable",
+          "n": 60,
+          "goldPositive": 16,
+          "detectionPrecision": {
+            "k": 9,
+            "n": 11,
+            "rate": 0.8181818181818182,
+            "low": 0.523019438039156,
+            "high": 0.9486323102539149
+          },
+          "detectionRecall": {
+            "k": 9,
+            "n": 16,
+            "rate": 0.5625,
+            "low": 0.331785563988119,
+            "high": 0.7690134759450765
+          },
+          "decisionAccuracy": {
+            "k": 37,
+            "n": 60,
+            "rate": 0.6166666666666667,
+            "low": 0.49017595824099924,
+            "high": 0.7291172762591798
+          },
+          "valueAccuracy": {
+            "k": 9,
+            "n": 9,
+            "rate": 1,
+            "low": 0.7008549515804559,
+            "high": 1
+          },
+          "unverified": 1
+        },
+        {
+          "field": "sponsorship_future_unavailable",
+          "n": 60,
+          "goldPositive": 7,
+          "detectionPrecision": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 4,
+            "n": 7,
+            "rate": 0.5714285714285714,
+            "low": 0.2504583645276572,
+            "high": 0.8417801447485302
+          },
+          "decisionAccuracy": {
+            "k": 38,
+            "n": 60,
+            "rate": 0.6333333333333333,
+            "low": 0.5068300063010303,
+            "high": 0.7437908331277456
+          },
+          "valueAccuracy": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "clearance",
+          "n": 60,
+          "goldPositive": 12,
+          "detectionPrecision": {
+            "k": 5,
+            "n": 5,
+            "rate": 1,
+            "low": 0.5655175352168251,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 5,
+            "n": 12,
+            "rate": 0.4166666666666667,
+            "low": 0.19326031365875665,
+            "high": 0.6804886874504503
+          },
+          "decisionAccuracy": {
+            "k": 37,
+            "n": 60,
+            "rate": 0.6166666666666667,
+            "low": 0.49017595824099924,
+            "high": 0.7291172762591798
+          },
+          "valueAccuracy": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "low": 0.30064184258240184,
+            "high": 0.9544127391902995
+          },
+          "unverified": 0
+        }
+      ],
+      "baseline": {
+        "n": 21,
+        "baseline": {
+          "precision": {
+            "k": 7,
+            "n": 8,
+            "rate": 0.875,
+            "low": 0.5291118177871464,
+            "high": 0.9775825085499433
+          },
+          "recall": {
+            "k": 7,
+            "n": 10,
+            "rate": 0.7,
+            "low": 0.39677814746114537,
+            "high": 0.8922087325936989
+          }
+        },
+        "model": {
+          "precision": {
+            "k": 6,
+            "n": 6,
+            "rate": 1,
+            "low": 0.6096657120978346,
+            "high": 1
+          },
+          "recall": {
+            "k": 6,
+            "n": 10,
+            "rate": 0.6,
+            "low": 0.31267376973365824,
+            "high": 0.8318196702937638
+          }
+        },
+        "citizensOnlyIsCitizenship": {
+          "k": 1,
+          "n": 4,
+          "rate": 0.25,
+          "low": 0.04558726080970055,
+          "high": 0.6993581574175981
+        }
+      }
+    },
+    {
+      "stratum": "random",
+      "jds": 30,
+      "extractionFailure": {
+        "k": 9,
+        "n": 30,
+        "rate": 0.3,
+        "low": 0.16664748268243793,
+        "high": 0.47875787458714947
+      },
+      "quoteFailedFields": {
+        "k": 2,
+        "n": 55,
+        "rate": 0.03636363636363636,
+        "low": 0.01002954128933356,
+        "high": 0.12323463974651017
+      },
+      "fields": [
+        {
+          "field": "grad_requirements",
+          "n": 30,
+          "goldPositive": 12,
+          "detectionPrecision": {
+            "k": 7,
+            "n": 13,
+            "rate": 0.5384615384615384,
+            "low": 0.29143795714506004,
+            "high": 0.7679393219046169
+          },
+          "detectionRecall": {
+            "k": 7,
+            "n": 12,
+            "rate": 0.5833333333333334,
+            "low": 0.31951131254954973,
+            "high": 0.8067396863412435
+          },
+          "decisionAccuracy": {
+            "k": 9,
+            "n": 30,
+            "rate": 0.3,
+            "low": 0.16664748268243793,
+            "high": 0.47875787458714947
+          },
+          "valueAccuracy": {
+            "k": 0,
+            "n": 5,
+            "rate": 0,
+            "low": 0,
+            "high": 0.43448246478317476
+          },
+          "unverified": 0
+        },
+        {
+          "field": "must_return_to_school",
+          "n": 30,
+          "goldPositive": 2,
+          "detectionPrecision": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693
+          },
+          "decisionAccuracy": {
+            "k": 20,
+            "n": 30,
+            "rate": 0.6666666666666666,
+            "low": 0.4878005164454384,
+            "high": 0.8076950191632386
+          },
+          "valueAccuracy": {
+            "k": 0,
+            "n": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          },
+          "unverified": 0
+        },
+        {
+          "field": "class_years",
+          "n": 30,
+          "goldPositive": 2,
+          "detectionPrecision": {
+            "k": 2,
+            "n": 5,
+            "rate": 0.4,
+            "low": 0.11762077423264783,
+            "high": 0.769275718723987
+          },
+          "detectionRecall": {
+            "k": 2,
+            "n": 2,
+            "rate": 1,
+            "low": 0.34238022750665303,
+            "high": 1
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 30,
+            "rate": 0.6,
+            "low": 0.42320360253322475,
+            "high": 0.7540937188319815
+          },
+          "valueAccuracy": {
+            "k": 2,
+            "n": 2,
+            "rate": 1,
+            "low": 0.34238022750665303,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "degree_levels",
+          "n": 30,
+          "goldPositive": 21,
+          "detectionPrecision": {
+            "k": 14,
+            "n": 17,
+            "rate": 0.8235294117647058,
+            "low": 0.5897054143116588,
+            "high": 0.9380887336237901
+          },
+          "detectionRecall": {
+            "k": 14,
+            "n": 21,
+            "rate": 0.6666666666666666,
+            "low": 0.4537345197425524,
+            "high": 0.8280524739491653
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 30,
+            "rate": 0.6,
+            "low": 0.42320360253322475,
+            "high": 0.7540937188319815
+          },
+          "valueAccuracy": {
+            "k": 14,
+            "n": 14,
+            "rate": 1,
+            "low": 0.7846891972623643,
+            "high": 1
+          },
+          "unverified": 1
+        },
+        {
+          "field": "start_options",
+          "n": 30,
+          "goldPositive": 14,
+          "detectionPrecision": {
+            "k": 8,
+            "n": 8,
+            "rate": 1,
+            "low": 0.6755924351161198,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 8,
+            "n": 14,
+            "rate": 0.5714285714285714,
+            "low": 0.3259064457965074,
+            "high": 0.7861920109552588
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 30,
+            "rate": 0.6,
+            "low": 0.42320360253322475,
+            "high": 0.7540937188319815
+          },
+          "valueAccuracy": {
+            "k": 5,
+            "n": 8,
+            "rate": 0.625,
+            "low": 0.30574239460262737,
+            "high": 0.8631557141764026
+          },
+          "unverified": 0
+        },
+        {
+          "field": "citizenship_required",
+          "n": 30,
+          "goldPositive": 3,
+          "detectionPrecision": {
+            "k": 1,
+            "n": 4,
+            "rate": 0.25,
+            "low": 0.04558726080970055,
+            "high": 0.6993581574175981
+          },
+          "detectionRecall": {
+            "k": 1,
+            "n": 3,
+            "rate": 0.3333333333333333,
+            "low": 0.06149194472039621,
+            "high": 0.7923403991979522
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 30,
+            "rate": 0.6,
+            "low": 0.42320360253322475,
+            "high": 0.7540937188319815
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "us_person_required",
+          "n": 30,
+          "goldPositive": 3,
+          "detectionPrecision": {
+            "k": 0,
+            "n": 1,
+            "rate": 0,
+            "low": 0,
+            "high": 0.7934506856227626
+          },
+          "detectionRecall": {
+            "k": 0,
+            "n": 3,
+            "rate": 0,
+            "low": 5.551115123125783e-17,
+            "high": 0.5614970317550454
+          },
+          "decisionAccuracy": {
+            "k": 20,
+            "n": 30,
+            "rate": 0.6666666666666666,
+            "low": 0.4878005164454384,
+            "high": 0.8076950191632386
+          },
+          "valueAccuracy": {
+            "k": 0,
+            "n": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          },
+          "unverified": 0
+        },
+        {
+          "field": "sponsorship_now_unavailable",
+          "n": 30,
+          "goldPositive": 9,
+          "detectionPrecision": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "low": 0.37553462976252533,
+            "high": 0.9637758913675698
+          },
+          "detectionRecall": {
+            "k": 4,
+            "n": 9,
+            "rate": 0.4444444444444444,
+            "low": 0.18877852109766452,
+            "high": 0.733348706504507
+          },
+          "decisionAccuracy": {
+            "k": 20,
+            "n": 30,
+            "rate": 0.6666666666666666,
+            "low": 0.4878005164454384,
+            "high": 0.8076950191632386
+          },
+          "valueAccuracy": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "unverified": 1
+        },
+        {
+          "field": "sponsorship_future_unavailable",
+          "n": 30,
+          "goldPositive": 2,
+          "detectionPrecision": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693
+          },
+          "decisionAccuracy": {
+            "k": 21,
+            "n": 30,
+            "rate": 0.7,
+            "low": 0.5212421254128504,
+            "high": 0.8333525173175619
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "clearance",
+          "n": 30,
+          "goldPositive": 1,
+          "detectionPrecision": {
+            "k": 0,
+            "n": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          },
+          "detectionRecall": {
+            "k": 0,
+            "n": 1,
+            "rate": 0,
+            "low": 0,
+            "high": 0.7934506856227626
+          },
+          "decisionAccuracy": {
+            "k": 21,
+            "n": 30,
+            "rate": 0.7,
+            "low": 0.5212421254128504,
+            "high": 0.8333525173175619
+          },
+          "valueAccuracy": {
+            "k": 0,
+            "n": 0,
+            "rate": null,
+            "low": null,
+            "high": null
+          },
+          "unverified": 0
+        }
+      ],
+      "baseline": {
+        "n": 12,
+        "baseline": {
+          "precision": {
+            "k": 5,
+            "n": 5,
+            "rate": 1,
+            "low": 0.5655175352168251,
+            "high": 1
+          },
+          "recall": {
+            "k": 5,
+            "n": 6,
+            "rate": 0.8333333333333334,
+            "low": 0.43649717781352987,
+            "high": 0.9699466302516935
+          }
+        },
+        "model": {
+          "precision": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "recall": {
+            "k": 3,
+            "n": 6,
+            "rate": 0.5,
+            "low": 0.1876163064826506,
+            "high": 0.8123836935173494
+          }
+        },
+        "citizensOnlyIsCitizenship": {
+          "k": 1,
+          "n": 2,
+          "rate": 0.5,
+          "low": 0.09453120573423074,
+          "high": 0.9054687942657693
+        }
+      }
+    },
+    {
+      "stratum": "keyword",
+      "jds": 30,
+      "extractionFailure": {
+        "k": 12,
+        "n": 30,
+        "rate": 0.4,
+        "low": 0.24590628116801852,
+        "high": 0.5767963974667752
+      },
+      "quoteFailedFields": {
+        "k": 0,
+        "n": 59,
+        "rate": 0,
+        "low": 0,
+        "high": 0.061129370526788386
+      },
+      "fields": [
+        {
+          "field": "grad_requirements",
+          "n": 30,
+          "goldPositive": 12,
+          "detectionPrecision": {
+            "k": 9,
+            "n": 11,
+            "rate": 0.8181818181818182,
+            "low": 0.523019438039156,
+            "high": 0.9486323102539149
+          },
+          "detectionRecall": {
+            "k": 9,
+            "n": 12,
+            "rate": 0.75,
+            "low": 0.46769466506643426,
+            "high": 0.9110583316059453
+          },
+          "decisionAccuracy": {
+            "k": 9,
+            "n": 30,
+            "rate": 0.3,
+            "low": 0.16664748268243793,
+            "high": 0.47875787458714947
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 6,
+            "rate": 0.16666666666666666,
+            "low": 0.030053369748306635,
+            "high": 0.5635028221864702
+          },
+          "unverified": 0
+        },
+        {
+          "field": "must_return_to_school",
+          "n": 30,
+          "goldPositive": 1,
+          "detectionPrecision": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693
+          },
+          "detectionRecall": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "decisionAccuracy": {
+            "k": 17,
+            "n": 30,
+            "rate": 0.5666666666666667,
+            "low": 0.3919730700081361,
+            "high": 0.7262251442353347
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "class_years",
+          "n": 30,
+          "goldPositive": 1,
+          "detectionPrecision": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693
+          },
+          "detectionRecall": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "decisionAccuracy": {
+            "k": 17,
+            "n": 30,
+            "rate": 0.5666666666666667,
+            "low": 0.3919730700081361,
+            "high": 0.7262251442353347
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 1,
+            "rate": 1,
+            "low": 0.20654931437723745,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "degree_levels",
+          "n": 30,
+          "goldPositive": 28,
+          "detectionPrecision": {
+            "k": 14,
+            "n": 14,
+            "rate": 1,
+            "low": 0.7846891972623643,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 14,
+            "n": 28,
+            "rate": 0.5,
+            "low": 0.32633127457293465,
+            "high": 0.6736687254270654
+          },
+          "decisionAccuracy": {
+            "k": 13,
+            "n": 30,
+            "rate": 0.43333333333333335,
+            "low": 0.2737748557646652,
+            "high": 0.6080269299918639
+          },
+          "valueAccuracy": {
+            "k": 11,
+            "n": 13,
+            "rate": 0.8461538461538461,
+            "low": 0.5776536898051745,
+            "high": 0.9567418216419186
+          },
+          "unverified": 0
+        },
+        {
+          "field": "start_options",
+          "n": 30,
+          "goldPositive": 5,
+          "detectionPrecision": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "low": 0.15003898915214947,
+            "high": 0.8499610108478506
+          },
+          "detectionRecall": {
+            "k": 2,
+            "n": 5,
+            "rate": 0.4,
+            "low": 0.11762077423264783,
+            "high": 0.769275718723987
+          },
+          "decisionAccuracy": {
+            "k": 14,
+            "n": 30,
+            "rate": 0.4666666666666667,
+            "low": 0.30232388907699753,
+            "high": 0.638577003801267
+          },
+          "valueAccuracy": {
+            "k": 1,
+            "n": 2,
+            "rate": 0.5,
+            "low": 0.09453120573423074,
+            "high": 0.9054687942657693
+          },
+          "unverified": 0
+        },
+        {
+          "field": "citizenship_required",
+          "n": 30,
+          "goldPositive": 5,
+          "detectionPrecision": {
+            "k": 2,
+            "n": 8,
+            "rate": 0.25,
+            "low": 0.071479212752109,
+            "high": 0.5907245696898311
+          },
+          "detectionRecall": {
+            "k": 2,
+            "n": 5,
+            "rate": 0.4,
+            "low": 0.11762077423264783,
+            "high": 0.769275718723987
+          },
+          "decisionAccuracy": {
+            "k": 12,
+            "n": 30,
+            "rate": 0.4,
+            "low": 0.24590628116801852,
+            "high": 0.5767963974667752
+          },
+          "valueAccuracy": {
+            "k": 2,
+            "n": 2,
+            "rate": 1,
+            "low": 0.34238022750665303,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "us_person_required",
+          "n": 30,
+          "goldPositive": 5,
+          "detectionPrecision": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 4,
+            "n": 5,
+            "rate": 0.8,
+            "low": 0.37553462976252533,
+            "high": 0.9637758913675698
+          },
+          "decisionAccuracy": {
+            "k": 18,
+            "n": 30,
+            "rate": 0.6,
+            "low": 0.42320360253322475,
+            "high": 0.7540937188319815
+          },
+          "valueAccuracy": {
+            "k": 4,
+            "n": 4,
+            "rate": 1,
+            "low": 0.5101091635454027,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "sponsorship_now_unavailable",
+          "n": 30,
+          "goldPositive": 7,
+          "detectionPrecision": {
+            "k": 5,
+            "n": 6,
+            "rate": 0.8333333333333334,
+            "low": 0.43649717781352987,
+            "high": 0.9699466302516935
+          },
+          "detectionRecall": {
+            "k": 5,
+            "n": 7,
+            "rate": 0.7142857142857143,
+            "low": 0.35893445183261935,
+            "high": 0.9177810759959433
+          },
+          "decisionAccuracy": {
+            "k": 17,
+            "n": 30,
+            "rate": 0.5666666666666667,
+            "low": 0.3919730700081361,
+            "high": 0.7262251442353347
+          },
+          "valueAccuracy": {
+            "k": 5,
+            "n": 5,
+            "rate": 1,
+            "low": 0.5655175352168251,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "sponsorship_future_unavailable",
+          "n": 30,
+          "goldPositive": 5,
+          "detectionPrecision": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 3,
+            "n": 5,
+            "rate": 0.6,
+            "low": 0.2307242812760128,
+            "high": 0.882379225767352
+          },
+          "decisionAccuracy": {
+            "k": 17,
+            "n": 30,
+            "rate": 0.5666666666666667,
+            "low": 0.3919730700081361,
+            "high": 0.7262251442353347
+          },
+          "valueAccuracy": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "unverified": 0
+        },
+        {
+          "field": "clearance",
+          "n": 30,
+          "goldPositive": 11,
+          "detectionPrecision": {
+            "k": 5,
+            "n": 5,
+            "rate": 1,
+            "low": 0.5655175352168251,
+            "high": 1
+          },
+          "detectionRecall": {
+            "k": 5,
+            "n": 11,
+            "rate": 0.45454545454545453,
+            "low": 0.21271271622459764,
+            "high": 0.719908462590678
+          },
+          "decisionAccuracy": {
+            "k": 16,
+            "n": 30,
+            "rate": 0.5333333333333333,
+            "low": 0.36142299619873297,
+            "high": 0.6976761109230025
+          },
+          "valueAccuracy": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "low": 0.30064184258240184,
+            "high": 0.9544127391902995
+          },
+          "unverified": 0
+        }
+      ],
+      "baseline": {
+        "n": 9,
+        "baseline": {
+          "precision": {
+            "k": 2,
+            "n": 3,
+            "rate": 0.6666666666666666,
+            "low": 0.2076596008020477,
+            "high": 0.9385080552796037
+          },
+          "recall": {
+            "k": 2,
+            "n": 4,
+            "rate": 0.5,
+            "low": 0.15003898915214947,
+            "high": 0.8499610108478506
+          }
+        },
+        "model": {
+          "precision": {
+            "k": 3,
+            "n": 3,
+            "rate": 1,
+            "low": 0.4385029682449546,
+            "high": 1
+          },
+          "recall": {
+            "k": 3,
+            "n": 4,
+            "rate": 0.75,
+            "low": 0.30064184258240184,
+            "high": 0.9544127391902995
+          }
+        },
+        "citizensOnlyIsCitizenship": {
+          "k": 0,
+          "n": 2,
+          "rate": 0,
+          "low": 0,
+          "high": 0.6576197724933469
+        }
+      }
+    }
+  ],
+  "costUsd": {
+    "total": 0.6573239999999998,
+    "mean": 0.010955399999999997,
+    "p50": 0.012123,
+    "p95": 0.015952
+  },
+  "latencyMs": {
+    "p50": 8693,
+    "p95": 12256
+  }
+}

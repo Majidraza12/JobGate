@@ -21,15 +21,37 @@ export interface ExtractionResult {
   responses: string[];
 }
 
+// Models sometimes wrap JSON in a ```json fence despite being told not to.
+export function stripFences(text: string): string {
+  const m = text.trim().match(/^```(?:json)?\s*\n([\s\S]*?)\n?```$/);
+  return m?.[1] ?? text;
+}
+
+// Haiku persistently answers a not_mentioned object field with an object of
+// nulls ({"required": null, "level": null}) instead of null, whatever the
+// prompt says. That carries no information, so canonicalize it before Zod.
+export function nullShapedToNull(json: unknown): unknown {
+  if (!json || typeof json !== "object") return json;
+  for (const f of Object.values(json as Record<string, unknown>)) {
+    if (!f || typeof f !== "object") continue;
+    const field = f as { status?: unknown; value?: unknown };
+    const v = field.value;
+    if (field.status === "not_mentioned" && v && typeof v === "object" && !Array.isArray(v) && Object.values(v).every((x) => x === null)) {
+      field.value = null;
+    }
+  }
+  return json;
+}
+
 function validate(text: string, stopReason: string | null): { ok: true; value: ModelExtraction } | { ok: false; errors: string[] } {
   if (stopReason === "max_tokens") return { ok: false, errors: ["response was cut off at max_tokens"] };
   let json: unknown;
   try {
-    json = JSON.parse(text);
+    json = JSON.parse(stripFences(text));
   } catch {
     return { ok: false, errors: ["response is not valid JSON"] };
   }
-  const r = ModelExtraction.safeParse(json);
+  const r = ModelExtraction.safeParse(nullShapedToNull(json));
   if (r.success) return { ok: true, value: r.data };
   return { ok: false, errors: r.error.issues.map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`) };
 }

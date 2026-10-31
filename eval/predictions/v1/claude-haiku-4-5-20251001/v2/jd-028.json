@@ -1,0 +1,109 @@
+{
+  "id": "jd-028",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2028-01",
+          "latest": null,
+          "evidence": [
+            "we ask for a minimum 2-year commitment (i.e., you would apply for the entering class of 2028 or later)"
+          ]
+        }
+      ],
+      "evidence": [
+        "we ask for a minimum 2-year commitment (i.e., you would apply for the entering class of 2028 or later)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "masters",
+        "phd"
+      ],
+      "evidence": [
+        "We welcome candidates who plan to attend law school or PhD programs in the future",
+        "Lawyers or economists (new JD or PhD grads welcome)"
+      ],
+      "strength": "preferred"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms",
+        "phd"
+      ],
+      "evidence": [
+        "Exceptionally talented early-career engineers (new grads welcome)",
+        "Lawyers or economists (new JD or PhD grads welcome)"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006054,
+  "latencyMs": 6009,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": null,\n        \"earliest\": \"2028-01\",\n        \"latest\": null,\n        \"evidence\": [\n          \"we ask for a minimum 2-year commitment (i.e., you would apply for the entering class of 2028 or later)\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"we ask for a minimum 2-year commitment (i.e., you would apply for the entering class of 2028 or later)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"masters\",\n      \"phd\"\n    ],\n    \"evidence\": [\n      \"We welcome candidates who plan to attend law school or PhD programs in the future\",\n      \"Lawyers or economists (new JD or PhD grads welcome)\"\n    ],\n    \"strength\": \"preferred\"\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\",\n      \"phd\"\n    ],\n    \"evidence\": [\n      \"Exceptionally talented early-career engineers (new grads welcome)\",\n      \"Lawyers or economists (new JD or PhD grads welcome)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"other\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 2484,
+  "outputTokens": 714,
+  "at": "2026-10-31T19:20:56.636Z"
+}

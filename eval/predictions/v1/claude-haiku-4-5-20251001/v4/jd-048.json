@@ -1,0 +1,117 @@
+{
+  "id": "jd-048",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": [
+            "bs"
+          ],
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2029-08",
+          "evidence": [
+            "Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029"
+          ]
+        }
+      ],
+      "evidence": [
+        "Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "University - 2027 Summer Games Software Developer Intern"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": "secret"
+      },
+      "evidence": [
+        "Ability to obtain a Secret clearance",
+        "Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information."
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "Annapolis Junction, MD"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.006951,
+  "latencyMs": 5294,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": [\"bs\"],\n        \"applies_to_start\": null,\n        \"earliest\": null,\n        \"latest\": \"2029-08\",\n        \"evidence\": [\"Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029\"]\n      }\n    ],\n    \"evidence\": [\"Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029\"],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\"],\n    \"evidence\": [\"Scheduled to obtain a Bachelor's degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029\"],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\"University - 2027 Summer Games Software Developer Intern\"],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"required\": \"ability_to_obtain\",\n      \"level\": \"secret\"\n    },\n    \"evidence\": [\"Ability to obtain a Secret clearance\", \"Applicants selected will be subject to a security investigation and may need to meet eligibility requirements for access to classified information.\"],\n    \"strength\": \"required\"\n  },\n  \"locations\": {\n    \"cities\": [\"Annapolis Junction, MD\"],\n    \"remote\": null,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3271,
+  "outputTokens": 736,
+  "at": "2026-10-31T19:47:33.947Z"
+}

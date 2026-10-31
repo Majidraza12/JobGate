@@ -1,0 +1,99 @@
+{
+  "id": "jd-049",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "Bachelor's degree from an accredited college/university program in Physics, Materials Science, Chemistry, Electrical Engineering or related discipline (pursuing or conferred within last 12 months)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor's degree from an accredited college/university program in Physics, Materials Science, Chemistry, Electrical Engineering or related discipline"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "U.S. citizenship is required to obtain a security clearance"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": null
+      },
+      "evidence": [
+        "This position requires ability to obtain and maintain a security clearance, which is issued by the U.S. government."
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "El Segundo, CA"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.007055,
+  "latencyMs": 5527,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"ambiguous\",\n    \"value\": null,\n    \"evidence\": [\n      \"Bachelor's degree from an accredited college/university program in Physics, Materials Science, Chemistry, Electrical Engineering or related discipline (pursuing or conferred within last 12 months)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\"\n    ],\n    \"evidence\": [\n      \"Bachelor's degree from an accredited college/university program in Physics, Materials Science, Chemistry, Electrical Engineering or related discipline\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"citizenship_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"U.S. citizenship is required to obtain a security clearance\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"stated\",\n    \"value\": {\n      \"required\": \"ability_to_obtain\",\n      \"level\": null\n    },\n    \"evidence\": [\n      \"This position requires ability to obtain and maintain a security clearance, which is issued by the U.S. government.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"locations\": {\n    \"cities\": [\n      \"El Segundo, CA\"\n    ],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"full-time\",\n  \"season\": null,\n  \"role_family\": \"other\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3825,
+  "outputTokens": 646,
+  "at": "2026-10-31T19:47:39.476Z"
+}

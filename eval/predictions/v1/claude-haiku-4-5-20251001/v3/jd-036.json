@@ -1,0 +1,116 @@
+{
+  "id": "jd-036",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "Winter 2027",
+          "earliest": "2026-12",
+          "latest": "2027-03",
+          "evidence": [
+            "Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.",
+            "FPGA Associate (Winter 2027)"
+          ]
+        }
+      ],
+      "evidence": [
+        "Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.",
+        "FPGA Associate (Winter 2027)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Hold a B.S. or M.S. in electrical engineering, computer science, computer engineering, or equivalent"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Winter 2027",
+          "month": "2027-01"
+        }
+      ],
+      "evidence": [
+        "FPGA Associate (Winter 2027)"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "U.S. Citizenship, Lawful Permanent Residency, or Refugee/Asylee Status Required",
+        "(To comply with U.S. Government space technology export regulations, applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual as defined by 8 U.S.C. 1324b(a)(3))"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Northern California"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Winter 2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.014738,
+  "latencyMs": 12426,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Winter 2027\",\n        \"earliest\": \"2026-12\",\n        \"latest\": \"2027-03\",\n        \"evidence\": [\n          \"Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.\",\n          \"FPGA Associate (Winter 2027)\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.\",\n      \"FPGA Associate (Winter 2027)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\n      \"Hold a B.S. or M.S. in electrical engineering, computer science, computer engineering, or equivalent\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Winter 2027\",\n        \"month\": \"2027-01\"\n      }\n    ],\n    \"evidence\": [\n      \"FPGA Associate (Winter 2027)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"U.S. Citizenship, Lawful Permanent Residency, or Refugee/Asylee Status Required\",\n      \"(To comply with U.S. Government space technology export regulations, applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual as defined by 8 U.S.C. 1324b(a)(3))\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": false,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Northern California\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Winter 2027\",\n  \"role_family\": \"swe\"\n}\n```",
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Winter 2027\",\n        \"earliest\": \"2026-12\",\n        \"latest\": \"2027-03\",\n        \"evidence\": [\n          \"Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.\",\n          \"FPGA Associate (Winter 2027)\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Associate positions at Astranis typically last for twelve weeks, and are salaried roles designed for new grads who have who have graduated from a four-year university.\",\n      \"FPGA Associate (Winter 2027)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\"bs\", \"ms\"],\n    \"evidence\": [\n      \"Hold a B.S. or M.S. in electrical engineering, computer science, computer engineering, or equivalent\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Winter 2027\",\n        \"month\": \"2027-01\"\n      }\n    ],\n    \"evidence\": [\n      \"FPGA Associate (Winter 2027)\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"U.S. Citizenship, Lawful Permanent Residency, or Refugee/Asylee Status Required\",\n      \"(To comply with U.S. Government space technology export regulations, applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual as defined by 8 U.S.C. 1324b(a)(3))\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\"Northern California\"],\n    \"remote\": false,\n    \"hybrid\": null\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Winter 2027\",\n  \"role_family\": \"swe\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 6388,
+  "outputTokens": 1670,
+  "at": "2026-10-31T19:31:32.157Z"
+}

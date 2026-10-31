@@ -3,9 +3,9 @@
 // yet); replace them with real recordings after the first approved run.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { ModelExtraction } from "@core/requirements";
-import { extractOne } from "../pipeline/extract/extract";
+import { extractOne, stripFences } from "../pipeline/extract/extract";
+import { SYSTEM_PROMPT } from "../pipeline/extract/prompt";
 import { costUsd, MODEL, type LlmClient, type LlmResponse, type Turn } from "../pipeline/extract/llm";
 import { SpendGuard, worstCaseUsd } from "../pipeline/extract/spend";
 import { planFetch } from "../pipeline/jd/plans";
@@ -120,10 +120,30 @@ describe("spend guard", () => {
   });
 });
 
-describe("structured output schema", () => {
-  it("builds a JSON schema from ModelExtraction without throwing", () => {
-    const f = zodOutputFormat(ModelExtraction) as unknown as { type: string; schema: { properties: Record<string, unknown> } };
-    expect(f.type).toBe("json_schema");
-    expect(Object.keys(f.schema.properties)).toContain("us_person_required");
+describe("plain JSON output", () => {
+  it("spells out every ModelExtraction key in the prompt", () => {
+    for (const key of Object.keys(ModelExtraction.shape)) expect(SYSTEM_PROMPT).toContain(`"${key}"`);
+  });
+
+  it("accepts JSON wrapped in a code fence", async () => {
+    const r = await extractOne(scripted({ text: "```json\n" + JSON.stringify(good()) + "\n```" }).llm, jd);
+    expect(r).toMatchObject({ status: "ok", calls: 1 });
+  });
+
+  it("treats a not_mentioned object of nulls as null", async () => {
+    const e = { ...good(), clearance: { status: "not_mentioned", value: { required: null, level: null }, evidence: [], strength: null } };
+    const r = await extractOne(scripted({ text: JSON.stringify(e) }).llm, jd);
+    expect(r).toMatchObject({ status: "ok", calls: 1 });
+    expect(r.extracted!.clearance.value).toBeNull();
+  });
+
+  it("still rejects an object of nulls on a stated field", async () => {
+    const e = { ...good(), clearance: { status: "stated", value: { required: null, level: null }, evidence: ["x"], strength: "required" } };
+    const r = await extractOne(scripted({ text: JSON.stringify(e) }, { text: JSON.stringify(e) }).llm, jd);
+    expect(r.status).toBe("schema_invalid");
+  });
+
+  it("leaves unfenced text alone", () => {
+    expect(stripFences('{"a":1}')).toBe('{"a":1}');
   });
 });

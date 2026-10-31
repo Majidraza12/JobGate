@@ -1,0 +1,113 @@
+{
+  "id": "jd-013",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": "Summer 2027",
+          "earliest": null,
+          "latest": "2028-05",
+          "evidence": [
+            "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher."
+          ]
+        }
+      ],
+      "evidence": [
+        "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "Tech & Data Program Summer 2027 – Data Engineer Intern"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Candidate must be authorized to work in the US without company sponsorship.",
+        "The company will not support the STEM OPT I-983 Training Plan endorsement for this position."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Hartford, CT"
+      ],
+      "remote": false,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0.007477,
+  "latencyMs": 6671,
+  "responses": [
+    "```json\n{\n  \"grad_requirements\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"applies_to_degrees\": null,\n        \"applies_to_start\": \"Summer 2027\",\n        \"earliest\": null,\n        \"latest\": \"2028-05\",\n        \"evidence\": [\n          \"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher.\"\n        ]\n      }\n    ],\n    \"evidence\": [\n      \"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"must_return_to_school\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"class_years\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"degree_levels\": {\n    \"status\": \"stated\",\n    \"value\": [\n      \"bs\",\n      \"ms\"\n    ],\n    \"evidence\": [\n      \"Undergraduate or graduate student expecting to graduate in May 2028 with a Bachelor's or Master's degree and a GPA of 3.0 or higher.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"start_options\": {\n    \"status\": \"stated\",\n    \"value\": [\n      {\n        \"label\": \"Summer 2027\",\n        \"month\": \"2027-06\"\n      }\n    ],\n    \"evidence\": [\n      \"Tech & Data Program Summer 2027 – Data Engineer Intern\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"citizenship_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"us_person_required\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"sponsorship_now_unavailable\": {\n    \"status\": \"stated\",\n    \"value\": true,\n    \"evidence\": [\n      \"Candidate must be authorized to work in the US without company sponsorship.\",\n      \"The company will not support the STEM OPT I-983 Training Plan endorsement for this position.\"\n    ],\n    \"strength\": \"required\"\n  },\n  \"sponsorship_future_unavailable\": {\n    \"status\": \"not_mentioned\",\n    \"value\": null,\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"clearance\": {\n    \"status\": \"not_mentioned\",\n    \"value\": {\n      \"required\": null,\n      \"level\": null\n    },\n    \"evidence\": [],\n    \"strength\": null\n  },\n  \"locations\": {\n    \"cities\": [\n      \"Hartford, CT\"\n    ],\n    \"remote\": false,\n    \"hybrid\": true\n  },\n  \"employment_type\": \"internship\",\n  \"season\": \"Summer 2027\",\n  \"role_family\": \"data\"\n}\n```"
+  ],
+  "error": null,
+  "inputTokens": 3477,
+  "outputTokens": 800,
+  "at": "2026-10-31T19:50:23.858Z"
+}
