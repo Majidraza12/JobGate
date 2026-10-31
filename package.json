@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "ingest": "tsx pipeline/ingest.ts",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -48,7 +51,7 @@
     "supabase": "^2.122.0",
     "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "vitest": "^5.0.5"
   }
 }
