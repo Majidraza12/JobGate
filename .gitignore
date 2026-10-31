@@ -6,3 +6,8 @@ node_modules/
 /data/
 supabase/.branches
 supabase/.temp
+/.next/
+next-env.d.ts
+*.tsbuildinfo
+/.taste-skill/
+/.playwright-mcp/

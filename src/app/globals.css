@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/*
+  Achromatic ledger (taste-skill app style, seed 997501821) with Majid's brand
+  colours: Onyx #01010D is the ink and the primary action, Electric Indigo
+  #6631FB is the one brand hue (mark, links, selection, focus), Tropical Mint
+  #88F9C0 is the Eligible fill (never text: 1.2:1 on white). Not eligible and
+  Check keep pale red and amber pairs, because a verdict must read as good or
+  bad at a glance. Chrome stays neutral.
+*/
+@theme {
+  --font-sans: var(--font-geist), Inter, system-ui, sans-serif;
+
+  --color-ground: #f8f8f8;
+  --color-surface: #ffffff;
+  --color-raised: #eeeeee;
+  --color-line: #e6e6e6;
+  --color-rule: #f0f0f0;
+  --color-control: #d4d4d4;
+  --color-ink: #01010d;
+  --color-muted: #5f6066;
+  --color-brand: #6631fb;
+  --color-brand-pale: #efe9ff;
+  --color-mint: #88f9c0;
+  --color-mint-ink: #01010d;
+
+  --color-ok-bg: #88f9c0;
+  --color-ok-ink: #01010d;
+  --color-bad-bg: #ffedea;
+  --color-bad-ink: #831c1e;
+  --color-warn-bg: #fffbeb;
+  --color-warn-ink: #92400e;
+  --color-info-bg: #efe9ff;
+  --color-info-ink: #3d1a9e;
+  --color-none-bg: #eeeeee;
+  --color-none-ink: #3d3d3d;
+
+  --radius-card: 8px;
+  --radius-control: 6px;
+}
+
+html,
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+}
+
+body {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+}

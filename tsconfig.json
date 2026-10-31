@@ -15,14 +15,38 @@
     "paths": {
       "@core/*": [
         "./src/core/*"
+      ],
+      "@/*": [
+        "./src/*"
       ]
-    }
+    },
+    "jsx": "preserve",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "allowJs": false,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "noEmit": true
   },
   "include": [
-    "src",
-    "pipeline",
-    "test",
+    "demo",
     "eval",
-    "demo"
+    "next-env.d.ts",
+    "next.config.ts",
+    "pipeline",
+    "src",
+    "test",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
   ]
 }
