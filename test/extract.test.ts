@@ -130,6 +130,19 @@ describe("plain JSON output", () => {
     expect(r).toMatchObject({ status: "ok", calls: 1 });
   });
 
+  it("treats a not_mentioned object of nulls as null", async () => {
+    const e = { ...good(), clearance: { status: "not_mentioned", value: { required: null, level: null }, evidence: [], strength: null } };
+    const r = await extractOne(scripted({ text: JSON.stringify(e) }).llm, jd);
+    expect(r).toMatchObject({ status: "ok", calls: 1 });
+    expect(r.extracted!.clearance.value).toBeNull();
+  });
+
+  it("still rejects an object of nulls on a stated field", async () => {
+    const e = { ...good(), clearance: { status: "stated", value: { required: null, level: null }, evidence: ["x"], strength: "required" } };
+    const r = await extractOne(scripted({ text: JSON.stringify(e) }, { text: JSON.stringify(e) }).llm, jd);
+    expect(r.status).toBe("schema_invalid");
+  });
+
   it("leaves unfenced text alone", () => {
     expect(stripFences('{"a":1}')).toBe('{"a":1}');
   });
