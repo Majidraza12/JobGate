@@ -22,6 +22,7 @@
     "src",
     "pipeline",
     "test",
-    "eval"
+    "eval",
+    "demo"
   ]
 }
