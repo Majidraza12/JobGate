@@ -82,3 +82,11 @@ export function cityCounts(locationLists: string[][]): { city: string; count: nu
   }
   return [...counts].map(([city, count]) => ({ city, count })).sort((a, b) => b.count - a.count || a.city.localeCompare(b.city));
 }
+
+// Picker options: cities with postings first (most first), then every other
+// U.S. city in `known` (Census, largest first) with a count of 0, so a user
+// can pick a city before any posting there exists.
+export function cityOptions(withPostings: { city: string; count: number }[], known: string[]): { city: string; count: number }[] {
+  const have = new Set(withPostings.map((c) => c.city));
+  return [...withPostings, ...known.filter((c) => !have.has(c)).map((city) => ({ city, count: 0 }))];
+}

@@ -4,8 +4,9 @@ import { useId, useMemo, useState } from "react";
 
 export type CityOption = { city: string; count: number };
 
-// Type-to-search over the cities that appear in real listings, picked as
-// chips. Only listed cities can be chosen, so a spelling can never miss.
+// Type-to-search over known U.S. cities (listing cities plus the Census
+// list), picked as chips. Only known cities can be chosen, so a spelling can
+// never miss.
 export function CityPicker({ name, options, defaultValue }: { name: string; options: CityOption[]; defaultValue: string[] }) {
   const [picked, setPicked] = useState<string[]>(defaultValue);
   const [q, setQ] = useState("");
@@ -76,7 +77,7 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
 
       {show && (
         <ul id={listId} role="listbox" className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-card border border-line bg-raised py-1 shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
-          {matches.length === 0 && <li className="px-3 py-2 text-muted">No postings in a city matching &quot;{q.trim()}&quot;.</li>}
+          {matches.length === 0 && <li className="px-3 py-2 text-muted">No U.S. city matching &quot;{q.trim()}&quot;.</li>}
           {matches.map((o, i) => (
             <li
               key={o.city}
@@ -88,8 +89,8 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
               className={`flex items-center justify-between px-3 py-2 ${i === active ? "bg-brand-soft" : ""}`}
             >
               <span>{o.city}</span>
-              <span className="num text-[12px] text-muted">
-                {o.count} posting{o.count === 1 ? "" : "s"}
+              <span className={`num text-[12px] ${o.count ? "text-mint" : "text-muted"}`}>
+                {o.count ? `${o.count} posting${o.count === 1 ? "" : "s"}` : "No postings yet"}
               </span>
             </li>
           ))}
