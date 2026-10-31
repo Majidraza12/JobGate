@@ -21,11 +21,17 @@ export interface ExtractionResult {
   responses: string[];
 }
 
+// Models sometimes wrap JSON in a ```json fence despite being told not to.
+export function stripFences(text: string): string {
+  const m = text.trim().match(/^```(?:json)?\s*\n([\s\S]*?)\n?```$/);
+  return m?.[1] ?? text;
+}
+
 function validate(text: string, stopReason: string | null): { ok: true; value: ModelExtraction } | { ok: false; errors: string[] } {
   if (stopReason === "max_tokens") return { ok: false, errors: ["response was cut off at max_tokens"] };
   let json: unknown;
   try {
-    json = JSON.parse(text);
+    json = JSON.parse(stripFences(text));
   } catch {
     return { ok: false, errors: ["response is not valid JSON"] };
   }

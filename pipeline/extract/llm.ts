@@ -2,8 +2,6 @@
 // LlmClient interface, so tests replay recorded responses with no network.
 
 import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { ModelExtraction } from "@core/requirements";
 
 export const MODEL = "claude-haiku-4-5-20251001";
 export const MAX_OUTPUT_TOKENS = 8000;
@@ -34,11 +32,10 @@ export interface LlmClient {
   complete(system: string, turns: Turn[]): Promise<LlmResponse>;
 }
 
-// Structured outputs: the API constrains the response to the JSON shape of
-// ModelExtraction. Rules JSON Schema can't express (stated needs evidence,
-// window order) are checked by Zod afterwards, which drives the one retry.
+// Plain JSON, not structured outputs: the API rejects ModelExtraction's schema
+// as "compiled grammar is too large" (2026-10-31). The prompt spells out the
+// shape; Zod validates afterwards and drives the one retry.
 export function anthropicClient(client = new Anthropic()): LlmClient {
-  const format = zodOutputFormat(ModelExtraction);
   return {
     model: MODEL,
     async complete(system, turns) {
@@ -47,7 +44,6 @@ export function anthropicClient(client = new Anthropic()): LlmClient {
         max_tokens: MAX_OUTPUT_TOKENS,
         system,
         messages: turns,
-        output_config: { format },
       });
       const text = res.content.map((b) => (b.type === "text" ? b.text : "")).join("");
       return {
