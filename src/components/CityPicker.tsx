@@ -50,11 +50,11 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
       {picked.map((c) => (
         <input key={c} type="hidden" name={name} value={c} />
       ))}
-      <div className="flex min-h-10 flex-wrap items-center gap-1.5 rounded-control border border-line bg-surface px-2 py-1.5 focus-within:border-brand">
+      <div className="flex min-h-11 flex-wrap items-center gap-1.5 rounded-[12px] border-2 border-line bg-sunken px-2 py-1.5 focus-within:border-lav">
         {picked.map((c) => (
-          <span key={c} className="flex h-7 items-center gap-1 rounded-full bg-brand-soft pl-3 pr-1 text-[13px] text-ink">
+          <span key={c} className="flex h-7 items-center gap-1 rounded-full bg-lav pl-3 pr-1 text-[13px] font-semibold text-ground">
             {c}
-            <button type="button" onClick={() => remove(c)} aria-label={`Remove ${c}`} className="grid size-5 place-items-center rounded-full text-muted hover:bg-brand hover:text-on-brand">
+            <button type="button" onClick={() => remove(c)} aria-label={`Remove ${c}`} className="grid size-5 place-items-center rounded-full text-ground/70 hover:bg-ground hover:text-ink">
               ×
             </button>
           </span>
@@ -76,7 +76,7 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
       </div>
 
       {show && (
-        <ul id={listId} role="listbox" className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-card border border-line bg-raised py-1 shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
+        <ul id={listId} role="listbox" className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-[16px] border-2 border-line bg-surface py-1 shadow-[6px_6px_0_var(--color-brand)]">
           {matches.length === 0 && <li className="px-3 py-2 text-muted">No U.S. city matching &quot;{q.trim()}&quot;.</li>}
           {matches.map((o, i) => (
             <li
@@ -86,7 +86,7 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
               // mousedown, not click: the input's blur would close the list first.
               onMouseDown={(e) => (e.preventDefault(), add(o.city))}
               onMouseEnter={() => setActive(i)}
-              className={`flex items-center justify-between px-3 py-2 ${i === active ? "bg-brand-soft" : ""}`}
+              className={`flex items-center justify-between px-3 py-2 ${i === active ? "bg-hover" : ""}`}
             >
               <span>{o.city}</span>
               <span className={`num text-[12px] ${o.count ? "text-mint" : "text-muted"}`}>

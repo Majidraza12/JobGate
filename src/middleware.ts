@@ -1,10 +1,11 @@
-// Refreshes the Supabase session on every request and sends signed-out
-// visitors to /login. The database enforces access with RLS either way; this
+// Refreshes the Supabase session on every request. Signed-out visitors see
+// the landing page and /login only; signed-in users skip both for the feed. The database enforces access with RLS either way; this
 // only decides which page to show.
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_PATHS = ["/login", "/auth"];
+const isPublicPath = (path: string) => path === "/" || PUBLIC_PATHS.some((p) => path.startsWith(p));
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -24,15 +25,15 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isPublic = PUBLIC_PATHS.some((p) => request.nextUrl.pathname.startsWith(p));
-  if (!user && !isPublic) {
+  const path = request.nextUrl.pathname;
+  if (!user && !isPublicPath(path)) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
-  if (user && request.nextUrl.pathname === "/login") {
+  if (user && (path === "/" || path === "/login")) {
     const url = request.nextUrl.clone();
-    url.pathname = "/";
+    url.pathname = "/feed";
     return NextResponse.redirect(url);
   }
   return response;

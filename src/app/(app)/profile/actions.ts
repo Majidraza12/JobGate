@@ -65,5 +65,5 @@ export async function saveProfile(_prev: ProfileState, form: FormData): Promise<
   });
   if (error) return { error: "Couldn't save your profile. Try again." };
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/feed");
 }

@@ -43,7 +43,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
         onClick={() => setOpen(!open)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className={`flex h-10 w-full items-center justify-between rounded-control border bg-surface px-3 text-left ${open ? "border-brand" : "border-line hover:border-control"}`}
+        className={`flex h-11 w-full items-center justify-between rounded-[12px] border-2 bg-sunken px-3 text-left font-medium ${open ? "border-lav" : "border-line hover:border-control"}`}
       >
         <span className={value ? "" : "text-muted"}>{value ? label(value) : placeholder}</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-muted" aria-hidden="true">
@@ -53,7 +53,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
       </button>
 
       {open && (
-        <div role="dialog" aria-label="Choose a month" className="absolute left-0 z-20 mt-2 w-[296px] rounded-card border border-line bg-raised p-3 shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
+        <div role="dialog" aria-label="Choose a month" className="absolute left-0 z-20 mt-2 w-[296px] rounded-[18px] border-2 border-line bg-surface p-3 shadow-[6px_6px_0_var(--color-brand)]">
           <div className="mb-2 flex items-center justify-between">
             <button type="button" onClick={() => setYear(year - 1)} className={arrow} aria-label="Previous year">
               ‹
@@ -74,7 +74,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
                   onClick={() => pick(i)}
                   aria-pressed={selected}
                   aria-label={`${LONG[i]} ${year}`}
-                  className={`h-9 rounded-control text-[14px] ${selected ? "bg-brand font-medium text-on-brand" : "text-ink hover:bg-hover"}`}
+                  className={`h-9 rounded-control text-[14px] ${selected ? "bg-mint font-bold text-ground" : "font-medium text-ink hover:bg-hover"}`}
                 >
                   {m}
                 </button>

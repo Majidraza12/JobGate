@@ -14,9 +14,9 @@ export default async function ProfilePage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-[1100px]">
-      <h1 className="text-[24px] font-medium leading-8">Profile</h1>
-      <p className="mt-1 text-muted">
+    <div>
+      <h1 className="font-display text-[34px] font-bold tracking-[-0.02em]">Profile</h1>
+      <p className="mt-2 text-muted">
         {data
           ? "Every verdict in your feed is computed from these answers. Change one and the feed updates."
           : "Answer these once. Every verdict in your feed is computed from them."}

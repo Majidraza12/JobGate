@@ -6,16 +6,16 @@ import { MonthPicker } from "@/components/MonthPicker";
 import type { ProfileRow } from "@/lib/profile";
 import { saveProfile, type ProfileState } from "./actions";
 
-const input = "mt-2 h-10 w-full rounded-control border border-line bg-surface px-3";
+const input = "mt-2 h-11 w-full rounded-[12px] border-2 border-line bg-sunken px-3 font-medium hover:border-control";
 
 function Section({ title, why, children }: { title: string; why: string; children: React.ReactNode }) {
   return (
-    <section className="grid gap-4 border-t border-line py-8 md:grid-cols-[minmax(0,400px)_minmax(0,1fr)] md:gap-10">
+    <section className="grid gap-4 py-6 md:grid-cols-[minmax(0,360px)_minmax(0,1fr)] md:gap-10">
       <div className="pt-1">
-        <h2 className="text-[16px] font-medium">{title}</h2>
+        <h2 className="font-display text-[22px] font-bold">{title}</h2>
         <p className="mt-1 text-muted">{why}</p>
       </div>
-      <div className="rounded-[14px] border border-line bg-surface p-4 md:p-5">{children}</div>
+      <div className="rounded-[20px] border-2 border-line bg-surface p-4 md:p-6">{children}</div>
     </section>
   );
 }
@@ -28,7 +28,7 @@ function YesNo({ name, label, value, onChange, note }: { name: string; label: st
         {[true, false].map((v) => (
           <label
             key={String(v)}
-            className={`flex h-9 items-center rounded-control border px-4 text-[14px] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-text ${value === v ? "border-brand bg-brand-soft font-medium text-ink" : "border-line bg-surface text-muted hover:border-control hover:text-ink"}`}
+            className={`flex h-10 items-center rounded-[12px] border-2 px-5 text-[14px] font-semibold has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-text ${value === v ? "border-mint bg-mint text-ground" : "border-line bg-sunken text-muted hover:border-lav hover:text-ink"}`}
           >
             <input type="radio" name={name} value={v ? "yes" : "no"} checked={value === v} onChange={() => onChange(v)} className="sr-only" />
             {v ? "Yes" : "No"}
@@ -42,7 +42,7 @@ function YesNo({ name, label, value, onChange, note }: { name: string; label: st
 
 // What an earlier answer settles, said once instead of asked again.
 function Settled({ children }: { children: React.ReactNode }) {
-  return <p className="mt-5 rounded-control border border-line bg-raised px-3 py-2.5 text-[13px] text-muted">{children}</p>;
+  return <p className="mt-5 rounded-[12px] border-2 border-dashed border-line px-3 py-2.5 text-[13px] text-muted">{children}</p>;
 }
 
 export function ProfileForm({ profile, cityOptions }: { profile: ProfileRow | null; cityOptions: CityOption[] }) {
@@ -136,7 +136,7 @@ export function ProfileForm({ profile, cityOptions }: { profile: ProfileRow | nu
               ["new_grad", "New grad full-time"],
             ].map(([v, l]) => (
               <label key={v} className="flex items-center gap-2 text-[14px]">
-                <input type="checkbox" name="job_types" value={v} defaultChecked={jobTypes.includes(v!)} className="size-4 accent-brand" />
+                <input type="checkbox" name="job_types" value={v} defaultChecked={jobTypes.includes(v!)} className="size-4 accent-mint" />
                 {l}
               </label>
             ))}
@@ -152,14 +152,14 @@ export function ProfileForm({ profile, cityOptions }: { profile: ProfileRow | nu
         <p className="mt-5 text-[14px] font-medium">Cities</p>
         <CityPicker name="locations" options={cityOptions} defaultValue={profile?.locations ?? []} />
         <label className="mt-4 flex items-center gap-2 text-[14px]">
-          <input type="checkbox" name="remote_ok" defaultChecked={profile?.remote_ok ?? true} className="size-4 accent-brand" />
+          <input type="checkbox" name="remote_ok" defaultChecked={profile?.remote_ok ?? true} className="size-4 accent-mint" />
           Remote is fine
         </label>
       </Section>
 
-      <div className="flex items-center justify-end gap-4 border-t border-line pt-6">
+      <div className="flex items-center justify-end gap-4 pt-4">
         {state.error && <p className="text-[13px] text-bad-ink">{state.error}</p>}
-        <button disabled={pending} className="h-10 rounded-control bg-brand px-5 font-medium text-on-brand hover:bg-brand-hover disabled:opacity-60">
+        <button disabled={pending} className="h-12 rounded-[14px] bg-brand px-6 font-bold text-on-brand shadow-[5px_5px_0_var(--color-mint)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_var(--color-mint)] active:translate-x-0 active:translate-y-0 active:shadow-none disabled:opacity-60">
           {pending ? "Saving…" : profile ? "Save profile" : "Save and see my feed"}
         </button>
       </div>

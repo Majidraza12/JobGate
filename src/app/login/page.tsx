@@ -1,19 +1,19 @@
+import Link from "next/link";
 import { LoginForm } from "./LoginForm";
 import { Mark } from "@/components/Mark";
 
 export default function LoginPage() {
   return (
-    <main className="grid min-h-screen place-items-center px-4">
-      <div className="w-full max-w-[380px]">
-        <div className="mb-8 flex items-center gap-2.5">
-          <Mark />
-          <span className="text-[16px] font-medium">JobGate</span>
-        </div>
-        <h1 className="text-[24px] font-medium leading-8">Check your eligibility before you apply</h1>
-        <p className="mt-2 text-muted">
-          Internship and new-grad postings matched to your graduation date and work authorization, with the sentence from each posting
-          that decides it.
-        </p>
+    <main className="grid min-h-screen place-items-center px-4 py-10">
+      <div className="w-full max-w-[400px]">
+        <Link href="/" className="mb-8 flex items-center gap-2.5 font-display text-[22px] font-bold">
+          <Mark size={30} />
+          JobGate
+        </Link>
+        <h1 className="font-display text-[36px] font-bold leading-[1.02] tracking-[-0.03em]">
+          Know if you can apply <span className="text-mint">before you apply.</span>
+        </h1>
+        <p className="mt-3 text-muted">Internship and new-grad postings matched to your graduation date and work authorization, with the sentence that decides each one.</p>
         <LoginForm />
       </div>
     </main>

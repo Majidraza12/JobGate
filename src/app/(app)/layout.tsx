@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { Sidebar } from "@/components/Sidebar";
+import { TopNav } from "@/components/TopNav";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
@@ -11,9 +11,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const { count } = await supabase.from("applications").select("id", { count: "exact", head: true });
 
   return (
-    <div className="min-h-screen md:grid md:grid-cols-[240px_minmax(0,1fr)]">
-      <Sidebar email={user.email ?? ""} appliedCount={count ?? 0} />
-      <main className="min-w-0 px-4 pb-16 pt-6 md:px-8 md:pt-9">{children}</main>
+    <div className="min-h-screen">
+      <TopNav email={user.email ?? ""} appliedCount={count ?? 0} />
+      <main className="mx-auto max-w-[1240px] px-4 pb-20 pt-8 md:px-8">{children}</main>
     </div>
   );
 }

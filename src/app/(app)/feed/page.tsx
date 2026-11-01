@@ -26,6 +26,25 @@ function secondaryNote(item: FeedItem): string | null {
   return parts.join(" · ") || null;
 }
 
+const DEGREES = { bs: "bachelor's", ms: "master's", phd: "PhD", none: "not in school" } as const;
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// "May 2027 · bachelor's · U.S. citizen": what the verdicts were checked against.
+// Shown only to the profile's owner; never logged.
+function checkedAgainst(p: ProfileRow): string {
+  const grad = p.grad_month ? `${MONTHS[Number(p.grad_month.slice(5)) - 1]} ${p.grad_month.slice(0, 4)}` : null;
+  const auth = p.us_citizen
+    ? "U.S. citizen"
+    : p.permanent_resident
+      ? "permanent resident"
+      : p.needs_sponsorship_future
+        ? "needs sponsorship later"
+        : p.authorized_now_without_sponsorship
+          ? "authorized to work"
+          : "needs sponsorship";
+  return [grad, DEGREES[p.degree], auth].filter(Boolean).join(" · ");
+}
+
 export default async function FeedPage() {
   const supabase = await createClient();
   const { data: profile } = await supabase.from("profiles").select("*").maybeSingle<ProfileRow>();
@@ -48,6 +67,7 @@ export default async function FeedPage() {
       remote: i.remote === true,
       jobType: i.job_type,
       postedAt: i.posted_at,
+      applyUrl: i.apply_url,
       verdict: i.verdict,
       unchecked: i.unchecked,
       quote: d?.quote ?? null,
@@ -57,5 +77,7 @@ export default async function FeedPage() {
     };
   });
 
-  return <FeedView cards={cards} defaultJobTypes={profile.job_types} cities={profile.locations} remoteOk={profile.remote_ok} />;
+  return (
+    <FeedView cards={cards} defaultJobTypes={profile.job_types} cities={profile.locations} remoteOk={profile.remote_ok} checkedAgainst={checkedAgainst(profile)} />
+  );
 }

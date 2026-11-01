@@ -13,41 +13,35 @@ export default async function AppliedPage() {
   const apps = data ?? [];
   const byStage = Object.fromEntries(STAGES.map((s) => [s.value, apps.filter((a) => a.status === s.value).length]));
 
+  const tone: Record<string, string> = { applied: "text-lav", online_assessment: "text-amber", interview: "text-brand-text", offer: "text-mint", rejected: "text-rose" };
+
   return (
-    <div className="mx-auto max-w-[1100px]">
-      <h1 className="text-[24px] font-medium leading-8">Applied</h1>
-      <p className="mt-1 text-muted">
-        {apps.length === 0 ? "Nothing yet. Mark a posting applied from its page and it shows up here." : `${apps.length} application${apps.length === 1 ? "" : "s"}.`}
+    <div>
+      <h1 className="font-display text-[34px] font-bold tracking-[-0.02em]">Applied</h1>
+      <p className="mt-2 text-muted">
+        {apps.length === 0 ? "Nothing yet. Mark a posting applied from its page and it shows up here." : `${apps.length} application${apps.length === 1 ? "" : "s"}. Stage and notes save as you change them.`}
       </p>
 
       {apps.length > 0 && (
         <>
-          <dl className="mt-6 grid grid-cols-2 overflow-hidden rounded-card border border-line bg-surface sm:grid-cols-5">
-            {STAGES.map((s, i) => (
-              <div key={s.value} className={`px-5 py-4 ${i > 0 ? "sm:border-l sm:border-line" : ""}`}>
-                <dt className="text-[13px] text-muted">{s.label}</dt>
-                <dd className={`num mt-1 text-[24px] leading-8 ${byStage[s.value] ? "" : "text-muted"}`}>{byStage[s.value]}</dd>
+          <dl className="mt-6 grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-5">
+            {STAGES.map((s) => (
+              <div key={s.value} className="min-w-0 rounded-[16px] border-2 border-line bg-surface px-3 py-2.5 sm:px-4 sm:py-3">
+                <dd className={`num font-mono text-[22px] font-bold leading-tight sm:text-[28px] ${byStage[s.value] ? tone[s.value] : "text-muted"}`}>{byStage[s.value]}</dd>
+                <dt className="truncate text-[12px] font-medium text-muted sm:text-[13px]">{s.label}</dt>
               </div>
             ))}
           </dl>
 
-          <section className="mt-3 overflow-hidden rounded-card border border-line bg-surface" aria-label="Applications">
-            <div className="hidden grid-cols-[minmax(0,1fr)_110px_200px_minmax(0,1fr)] gap-4 border-b border-line px-5 py-3 text-[12px] text-muted md:grid">
-              <span>Posting</span>
-              <span className="text-right">Applied</span>
-              <span>Stage</span>
-              <span>Notes</span>
-            </div>
-            <ul>
-              {apps.map((a) => (
-                <ApplicationRow key={a.id} app={a} />
-              ))}
-            </ul>
-          </section>
+          <ul className="mt-6 grid grid-cols-1 gap-3" aria-label="Applications">
+            {apps.map((a) => (
+              <ApplicationRow key={a.id} app={a} />
+            ))}
+          </ul>
         </>
       )}
       {apps.length === 0 && (
-        <Link href="/" className="mt-6 inline-flex h-9 items-center rounded-control bg-brand px-4 text-[14px] font-medium text-on-brand hover:bg-brand-hover">
+        <Link href="/feed" className="mt-6 inline-flex h-11 items-center rounded-[12px] bg-ink px-5 font-bold text-ground hover:bg-mint active:scale-95">
           Go to the feed
         </Link>
       )}

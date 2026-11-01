@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 /*
-  Majid's brand, dark: Onyx #01010D is the ground and the primary colour,
-  Electric Indigo #6631FB is the secondary (primary buttons, selection, active
-  nav, focus), Tropical Mint #88F9C0 is the third (Eligible, applied, success).
-  Panels are Onyx lifted a few steps toward indigo so the page reads as one
-  material. Not eligible and Check keep red and amber, in dark pairs, because a
-  verdict must read as good or bad at a glance.
+  Majid's brand, dark, "bold cards" (picked 2026-10-31 from mockup C): Onyx
+  #01010D is the ground and primary colour, Electric Indigo #6631FB the
+  secondary (primary blocks, selection, focus), Tropical Mint #88F9C0 the third
+  (Eligible, active tabs, offset shadows). Chunky 2px borders, Space Grotesk
+  headings, JetBrains Mono numbers and stamps, a dotted ground. Verdicts keep
+  one colour each so a card reads as good or bad at a glance.
 */
 @theme {
   --font-sans: var(--font-geist), Inter, system-ui, sans-serif;
+  --font-display: var(--font-space), var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
 
   --color-ground: #01010d;
-  --color-surface: #0a0a1a;
-  --color-raised: #131327;
-  --color-hover: #161630;
-  --color-line: #222240;
-  --color-rule: #18182e;
+  --color-surface: #0c0c20;
+  --color-sunken: #07071a;
+  --color-raised: #131330;
+  --color-hover: #15153a;
+  --color-line: #23234a;
+  --color-rule: #1a1a3a;
   --color-control: #34345a;
-  --color-ink: #f2f2f7;
-  --color-muted: #9898b0;
+  --color-ink: #f4f4fa;
+  --color-muted: #9393b0;
 
   --color-brand: #6631fb;
   --color-brand-hover: #7a4cff;
@@ -28,20 +31,24 @@
   --color-on-brand: #ffffff;
   --color-mint: #88f9c0;
   --color-mint-ink: #01010d;
+  --color-amber: #ffc861;
+  --color-lav: #b9a2ff;
+  --color-rose: #ff9a9a;
+  --color-slate: #8a8aa8;
 
   --color-ok-bg: #88f9c0;
   --color-ok-ink: #01010d;
   --color-bad-bg: #3b1218;
-  --color-bad-ink: #ff9f9f;
+  --color-bad-ink: #ff9a9a;
   --color-warn-bg: #33240a;
-  --color-warn-ink: #fbc66b;
+  --color-warn-ink: #ffc861;
   --color-info-bg: #1d1447;
   --color-info-ink: #c4b2ff;
   --color-none-bg: #1a1a30;
   --color-none-ink: #a9a9c0;
 
-  --radius-card: 10px;
-  --radius-control: 8px;
+  --radius-card: 20px;
+  --radius-control: 12px;
 }
 
 html {
@@ -50,13 +57,18 @@ html {
 
 html,
 body {
-  background: var(--color-ground);
+  background-color: var(--color-ground);
   color: var(--color-ink);
 }
 
 body {
-  font-size: 14px;
-  line-height: 20px;
+  background-image: radial-gradient(circle at 1px 1px, #16163a 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+body {
+  font-size: 15px;
+  line-height: 22px;
 }
 
 .num {

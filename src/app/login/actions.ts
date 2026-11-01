@@ -13,7 +13,7 @@ export async function signIn(_prev: AuthState, form: FormData): Promise<AuthStat
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword(credentials(form));
   if (error) return { error: error.message, notice: null };
-  redirect("/");
+  redirect("/feed");
 }
 
 export async function signUp(_prev: AuthState, form: FormData): Promise<AuthState> {
