@@ -5,8 +5,8 @@ import { signIn, signUp, type AuthState } from "./actions";
 
 const initial: AuthState = { error: null, notice: null };
 
-export function LoginForm() {
-  const [mode, setMode] = useState<"in" | "up">("in");
+export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" }) {
+  const [mode, setMode] = useState<"in" | "up">(initialMode);
   const [inState, inAction, inPending] = useActionState(signIn, initial);
   const [upState, upAction, upPending] = useActionState(signUp, initial);
   const state = mode === "in" ? inState : upState;
