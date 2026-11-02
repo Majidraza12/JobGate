@@ -1,10 +1,13 @@
-# Hourly pipeline: pull new listings, then fetch their job descriptions, into
+# Pipeline every 2 hours: pull new listings, then fetch their job descriptions, into
 # hosted Supabase. No Claude calls here; extraction runs by hand on Majid's PC.
 name: pipeline
 
 on:
   schedule:
-    - cron: "17 * * * *" # minute 17 of every hour (UTC), off the busy top of the hour
+    # Minute 17 of every second hour (UTC), off the busy top of the hour. Every
+    # 2 hours, not hourly: about 720 of the private repo's 2,000 free Actions
+    # minutes a month, and extraction is weekly, so hourly gains nothing yet.
+    - cron: "17 */2 * * *"
   workflow_dispatch: {} # "Run workflow" button for manual runs
 
 # Never two runs at once. A queued run waits instead of cancelling the one in
@@ -24,8 +27,8 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
