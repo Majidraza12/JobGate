@@ -73,7 +73,7 @@ export async function extractOne(llm: LlmClient, jdText: string, now = () => per
   };
   const finish = (r: Partial<ExtractionResult>) => {
     Object.assign(out, r);
-    out.costUsd = costUsd(llm.model, out.inputTokens, out.outputTokens);
+    out.costUsd = llm.subscription ? 0 : costUsd(llm.model, out.inputTokens, out.outputTokens);
     out.latencyMs = Math.round(now() - start);
     return out;
   };

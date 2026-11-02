@@ -1,0 +1,90 @@
+{
+  "id": "jd-039",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "ms"
+      ],
+      "evidence": [
+        "Must possess a Master’s degree in Electrical Engineering, Physics, Material Science, or scientific field of study directly related to Semiconductor."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Hillsboro, Oregon"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 7999,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"ms\"],\"evidence\":[\"Must possess a Master’s degree in Electrical Engineering, Physics, Material Science, or scientific field of study directly related to Semiconductor.\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Hillsboro, Oregon\"],\"remote\":false,\"hybrid\":null},\"employment_type\":\"full-time\",\"season\":null,\"role_family\":\"other\"}"
+  ],
+  "error": null,
+  "inputTokens": 5170,
+  "outputTokens": 485,
+  "at": "2026-11-02T19:38:10.743Z"
+}

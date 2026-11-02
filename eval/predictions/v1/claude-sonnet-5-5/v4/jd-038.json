@@ -1,0 +1,100 @@
+{
+  "id": "jd-038",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Pursuing a Bachelor’s or Master’s degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "As an AI Engineer Intern in Summer 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "Applicants for these positions may need to be \"U.S. Persons,\" as defined in these regulations."
+      ],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Oshkosh, WI"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 8102,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"Pursuing a Bachelor’s or Master’s degree in Computer Science, Computer Engineering, Software Engineering, Electrical Engineering, Data Science, or a related technical field\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Summer 2027\",\"month\":null}],\"evidence\":[\"As an AI Engineer Intern in Summer 2027\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"Applicants for these positions may need to be \\\"U.S. Persons,\\\" as defined in these regulations.\"],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Oshkosh, WI\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":\"Summer 2027\",\"role_family\":\"ml\"}"
+  ],
+  "error": null,
+  "inputTokens": 5374,
+  "outputTokens": 571,
+  "at": "2026-11-02T19:38:02.741Z"
+}

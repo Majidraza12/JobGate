@@ -1,0 +1,91 @@
+{
+  "id": "jd-026",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Must be pursuing a Bachelors or Masters Degree in one of the following programs"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Plantation, Florida"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 5861,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"Must be pursuing a Bachelors or Masters Degree in one of the following programs\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Plantation, Florida\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":null,\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 4527,
+  "outputTokens": 465,
+  "at": "2026-11-02T19:36:08.120Z"
+}

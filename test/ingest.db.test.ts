@@ -1,7 +1,7 @@
 // Integration tests against a throwaway database on the local Supabase
 // Postgres. Skipped when it isn't running (start it with `npm run db:start`).
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { readFileSync, readdirSync } from "node:fs";
+import { applyMigrations } from "./helpers/migrate";
 import pg from "pg";
 import { LOCAL_DATABASE_URL, tryLock } from "../pipeline/db";
 import { runIngest } from "../pipeline/runIngest";
@@ -61,8 +61,7 @@ describe.skipIf(!up)("ingest against Postgres", () => {
     await admin.end();
     db = new pg.Client({ connectionString: testUrl });
     await db.connect();
-    const dir = new URL("../supabase/migrations/", import.meta.url);
-    for (const f of readdirSync(dir).sort()) await db.query(readFileSync(new URL(f, dir), "utf8"));
+    await applyMigrations(db);
   });
 
   afterAll(async () => {

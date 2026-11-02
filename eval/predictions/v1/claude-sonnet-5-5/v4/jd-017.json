@@ -1,0 +1,89 @@
+{
+  "id": "jd-017",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Enrolled in a Bachelor’s or Master’s degree program in Computer Science, Software Engineering, or a related field."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 3891,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"Enrolled in a Bachelor’s or Master’s degree program in Computer Science, Software Engineering, or a related field.\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":true},\"employment_type\":\"internship\",\"season\":null,\"role_family\":\"other\"}"
+  ],
+  "error": null,
+  "inputTokens": 5685,
+  "outputTokens": 468,
+  "at": "2026-11-02T19:34:39.505Z"
+}

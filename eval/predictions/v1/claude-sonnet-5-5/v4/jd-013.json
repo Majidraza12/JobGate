@@ -1,0 +1,112 @@
+{
+  "id": "jd-013",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2028-05",
+          "latest": "2028-05",
+          "evidence": [
+            "expecting to graduate in May 2028 with a Bachelor's or Master's degree"
+          ]
+        }
+      ],
+      "evidence": [
+        "expecting to graduate in May 2028 with a Bachelor's or Master's degree"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "with a Bachelor's or Master's degree"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "Tech & Data Program Summer 2027 – Data Engineer Intern"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Candidate must be authorized to work in the US without company sponsorship"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Hartford, CT"
+      ],
+      "remote": null,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 9301,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"stated\",\"value\":[{\"applies_to_degrees\":null,\"applies_to_start\":null,\"earliest\":\"2028-05\",\"latest\":\"2028-05\",\"evidence\":[\"expecting to graduate in May 2028 with a Bachelor's or Master's degree\"]}],\"evidence\":[\"expecting to graduate in May 2028 with a Bachelor's or Master's degree\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"with a Bachelor's or Master's degree\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Summer 2027\",\"month\":null}],\"evidence\":[\"Tech & Data Program Summer 2027 – Data Engineer Intern\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Candidate must be authorized to work in the US without company sponsorship\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Hartford, CT\"],\"remote\":null,\"hybrid\":true},\"employment_type\":\"internship\",\"season\":\"Summer 2027\",\"role_family\":\"data\"}"
+  ],
+  "error": null,
+  "inputTokens": 5475,
+  "outputTokens": 1438,
+  "at": "2026-11-02T19:34:13.231Z"
+}

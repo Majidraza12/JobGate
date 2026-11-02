@@ -1,0 +1,88 @@
+{
+  "id": "jd-032",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "applicants must be a U.S. citizen, lawful permanent resident of the U.S., protected individual as defined by 8 U.S.C. 1324b(a)(3), or eligible to obtain the required authorizations from the U.S. Department of State"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "San Carlos, CA"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 12482,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"applicants must be a U.S. citizen, lawful permanent resident of the U.S., protected individual as defined by 8 U.S.C. 1324b(a)(3), or eligible to obtain the required authorizations from the U.S. Department of State\"],\"strength\":\"required\"},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"San Carlos, CA\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":null,\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 5453,
+  "outputTokens": 1219,
+  "at": "2026-11-02T19:37:03.684Z"
+}

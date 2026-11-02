@@ -1,0 +1,94 @@
+{
+  "id": "jd-046",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "junior",
+        "senior"
+      ],
+      "evidence": [
+        "Students entering their Junior or Senior year at the start of the upcoming academic term."
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Sponsorship: Not Available"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Farmington Hills, MI",
+        "Franklin, TN"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 10461,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"stated\",\"value\":[\"junior\",\"senior\"],\"evidence\":[\"Students entering their Junior or Senior year at the start of the upcoming academic term.\"],\"strength\":\"required\"},\"degree_levels\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Sponsorship: Not Available\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Farmington Hills, MI\",\"Franklin, TN\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":null,\"role_family\":\"ml\"}"
+  ],
+  "error": null,
+  "inputTokens": 5097,
+  "outputTokens": 1005,
+  "at": "2026-11-02T19:39:03.538Z"
+}

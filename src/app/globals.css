@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/*
+  Majid's brand, dark, "bold cards" (picked 2026-10-31 from mockup C): Onyx
+  #01010D is the ground and primary colour, Electric Indigo #6631FB the
+  secondary (primary blocks, selection, focus), Tropical Mint #88F9C0 the third
+  (Eligible, active tabs, offset shadows). Chunky 2px borders, Space Grotesk
+  headings, JetBrains Mono numbers and stamps, a dotted ground. Verdicts keep
+  one colour each so a card reads as good or bad at a glance.
+*/
+@theme {
+  --font-sans: var(--font-geist), Inter, system-ui, sans-serif;
+  --font-display: var(--font-space), var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+
+  --color-ground: #01010d;
+  --color-surface: #0c0c20;
+  --color-sunken: #07071a;
+  --color-raised: #131330;
+  --color-hover: #15153a;
+  --color-line: #23234a;
+  --color-rule: #1a1a3a;
+  --color-control: #34345a;
+  --color-ink: #f4f4fa;
+  --color-muted: #9393b0;
+
+  --color-brand: #6631fb;
+  --color-brand-hover: #7a4cff;
+  --color-brand-soft: #1d1447;
+  --color-brand-text: #a98bff;
+  --color-on-brand: #ffffff;
+  --color-mint: #88f9c0;
+  --color-mint-ink: #01010d;
+  --color-amber: #ffc861;
+  --color-lav: #b9a2ff;
+  --color-rose: #ff9a9a;
+  --color-slate: #8a8aa8;
+
+  --color-ok-bg: #88f9c0;
+  --color-ok-ink: #01010d;
+  --color-bad-bg: #3b1218;
+  --color-bad-ink: #ff9a9a;
+  --color-warn-bg: #33240a;
+  --color-warn-ink: #ffc861;
+  --color-info-bg: #1d1447;
+  --color-info-ink: #c4b2ff;
+  --color-none-bg: #1a1a30;
+  --color-none-ink: #a9a9c0;
+
+  --radius-card: 20px;
+  --radius-control: 12px;
+}
+
+html {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: var(--color-ground);
+  color: var(--color-ink);
+}
+
+body {
+  background-image: radial-gradient(circle at 1px 1px, #16163a 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+body {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+  Base rules sit in the base layer so a utility (outline-none on an input
+  inside a bordered box, for example) can still override them.
+
+  Every clickable thing gets the pointer, a short colour transition, and a
+  small press. Tailwind v4 dropped the pointer on buttons, so it is set here
+  once instead of on each button.
+*/
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-brand-text);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-muted);
+    opacity: 0.8;
+  }
+
+  button,
+  [role="button"],
+  [role="tab"],
+  [role="option"],
+  select,
+  summary,
+  a[href],
+  label:has(> input[type="checkbox"]),
+  label:has(> input[type="radio"]),
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  fieldset:disabled label {
+    cursor: not-allowed;
+  }
+
+  button,
+  a[href],
+  select,
+  input,
+  textarea,
+  label {
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease,
+      opacity 150ms ease,
+      transform 100ms ease;
+  }
+
+  button:not(:disabled):active,
+  [role="button"]:active,
+  label:has(> input[type="radio"]):active {
+    transform: scale(0.97);
+  }
+}
+
+/* A verdict stamp landing on a card when the landing demo's profile changes. */
+@keyframes stamp {
+  0% {
+    transform: rotate(3deg) scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(3deg) scale(1);
+    opacity: 1;
+  }
+}

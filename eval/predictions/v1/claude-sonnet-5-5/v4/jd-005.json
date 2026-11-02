@@ -1,0 +1,95 @@
+{
+  "id": "jd-005",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "June 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "2027 Internship Program Dates: May/June–August/September 2027."
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "2027",
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 6426,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"May 2027\",\"month\":\"2027-05\"},{\"label\":\"June 2027\",\"month\":\"2027-06\"}],\"evidence\":[\"2027 Internship Program Dates: May/June–August/September 2027.\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":\"2027\",\"role_family\":\"ml\"}"
+  ],
+  "error": null,
+  "inputTokens": 5787,
+  "outputTokens": 953,
+  "at": "2026-11-02T19:33:02.804Z"
+}

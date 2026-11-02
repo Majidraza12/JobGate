@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "ingest": "tsx pipeline/ingest.ts",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -15,6 +18,9 @@
     "extract": "tsx --env-file-if-exists=.env pipeline/extractCli.ts",
     "eval:sample": "tsx eval/sampleCli.ts",
     "label": "tsx eval/labelServer.ts",
+    "demo": "tsx demo/server.ts",
+    "load:predictions": "tsx eval/loadPredictions.ts",
+    "sync:hosted": "tsx --env-file=.env pipeline/syncHosted.ts",
     "eval:extract": "tsx --env-file-if-exists=.env eval/extractEval.ts",
     "label:import": "tsx eval/importLabels.ts",
     "eval:review": "tsx eval/reviewCli.ts"
@@ -25,18 +31,27 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
     "@mozilla/readability": "^0.6.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
     "jsdom": "^28.1.0",
+    "next": "^15.5.28",
     "pg": "^8.23.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "robots-parser": "^3.0.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/jsdom": "^30.0.0",
     "@types/node": "^26.6.5",
     "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "supabase": "^2.122.0",
+    "tailwindcss": "^4.3.3",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "vitest": "^5.0.5"
   }
 }

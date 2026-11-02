@@ -1,0 +1,101 @@
+{
+  "id": "jd-029",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "This role is designed for upcoming or recent graduates with 0–2 years of post-grad full-time work experience."
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor’s degree (any major) with a 3.0 – 4.0 GPA"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "July 2027",
+          "month": "2027-07"
+        }
+      ],
+      "evidence": [
+        "The anticipated start date is July 2027."
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Veeva does not provide sponsorship for employment visa status (e.g., H-1B, OPT, or TN status) for this employment position."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "NYC"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "full-time",
+    "season": null,
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 4747,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"This role is designed for upcoming or recent graduates with 0–2 years of post-grad full-time work experience.\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Bachelor’s degree (any major) with a 3.0 – 4.0 GPA\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"July 2027\",\"month\":\"2027-07\"}],\"evidence\":[\"The anticipated start date is July 2027.\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Veeva does not provide sponsorship for employment visa status (e.g., H-1B, OPT, or TN status) for this employment position.\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"NYC\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"full-time\",\"season\":null,\"role_family\":\"data\"}"
+  ],
+  "error": null,
+  "inputTokens": 5815,
+  "outputTokens": 567,
+  "at": "2026-11-02T19:36:34.579Z"
+}

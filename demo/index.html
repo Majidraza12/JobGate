@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JobGate prototype</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #fff; --text: #1a1d23; --muted: #6b7280; --line: #e5e7eb;
+    --green: #15803d; --green-bg: #dcfce7; --red: #b91c1c; --red-bg: #fee2e2;
+    --amber: #a16207; --amber-bg: #fef3c7; --gray: #4b5563; --gray-bg: #f3f4f6;
+    --blue: #1d4ed8; --blue-bg: #dbeafe; --accent: #2563eb;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+  header { padding: 14px 20px; background: var(--panel); border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  header h1 { margin: 0; font-size: 18px; }
+  header span { color: var(--muted); font-size: 13px; }
+  main { display: grid; grid-template-columns: 280px minmax(0, 1fr) minmax(0, 1.1fr); gap: 16px; padding: 16px 20px; align-items: start; }
+  @media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
+  label { display: block; margin: 0 0 10px; font-size: 13px; }
+  label > span { display: block; color: var(--muted); margin-bottom: 3px; }
+  input, select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; font: inherit; background: #fff; }
+  .hint { font-size: 12px; color: var(--muted); margin: -6px 0 10px; }
+  .profile { position: sticky; top: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .chip { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 12px; }
+  .chip.on { border-color: var(--accent); background: var(--blue-bg); }
+  .toolbar { display: flex; gap: 8px; margin-bottom: 10px; }
+  .toolbar > * { flex: 1; }
+  .card { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; background: #fff; }
+  .card:hover { border-color: #c7cdd6; }
+  .card.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .row1 { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+  .title { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 12px; }
+  .quote { margin-top: 6px; font-size: 12.5px; color: #374151; border-left: 3px solid var(--line); padding-left: 8px; font-style: italic; }
+  .note { margin-top: 4px; font-size: 12px; color: var(--amber); }
+  .badge { white-space: nowrap; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 2px 9px; }
+  .v-eligible, .s-satisfied { color: var(--green); background: var(--green-bg); }
+  .v-not_eligible, .s-conflict { color: var(--red); background: var(--red-bg); }
+  .v-check, .s-unclear { color: var(--amber); background: var(--amber-bg); }
+  .v-no_restrictions_found { color: var(--blue); background: var(--blue-bg); }
+  .v-not_checked, .s-not_mentioned, .s-extraction_failed { color: var(--gray); background: var(--gray-bg); }
+  .s-extraction_failed { border: 1px dashed var(--gray); }
+  table { width: 100%; border-collapse: collapse; }
+  td { border-top: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+  td:first-child { width: 34%; font-weight: 500; }
+  .why { font-size: 13px; }
+  blockquote { margin: 4px 0 0; padding-left: 8px; border-left: 3px solid var(--line); font-size: 12.5px; color: #374151; }
+  .actions { display: flex; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--text); text-decoration: none; cursor: pointer; font: inherit; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  pre { white-space: pre-wrap; font: 12.5px/1.5 system-ui, sans-serif; background: var(--bg); padding: 10px; border-radius: 6px; max-height: 420px; overflow: auto; }
+  .empty { color: var(--muted); padding: 20px 0; text-align: center; }
+  .err { color: var(--red); font-size: 13px; }
+  .detail { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>JobGate</h1>
+  <span>Prototype: 60 real postings, already read by Claude (prompt <b id="pv">v4</b>). Matching runs locally; changing your profile costs nothing.</span>
+</header>
+<main>
+  <section class="profile">
+    <h2>Your profile</h2>
+    <form id="profile">
+      <label><span>Graduation month</span><input type="month" name="grad_month" value="2027-05" required></label>
+      <label><span>Degree</span>
+        <select name="degree"><option value="bs">Bachelor's</option><option value="ms">Master's</option><option value="phd">PhD</option></select></label>
+      <label><span>U.S. citizen?</span><select name="us_citizen"><option value="false">No</option><option value="true">Yes</option></select></label>
+      <label><span>Permanent resident (green card)?</span><select name="permanent_resident"><option value="false">No</option><option value="true">Yes</option></select></label>
+      <label><span>Authorized to work now without sponsorship?</span><select name="authorized_now_without_sponsorship"><option value="true">Yes</option><option value="false">No</option></select></label>
+      <div class="hint">Yes for citizens, green card holders, and e.g. F-1 OPT.</div>
+      <label><span>Will need sponsorship in the future (e.g. H-1B)?</span><select name="needs_sponsorship_future"><option value="false">No</option><option value="true">Yes</option></select></label>
+      <label><span>Security clearance</span>
+        <select name="clearance">
+          <option value="none">None</option><option value="prefer_not_to_say">Prefer not to say</option>
+          <option value="active:secret">Active: Secret</option><option value="active:top_secret">Active: Top Secret</option><option value="active:ts_sci">Active: TS/SCI</option>
+        </select></label>
+      <label><span>Start terms you can do</span><input name="starts" value="Summer 2027"></label>
+      <div class="hint">Comma separated, e.g. Summer 2027, Fall 2027</div>
+      <div id="perr" class="err"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Feed</h2>
+    <div class="chips" id="chips"></div>
+    <div class="toolbar">
+      <select id="jobType"><option value="">All job types</option><option value="internship">Internships and co-ops</option><option value="full-time">New grad full-time</option></select>
+      <input id="q" placeholder="Search company or title">
+    </div>
+    <div id="feed"></div>
+  </section>
+
+  <section class="detail" id="detail"><div class="empty">Pick a posting to see each requirement and the quote behind it.</div></section>
+</main>
+
+<script>
+const VERDICTS = {
+  eligible: { label: "Eligible", tip: "You meet every requirement this posting states that we evaluated. Not a guarantee from the employer." },
+  no_restrictions_found: { label: "No restrictions found", tip: "The posting doesn't state any of the requirements we check." },
+  check: { label: "Check", tip: "Something is unclear, or an internship doesn't state its graduation gate. Read the posting." },
+  not_checked: { label: "Not checked", tip: "We couldn't read this posting." },
+  not_eligible: { label: "Not eligible", tip: "The posting states a hard requirement you don't meet, with a verified quote." },
+};
+const ORDER = ["eligible", "no_restrictions_found", "check", "not_checked", "not_eligible"];
+const STATUS = { satisfied: "Meets", conflict: "Conflict", unclear: "Unclear", not_mentioned: "Not stated", extraction_failed: "Couldn't read" };
+const FIELDS = {
+  grad_requirements: "Graduation window", must_return_to_school: "Return to school", class_years: "Class year",
+  degree_levels: "Degree level", citizenship_required: "U.S. citizenship", us_person_required: "U.S. person (ITAR/EAR)",
+  sponsorship_now_unavailable: "No sponsorship now", sponsorship_future_unavailable: "No sponsorship later", clearance: "Security clearance",
+};
+
+let results = [], selected = null;
+const shown = new Set(["eligible", "no_restrictions_found", "check", "not_checked"]);
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+function readProfile() {
+  const f = new FormData($("profile"));
+  const c = f.get("clearance");
+  return {
+    grad_month: f.get("grad_month"), degree: f.get("degree"),
+    us_citizen: f.get("us_citizen") === "true", permanent_resident: f.get("permanent_resident") === "true",
+    authorized_now_without_sponsorship: f.get("authorized_now_without_sponsorship") === "true",
+    needs_sponsorship_future: f.get("needs_sponsorship_future") === "true",
+    clearance: c.startsWith("active:") ? { status: "active", level: c.slice(7) } : { status: c },
+    starts: String(f.get("starts")).split(",").map((s) => s.trim()).filter(Boolean),
+  };
+}
+
+// Per-browser convenience only; the server never stores the profile.
+function saveForm() { try { localStorage.setItem("jobgate-demo-profile", JSON.stringify(Object.fromEntries(new FormData($("profile"))))); } catch {} }
+function loadForm() {
+  try {
+    const v = JSON.parse(localStorage.getItem("jobgate-demo-profile") || "null");
+    if (v) for (const [k, x] of Object.entries(v)) if ($("profile").elements[k]) $("profile").elements[k].value = x;
+  } catch {}
+}
+
+async function refresh() {
+  saveForm();
+  const r = await fetch("/api/match", { method: "POST", body: JSON.stringify(readProfile()) });
+  const body = await r.json();
+  if (!r.ok) { $("perr").textContent = (body.errors || [body.error]).join("; "); return; }
+  $("perr").textContent = "";
+  $("pv").textContent = body.promptVersion;
+  results = body.results.sort((a, b) => (b.postedAt || "").localeCompare(a.postedAt || ""));
+  render();
+}
+
+// The card's deciding quote: the row that most drove the verdict.
+function decider(l) {
+  for (const s of ["conflict", "unclear", "satisfied"]) {
+    const row = l.rows.find((r) => r.status === s && r.evidence.length);
+    if (row) return row;
+  }
+  return null;
+}
+
+function secondaryNote(l) {
+  const failed = l.rows.filter((r) => r.status === "extraction_failed").length;
+  const unclear = l.rows.filter((r) => r.status === "unclear").length;
+  const parts = [];
+  if (l.verdict === "not_eligible" && unclear) parts.push(`${unclear} other requirement${unclear > 1 ? "s" : ""} unclear`);
+  if (l.verdict !== "not_checked" && failed) parts.push(`${failed} requirement${failed > 1 ? "s" : ""} couldn't be read`);
+  return parts.join(" · ");
+}
+
+function render() {
+  const q = $("q").value.trim().toLowerCase(), jt = $("jobType").value;
+  const base = results.filter((l) => (!jt || (jt === "internship" ? l.jobType !== "full-time" : l.jobType === jt)) && (!q || `${l.company} ${l.title}`.toLowerCase().includes(q)));
+  const count = (v) => base.filter((l) => l.verdict === v).length;
+  $("chips").innerHTML = ORDER.map((v) => `<button class="chip ${shown.has(v) ? "on" : ""}" data-v="${v}" title="${esc(VERDICTS[v].tip)}">${VERDICTS[v].label} (${count(v)})</button>`).join("");
+  const list = base.filter((l) => shown.has(l.verdict));
+  $("feed").innerHTML = list.length ? list.map((l) => {
+    const d = decider(l), note = secondaryNote(l);
+    return `<div class="card ${selected === l.id ? "sel" : ""}" data-id="${l.id}">
+      <div class="row1"><div><div class="title">${esc(l.title)}</div>
+        <div class="meta">${esc(l.company)} · ${esc(l.locations.join("; ") || "Location not loaded")} · ${l.jobType === "full-time" ? "New grad" : esc(l.jobType)}${l.postedAt ? " · " + l.postedAt : ""}</div></div>
+        <span class="badge v-${l.verdict}" title="${esc(VERDICTS[l.verdict].tip)}">${VERDICTS[l.verdict].label}</span></div>
+      ${d ? `<div class="quote">"${esc(d.evidence[0])}"</div>` : ""}
+      ${note ? `<div class="note">${esc(note)}</div>` : ""}
+    </div>`;
+  }).join("") : `<div class="empty">No postings match these filters.</div>`;
+  if (selected) renderDetail(results.find((l) => l.id === selected));
+}
+
+function renderDetail(l) {
+  if (!l) return;
+  $("detail").innerHTML = `
+    <div class="row1"><div><div class="title" style="font-size:16px">${esc(l.title)}</div><div class="meta">${esc(l.company)} · ${esc(l.locations.join("; ") || "")}</div></div>
+      <span class="badge v-${l.verdict}" title="${esc(VERDICTS[l.verdict].tip)}">${VERDICTS[l.verdict].label}</span></div>
+    <div class="meta" style="margin-top:6px">${esc(VERDICTS[l.verdict].tip)}</div>
+    <div class="actions"><a class="btn primary" href="${esc(l.applyUrl)}" target="_blank" rel="noopener">Open original posting</a>
+      <button class="btn" id="jdBtn">Show full posting text</button></div>
+    <table>${l.rows.map((r) => `<tr><td>${FIELDS[r.field] || r.field}<br><span class="badge s-${r.status}">${STATUS[r.status]}</span></td>
+      <td><div class="why">${esc(r.explanation)}</div>${r.evidence.map((e) => `<blockquote>"${esc(e)}"</blockquote>`).join("")}</td></tr>`).join("")}</table>
+    <div id="jd"></div>`;
+  $("jdBtn").onclick = async () => {
+    const r = await (await fetch(`/api/jd/${l.id}`)).json();
+    $("jd").innerHTML = `<h2 style="margin-top:14px">Posting text</h2><pre>${esc(r.jdText)}</pre>`;
+    $("jdBtn").remove();
+  };
+}
+
+$("chips").onclick = (e) => { const v = e.target.dataset?.v; if (!v) return; shown.has(v) ? shown.delete(v) : shown.add(v); render(); };
+$("feed").onclick = (e) => { const c = e.target.closest(".card"); if (!c) return; selected = c.dataset.id; render(); };
+$("q").oninput = render;
+$("jobType").onchange = render;
+$("profile").onchange = refresh;
+$("profile").oninput = (e) => { if (e.target.name === "starts") refresh(); };
+loadForm();
+refresh();
+</script>
+</body>
+</html>

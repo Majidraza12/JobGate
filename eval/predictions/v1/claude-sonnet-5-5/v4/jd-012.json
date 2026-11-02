@@ -1,0 +1,99 @@
+{
+  "id": "jd-012",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position."
+      ],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "pursuing an undergraduate degree in Engineering or other related fields"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "with a range of start dates between May 17, 2027, and June 21, 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee))"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 12098,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"If you are graduating with your bachelor's degree in Spring 2027 and/or starting a graduate degree program in Fall 2027, you will need to apply for Critical Infrastructure Analysis Graduate Intern - Cyber and Critical Infrastructure Summer Institute position.\"],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"pursuing an undergraduate degree in Engineering or other related fields\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Summer 2027\",\"month\":null}],\"evidence\":[\"with a range of start dates between May 17, 2027, and June 21, 2027\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"this work must be performed by a U.S. person (U.S. citizen, U.S. lawful permanent resident, U.S. national, or U.S. protected individual (e.g., refugee, asylee))\"],\"strength\":\"required\"},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":\"Summer 2027\",\"role_family\":\"other\"}"
+  ],
+  "error": null,
+  "inputTokens": 6019,
+  "outputTokens": 1514,
+  "at": "2026-11-02T19:34:03.927Z"
+}

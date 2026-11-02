@@ -1,0 +1,93 @@
+{
+  "id": "jd-035",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "A Bachelor's or Associate’s degree in Computer Science or related field.",
+        "Bachalors/Masters in computer science"
+      ],
+      "strength": null
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": "secret"
+      },
+      "evidence": [
+        "Possess a SECRET clearance or have the ability to obtain one.",
+        "Must have at least an interim SECRET to begin work on the contract."
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": null,
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 9593,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"A Bachelor's or Associate’s degree in Computer Science or related field.\",\"Bachalors/Masters in computer science\"],\"strength\":null},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"stated\",\"value\":{\"required\":\"ability_to_obtain\",\"level\":\"secret\"},\"evidence\":[\"Possess a SECRET clearance or have the ability to obtain one.\",\"Must have at least an interim SECRET to begin work on the contract.\"],\"strength\":\"required\"},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":null},\"employment_type\":null,\"season\":null,\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 4648,
+  "outputTokens": 1152,
+  "at": "2026-11-02T19:37:34.753Z"
+}

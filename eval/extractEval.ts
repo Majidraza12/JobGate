@@ -6,11 +6,13 @@
 //   npm run eval:extract                 score what's cached; no API calls
 //   npm run eval:extract -- --live       predict missing labeled JDs, then score
 //   npm run eval:extract -- --dataset v1 --cap 1
+//   npm run eval:extract -- --via-cli --model sonnet   predict through `claude -p` on the subscription ($0)
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import * as db from "../pipeline/db";
 import { extractOne } from "../pipeline/extract/extract";
+import { claudeCliClient, CLI_MODELS, type CliModelName } from "../pipeline/extract/claudeCli";
 import { anthropicClient, MODEL } from "../pipeline/extract/llm";
 import { PROMPT_VERSION } from "../pipeline/extract/prompt";
 import { DEFAULT_DAILY_CAP_USD, SpendGuard } from "../pipeline/extract/spend";
@@ -22,9 +24,18 @@ const { values: args } = parseArgs({
   options: {
     dataset: { type: "string", default: "v1" },
     live: { type: "boolean", default: false },
+    "via-cli": { type: "boolean", default: false },
+    model: { type: "string" },
     cap: { type: "string" },
   },
 });
+
+if (args.live && args["via-cli"]) throw new Error("pick one of --live and --via-cli");
+if (args.model !== undefined && !(args.model in CLI_MODELS)) throw new Error(`--model must be one of ${Object.keys(CLI_MODELS).join(", ")}`);
+// The model whose predictions are scored. Without --model it is the pinned API model.
+const model = args.model === undefined ? MODEL : CLI_MODELS[args.model as CliModelName];
+if (args.live && model !== MODEL) throw new Error(`--live only runs the pinned API model ${MODEL}`);
+const predict = args.live || args["via-cli"];
 
 const root = new URL("./", import.meta.url);
 const dataset = Dataset.parse(JSON.parse(readFileSync(new URL(`dataset/${args.dataset}.json`, root), "utf8")));
@@ -32,7 +43,7 @@ const labelDir = new URL(`labels/${dataset.version}/`, root);
 const labels = existsSync(labelDir)
   ? readdirSync(labelDir).filter((f) => f.endsWith(".json")).map((f) => Label.parse(JSON.parse(readFileSync(new URL(f, labelDir), "utf8"))))
   : [];
-const predDir = new URL(`predictions/${dataset.version}/${MODEL}/${PROMPT_VERSION}/`, root);
+const predDir = new URL(`predictions/${dataset.version}/${model}/${PROMPT_VERSION}/`, root);
 mkdirSync(predDir, { recursive: true });
 
 type StoredPrediction = Prediction & { responses: string[]; error: string | null; inputTokens: number; outputTokens: number; at: string };
@@ -44,19 +55,19 @@ const loadPrediction = (id: string): StoredPrediction | null => {
 const items = new Map(dataset.items.map((i) => [i.id, i]));
 const missing = labels.filter((l) => !loadPrediction(l.id));
 
-if (missing.length && args.live) {
+if (missing.length && predict) {
   const cap = Number(args.cap ?? process.env.EXTRACT_DAILY_CAP_USD ?? DEFAULT_DAILY_CAP_USD);
-  const llm = anthropicClient();
+  const llm = args["via-cli"] ? claudeCliClient(model) : anthropicClient();
   const client = await db.connect();
   try {
     if (!(await db.tryLock(client))) throw new Error("another pipeline run holds the lock");
     const guard = new SpendGuard(cap, await db.spentTodayUsd(client));
-    const runId = await db.startExtractionRun(client, MODEL, PROMPT_VERSION);
+    const runId = await db.startExtractionRun(client, model, PROMPT_VERSION);
     let done = 0;
     let status: "succeeded" | "cap_reached" = "succeeded";
     for (const l of missing) {
       const item = items.get(l.id)!;
-      if (!guard.canAfford(MODEL, item.jdText)) {
+      if (!llm.subscription && !guard.canAfford(model, item.jdText)) {
         status = "cap_reached";
         console.log(`Daily cap $${cap} reached after ${done} predictions (spent $${guard.spent.toFixed(4)} today). Rerun tomorrow or raise --cap.`);
         break;
@@ -89,7 +100,7 @@ if (missing.length && args.live) {
 
 const predictions = labels.map((l) => loadPrediction(l.id)).filter((p): p is StoredPrediction => p !== null);
 const stillMissing = labels.length - predictions.length;
-if (stillMissing) console.log(`${stillMissing} labeled JDs have no prediction yet${args.live ? "" : " (run with --live to create them)"}.`);
+if (stillMissing) console.log(`${stillMissing} labeled JDs have no prediction yet${predict ? "" : " (run with --live or --via-cli to create them)"}.`);
 if (!predictions.length) {
   console.log(`Nothing to score: ${labels.length} labels, 0 predictions.`);
   process.exit(0);
@@ -100,14 +111,14 @@ const date = new Date().toISOString().slice(0, 10);
 const results = {
   kind: "extraction",
   date,
-  model: MODEL,
+  model,
   promptVersion: PROMPT_VERSION,
   datasetVersion: dataset.version,
   datasetSeed: dataset.seed,
   ...report,
 };
 mkdirSync(new URL("results/", root), { recursive: true });
-const outName = `results/${date}-extract-${dataset.version}-${MODEL}-${PROMPT_VERSION}.json`;
+const outName = `results/${date}-extract-${dataset.version}-${model}-${PROMPT_VERSION}.json`;
 writeFileSync(new URL(outName, root), JSON.stringify(results, null, 2) + "\n");
 
 const pct = (p: Proportion) =>

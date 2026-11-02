@@ -11,8 +11,16 @@ const PIPELINE_LOCK = 7_243_001;
 
 const CHUNK = 1000;
 
+// Hosted Supabase requires TLS; the local CLI database has none. Certificate
+// checks are off (same as syncHosted.ts) because Supabase's CA is not in
+// Node's default store; the connection is still encrypted.
+export function sslFor(url: string): false | { rejectUnauthorized: false } {
+  const host = new URL(url).hostname;
+  return host === "127.0.0.1" || host === "localhost" ? false : { rejectUnauthorized: false };
+}
+
 export async function connect(url = process.env.DATABASE_URL ?? LOCAL_DATABASE_URL) {
-  const client = new pg.Client({ connectionString: url });
+  const client = new pg.Client({ connectionString: url, ssl: sslFor(url) });
   await client.connect();
   return client;
 }

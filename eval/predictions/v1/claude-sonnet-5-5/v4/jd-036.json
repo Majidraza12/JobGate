@@ -1,0 +1,100 @@
+{
+  "id": "jd-036",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "new grads who have who have graduated from a four-year university"
+      ],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "Hold a B.S. or M.S. in electrical engineering, computer science, computer engineering, or equivalent"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Winter 2027",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "FPGA Associate (Winter 2027)"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual as defined by 8 U.S.C. 1324b(a)(3)"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": null,
+    "season": "Winter 2027",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 11773,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"new grads who have who have graduated from a four-year university\"],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"Hold a B.S. or M.S. in electrical engineering, computer science, computer engineering, or equivalent\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Winter 2027\",\"month\":null}],\"evidence\":[\"FPGA Associate (Winter 2027)\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"applicant must be a U.S. citizen, lawful permanent resident of the United States, or other protected individual as defined by 8 U.S.C. 1324b(a)(3)\"],\"strength\":\"required\"},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":null},\"employment_type\":null,\"season\":\"Winter 2027\",\"role_family\":\"other\"}"
+  ],
+  "error": null,
+  "inputTokens": 4951,
+  "outputTokens": 1381,
+  "at": "2026-11-02T19:37:46.527Z"
+}
