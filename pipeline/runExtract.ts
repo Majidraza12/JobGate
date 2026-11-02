@@ -57,7 +57,7 @@ export async function runExtract(o: ExtractOptions): Promise<ExtractResult> {
     counts.listingsCovered = targets.reduce((a, t) => a + t.listings, 0);
 
     if (o.dryRun) {
-      const worst = targets.reduce((a, t) => a + worstCaseUsd(o.llm.model, t.jdText), 0);
+      const worst = o.llm.subscription ? 0 : targets.reduce((a, t) => a + worstCaseUsd(o.llm.model, t.jdText), 0);
       if (log) {
         console.log(`${targets.length} distinct JDs to extract (${counts.listingsCovered} listings), prompt ${PROMPT_VERSION}, ${o.llm.model}`);
         console.log(`Worst-case cost (two calls at max output each): $${worst.toFixed(2)}. Typical cost is far lower.`);
@@ -75,7 +75,7 @@ export async function runExtract(o: ExtractOptions): Promise<ExtractResult> {
     let capped = false;
     try {
       for (const t of targets) {
-        if (!guard.canAfford(o.llm.model, t.jdText)) {
+        if (!o.llm.subscription && !guard.canAfford(o.llm.model, t.jdText)) {
           capped = true;
           counts.skippedForCap = targets.length - (counts.ok + counts.llm_failed + counts.schema_invalid);
           if (log) console.log(`Daily cap $${o.capUsd} reached (spent $${guard.spent.toFixed(4)} today). Stopping.`);

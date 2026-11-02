@@ -29,6 +29,9 @@ export interface LlmResponse {
 
 export interface LlmClient {
   model: string;
+  // True when calls run on a flat-rate subscription (claude -p), not the paid
+  // API: cost is recorded as $0 and the daily spend cap does not apply.
+  subscription?: boolean;
   complete(system: string, turns: Turn[]): Promise<LlmResponse>;
 }
 
