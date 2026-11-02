@@ -4,6 +4,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 
 export const MODEL = "claude-haiku-4-5-20251001";
+
+// The model whose stored results the app shows (decision 2026-11-02: Sonnet
+// via claude -p). MODEL above stays the pinned model for the paid API path.
+export const PRODUCTION_MODEL = "claude-sonnet-5-5";
 export const MAX_OUTPUT_TOKENS = 8000;
 
 // USD per million tokens, standard (non-batch) rates. Checked 2026-10-28;

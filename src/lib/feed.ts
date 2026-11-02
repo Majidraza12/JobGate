@@ -5,7 +5,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { match, type JobType, type MatchResult, type StoredRequirements } from "@core/match";
 import type { StoredExtraction } from "@core/requirements";
 import type { EligibilityProfile } from "@core/profile";
-import { MODEL } from "../../pipeline/extract/llm";
+import { PRODUCTION_MODEL } from "../../pipeline/extract/llm";
 import { PROMPT_VERSION } from "../../pipeline/extract/prompt";
 
 export const LISTING_COLUMNS = "id, company, title, locations, job_type, posted_at, apply_url, jd_hash, jd_fetch_status, remote";
@@ -46,7 +46,7 @@ export async function all<T>(query: (from: number, to: number) => PromiseLike<{ 
 }
 
 export async function loadRequirements(supabase: SupabaseClient, hashes?: string[]) {
-  let q = supabase.from("requirements").select("jd_hash, extraction_status, extracted").eq("prompt_version", PROMPT_VERSION).eq("model", MODEL);
+  let q = supabase.from("requirements").select("jd_hash, extraction_status, extracted").eq("prompt_version", PROMPT_VERSION).eq("model", PRODUCTION_MODEL);
   if (hashes) q = q.in("jd_hash", hashes);
   const rows = await all<RequirementRow>((from, to) => q.range(from, to));
   return new Map(rows.map((r) => [r.jd_hash, r]));
