@@ -1,0 +1,106 @@
+{
+  "id": "jd-003",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "May 24 - Aug 20, 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "May 24 - Aug 27, 2027",
+          "month": "2027-05"
+        },
+        {
+          "label": "June 7 - Sep 3, 2027",
+          "month": "2027-06"
+        }
+      ],
+      "evidence": [
+        "May 24 - Aug 20, 2027",
+        "May 24 - Aug 27, 2027",
+        "June 7 - Sep 3, 2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "to conform to US export control regulations, some of these roles may require candidates to be eligible for any required authorizations from the US government"
+      ],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "New York",
+        "Boston"
+      ],
+      "remote": null,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 9367,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"May 24 - Aug 20, 2027\",\"month\":\"2027-05\"},{\"label\":\"May 24 - Aug 27, 2027\",\"month\":\"2027-05\"},{\"label\":\"June 7 - Sep 3, 2027\",\"month\":\"2027-06\"}],\"evidence\":[\"May 24 - Aug 20, 2027\",\"May 24 - Aug 27, 2027\",\"June 7 - Sep 3, 2027\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"to conform to US export control regulations, some of these roles may require candidates to be eligible for any required authorizations from the US government\"],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"New York\",\"Boston\"],\"remote\":null,\"hybrid\":true},\"employment_type\":\"internship\",\"season\":\"Summer 2027\",\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 5270,
+  "outputTokens": 1365,
+  "at": "2026-11-02T19:32:49.754Z"
+}

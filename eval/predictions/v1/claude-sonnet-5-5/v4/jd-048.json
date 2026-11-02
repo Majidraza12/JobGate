@@ -1,0 +1,107 @@
+{
+  "id": "jd-048",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": null,
+          "latest": "2029-08",
+          "evidence": [
+            "Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029"
+          ]
+        }
+      ],
+      "evidence": [
+        "Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": "secret"
+      },
+      "evidence": [
+        "Ability to obtain a Secret clearance"
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "Annapolis Junction, MD"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "internship",
+    "season": "Summer 2027",
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 10282,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"stated\",\"value\":[{\"applies_to_degrees\":null,\"applies_to_start\":null,\"earliest\":null,\"latest\":\"2029-08\",\"evidence\":[\"Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029\"]}],\"evidence\":[\"Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field by Summer 2028 or Summer 2029\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Scheduled to obtain a Bachelor’s degree in a Technology, Engineering, or Mathematics field\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"stated\",\"value\":{\"required\":\"ability_to_obtain\",\"level\":\"secret\"},\"evidence\":[\"Ability to obtain a Secret clearance\"],\"strength\":\"required\"},\"locations\":{\"cities\":[\"Annapolis Junction, MD\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"internship\",\"season\":\"Summer 2027\",\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 5133,
+  "outputTokens": 1361,
+  "at": "2026-11-02T19:39:22.076Z"
+}

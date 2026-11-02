@@ -1,0 +1,123 @@
+{
+  "id": "jd-027",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-05",
+          "latest": null,
+          "evidence": [
+            "must not have a graduation date prior to the start of the co-op term",
+            "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+          ]
+        }
+      ],
+      "evidence": [
+        "must not have a graduation date prior to the start of the co-op term",
+        "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "stated",
+      "value": [
+        "sophomore",
+        "junior",
+        "senior",
+        "masters"
+      ],
+      "evidence": [
+        "class standing of a sophomore or above"
+      ],
+      "strength": "required"
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs",
+        "ms"
+      ],
+      "evidence": [
+        "pursuing a Bachelor’s or Master’s degree in Engineering"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer 2027",
+          "month": "2027-05"
+        }
+      ],
+      "evidence": [
+        "The Summer 2027 term dates are from 05/10/2027 – 08/13/2027"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future"
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Cincinnati, OH"
+      ],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": "co-op",
+    "season": "Summer 2027",
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 14499,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"stated\",\"value\":[{\"applies_to_degrees\":null,\"applies_to_start\":null,\"earliest\":\"2027-05\",\"latest\":null,\"evidence\":[\"must not have a graduation date prior to the start of the co-op term\",\"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\"]}],\"evidence\":[\"must not have a graduation date prior to the start of the co-op term\",\"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"stated\",\"value\":[\"sophomore\",\"junior\",\"senior\",\"masters\"],\"evidence\":[\"class standing of a sophomore or above\"],\"strength\":\"required\"},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\",\"ms\"],\"evidence\":[\"pursuing a Bachelor’s or Master’s degree in Engineering\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Summer 2027\",\"month\":\"2027-05\"}],\"evidence\":[\"The Summer 2027 term dates are from 05/10/2027 – 08/13/2027\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"must not require sponsorship of an employment visa (e.g., H-1B or green card) at the time of application or in the future\"],\"strength\":\"required\"},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Cincinnati, OH\"],\"remote\":null,\"hybrid\":null},\"employment_type\":\"co-op\",\"season\":\"Summer 2027\",\"role_family\":\"data\"}"
+  ],
+  "error": null,
+  "inputTokens": 6696,
+  "outputTokens": 1883,
+  "at": "2026-11-02T19:36:22.621Z"
+}

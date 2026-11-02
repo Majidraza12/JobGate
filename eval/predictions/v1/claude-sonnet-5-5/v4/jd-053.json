@@ -1,0 +1,113 @@
+{
+  "id": "jd-053",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "stated",
+      "value": [
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2026-12",
+          "latest": "2026-12",
+          "evidence": [
+            "Graduating in Dec 2026 or May 2027 (U.S.)"
+          ]
+        },
+        {
+          "applies_to_degrees": null,
+          "applies_to_start": null,
+          "earliest": "2027-05",
+          "latest": "2027-05",
+          "evidence": [
+            "Graduating in Dec 2026 or May 2027 (U.S.)"
+          ]
+        }
+      ],
+      "evidence": [
+        "Graduating in Dec 2026 or May 2027 (U.S.)"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Enrollment in a 4-year undergraduate degree program"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Does not require sponsorship for employment visa status (now or in the future) in the country where applying."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Does not require sponsorship for employment visa status (now or in the future) in the country where applying."
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [],
+      "remote": null,
+      "hybrid": null
+    },
+    "employment_type": null,
+    "season": null,
+    "role_family": "data"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 8770,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"stated\",\"value\":[{\"applies_to_degrees\":null,\"applies_to_start\":null,\"earliest\":\"2026-12\",\"latest\":\"2026-12\",\"evidence\":[\"Graduating in Dec 2026 or May 2027 (U.S.)\"]},{\"applies_to_degrees\":null,\"applies_to_start\":null,\"earliest\":\"2027-05\",\"latest\":\"2027-05\",\"evidence\":[\"Graduating in Dec 2026 or May 2027 (U.S.)\"]}],\"evidence\":[\"Graduating in Dec 2026 or May 2027 (U.S.)\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Enrollment in a 4-year undergraduate degree program\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Does not require sponsorship for employment visa status (now or in the future) in the country where applying.\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Does not require sponsorship for employment visa status (now or in the future) in the country where applying.\"],\"strength\":\"required\"},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[],\"remote\":null,\"hybrid\":null},\"employment_type\":null,\"season\":null,\"role_family\":\"data\"}"
+  ],
+  "error": null,
+  "inputTokens": 5379,
+  "outputTokens": 1270,
+  "at": "2026-11-02T19:40:04.241Z"
+}

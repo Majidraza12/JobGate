@@ -1,0 +1,102 @@
+{
+  "id": "jd-019",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program."
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "Summer",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "11-week paid summer internship program (May 17 – July 30)"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "Applicants must be authorized to work for any employer in the United States.",
+        "We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT)."
+      ],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Phoenix, AZ",
+        "Fairfield, IA",
+        "West Des Moines"
+      ],
+      "remote": false,
+      "hybrid": false
+    },
+    "employment_type": "internship",
+    "season": "Summer",
+    "role_family": "other"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 12298,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Current undergraduate student pursuing Information Technology, Computer Information Systems, Computer Science, Network or Systems Administration, Cybersecurity, Data Analytics, Software Engineering, or a related technology program.\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"Summer\",\"month\":null}],\"evidence\":[\"11-week paid summer internship program (May 17 – July 30)\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"Applicants must be authorized to work for any employer in the United States.\",\"We are unable to accommodate temporary student work authorizations, including initial Curricular Practical Training (CPT) and Optional Practical Training (OPT).\"],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Phoenix, AZ\",\"Fairfield, IA\",\"West Des Moines\"],\"remote\":false,\"hybrid\":false},\"employment_type\":\"internship\",\"season\":\"Summer\",\"role_family\":\"other\"}"
+  ],
+  "error": null,
+  "inputTokens": 5049,
+  "outputTokens": 1555,
+  "at": "2026-11-02T19:34:56.413Z"
+}

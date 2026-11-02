@@ -1,0 +1,97 @@
+{
+  "id": "jd-055",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "completed by the start date"
+      ],
+      "strength": "required"
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor’s degree in Computer Science"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Currently a US Citizen with capability to obtain and maintain a US Q clearance."
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "ability_to_obtain",
+        "level": null
+      },
+      "evidence": [
+        "capability to obtain and maintain a US Q clearance"
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [],
+      "remote": false,
+      "hybrid": false
+    },
+    "employment_type": null,
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 8041,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"completed by the start date\"],\"strength\":\"required\"},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Bachelor’s degree in Computer Science\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Currently a US Citizen with capability to obtain and maintain a US Q clearance.\"],\"strength\":\"required\"},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"stated\",\"value\":{\"required\":\"ability_to_obtain\",\"level\":null},\"evidence\":[\"capability to obtain and maintain a US Q clearance\"],\"strength\":\"required\"},\"locations\":{\"cities\":[],\"remote\":false,\"hybrid\":false},\"employment_type\":null,\"season\":null,\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 5403,
+  "outputTokens": 1207,
+  "at": "2026-11-02T19:40:19.673Z"
+}

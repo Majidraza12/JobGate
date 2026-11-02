@@ -1,0 +1,97 @@
+{
+  "id": "jd-030",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "start_options": {
+      "status": "stated",
+      "value": [
+        {
+          "label": "June",
+          "month": null
+        }
+      ],
+      "evidence": [
+        "expected to begin in June and end in August"
+      ],
+      "strength": "required"
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Candidate must be a US citizen"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "ambiguous",
+      "value": null,
+      "evidence": [
+        "be authorized to work in the U.S."
+      ],
+      "strength": null
+    },
+    "sponsorship_future_unavailable": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "clearance": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "locations": {
+      "cities": [
+        "Reston, VA"
+      ],
+      "remote": null,
+      "hybrid": true
+    },
+    "employment_type": "internship",
+    "season": null,
+    "role_family": "ml"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 9853,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"start_options\":{\"status\":\"stated\",\"value\":[{\"label\":\"June\",\"month\":null}],\"evidence\":[\"expected to begin in June and end in August\"],\"strength\":\"required\"},\"citizenship_required\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Candidate must be a US citizen\"],\"strength\":\"required\"},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"ambiguous\",\"value\":null,\"evidence\":[\"be authorized to work in the U.S.\"],\"strength\":null},\"sponsorship_future_unavailable\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"clearance\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"locations\":{\"cities\":[\"Reston, VA\"],\"remote\":null,\"hybrid\":true},\"employment_type\":\"internship\",\"season\":null,\"role_family\":\"ml\"}"
+  ],
+  "error": null,
+  "inputTokens": 5781,
+  "outputTokens": 1021,
+  "at": "2026-11-02T19:36:44.435Z"
+}

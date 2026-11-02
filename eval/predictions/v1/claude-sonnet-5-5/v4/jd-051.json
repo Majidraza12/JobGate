@@ -1,0 +1,101 @@
+{
+  "id": "jd-051",
+  "status": "ok",
+  "extracted": {
+    "grad_requirements": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "must_return_to_school": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "class_years": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "degree_levels": {
+      "status": "stated",
+      "value": [
+        "bs"
+      ],
+      "evidence": [
+        "Bachelor’s Degree in Engineering, Mathematics, Computer Science or Information Systems required"
+      ],
+      "strength": "required"
+    },
+    "start_options": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "citizenship_required": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Must be a U.S. Citizen"
+      ],
+      "strength": "required"
+    },
+    "us_person_required": {
+      "status": "not_mentioned",
+      "value": null,
+      "evidence": [],
+      "strength": null
+    },
+    "sponsorship_now_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States."
+      ],
+      "strength": "required"
+    },
+    "sponsorship_future_unavailable": {
+      "status": "stated",
+      "value": true,
+      "evidence": [
+        "Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States."
+      ],
+      "strength": "required"
+    },
+    "clearance": {
+      "status": "stated",
+      "value": {
+        "required": "active",
+        "level": "top_secret"
+      },
+      "evidence": [
+        "Must hold Top Secret Clearance"
+      ],
+      "strength": "required"
+    },
+    "locations": {
+      "cities": [
+        "DC"
+      ],
+      "remote": false,
+      "hybrid": null
+    },
+    "employment_type": null,
+    "season": null,
+    "role_family": "swe"
+  },
+  "quoteFailures": 0,
+  "costUsd": 0,
+  "latencyMs": 8087,
+  "responses": [
+    "{\"grad_requirements\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"must_return_to_school\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"class_years\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"degree_levels\":{\"status\":\"stated\",\"value\":[\"bs\"],\"evidence\":[\"Bachelor’s Degree in Engineering, Mathematics, Computer Science or Information Systems required\"],\"strength\":\"required\"},\"start_options\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"citizenship_required\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Must be a U.S. Citizen\"],\"strength\":\"required\"},\"us_person_required\":{\"status\":\"not_mentioned\",\"value\":null,\"evidence\":[],\"strength\":null},\"sponsorship_now_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.\"],\"strength\":\"required\"},\"sponsorship_future_unavailable\":{\"status\":\"stated\",\"value\":true,\"evidence\":[\"Applicants for employment in the US must have work authorization that does not now or in the future require sponsorship of a visa for employment authorization in the United States.\"],\"strength\":\"required\"},\"clearance\":{\"status\":\"stated\",\"value\":{\"required\":\"active\",\"level\":\"top_secret\"},\"evidence\":[\"Must hold Top Secret Clearance\"],\"strength\":\"required\"},\"locations\":{\"cities\":[\"DC\"],\"remote\":false,\"hybrid\":null},\"employment_type\":null,\"season\":null,\"role_family\":\"swe\"}"
+  ],
+  "error": null,
+  "inputTokens": 5730,
+  "outputTokens": 1140,
+  "at": "2026-11-02T19:39:46.112Z"
+}
