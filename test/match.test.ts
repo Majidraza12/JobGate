@@ -1,7 +1,7 @@
 // Matching engine: every case CLAUDE.md section 12 requires.
 import { describe, expect, it } from "vitest";
 import { classYearAt, match, parseStart, type JobType, type StoredRequirements } from "@core/match";
-import { EligibilityProfile } from "@core/profile";
+import { EligibilityProfile, START_TERMS } from "@core/profile";
 import type { StoredExtraction } from "@core/requirements";
 import { blank } from "./helpers/extraction";
 
@@ -307,5 +307,11 @@ describe("verdict precedence", () => {
 
   it("start_options has no row of its own", () => {
     expect(run({}).rows.map((r) => r.field)).not.toContain("start_options");
+  });
+});
+
+describe("START_TERMS", () => {
+  it("are all named terms the matcher understands", () => {
+    for (const t of START_TERMS) expect(parseStart(t)?.kind, t).toBe("term");
   });
 });

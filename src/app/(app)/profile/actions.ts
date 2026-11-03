@@ -3,16 +3,12 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { START_TERMS } from "@core/profile";
 import { createClient } from "@/lib/supabase/server";
 
 export type ProfileState = { error: string | null };
 
 const yesNo = z.enum(["yes", "no"]).transform((v) => v === "yes");
-const list = (s: string) =>
-  s
-    .split(",")
-    .map((x) => x.trim())
-    .filter(Boolean);
 
 const Form = z.object({
   grad_month: z.string().optional(),
@@ -23,14 +19,14 @@ const Form = z.object({
   authorized_now_without_sponsorship: yesNo.optional(),
   needs_sponsorship_future: yesNo.optional(),
   clearance: z.enum(["none", "prefer_not_to_say", "active:secret", "active:top_secret", "active:ts_sci"]),
-  starts: z.string(),
+  starts: z.array(z.enum(START_TERMS)),
   job_types: z.array(z.enum(["internship", "co-op", "new_grad"])).min(1, "Pick at least one job type."),
   locations: z.array(z.string().trim().min(1).max(80)).max(20, "Pick up to 20 cities."),
   remote_ok: z.literal("on").optional(),
 });
 
 export async function saveProfile(_prev: ProfileState, form: FormData): Promise<ProfileState> {
-  const parsed = Form.safeParse({ ...Object.fromEntries(form), job_types: form.getAll("job_types"), locations: form.getAll("locations") });
+  const parsed = Form.safeParse({ ...Object.fromEntries(form), job_types: form.getAll("job_types"), locations: form.getAll("locations"), starts: form.getAll("starts") });
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Check the form." };
   const f = parsed.data;
   // No degree means no graduation month; any degree needs one.
@@ -57,7 +53,7 @@ export async function saveProfile(_prev: ProfileState, form: FormData): Promise<
     needs_sponsorship_future: citizenOrPr ? false : f.needs_sponsorship_future === true,
     clearance_status: status,
     clearance_level: level ?? null,
-    starts: list(f.starts),
+    starts: f.starts,
     job_types: f.job_types,
     locations: f.locations,
     remote_ok: f.remote_ok === "on",
