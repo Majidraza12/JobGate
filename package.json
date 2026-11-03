@@ -16,6 +16,7 @@
     "db:reset": "supabase db reset",
     "fetch-jds": "tsx --env-file-if-exists=.env pipeline/fetchJds.ts",
     "extract": "tsx --env-file-if-exists=.env pipeline/extractCli.ts",
+    "extract:hosted": "tsx --env-file=.env pipeline/extractCli.ts --hosted --via-cli --model sonnet",
     "eval:sample": "tsx eval/sampleCli.ts",
     "label": "tsx eval/labelServer.ts",
     "demo": "tsx demo/server.ts",

@@ -2,6 +2,7 @@
 //
 //   npm run extract -- --dry-run                     count JDs to extract and the worst-case API cost
 //   npm run extract -- --via-cli --model haiku       run through `claude -p` on the subscription ($0)
+//   npm run extract:hosted -- --limit 360            Sonnet via claude -p, straight into hosted Supabase
 //   npm run extract -- --live --limit 5              call the paid Claude API (needs ANTHROPIC_API_KEY)
 //   npm run extract -- --live --cap 0.5              daily cap in USD (default 1, or EXTRACT_DAILY_CAP_USD)
 //
@@ -18,6 +19,7 @@ const { values: args } = parseArgs({
     "dry-run": { type: "boolean", default: false },
     live: { type: "boolean", default: false },
     "via-cli": { type: "boolean", default: false },
+    hosted: { type: "boolean", default: false },
     model: { type: "string", default: "haiku" },
     limit: { type: "string" },
     cap: { type: "string" },
@@ -38,6 +40,10 @@ if (!(args.model in CLI_MODELS)) {
 }
 const cliModel = CLI_MODELS[args.model as CliModelName];
 
+// --hosted writes to the hosted project (HOSTED_DATABASE_URL in .env) instead of DATABASE_URL.
+const databaseUrl = args.hosted ? process.env.HOSTED_DATABASE_URL : undefined;
+if (args.hosted && !databaseUrl) throw new Error("--hosted needs HOSTED_DATABASE_URL in .env");
+
 const cap = Number(args.cap ?? process.env.EXTRACT_DAILY_CAP_USD ?? DEFAULT_DAILY_CAP_USD);
 if (!(cap > 0)) throw new Error(`invalid cap ${args.cap}`);
 
@@ -53,5 +59,6 @@ const result = await runExtract({
   capUsd: cap,
   limit: args.limit === undefined ? null : Number.parseInt(args.limit, 10),
   dryRun: args["dry-run"],
+  databaseUrl,
 });
 process.exitCode = result.status === "failed" ? 1 : 0;
