@@ -280,7 +280,8 @@ export async function extractionTargets(
          where r.jd_hash = l.jd_hash and r.prompt_version = $2 and r.model = $1
            and r.extraction_status <> 'llm_failed')
      group by l.jd_hash
-     order by min(l.id)
+     -- Newest postings first: users apply to recent jobs, so those matter most.
+     order by max(l.posted_at) desc nulls last, min(l.id)
      limit $3`,
     [model, promptVersion, limit],
   );

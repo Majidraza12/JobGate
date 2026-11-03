@@ -93,6 +93,20 @@ describe.skipIf(!up)("extract step against Postgres", () => {
   const reqs = async () =>
     (await db.query("select jd_hash, extraction_status, prompt_version, model from requirements order by jd_hash")).rows;
 
+  it("stops after 3 model failures in a row, leaving the rest for the next run", async () => {
+    for (let i = 0; i < 5; i++) await addListing(`Intern posting number ${i}. `.repeat(10));
+    const { llm, calls } = fakeLlm(() => "throw");
+    const r = await extract(llm);
+    expect(calls).toHaveLength(3);
+    expect(r.status).toBe("partial");
+    expect(r.counts).toMatchObject({ targets: 5, llm_failed: 3 });
+    // A success in between resets the streak.
+    let k = 0;
+    const flaky = fakeLlm(() => (++k === 3 ? "ok" : "throw"));
+    const r2 = await extract(flaky.llm);
+    expect(r2.counts).toMatchObject({ ok: 1, llm_failed: 4 });
+  });
+
   it("extracts each distinct JD once, shared by listings with identical text", async () => {
     await addListing(JD_A);
     await addListing(JD_A);

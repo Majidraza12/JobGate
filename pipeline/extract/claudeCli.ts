@@ -7,13 +7,13 @@
 
 import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
-import type { LlmClient, LlmResponse, Turn } from "./llm";
+import { PRODUCTION_MODEL, type LlmClient, type LlmResponse, type Turn } from "./llm";
 
 // Models Majid compares in the eval. Full ids, so stored rows say exactly
 // which model produced them.
 export const CLI_MODELS = {
   haiku: "claude-haiku-4-5-20251001",
-  sonnet: "claude-sonnet-5-5",
+  sonnet: PRODUCTION_MODEL,
 } as const;
 export type CliModelName = keyof typeof CLI_MODELS;
 

@@ -9,6 +9,11 @@ import type { LlmClient } from "./extract/llm";
 import { PROMPT_VERSION } from "./extract/prompt";
 import { SpendGuard, worstCaseUsd } from "./extract/spend";
 
+// Stop after this many llm_failed results in a row. A run that hits the
+// subscription's usage limit (or loses the network) would otherwise mark the
+// whole queue failed in seconds; the failed rows are retried next run anyway.
+export const MAX_CONSECUTIVE_FAILURES = 3;
+
 export interface ExtractOptions {
   llm: LlmClient;
   capUsd: number;
@@ -73,6 +78,8 @@ export async function runExtract(o: ExtractOptions): Promise<ExtractResult> {
     const runId = await db.startExtractionRun(client, o.llm.model, PROMPT_VERSION);
     const errors: object[] = [];
     let capped = false;
+    let streak = 0;
+    let stopped = false;
     try {
       for (const t of targets) {
         if (!o.llm.subscription && !guard.canAfford(o.llm.model, t.jdText)) {
@@ -106,8 +113,14 @@ export async function runExtract(o: ExtractOptions): Promise<ExtractResult> {
         for (const f of r.quoteFailures) if (errors.length < 100) errors.push({ kind: "quote_failure", jdHash: t.jdHash, ...f });
         if (r.status !== "ok" && errors.length < 100) errors.push({ kind: r.status, jdHash: t.jdHash, message: r.error });
         if (log) console.log(`  ${t.jdHash.slice(0, 12)} ${r.status} $${r.costUsd.toFixed(4)} ${r.latencyMs}ms`);
+        streak = r.status === "llm_failed" ? streak + 1 : 0;
+        if (streak >= MAX_CONSECUTIVE_FAILURES) {
+          stopped = true;
+          if (log) console.log(`${streak} model calls failed in a row (last: ${r.error}). Stopping; rerun later to retry them.`);
+          break;
+        }
       }
-      const status = capped ? "cap_reached" : counts.llm_failed + counts.schema_invalid > 0 ? "partial" : "succeeded";
+      const status = capped ? "cap_reached" : stopped || counts.llm_failed + counts.schema_invalid > 0 ? "partial" : "succeeded";
       await db.finishExtractionRun(client, runId, status, counts, errors);
       if (log) console.table(counts);
       return { status, runId, counts };
