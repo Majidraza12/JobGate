@@ -83,6 +83,19 @@ export function cityCounts(locationLists: string[][]): { city: string; count: nu
   return [...counts].map(([city, count]) => ({ city, count })).sort((a, b) => b.count - a.count || a.city.localeCompare(b.city));
 }
 
+// Same as cityCounts, from location strings already counted (one row per
+// distinct string, from open_location_counts). Strings that canonicalize to
+// the same city add up. Unlike cityCounts, a listing naming one city twice is
+// counted twice; the counts only rank picker options, so that's fine.
+export function cityCountsFromLocations(rows: { location: string; listings: number }[]): { city: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const r of rows) {
+    const city = cityOf(r.location);
+    if (city) counts.set(city, (counts.get(city) ?? 0) + Number(r.listings));
+  }
+  return [...counts].map(([city, count]) => ({ city, count })).sort((a, b) => b.count - a.count || a.city.localeCompare(b.city));
+}
+
 // Picker options: cities with postings first (most first), then every other
 // U.S. city in `known` (Census, largest first) with a count of 0, so a user
 // can pick a city before any posting there exists.

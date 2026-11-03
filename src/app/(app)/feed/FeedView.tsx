@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Verdict } from "@core/match";
 import type { GateField } from "@core/requirements";
 import { CompanyAvatar } from "@/components/CompanyAvatar";
 import { Quote } from "@/components/Quote";
+import { pageNumbers } from "@/lib/pages";
 import { FIELD_NAMES, JOB_TYPES, VERDICTS, VERDICT_ORDER, VERDICT_STYLE } from "@/lib/labels";
 
 export type FeedCard = {
@@ -134,8 +135,9 @@ export function FeedView({
   const [myCities, setMyCities] = useState(false);
   const [within, setWithin] = useState(0);
   const [hideApplied, setHideApplied] = useState(true);
-  const [limit, setLimit] = useState(PAGE);
-  const reset = () => setLimit(PAGE);
+  const [page, setPage] = useState(1);
+  const reset = () => setPage(1);
+  const top = useRef<HTMLParagraphElement>(null);
 
   const base = useMemo(() => {
     const needle = q.trim().toLowerCase();
@@ -163,6 +165,14 @@ export function FeedView({
     next.has(v) ? next.delete(v) : next.add(v);
     setShown(next);
     reset();
+  };
+
+  const pages = Math.max(1, Math.ceil(list.length / PAGE));
+  // Clamp, in case a filter shrank the list while on a later page.
+  const current = Math.min(page, pages);
+  const go = (p: number) => {
+    setPage(p);
+    top.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -239,7 +249,7 @@ export function FeedView({
         </label>
       </div>
 
-      <p className="num mt-5 text-[13px] text-muted">
+      <p ref={top} className="num mt-5 scroll-mt-4 text-[13px] text-muted">
         {list.length.toLocaleString()} posting{list.length === 1 ? "" : "s"}, newest first
       </p>
 
@@ -249,19 +259,60 @@ export function FeedView({
         </p>
       ) : (
         <section className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Postings">
-          {list.slice(0, limit).map((c) => (
+          {list.slice((current - 1) * PAGE, current * PAGE).map((c) => (
             <Card key={c.id} c={c} now={now} />
           ))}
         </section>
       )}
-      {list.length > limit && (
-        <button
-          onClick={() => setLimit(limit + PAGE)}
-          className="mx-auto mt-6 flex h-11 items-center rounded-[14px] border-2 border-line bg-surface px-6 font-semibold hover:border-lav active:scale-95"
-        >
-          Show {Math.min(PAGE, list.length - limit)} more of {(list.length - limit).toLocaleString()}
-        </button>
+      {pages > 1 && (
+        <nav aria-label="Pages" className="mt-8 flex flex-wrap items-center justify-center gap-1.5">
+          <PageButton label="Previous page" disabled={current === 1} onClick={() => go(current - 1)}>
+            ‹
+          </PageButton>
+          {pageNumbers(current, pages).map((p, i) =>
+            p === null ? (
+              <span key={`gap-${i}`} className="px-1 text-muted" aria-hidden>
+                …
+              </span>
+            ) : (
+              <PageButton key={p} label={`Page ${p}`} current={p === current} onClick={() => go(p)}>
+                {p}
+              </PageButton>
+            ),
+          )}
+          <PageButton label="Next page" disabled={current === pages} onClick={() => go(current + 1)}>
+            ›
+          </PageButton>
+        </nav>
       )}
     </div>
+  );
+}
+
+function PageButton({
+  children,
+  label,
+  onClick,
+  current = false,
+  disabled = false,
+}: {
+  children: React.ReactNode;
+  label: string;
+  onClick: () => void;
+  current?: boolean;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      aria-current={current ? "page" : undefined}
+      className={`num grid h-10 min-w-10 place-items-center rounded-[12px] border-2 px-3 font-mono text-[14px] font-semibold active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 ${
+        current ? "border-lav bg-lav text-ground" : "border-line bg-surface hover:border-lav"
+      }`}
+    >
+      {children}
+    </button>
   );
 }

@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { CityPicker, type CityOption } from "@/components/CityPicker";
 import { MonthPicker } from "@/components/MonthPicker";
+import { START_TERMS } from "@core/profile";
 import type { ProfileRow } from "@/lib/profile";
 import { saveProfile, type ProfileState } from "./actions";
 
@@ -142,13 +143,20 @@ export function ProfileForm({ profile, cityOptions }: { profile: ProfileRow | nu
             ))}
           </div>
         </fieldset>
-        <label className="mt-4 block text-[14px] font-medium" htmlFor="starts">
-          Start terms you can do
-        </label>
-        <input id="starts" name="starts" defaultValue={(profile?.starts ?? ["Summer 2027"]).join(", ")} aria-describedby="starts-note" className={input} />
-        <p id="starts-note" className="mt-1.5 text-[12px] text-muted">
-          Separate with commas, for example Summer 2027, Fall 2027.
-        </p>
+        <fieldset className="mt-4">
+          <legend className="text-[14px] font-medium">Start terms you can do</legend>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {START_TERMS.map((t) => (
+              <label
+                key={t}
+                className="flex h-9 cursor-pointer items-center rounded-full border-2 border-line bg-surface px-3.5 text-[13px] font-semibold text-muted transition-colors hover:border-lav hover:text-ink active:scale-95 has-[:checked]:border-lav has-[:checked]:bg-lav has-[:checked]:text-ground has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-lav"
+              >
+                <input type="checkbox" name="starts" value={t} defaultChecked={(profile?.starts ?? ["Summer 2027"]).includes(t)} className="sr-only" />
+                {t}
+              </label>
+            ))}
+          </div>
+        </fieldset>
         <p className="mt-5 text-[14px] font-medium">Cities</p>
         <CityPicker name="locations" options={cityOptions} defaultValue={profile?.locations ?? []} />
         <label className="mt-4 flex items-center gap-2 text-[14px]">

@@ -27,7 +27,8 @@ export const EligibilityProfile = z
       z.object({ status: z.literal("prefer_not_to_say") }),
     ]),
     // Start terms the user can take, e.g. "Summer 2027". Used for windows that
-    // apply only to one start term.
+    // apply only to one start term. The profile form only offers START_TERMS;
+    // older free-text values stay valid here.
     starts: z.array(z.string().min(1)),
   })
   .refine(
@@ -35,3 +36,15 @@ export const EligibilityProfile = z
     "A graduation month goes with a degree, and only with one.",
   );
 export type EligibilityProfile = z.infer<typeof EligibilityProfile>;
+
+// The start terms a user can pick, as fixed tags so "sum 2027" can't happen.
+// Every one parses as a named term in match.ts. Extend the years as time passes.
+export const START_TERMS = [
+  "Spring 2027",
+  "Summer 2027",
+  "Fall 2027",
+  "Winter 2028",
+  "Spring 2028",
+  "Summer 2028",
+  "Fall 2028",
+] as const;

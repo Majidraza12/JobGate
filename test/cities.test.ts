@@ -1,6 +1,6 @@
 // City normalization: real spellings seen in the open listings.
 import { describe, expect, it } from "vitest";
-import { cityCounts, cityOf, cityOptions } from "@core/cities";
+import { cityCounts, cityCountsFromLocations, cityOf, cityOptions } from "@core/cities";
 import usCities from "@core/usCities.json";
 
 describe("cityOf", () => {
@@ -34,6 +34,22 @@ describe("cityOf", () => {
     for (const l of ["Remote in USA", "United States", "California", "Texas", "Remote in Canada", "United States - Remote", "US-IA-CEDAR RAPIDS-131 ~ 5450 C Ave NE ~ BLDG 131"]) {
       expect(cityOf(l)).toBeNull();
     }
+  });
+});
+
+describe("cityCountsFromLocations", () => {
+  it("adds up strings that name the same city, most first", () => {
+    expect(
+      cityCountsFromLocations([
+        { location: "NYC", listings: 2 },
+        { location: "New York, NY", listings: 3 },
+        { location: "Chicago, IL", listings: 4 },
+        { location: "Remote", listings: 9 },
+      ]),
+    ).toEqual([
+      { city: "New York, NY", count: 5 },
+      { city: "Chicago, IL", count: 4 },
+    ]);
   });
 });
 

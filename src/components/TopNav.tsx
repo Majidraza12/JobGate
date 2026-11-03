@@ -9,15 +9,18 @@ import { Mark } from "./Mark";
 const TABS = [
   { href: "/feed", label: "Feed" },
   { href: "/applied", label: "Applied" },
-  { href: "/profile", label: "Profile" },
 ];
 
-// Top bar: the mark, the three tabs in one pill, and an account menu.
+// Top bar: the mark, the two tabs in one pill, and an account menu that holds
+// Profile and Sign out.
 export function TopNav({ email, appliedCount }: { email: string; appliedCount: number }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLDivElement>(null);
   const active = (href: string) => (href === "/feed" ? path === "/feed" || path.startsWith("/listing") : path.startsWith(href));
+
+  // Close the menu after navigating (e.g. to Profile).
+  useEffect(() => setOpen(false), [path]);
 
   useEffect(() => {
     if (!open) return;
@@ -52,7 +55,7 @@ export function TopNav({ email, appliedCount }: { email: string; appliedCount: n
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-label="Account"
-          className="grid size-11 place-items-center rounded-[14px] border-2 border-line bg-surface font-display font-bold hover:border-lav"
+          className={`grid size-11 place-items-center rounded-[14px] border-2 bg-surface font-display font-bold hover:border-lav ${path.startsWith("/profile") ? "border-mint" : "border-line"}`}
         >
           {email.slice(0, 1).toUpperCase() || "?"}
         </button>
@@ -61,6 +64,13 @@ export function TopNav({ email, appliedCount }: { email: string; appliedCount: n
             <p className="truncate px-3 py-2 text-[13px] text-muted" title={email}>
               {email}
             </p>
+            <Link
+              href="/profile"
+              prefetch
+              className="flex h-10 w-full items-center rounded-[10px] px-3 font-semibold hover:bg-hover"
+            >
+              Profile
+            </Link>
             <form action={signOut}>
               <button className="h-10 w-full rounded-[10px] px-3 text-left font-semibold hover:bg-hover">Sign out</button>
             </form>
