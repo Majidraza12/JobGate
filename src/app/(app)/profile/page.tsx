@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import { cityCounts, cityOptions } from "@core/cities";
+import { cityCountsFromLocations, cityOptions } from "@core/cities";
 import usCities from "@core/usCities.json";
-import { all } from "@/lib/feed";
 import type { ProfileRow } from "@/lib/profile";
 import { ProfileForm } from "./ProfileForm";
 
@@ -10,8 +9,10 @@ export default async function ProfilePage() {
   const [{ data }, locations] = await Promise.all([
     supabase.from("profiles").select("*").maybeSingle<ProfileRow>(),
     // Suggestions: cities in open listings (with counts), then Census cities with none yet.
-    all<{ locations: string[] }>((from, to) => supabase.from("listings").select("locations").eq("status", "open").order("id").range(from, to)),
+    // Grouped in Postgres: one request instead of every listing's locations.
+    supabase.rpc("open_location_counts"),
   ]);
+  if (locations.error) throw new Error(locations.error.message);
 
   return (
     <div>
@@ -21,7 +22,7 @@ export default async function ProfilePage() {
           ? "Every verdict in your feed is computed from these answers. Change one and the feed updates."
           : "Answer these once. Every verdict in your feed is computed from them."}
       </p>
-      <ProfileForm profile={data} cityOptions={cityOptions(cityCounts(locations.map((l) => l.locations)), usCities)} />
+      <ProfileForm profile={data} cityOptions={cityOptions(cityCountsFromLocations((locations.data ?? []) as { location: string; listings: number }[]), usCities)} />
     </div>
   );
 }
