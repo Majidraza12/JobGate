@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState, useTransition } from "react";
 import type { Verdict } from "@core/match";
 import type { GateField } from "@core/requirements";
 import { CompanyAvatar } from "@/components/CompanyAvatar";
 import { Quote } from "@/components/Quote";
 import { pageNumbers } from "@/lib/pages";
+import { feedHref, type FeedFilters, type FeedPage } from "@/lib/feedQuery";
 import { FIELD_NAMES, JOB_TYPES, VERDICTS, VERDICT_ORDER, VERDICT_STYLE } from "@/lib/labels";
 
 export type FeedCard = {
@@ -27,7 +29,6 @@ export type FeedCard = {
   applied: boolean;
 };
 
-const PAGE = 48;
 const DAY = 86_400_000;
 
 function age(iso: string | null, now: number) {
@@ -114,66 +115,57 @@ function Card({ c, now }: { c: FeedCard; now: number }) {
 }
 
 export function FeedView({
-  cards,
-  defaultJobTypes,
-  cities,
+  result,
+  filters,
+  profileJobTypes,
+  hasCities,
   remoteOk,
   checkedAgainst,
 }: {
-  cards: FeedCard[];
-  defaultJobTypes: string[];
-  cities: string[];
+  result: FeedPage<FeedCard>;
+  filters: FeedFilters;
+  profileJobTypes: string[];
+  hasCities: boolean;
   remoteOk: boolean;
   checkedAgainst: string;
 }) {
   const [now] = useState(() => Date.now());
-  // Not eligible is hidden by default (section 5). Not checked starts hidden
-  // too: most postings haven't been read yet, and they would bury the rest.
-  const [shown, setShown] = useState<Set<Verdict>>(new Set(["eligible", "no_restrictions_found", "check"]));
-  const [jobType, setJobType] = useState<string>(defaultJobTypes.length === 3 ? "" : defaultJobTypes.join(","));
-  const [q, setQ] = useState("");
-  const [myCities, setMyCities] = useState(false);
-  const [within, setWithin] = useState(0);
-  const [hideApplied, setHideApplied] = useState(true);
-  const [page, setPage] = useState(1);
-  const reset = () => setPage(1);
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
   const top = useRef<HTMLParagraphElement>(null);
+  const { counts, total, pages, page: current, items } = result;
+  const href = (patch: Partial<FeedFilters>) => feedHref(filters, patch, profileJobTypes);
 
-  const base = useMemo(() => {
-    const needle = q.trim().toLowerCase();
-    const mine = new Set(cities);
-    // Older profiles saved free-text cities; those still match by substring.
-    const legacy = cities.filter((c) => !c.includes(", ")).map((c) => c.toLowerCase());
-    return cards
-      .filter((c) => !jobType || jobType.split(",").includes(c.jobType))
-      .filter((c) => !needle || `${c.company} ${c.title}`.toLowerCase().includes(needle))
-      .filter((c) => !myCities || (remoteOk && c.remote) || c.cities.some((x) => mine.has(x)) || c.locations.some((l) => legacy.some((n) => l.toLowerCase().includes(n))))
-      .filter((c) => !within || (c.postedAt !== null && now - Date.parse(c.postedAt) <= within * DAY))
-      .filter((c) => !hideApplied || !c.applied)
-      .sort((a, b) => (b.postedAt ?? "").localeCompare(a.postedAt ?? ""));
-  }, [cards, jobType, q, myCities, cities, remoteOk, within, hideApplied, now]);
+  // Every filter is a URL change; the server filters and sends one page back.
+  const go = (patch: Partial<FeedFilters>, opts: { replace?: boolean; scrollTop?: boolean } = {}) =>
+    startTransition(() => {
+      const url = href(patch);
+      if (opts.replace) router.replace(url, { scroll: false });
+      else router.push(url, { scroll: false });
+      if (opts.scrollTop) top.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
 
-  const counts = useMemo(() => {
-    const m = Object.fromEntries(VERDICT_ORDER.map((v) => [v, 0])) as Record<Verdict, number>;
-    for (const c of base) m[c.verdict]++;
-    return m;
-  }, [base]);
-  const list = base.filter((c) => shown.has(c.verdict));
+  // The next page is the likeliest click, so fetch it in the background.
+  const nextHref = current < pages ? href({ page: current + 1 }) : null;
+  useEffect(() => {
+    if (nextHref) router.prefetch(nextHref);
+  }, [nextHref, router]);
+
+  // Search waits for a pause in typing, then replaces the URL (no history spam).
+  const [q, setQ] = useState(filters.q);
+  useEffect(() => setQ(filters.q), [filters.q]);
+  useEffect(() => {
+    if (q.trim() === filters.q.trim()) return;
+    const t = setTimeout(() => go({ q }, { replace: true }), 300);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q]);
 
   const toggle = (v: Verdict) => {
-    const next = new Set(shown);
-    next.has(v) ? next.delete(v) : next.add(v);
-    setShown(next);
-    reset();
+    const on = filters.verdicts.includes(v);
+    go({ verdicts: on ? filters.verdicts.filter((x) => x !== v) : [...filters.verdicts, v] });
   };
-
-  const pages = Math.max(1, Math.ceil(list.length / PAGE));
-  // Clamp, in case a filter shrank the list while on a later page.
-  const current = Math.min(page, pages);
-  const go = (p: number) => {
-    setPage(p);
-    top.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const setJobType = (t: string) => go({ jobType: t });
 
   return (
     <div>
@@ -196,7 +188,7 @@ export function FeedView({
 
       <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-5" role="group" aria-label="Show verdicts">
         {VERDICT_ORDER.map((v) => {
-          const on = shown.has(v);
+          const on = filters.verdicts.includes(v);
           return (
             <button
               key={v}
@@ -217,31 +209,31 @@ export function FeedView({
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
-        <Chip on={!jobType} onClick={() => (setJobType(""), reset())}>
+        <Chip on={!filters.jobType} onClick={() => setJobType("")}>
           Everything
         </Chip>
-        <Chip on={jobType === "internship,co-op"} onClick={() => (setJobType("internship,co-op"), reset())}>
+        <Chip on={filters.jobType === "internship,co-op"} onClick={() => setJobType("internship,co-op")}>
           Internships
         </Chip>
-        <Chip on={jobType === "new_grad"} onClick={() => (setJobType("new_grad"), reset())}>
+        <Chip on={filters.jobType === "new_grad"} onClick={() => setJobType("new_grad")}>
           New grad
         </Chip>
-        {cities.length > 0 && (
-          <Chip on={myCities} onClick={() => (setMyCities(!myCities), reset())}>
+        {hasCities && (
+          <Chip on={filters.mine} onClick={() => go({ mine: !filters.mine })}>
             My cities{remoteOk ? " + remote" : ""}
           </Chip>
         )}
-        <Chip on={within === 7} onClick={() => (setWithin(within === 7 ? 0 : 7), reset())}>
+        <Chip on={filters.within === 7} onClick={() => go({ within: filters.within === 7 ? 0 : 7 })}>
           This week
         </Chip>
-        <Chip on={!hideApplied} onClick={() => (setHideApplied(!hideApplied), reset())}>
+        <Chip on={filters.showApplied} onClick={() => go({ showApplied: !filters.showApplied })}>
           Show applied
         </Chip>
         <label className="flex h-10 w-full items-center gap-2 rounded-full border-2 border-line bg-surface px-4 text-muted focus-within:border-lav sm:ml-auto sm:w-72">
           <span aria-hidden="true">⌕</span>
           <input
             value={q}
-            onChange={(e) => (setQ(e.target.value), reset())}
+            onChange={(e) => setQ(e.target.value)}
             placeholder="Find a company or title"
             aria-label="Find a company or title"
             className="h-full min-w-0 flex-1 bg-transparent text-ink outline-none"
@@ -250,23 +242,26 @@ export function FeedView({
       </div>
 
       <p ref={top} className="num mt-5 scroll-mt-4 text-[13px] text-muted">
-        {list.length.toLocaleString()} posting{list.length === 1 ? "" : "s"}, newest first
+        {total.toLocaleString()} posting{total === 1 ? "" : "s"}, best matches first, then newest
+        {pending ? " · loading…" : ""}
       </p>
 
-      {list.length === 0 ? (
-        <p className="mt-3 rounded-[20px] border-2 border-dashed border-line px-6 py-10 text-center text-muted">
-          Nothing matches. Turn on more verdicts above, or clear the search.
-        </p>
-      ) : (
-        <section className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Postings">
-          {list.slice((current - 1) * PAGE, current * PAGE).map((c) => (
-            <Card key={c.id} c={c} now={now} />
-          ))}
-        </section>
-      )}
+      <div className={`transition-opacity duration-150 ${pending ? "opacity-50" : ""}`} aria-busy={pending}>
+        {items.length === 0 ? (
+          <p className="mt-3 rounded-[20px] border-2 border-dashed border-line px-6 py-10 text-center text-muted">
+            Nothing matches. Turn on more verdicts above, or clear the search.
+          </p>
+        ) : (
+          <section className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Postings">
+            {items.map((c) => (
+              <Card key={c.id} c={c} now={now} />
+            ))}
+          </section>
+        )}
+      </div>
       {pages > 1 && (
         <nav aria-label="Pages" className="mt-8 flex flex-wrap items-center justify-center gap-1.5">
-          <PageButton label="Previous page" disabled={current === 1} onClick={() => go(current - 1)}>
+          <PageButton label="Previous page" disabled={current === 1} onClick={() => go({ page: current - 1 }, { scrollTop: true })}>
             ‹
           </PageButton>
           {pageNumbers(current, pages).map((p, i) =>
@@ -275,12 +270,12 @@ export function FeedView({
                 …
               </span>
             ) : (
-              <PageButton key={p} label={`Page ${p}`} current={p === current} onClick={() => go(p)}>
+              <PageButton key={p} label={`Page ${p}`} current={p === current} onClick={() => go({ page: p }, { scrollTop: true })}>
                 {p}
               </PageButton>
             ),
           )}
-          <PageButton label="Next page" disabled={current === pages} onClick={() => go(current + 1)}>
+          <PageButton label="Next page" disabled={current === pages} onClick={() => go({ page: current + 1 }, { scrollTop: true })}>
             ›
           </PageButton>
         </nav>

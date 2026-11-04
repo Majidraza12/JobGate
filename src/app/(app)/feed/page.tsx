@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { cityOf } from "@core/cities";
 import { loadFeed, type FeedItem } from "@/lib/feed";
 import { toEligibility, type ProfileRow } from "@/lib/profile";
+import { applyFeed, parseFeedParams } from "@/lib/feedQuery";
 import { FeedView, type FeedCard } from "./FeedView";
 
 // The row that most drove the verdict, for the card's quote.
@@ -45,7 +46,7 @@ function checkedAgainst(p: ProfileRow): string {
   return [grad, DEGREES[p.degree], auth].filter(Boolean).join(" · ");
 }
 
-export default async function FeedPage() {
+export default async function FeedPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const supabase = await createClient();
   const { data: profile } = await supabase.from("profiles").select("*").maybeSingle<ProfileRow>();
   if (!profile) redirect("/profile");
@@ -77,7 +78,18 @@ export default async function FeedPage() {
     };
   });
 
+  // Filter, sort, and page here, so the browser gets one page of cards.
+  const filters = parseFeedParams(await searchParams, profile.job_types);
+  const result = applyFeed(cards, filters, { cities: profile.locations, remoteOk: profile.remote_ok, now: Date.now() });
+
   return (
-    <FeedView cards={cards} defaultJobTypes={profile.job_types} cities={profile.locations} remoteOk={profile.remote_ok} checkedAgainst={checkedAgainst(profile)} />
+    <FeedView
+      result={result}
+      filters={filters}
+      profileJobTypes={profile.job_types}
+      hasCities={profile.locations.length > 0}
+      remoteOk={profile.remote_ok}
+      checkedAgainst={checkedAgainst(profile)}
+    />
   );
 }
