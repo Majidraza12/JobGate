@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { Icon } from "@/components/Icon";
 import { BUTTON } from "@/components/ui";
 import { signIn, signUp, type AuthState } from "./actions";
 
@@ -9,6 +10,7 @@ const input = "mt-2 h-12 w-full rounded-[12px] border border-white/10 bg-black/2
 
 export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" }) {
   const [mode, setMode] = useState<"in" | "up">(initialMode);
+  const [showPw, setShowPw] = useState(false);
   const [inState, inAction, inPending] = useActionState(signIn, initial);
   const [upState, upAction, upPending] = useActionState(signUp, initial);
   const state = mode === "in" ? inState : upState;
@@ -39,16 +41,27 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
       <label className="mt-4 block text-[14px] font-medium text-soft" htmlFor="password">
         Password
       </label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        required
-        minLength={6}
-        aria-describedby={mode === "up" ? "pw-rule" : undefined}
-        autoComplete={mode === "in" ? "current-password" : "new-password"}
-        className={input}
-      />
+      <div className="relative">
+        <input
+          id="password"
+          name="password"
+          type={showPw ? "text" : "password"}
+          required
+          minLength={6}
+          aria-describedby={mode === "up" ? "pw-rule" : undefined}
+          autoComplete={mode === "in" ? "current-password" : "new-password"}
+          className={`${input} pr-12`}
+        />
+        <button
+          type="button"
+          onClick={() => setShowPw(!showPw)}
+          aria-label={showPw ? "Hide password" : "Show password"}
+          aria-pressed={showPw}
+          className="absolute right-1.5 top-[calc(50%+4px)] grid size-9 -translate-y-1/2 place-items-center rounded-[10px] text-muted hover:bg-white/[0.06] hover:text-ink"
+        >
+          <Icon name={showPw ? "eyeOff" : "eye"} size={19} />
+        </button>
+      </div>
       {mode === "up" && (
         <p id="pw-rule" className="mt-1.5 text-[12.5px] text-muted">
           At least 6 characters.
