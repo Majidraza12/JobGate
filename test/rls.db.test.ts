@@ -112,4 +112,28 @@ describe.skipIf(!up)("RLS and grants", () => {
     });
     expect(await as("authenticated", B, async () => (await db.query("select count(*)::int as n from applications")).rows[0].n)).toBe(0);
   });
+
+  it("keeps saved listings private to their owner", async () => {
+    const listingId = (await db.query("select id from listings limit 1")).rows[0].id;
+    await db.query("begin");
+    try {
+      await db.query("insert into saved_listings (user_id, listing_id) values ($1, $2)", [A, listingId]);
+      for (const [who, n] of [[A, 1], [B, 0]] as const) {
+        await db.query("set local role authenticated");
+        await db.query("select set_config('request.jwt.claim.sub', $1, true)", [who]);
+        expect((await db.query("select count(*)::int as n from saved_listings")).rows[0].n).toBe(n);
+        await db.query("reset role");
+      }
+    } finally {
+      await db.query("rollback");
+    }
+    await as("authenticated", A, async () => {
+      await db.query("insert into saved_listings (listing_id) values ($1)", [listingId]);
+      expect((await db.query("delete from saved_listings where listing_id = $1", [listingId])).rowCount).toBe(1);
+    });
+    await expect(as("authenticated", B, () => db.query("insert into saved_listings (user_id, listing_id) values ($1, $2)", [A, listingId]))).rejects.toThrow(
+      /row-level security/,
+    );
+    await expect(as("anon", null, () => db.query("select * from saved_listings"))).rejects.toThrow(/permission denied/);
+  });
 });
