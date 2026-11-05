@@ -4,6 +4,7 @@ import { cityOf } from "@core/cities";
 import { loadFeed, type FeedItem } from "@/lib/feed";
 import { toEligibility, type ProfileRow } from "@/lib/profile";
 import { applyFeed, parseFeedParams } from "@/lib/feedQuery";
+import { roleOf } from "@/lib/roles";
 import { FeedView, type FeedCard } from "./FeedView";
 
 // The row that most drove the verdict, for the card's quote.
@@ -51,11 +52,14 @@ export default async function FeedPage({ searchParams }: { searchParams: Promise
   const { data: profile } = await supabase.from("profiles").select("*").maybeSingle<ProfileRow>();
   if (!profile) redirect("/profile");
 
-  const [items, { data: applied }] = await Promise.all([
+  const [items, { data: applied }, { data: saved }, { data: lastRun }] = await Promise.all([
     loadFeed(supabase, toEligibility(profile)),
     supabase.from("applications").select("listing_id"),
+    supabase.from("saved_listings").select("listing_id"),
+    supabase.from("pipeline_runs").select("finished_at").eq("status", "succeeded").order("finished_at", { ascending: false }).limit(1).maybeSingle(),
   ]);
   const appliedIds = new Set((applied ?? []).map((a) => a.listing_id as number));
+  const savedIds = new Set((saved ?? []).map((a) => a.listing_id as number));
 
   const cards: FeedCard[] = items.map((i) => {
     const d = decider(i);
@@ -75,6 +79,8 @@ export default async function FeedPage({ searchParams }: { searchParams: Promise
       quoteField: d?.field ?? null,
       note: secondaryNote(i),
       applied: appliedIds.has(i.id),
+      saved: savedIds.has(i.id),
+      role: roleOf(i.title, i.roleFamily),
     };
   });
 
@@ -90,6 +96,8 @@ export default async function FeedPage({ searchParams }: { searchParams: Promise
       hasCities={profile.locations.length > 0}
       remoteOk={profile.remote_ok}
       checkedAgainst={checkedAgainst(profile)}
+      openCount={cards.length}
+      updatedAt={(lastRun?.finished_at as string | null) ?? null}
     />
   );
 }

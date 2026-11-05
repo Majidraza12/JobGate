@@ -19,7 +19,7 @@ const ctx = { cities: ["Chicago, IL"], remoteOk: true, now: NOW };
 describe("parseFeedParams", () => {
   it("uses defaults when the URL is empty", () => {
     expect(parseFeedParams({}, ["internship", "co-op", "new_grad"])).toEqual({
-      verdicts: DEFAULT_VERDICTS, jobType: "", q: "", mine: false, within: 0, showApplied: false, page: 1,
+      verdicts: DEFAULT_VERDICTS, jobType: "", q: "", role: "", mine: false, remote: false, within: 0, showApplied: false, sort: "relevant", page: 1,
     });
   });
 
@@ -48,10 +48,10 @@ describe("feedHref", () => {
   });
 
   it("round-trips through parseFeedParams", () => {
-    const url = feedHref(base, { verdicts: ["eligible", "not_eligible"], jobType: "", q: " stripe ", mine: true, within: 7, showApplied: true, page: 3 }, ["new_grad"]);
+    const url = feedHref(base, { verdicts: ["eligible", "not_eligible"], jobType: "", q: " stripe ", role: "ml", mine: true, remote: true, within: 7, showApplied: true, sort: "newest", page: 3 }, ["new_grad"]);
     const sp = Object.fromEntries(new URL(url, "http://x").searchParams);
     expect(parseFeedParams(sp, ["new_grad"])).toEqual({
-      verdicts: ["eligible", "not_eligible"], jobType: "", q: "stripe", mine: true, within: 7, showApplied: true, page: 3,
+      verdicts: ["eligible", "not_eligible"], jobType: "", q: "stripe", role: "ml", mine: true, remote: true, within: 7, showApplied: true, sort: "newest", page: 3,
     });
   });
 
@@ -108,5 +108,39 @@ describe("applyFeed", () => {
     const f = parseFeedParams({ mine: "1" }, []);
     expect(applyFeed([remote], f, ctx).total).toBe(1);
     expect(applyFeed([remote], f, { ...ctx, remoteOk: false }).total).toBe(0);
+  });
+
+  it("sorts newest first when asked, ignoring verdict", () => {
+    const cards = [card({ title: "eligible", postedAt: "2026-10-01" }), card({ title: "check", verdict: "check", postedAt: "2026-11-02" })];
+    expect(applyFeed(cards, parseFeedParams({ sort: "newest" }, []), ctx).items.map((c) => c.title)).toEqual(["check", "eligible"]);
+  });
+
+  it("filters by role and remote, and shows either location box's postings", () => {
+    const cards = [
+      card({ title: "ml chicago", role: "ml" }),
+      card({ title: "swe remote", role: "swe", cities: [], locations: ["Remote"], remote: true }),
+      card({ title: "swe austin", role: "swe", cities: ["Austin, TX"], locations: ["Austin, TX"] }),
+    ];
+    const titles = (sp: Record<string, string>) => applyFeed(cards, parseFeedParams(sp, []), ctx).items.map((c) => c.title).sort();
+    expect(titles({ role: "swe" })).toEqual(["swe austin", "swe remote"]);
+    expect(titles({ remote: "1" })).toEqual(["swe remote"]);
+    expect(titles({ remote: "1", mine: "1" })).toEqual(["ml chicago", "swe remote"]);
+    expect(parseFeedParams({ role: "bogus" }, []).role).toBe("");
+  });
+
+  it("counts each facet without its own filter", () => {
+    const cards = [
+      card({ role: "swe" }),
+      card({ role: "ml", jobType: "new_grad" }),
+      card({ role: "swe", verdict: "not_eligible", postedAt: "2026-09-01" }),
+    ];
+    const r = applyFeed(cards, parseFeedParams({ role: "swe", type: "internship" }, []), ctx);
+    expect(r.total).toBe(1);
+    // Roles ignore the role filter but keep the job-type and verdict filters.
+    expect(r.facets.roles).toMatchObject({ "": 1, swe: 1, ml: 0 });
+    // Job types ignore the job-type filter but keep the role filter.
+    expect(r.facets.jobTypes).toEqual({ internship: 1, "co-op": 0, new_grad: 0 });
+    expect(r.facets.verdicts.not_eligible).toBe(1);
+    expect(r.facets.within).toMatchObject({ 0: 1, 7: 1, 30: 1 });
   });
 });
