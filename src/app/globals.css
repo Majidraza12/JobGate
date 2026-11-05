@@ -1,54 +1,66 @@
 @import "tailwindcss";
 
 /*
-  Majid's brand, dark, "bold cards" (picked 2026-10-31 from mockup C): Onyx
-  #01010D is the ground and primary colour, Electric Indigo #6631FB the
-  secondary (primary blocks, selection, focus), Tropical Mint #88F9C0 the third
-  (Eligible, active tabs, offset shadows). Chunky 2px borders, Space Grotesk
-  headings, JetBrains Mono numbers and stamps, a dotted ground. Verdicts keep
-  one colour each so a card reads as good or bad at a glance.
+  "Midnight" (2026-11-04, replaces bold cards): a near-black violet ground,
+  translucent glass cards with hairline borders, lavender accents, and two
+  pieces of ambient light (a glowing arc on the left, a light streak top
+  right). Indigo #6631FB is the brand violet: glows, selection, focus rings.
+  Lavender is its light tint for buttons and accent text on dark. Verdicts keep
+  one hue each as tinted pills, so a card still reads good or bad at a glance;
+  mint is only ever Eligible.
 */
 @theme {
-  --font-sans: var(--font-geist), Inter, system-ui, sans-serif;
-  --font-display: var(--font-space), var(--font-geist), system-ui, sans-serif;
-  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+  --font-sans: var(--font-jakarta), Inter, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-jakarta), ui-monospace, monospace;
 
-  --color-ground: #01010d;
-  --color-surface: #0c0c20;
-  --color-sunken: #07071a;
-  --color-raised: #131330;
-  --color-hover: #15153a;
-  --color-line: #23234a;
-  --color-rule: #1a1a3a;
-  --color-control: #34345a;
-  --color-ink: #f4f4fa;
-  --color-muted: #9393b0;
+  --color-ground: #0a0911;
+  --color-surface: #13111c;
+  --color-sunken: #0e0d16;
+  --color-raised: #1a1726;
+  --color-hover: #1d1a2b;
+  --color-line: #262335;
+  --color-rule: #1e1b2b;
+  --color-control: #3a3550;
+  --color-ink: #f6f4fb;
+  --color-soft: #d4d0e2;
+  --color-muted: #9b97ad;
+  --color-dim: #6f6b82;
 
   --color-brand: #6631fb;
   --color-brand-hover: #7a4cff;
-  --color-brand-soft: #1d1447;
-  --color-brand-text: #a98bff;
+  --color-brand-soft: #1f1640;
+  --color-brand-text: #b39dff;
   --color-on-brand: #ffffff;
+  --color-lavender: #a68bfa;
+  --color-lavender-hi: #bba6ff;
+  --color-on-lavender: #140c2c;
+
   --color-mint: #88f9c0;
-  --color-mint-ink: #01010d;
+  --color-mint-ink: #0a0911;
   --color-amber: #ffc861;
   --color-lav: #b9a2ff;
-  --color-rose: #ff9a9a;
-  --color-slate: #8a8aa8;
+  --color-rose: #ff8f9c;
+  --color-slate: #a3a0b8;
+  --color-sky: #8fb8ff;
 
   --color-ok-bg: #88f9c0;
-  --color-ok-ink: #01010d;
+  --color-ok-ink: #0a0911;
   --color-bad-bg: #3b1218;
   --color-bad-ink: #ff9a9a;
   --color-warn-bg: #33240a;
   --color-warn-ink: #ffc861;
-  --color-info-bg: #1d1447;
+  --color-info-bg: #1f1640;
   --color-info-ink: #c4b2ff;
-  --color-none-bg: #1a1a30;
-  --color-none-ink: #a9a9c0;
+  --color-none-bg: #1a1828;
+  --color-none-ink: #a9a6bd;
 
-  --radius-card: 20px;
+  --radius-card: 18px;
   --radius-control: 12px;
+
+  --animate-rise: rise 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade: fade 220ms ease both;
+  --animate-pop: pop 160ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 html {
@@ -62,11 +74,6 @@ body {
 }
 
 body {
-  background-image: radial-gradient(circle at 1px 1px, #16163a 1px, transparent 0);
-  background-size: 22px 22px;
-}
-
-body {
   font-size: 15px;
   line-height: 22px;
 }
@@ -76,16 +83,58 @@ body {
 }
 
 /*
-  Base rules sit in the base layer so a utility (outline-none on an input
-  inside a bordered box, for example) can still override them.
+  Shared surfaces. Glass: a faint top-lit gradient over a translucent fill,
+  hairline border, and a soft inner highlight on the top edge. "glow" is the
+  selected/hovered card from the references: a violet border and a wash of
+  violet light from the top left.
+*/
+@utility glass {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.025), rgb(255 255 255 / 0)) padding-box,
+    rgb(20 18 30 / 0.72) padding-box;
+  border: 1px solid rgb(255 255 255 / 0.075);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.04),
+    0 1px 2px rgb(0 0 0 / 0.4);
+  backdrop-filter: blur(14px);
+}
 
+@utility glow {
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgb(102 49 251 / 0.22), rgb(102 49 251 / 0.05) 55%, rgb(102 49 251 / 0.02)) padding-box,
+    rgb(22 17 38 / 0.85) padding-box;
+  border: 1px solid rgb(166 139 250 / 0.55);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 0 0 1px rgb(102 49 251 / 0.08),
+    0 12px 40px -12px rgb(102 49 251 / 0.45);
+}
+
+/* The italic violet word in each page title. */
+@utility text-shine {
+  background: linear-gradient(100deg, #d9ccff 0%, #b49bff 35%, #8f6bff 75%, #7b55f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Lavender button fill: top lit, like the references' primary buttons. */
+@utility btn-lavender {
+  background: linear-gradient(180deg, #b9a3ff 0%, #9d80f9 100%);
+  color: var(--color-on-lavender);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 6px 20px -6px rgb(130 90 250 / 0.7);
+}
+
+/*
+  Base rules sit in the base layer so a utility can still override them.
   Every clickable thing gets the pointer, a short colour transition, and a
-  small press. Tailwind v4 dropped the pointer on buttons, so it is set here
-  once instead of on each button.
+  small press. Tailwind v4 dropped the pointer on buttons, so it is set here.
 */
 @layer base {
   :focus-visible {
-    outline: 2px solid var(--color-brand-text);
+    outline: 2px solid var(--color-lavender);
     outline-offset: 2px;
   }
 
@@ -103,7 +152,12 @@ body {
   input::placeholder,
   textarea::placeholder {
     color: var(--color-muted);
-    opacity: 0.8;
+    opacity: 1;
+  }
+
+  select option {
+    background: var(--color-surface);
+    color: var(--color-ink);
   }
 
   button,
@@ -132,11 +186,12 @@ body {
   textarea,
   label {
     transition:
-      background-color 150ms ease,
-      border-color 150ms ease,
-      color 150ms ease,
-      opacity 150ms ease,
-      transform 100ms ease;
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease,
+      opacity 160ms ease,
+      box-shadow 200ms ease,
+      transform 120ms ease;
   }
 
   button:not(:disabled):active,
@@ -144,16 +199,64 @@ body {
   label:has(> input[type="radio"]):active {
     transform: scale(0.97);
   }
+
+  /* Thin dark scrollbars inside panels. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2e2a40 transparent;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* A verdict stamp landing on a card when the landing demo's profile changes. */
 @keyframes stamp {
   0% {
-    transform: rotate(3deg) scale(1.6);
+    transform: scale(1.4);
     opacity: 0;
   }
   100% {
-    transform: rotate(3deg) scale(1);
+    transform: scale(1);
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
   }
 }

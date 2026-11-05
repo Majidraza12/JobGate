@@ -8,53 +8,52 @@ export const VERDICTS: Record<Verdict, { label: string; short: string; tip: stri
     label: "Eligible",
     short: "Eligible",
     tip: "You meet every requirement this posting states that we evaluated. Not a guarantee from the employer.",
-    badge: "bg-mint text-ground",
+    badge: "bg-mint/12 text-mint ring-1 ring-inset ring-mint/25",
   },
   no_restrictions_found: {
     label: "No restrictions found",
     short: "No limits",
     tip: "The posting doesn't state any of the requirements we check.",
-    badge: "bg-lav text-ground",
+    badge: "bg-lav/12 text-lav ring-1 ring-inset ring-lav/25",
   },
   check: {
     label: "Check",
     short: "Check",
     tip: "Something is unclear, or an internship doesn't state its graduation rule. Read the posting.",
-    badge: "bg-amber text-ground",
+    badge: "bg-amber/12 text-amber ring-1 ring-inset ring-amber/25",
   },
   not_checked: {
     label: "Not checked",
     short: "Not checked",
     tip: "We haven't read this posting, or couldn't.",
-    badge: "bg-slate text-ground",
+    badge: "bg-white/[0.06] text-slate ring-1 ring-inset ring-white/10",
   },
   not_eligible: {
     label: "Not eligible",
     short: "Not eligible",
     tip: "The posting states a hard requirement you don't meet, with a verified quote.",
-    badge: "bg-rose text-ground",
+    badge: "bg-rose/12 text-rose ring-1 ring-inset ring-rose/25",
   },
 };
 
-// Per-verdict colours for the bold cards: the count, the hover edge and offset
-// shadow, and the highlight on the deciding phrase. Literal class strings, so
-// Tailwind can see them.
-export const VERDICT_STYLE: Record<Verdict, { text: string; card: string; mark: string; ring: string }> = {
-  eligible: { text: "text-mint", card: "hover:border-mint hover:shadow-[6px_6px_0_var(--color-mint)]", mark: "bg-mint text-ground", ring: "border-mint" },
-  no_restrictions_found: { text: "text-lav", card: "hover:border-lav hover:shadow-[6px_6px_0_var(--color-lav)]", mark: "bg-lav text-ground", ring: "border-lav" },
-  check: { text: "text-amber", card: "hover:border-amber hover:shadow-[6px_6px_0_var(--color-amber)]", mark: "bg-amber text-ground", ring: "border-amber" },
-  not_checked: { text: "text-slate", card: "hover:border-slate hover:shadow-[6px_6px_0_var(--color-slate)]", mark: "bg-slate text-ground", ring: "border-slate" },
-  not_eligible: { text: "text-rose", card: "hover:border-rose hover:shadow-[6px_6px_0_var(--color-rose)]", mark: "bg-rose text-ground", ring: "border-rose" },
+// Per-verdict accents: text colour, the dot, the highlight on the deciding
+// phrase, and the icon. Literal class strings, so Tailwind can see them.
+export const VERDICT_STYLE: Record<Verdict, { text: string; dot: string; mark: string; ring: string; icon: "checkCircle" | "sparkles" | "alert" | "help" | "xCircle" }> = {
+  eligible: { text: "text-mint", dot: "bg-mint", mark: "bg-mint/15 text-mint", ring: "border-mint/50", icon: "checkCircle" },
+  no_restrictions_found: { text: "text-lav", dot: "bg-lav", mark: "bg-lav/15 text-lav", ring: "border-lav/50", icon: "sparkles" },
+  check: { text: "text-amber", dot: "bg-amber", mark: "bg-amber/15 text-amber", ring: "border-amber/50", icon: "alert" },
+  not_checked: { text: "text-slate", dot: "bg-slate", mark: "bg-white/10 text-soft", ring: "border-white/20", icon: "help" },
+  not_eligible: { text: "text-rose", dot: "bg-rose", mark: "bg-rose/15 text-rose", ring: "border-rose/50", icon: "xCircle" },
 };
 
 export const VERDICT_ORDER: Verdict[] = ["eligible", "no_restrictions_found", "check", "not_checked", "not_eligible"];
 
-export const ROW_STATUS: Record<RowStatus, { label: string; badge: string; mark: string }> = {
-  satisfied: { label: "Meets", badge: "bg-mint text-ground", mark: "bg-mint text-ground" },
-  conflict: { label: "Conflict", badge: "bg-rose text-ground", mark: "bg-rose text-ground" },
-  unclear: { label: "Unclear", badge: "bg-amber text-ground", mark: "bg-amber text-ground" },
-  not_mentioned: { label: "Not stated", badge: "border-2 border-line text-muted", mark: "" },
-  extraction_failed: { label: "Couldn't read", badge: "border-2 border-dashed border-muted text-muted", mark: "" },
+export const ROW_STATUS: Record<RowStatus, { label: string; badge: string; mark: string; icon: "checkCircle" | "xCircle" | "alert" | "help" | "dots" }> = {
+  satisfied: { label: "Meets", badge: "bg-mint/12 text-mint ring-1 ring-inset ring-mint/25", mark: "bg-mint/15 text-mint", icon: "checkCircle" },
+  conflict: { label: "Conflict", badge: "bg-rose/12 text-rose ring-1 ring-inset ring-rose/25", mark: "bg-rose/15 text-rose", icon: "xCircle" },
+  unclear: { label: "Unclear", badge: "bg-amber/12 text-amber ring-1 ring-inset ring-amber/25", mark: "bg-amber/15 text-amber", icon: "alert" },
+  not_mentioned: { label: "Not stated", badge: "bg-white/[0.05] text-muted ring-1 ring-inset ring-white/10", mark: "", icon: "dots" },
+  extraction_failed: { label: "Couldn't read", badge: "text-muted border border-dashed border-white/25", mark: "", icon: "help" },
 };
 
 export const FIELD_NAMES: Record<GateField, string> = {

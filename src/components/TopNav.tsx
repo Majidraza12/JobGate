@@ -2,81 +2,71 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 import { signOut } from "@/app/login/actions";
 import { Mark } from "./Mark";
 
 const TABS = [
-  { href: "/feed", label: "Feed" },
+  { href: "/feed", label: "Jobs" },
   { href: "/applied", label: "Applied" },
+  { href: "/saved", label: "Saved" },
 ];
 
-// Top bar: the mark, the two tabs in one pill, and an account menu that holds
-// Profile and Sign out.
-export function TopNav({ email, appliedCount }: { email: string; appliedCount: number }) {
+// The references' top bar: logo, text tabs with a soft pill on the active one,
+// and on the right an account initial, a divider, Sign out, and the lavender
+// button (here: your profile, which every verdict is computed from).
+export function TopNav({ email, appliedCount, savedCount }: { email: string; appliedCount: number; savedCount: number }) {
   const path = usePathname();
-  const [open, setOpen] = useState(false);
-  const menu = useRef<HTMLDivElement>(null);
   const active = (href: string) => (href === "/feed" ? path === "/feed" || path.startsWith("/listing") : path.startsWith(href));
+  const count = (href: string) => (href === "/applied" ? appliedCount : href === "/saved" ? savedCount : 0);
 
-  // Close the menu after navigating (e.g. to Profile).
-  useEffect(() => setOpen(false), [path]);
-
-  useEffect(() => {
-    if (!open) return;
-    const close = (e: MouseEvent) => !menu.current?.contains(e.target as Node) && setOpen(false);
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, [open]);
+  const tabs = TABS.map((t) => (
+    <Link
+      key={t.href}
+      href={t.href}
+      aria-current={active(t.href) ? "page" : undefined}
+      className={`flex h-10 items-center gap-1.5 whitespace-nowrap rounded-[10px] px-4 text-[15px] font-medium ${
+        active(t.href) ? "bg-white/[0.07] text-ink shadow-[inset_0_1px_0_rgb(255_255_255/0.05)]" : "text-soft hover:bg-white/[0.04] hover:text-ink"
+      }`}
+    >
+      {t.label}
+      {count(t.href) > 0 && <span className="num text-[12px] font-semibold text-lavender">{count(t.href)}</span>}
+    </Link>
+  ));
 
   return (
-    <header className="mx-auto flex max-w-[1240px] items-center gap-3 px-4 pt-5 md:px-8 md:pt-7">
-      <Link href="/feed" className="flex items-center gap-2.5 font-display text-[22px] font-bold">
-        <Mark size={30} />
-        <span className="hidden sm:inline">JobGate</span>
-      </Link>
+    <header className="relative z-20 mx-auto max-w-[1410px] px-4 pt-1 md:px-8">
+      <div className="flex h-14 items-center gap-2">
+        <Link href="/feed" className="mr-6 flex items-center gap-2 text-[21px] font-bold tracking-[-0.02em] lg:mr-12">
+          <Mark size={26} />
+          JobGate
+        </Link>
+        <nav aria-label="Main" className="hidden items-center gap-1.5 md:flex">
+          {tabs}
+        </nav>
 
-      <nav aria-label="Main" className="ml-auto flex gap-1 rounded-[14px] border-2 border-line bg-surface p-1">
-        {TABS.map((t) => (
-          <Link
-            key={t.href}
-            href={t.href}
-            aria-current={active(t.href) ? "page" : undefined}
-            className={`flex h-9 items-center gap-1.5 rounded-[10px] px-3 text-[14px] font-semibold active:scale-95 sm:px-4 ${active(t.href) ? "bg-mint text-ground" : "text-muted hover:text-ink"}`}
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <span
+            title={email}
+            className="hidden size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-[13px] font-semibold text-soft sm:grid"
           >
-            {t.label}
-            {t.href === "/applied" && appliedCount > 0 && <span className="num font-mono text-[12px]">{appliedCount}</span>}
+            {email.slice(0, 1).toUpperCase() || "?"}
+          </span>
+          <span aria-hidden="true" className="mx-2 hidden h-6 w-px bg-white/10 sm:block" />
+          <form action={signOut}>
+            <button className="h-10 whitespace-nowrap rounded-[10px] px-3 text-[15px] font-medium text-soft hover:text-ink">Sign out</button>
+          </form>
+          <Link
+            href="/profile"
+            aria-current={path.startsWith("/profile") ? "page" : undefined}
+            className="btn-lavender flex h-10 items-center whitespace-nowrap rounded-[11px] px-4 text-[15px] font-semibold hover:brightness-110 active:scale-[0.97] aria-[current=page]:ring-2 aria-[current=page]:ring-white/40"
+          >
+            Your profile
           </Link>
-        ))}
-      </nav>
-
-      <div ref={menu} className="relative">
-        <button
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-label="Account"
-          className={`grid size-11 place-items-center rounded-[14px] border-2 bg-surface font-display font-bold hover:border-lav ${path.startsWith("/profile") ? "border-mint" : "border-line"}`}
-        >
-          {email.slice(0, 1).toUpperCase() || "?"}
-        </button>
-        {open && (
-          <div className="absolute right-0 z-30 mt-2 w-64 rounded-[16px] border-2 border-line bg-surface p-2 shadow-[6px_6px_0_var(--color-line)]">
-            <p className="truncate px-3 py-2 text-[13px] text-muted" title={email}>
-              {email}
-            </p>
-            <Link
-              href="/profile"
-              prefetch
-              className="flex h-10 w-full items-center rounded-[10px] px-3 font-semibold hover:bg-hover"
-            >
-              Profile
-            </Link>
-            <form action={signOut}>
-              <button className="h-10 w-full rounded-[10px] px-3 text-left font-semibold hover:bg-hover">Sign out</button>
-            </form>
-          </div>
-        )}
+        </div>
       </div>
+      <nav aria-label="Main" className="-mx-1 flex gap-1 overflow-x-auto pb-1 md:hidden">
+        {tabs}
+      </nav>
     </header>
   );
 }

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist", weight: ["400", "500", "600", "700"] });
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-space", weight: ["500", "600", "700"] });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jbmono", weight: ["500", "700"] });
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", weight: ["400", "500", "600", "700", "800"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
   title: "JobGate",
@@ -13,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${display.variable} ${mono.variable}`}>
+    <html lang="en" className={jakarta.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
