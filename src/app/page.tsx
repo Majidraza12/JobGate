@@ -1,41 +1,50 @@
 import Link from "next/link";
+import { Ambient } from "@/components/Ambient";
+import { Icon, type IconName } from "@/components/Icon";
 import { Mark } from "@/components/Mark";
+import { BUTTON, IconTile, TowerArt } from "@/components/ui";
 import { LandingDemo } from "./LandingDemo";
 
 // The public front door. Signed-in users never see it: the middleware sends
 // them to /feed.
 
-const STEPS = [
+const STEPS: { n: string; icon: IconName; title: string; body: string }[] = [
   {
     n: "01",
+    icon: "inbox",
     title: "We collect the postings",
     body: "Internship and new-grad listings from open trackers. Each job description is fetched from the company's own careers system.",
   },
   {
     n: "02",
+    icon: "file",
     title: "We read every rule once",
     body: "Each description is read for the rules buried in it: graduation window, return to school, class year, degree, citizenship, sponsorship, clearance. Every rule keeps the exact sentence it came from.",
   },
   {
     n: "03",
+    icon: "bolt",
     title: "You get matched instantly",
     body: "Your profile is checked against every posting in plain code, so your feed is instant and your answers are never sent to an AI.",
   },
 ];
 
-const WHY = [
+const WHY: { icon: IconName; tone: string; title: string; body: string }[] = [
   {
-    tone: "bg-mint text-ground",
+    icon: "globe",
+    tone: "!bg-mint/10 !text-mint !ring-mint/20",
     title: "A green card isn't citizenship",
     body: "Most trackers lump everything into one “citizens only” flag. JobGate checks citizenship, ITAR U.S. person, sponsorship now, sponsorship later, and clearance separately, so a permanent resident is never hidden from a job they can take.",
   },
   {
-    tone: "bg-amber text-ground",
+    icon: "quote",
+    tone: "!bg-amber/10 !text-amber !ring-amber/20",
     title: "Every verdict shows its sentence",
     body: "No black box. Each Eligible, Check, or Not eligible comes with the exact quote from the posting that decided it, checked word for word against the original text.",
   },
   {
-    tone: "bg-lav text-ground",
+    icon: "help",
+    tone: "",
     title: "Silence isn't a yes",
     body: "When a posting never mentions a rule, JobGate says “not stated”. When it couldn't read one, it says so. Those are never shown as the same thing.",
   },
@@ -43,66 +52,65 @@ const WHY = [
 
 export default function Landing() {
   return (
-    <div className="min-h-screen">
-      <header className="mx-auto flex max-w-[1240px] items-center gap-3 px-4 pt-5 md:px-8 md:pt-7">
-        <Link href="/" className="flex items-center gap-2.5 font-display text-[22px] font-bold">
-          <Mark size={30} />
+    <div className="relative min-h-screen overflow-x-clip">
+      <Ambient hero />
+      <header className="relative z-20 mx-auto flex h-[60px] max-w-[1410px] items-center gap-2 px-4 md:px-8">
+        <Link href="/" className="mr-10 flex items-center gap-2 text-[21px] font-bold tracking-[-0.02em]">
+          <Mark size={26} />
           JobGate
         </Link>
-        <nav className="ml-auto flex items-center gap-1 sm:gap-2">
-          <Link href="/login" className="flex h-11 items-center whitespace-nowrap rounded-[12px] px-3 font-semibold text-muted hover:text-ink sm:px-4">
-            Log in
-          </Link>
-          <Link href="/login?mode=signup" className="flex h-11 items-center whitespace-nowrap rounded-[12px] bg-mint px-3 font-bold text-ground hover:bg-ink active:scale-95 sm:px-4">
-            Sign up free
-          </Link>
+        <nav className="hidden items-center gap-1.5 md:flex" aria-label="Sections">
+          {[
+            ["#demo", "Demo"],
+            ["#how", "How it works"],
+            ["#why", "Why JobGate"],
+          ].map(([href, label]) => (
+            <a key={href} href={href} className="flex h-10 items-center rounded-[10px] px-4 text-[15px] font-medium text-soft hover:bg-white/[0.04] hover:text-ink">
+              {label}
+            </a>
+          ))}
         </nav>
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <Link href="/login" className="flex h-10 items-center whitespace-nowrap rounded-[10px] px-3 text-[15px] font-medium text-soft hover:text-ink sm:px-4">
+            Sign in
+          </Link>
+          <Link href="/login?mode=signup" className={`${BUTTON.primary} h-10 rounded-[11px] px-4 text-[15px]`}>
+            Get Started
+          </Link>
+        </div>
       </header>
 
-      <main className="mx-auto max-w-[1240px] px-4 md:px-8">
+      <main className="relative z-10 mx-auto max-w-[1240px] px-4 md:px-8">
         {/* Hero */}
-        <section className="grid items-center gap-10 pb-16 pt-14 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:pt-20">
-          <div>
-            <p className="inline-flex rotate-[-2deg] rounded-[10px] bg-amber px-3 py-1 font-mono text-[12px] font-bold uppercase tracking-wide text-ground">
-              For internship and new-grad hunters
-            </p>
-            <h1 className="mt-5 font-display text-[44px] font-bold leading-[0.98] tracking-[-0.04em] md:text-[68px]">
-              Know if you can apply <span className="text-mint">before you apply.</span>
-            </h1>
-            <p className="mt-5 max-w-[52ch] text-[17px] leading-[1.6] text-muted">
-              Postings hide their rules: graduate between December and June, must return to school, U.S. citizens only, no sponsorship. JobGate reads them for
-              you and shows which jobs you can actually apply to, with the sentence that decides each one.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/login?mode=signup"
-                className="flex h-13 items-center rounded-[14px] bg-brand px-6 text-[16px] font-bold text-on-brand shadow-[6px_6px_0_var(--color-mint)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_var(--color-mint)] active:translate-x-0 active:translate-y-0 active:shadow-none"
-              >
-                Check my eligibility
-              </Link>
-              <a href="#demo" className="flex h-13 items-center rounded-[14px] border-2 border-line bg-surface px-6 text-[16px] font-bold hover:border-lav active:scale-95">
-                Try the demo ↓
-              </a>
-            </div>
-          </div>
-
-          {/* The gate: open for you, closed for the rest. */}
-          <div className="relative mx-auto aspect-square w-full max-w-[440px] rounded-[32px] bg-brand shadow-[10px_10px_0_var(--color-mint)]" aria-hidden="true">
-            <svg viewBox="0 0 24 24" className="absolute inset-[14%]">
-              <rect x="3" y="3" width="3.2" height="19" rx="1.2" fill="#fff" />
-              <rect x="17.8" y="3" width="3.2" height="19" rx="1.2" fill="#fff" />
-              <rect x="3" y="8" width="18" height="3" rx="1.2" fill="var(--color-mint)" transform="rotate(-24 3 9.5)" />
-            </svg>
-            <span className="absolute left-5 top-6 rotate-[-6deg] rounded-[10px] bg-mint px-3 py-1.5 font-mono text-[13px] font-bold uppercase text-ground">Eligible</span>
-            <span className="absolute bottom-8 right-5 rotate-[5deg] rounded-[10px] bg-amber px-3 py-1.5 font-mono text-[13px] font-bold uppercase text-ground">Check</span>
-            <span className="absolute bottom-24 left-4 rotate-[-3deg] rounded-[10px] bg-rose px-3 py-1.5 font-mono text-[13px] font-bold uppercase text-ground">Not eligible</span>
+        <section className="flex flex-col items-center pb-20 pt-10 text-center sm:pt-[30px]">
+          <p className="inline-flex h-10 items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.03] px-4 text-[14.5px] text-soft backdrop-blur">
+            <Icon name="bolt" size={17} className="fill-lavender text-lavender" />
+            For internship and new-grad hunters
+          </p>
+          <h1 className="mt-6 max-w-[16ch] text-[44px] font-semibold leading-[1.06] tracking-[-0.035em] sm:text-[60px] lg:text-[68px]">
+            Know if you can apply <span className="text-shine pr-[0.08em] italic">before</span> you apply
+          </h1>
+          <p className="mt-5 max-w-[60ch] text-[17px] leading-[1.6] text-soft sm:text-[19px]">
+            Postings hide their rules: graduate between December and June, must return to school, U.S. citizens only, no sponsorship. JobGate reads them for you and
+            shows which jobs you can actually apply to, with the sentence that decides each one.
+          </p>
+          <div className="mt-9 flex flex-wrap justify-center gap-3">
+            <Link href="/login?mode=signup" className={`${BUTTON.primary} h-[52px] px-7 text-[16px]`}>
+              Check my eligibility
+              <Icon name="arrowRight" size={18} />
+            </Link>
+            <a href="#demo" className={`${BUTTON.ghost} h-[52px] px-7 text-[16px]`}>
+              Try the demo
+            </a>
           </div>
         </section>
 
         {/* Demo */}
-        <section id="demo" className="scroll-mt-8 rounded-[28px] border-2 border-line bg-sunken/80 p-5 md:p-8">
-          <h2 className="font-display text-[32px] font-bold leading-[1.05] tracking-[-0.03em] md:text-[40px]">Try it on real postings.</h2>
-          <p className="mt-2 max-w-[60ch] text-muted">
+        <section id="demo" className="glass scroll-mt-8 rounded-[24px] p-5 md:p-8">
+          <h2 className="text-[30px] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[38px]">
+            Try it on <span className="text-shine pr-[0.06em] italic">real</span> postings
+          </h2>
+          <p className="mt-2 max-w-[62ch] text-soft">
             Four real job descriptions, already read. Change who you are and watch the verdicts move. The highlighted phrase is the sentence that decided it.
           </p>
           <div className="mt-6">
@@ -111,59 +119,68 @@ export default function Landing() {
         </section>
 
         {/* How it works */}
-        <section className="pt-20">
-          <h2 className="font-display text-[32px] font-bold tracking-[-0.03em] md:text-[40px]">How it works</h2>
+        <section id="how" className="scroll-mt-8 pt-24">
+          <h2 className="text-[30px] font-semibold tracking-[-0.03em] md:text-[38px]">How it works</h2>
           <ol className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
             {STEPS.map((s) => (
-              <li key={s.n} className="rounded-[22px] border-2 border-line bg-surface p-6">
-                <span className="font-mono text-[14px] font-bold text-lav">{s.n}</span>
-                <h3 className="mt-3 font-display text-[22px] font-bold leading-[1.15]">{s.title}</h3>
-                <p className="mt-2 text-muted">{s.body}</p>
+              <li key={s.n} className="glass rounded-[18px] p-6 transition-[background,border-color,box-shadow] duration-200 hover:glow">
+                <span className="flex items-center gap-3">
+                  <IconTile name={s.icon} />
+                  <span className="num text-[14px] font-semibold text-lavender">{s.n}</span>
+                </span>
+                <h3 className="mt-4 text-[20px] font-semibold leading-[1.25]">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.55] text-soft">{s.body}</p>
               </li>
             ))}
           </ol>
         </section>
 
         {/* Why */}
-        <section className="pt-20">
-          <h2 className="font-display text-[32px] font-bold tracking-[-0.03em] md:text-[40px]">Why it's different</h2>
+        <section id="why" className="scroll-mt-8 pt-24">
+          <h2 className="text-[30px] font-semibold tracking-[-0.03em] md:text-[38px]">Why it&apos;s different</h2>
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
             {WHY.map((w) => (
-              <article key={w.title} className="rounded-[22px] border-2 border-line bg-surface p-6">
-                <span className={`inline-block rotate-[-3deg] rounded-[8px] px-2 py-0.5 font-mono text-[11px] font-bold uppercase ${w.tone}`}>Why</span>
-                <h3 className="mt-3 font-display text-[22px] font-bold leading-[1.15]">{w.title}</h3>
-                <p className="mt-2 text-muted">{w.body}</p>
+              <article key={w.title} className="glass rounded-[18px] p-6 transition-[background,border-color,box-shadow] duration-200 hover:glow">
+                <IconTile name={w.icon} className={w.tone} />
+                <h3 className="mt-4 text-[20px] font-semibold leading-[1.25]">{w.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.55] text-soft">{w.body}</p>
               </article>
             ))}
           </div>
         </section>
 
         {/* Closing call to action */}
-        <section className="py-20">
-          <div className="rounded-[28px] bg-brand px-6 py-10 text-center shadow-[10px_10px_0_var(--color-mint)] md:px-10 md:py-14">
-            <h2 className="mx-auto max-w-[20ch] font-display text-[34px] font-bold leading-[1.02] tracking-[-0.03em] text-on-brand md:text-[48px]">
-              Stop opening postings you can't apply to.
-            </h2>
-            <p className="mx-auto mt-4 max-w-[48ch] text-[#e5dcff]">Set your graduation date and work authorization once. It takes under a minute.</p>
-            <Link href="/login?mode=signup" className="mt-8 inline-flex h-13 items-center rounded-[14px] bg-mint px-7 text-[16px] font-bold text-ground hover:bg-ink active:scale-95">
-              Create my free account
-            </Link>
+        <section className="py-24">
+          <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-[linear-gradient(160deg,#1f1636_0%,#130f20_55%,#100d19_100%)] px-6 py-12 text-center shadow-[inset_0_1px_0_rgb(255_255_255/0.06)] md:px-10 md:py-16">
+            <TowerArt className="absolute right-0 top-0 h-[260px] w-[240px] opacity-80" />
+            <div className="absolute -right-16 -top-16 size-64 rounded-full bg-brand/30 blur-3xl" aria-hidden="true" />
+            <div className="relative">
+              <h2 className="mx-auto max-w-[20ch] text-[32px] font-semibold leading-[1.1] tracking-[-0.03em] md:text-[46px]">
+                Stop opening postings you <span className="text-shine pr-[0.06em] italic">can&apos;t</span> apply to
+              </h2>
+              <p className="mx-auto mt-4 max-w-[48ch] text-soft">Set your graduation date and work authorization once. It takes under a minute.</p>
+              <Link href="/login?mode=signup" className={`${BUTTON.white} mt-8 h-[52px] px-7 text-[16px]`}>
+                Create my free account
+                <Icon name="arrowRight" size={18} />
+              </Link>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t-2 border-line">
+      <footer className="relative z-10 border-t border-white/[0.07]">
         <div className="mx-auto flex max-w-[1240px] flex-col gap-3 px-4 py-8 text-[13px] text-muted md:flex-row md:justify-between md:px-8">
-          <p className="max-w-[70ch]">
-            “Eligible” means you meet every requirement the posting states that JobGate evaluated. It is not a guarantee from the employer.
-          </p>
+          <p className="max-w-[70ch]">“Eligible” means you meet every requirement the posting states that JobGate evaluated. It is not a guarantee from the employer.</p>
           <p>
             Listings from{" "}
-            <a className="text-ink underline decoration-line underline-offset-4 hover:decoration-lav" href="https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships">
+            <a
+              className="text-soft underline decoration-white/20 underline-offset-4 hover:text-ink hover:decoration-lavender"
+              href="https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships"
+            >
               zshah101
             </a>{" "}
             (MIT) and{" "}
-            <a className="text-ink underline decoration-line underline-offset-4 hover:decoration-lav" href="https://github.com/SimplifyJobs/New-Grad-Positions">
+            <a className="text-soft underline decoration-white/20 underline-offset-4 hover:text-ink hover:decoration-lavender" href="https://github.com/SimplifyJobs/New-Grad-Positions">
               SimplifyJobs
             </a>
             .
