@@ -70,7 +70,7 @@ function Row({ app, saved, now }: { app: Application; saved: boolean; now: numbe
     });
 
   return (
-    <li className="glass group relative rounded-[16px] transition-[background,border-color,box-shadow] duration-200 hover:glow focus-within:glow">
+    <li className="glass group relative rounded-[16px] has-[[aria-expanded=true]]:z-30 transition-[background,border-color,box-shadow] duration-200 hover:glow focus-within:glow">
       <div className="flex items-center gap-4 p-4 sm:gap-6 sm:px-5 sm:py-[13px]">
         <span className="max-sm:[&>span]:!size-11">
           <CompanyAvatar company={l?.company ?? "?"} size={58} />
