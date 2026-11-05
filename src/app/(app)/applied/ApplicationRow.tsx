@@ -249,7 +249,7 @@ export function ApplicationsView({ apps, savedIds }: { apps: Application[]; save
     );
 
   return (
-    <div className="pt-6 sm:pt-8">
+    <div className="mx-auto max-w-[1460px] pt-6 sm:pt-8">
       <div className="grid grid-cols-1 gap-[28px] xl:grid-cols-[minmax(0,1fr)_420px]">
         <div className="min-w-0">
           <div className="px-1 sm:px-[86px] xl:px-[86px]">

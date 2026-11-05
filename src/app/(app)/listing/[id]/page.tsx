@@ -81,7 +81,7 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
   ];
 
   return (
-    <div className="pt-4">
+    <div className="mx-auto max-w-[1310px] pt-4">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-3 text-[14.5px] text-soft">
         <Link href="/feed" aria-label="Back to jobs" className="grid size-8 place-items-center rounded-full bg-white/[0.05] hover:bg-white/10 hover:text-ink">

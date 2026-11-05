@@ -18,7 +18,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     <div className="relative min-h-screen overflow-x-clip">
       <Ambient />
       <TopNav email={user.email ?? ""} appliedCount={applied.count ?? 0} savedCount={saved.count ?? 0} />
-      <main className="relative z-10 mx-auto max-w-[1460px] px-4 pb-24 md:px-8">{children}</main>
+      <main className="relative z-10 mx-auto max-w-[1680px] px-4 pb-24 md:px-8 2xl:px-16">{children}</main>
     </div>
   );
 }

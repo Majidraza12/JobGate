@@ -34,7 +34,7 @@ export function TopNav({ email, appliedCount, savedCount }: { email: string; app
   ));
 
   return (
-    <header className="relative z-20 mx-auto max-w-[1410px] px-4 pt-1 md:px-8">
+    <header className="relative z-20 mx-auto max-w-[1680px] px-4 pt-1 md:px-8 2xl:px-[88px]">
       <div className="flex h-14 items-center gap-2">
         <Link href="/feed" className="mr-6 flex items-center gap-2 text-[21px] font-bold tracking-[-0.02em] lg:mr-12">
           <Mark size={26} />
