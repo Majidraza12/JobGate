@@ -22,7 +22,7 @@ export function Ambient({ hero }: { hero?: boolean }) {
           and a soft band just inside it; the mask hides the right half, so
           the rim fades out near the top like the references. */}
       <div
-        className={`absolute max-md:left-[-140px] max-md:top-[110px] max-md:h-[1200px] max-md:w-[560px] ${centered ? "left-[calc(50%-698px)] top-[168px] h-[1900px] w-[900px]" : "left-[max(-24px,calc(50%-821px))] top-[-50px] h-[1400px] w-[600px]"} rounded-[50%]`}
+        className={`absolute max-md:left-[-140px] max-md:top-[110px] max-md:h-[1200px] max-md:w-[560px] ${centered ? "left-[calc(50%-698px)] top-[168px] h-[1900px] w-[900px]" : "left-[max(-40px,calc(50%-836px))] top-[-50px] h-[1400px] w-[600px]"} rounded-[50%]`}
         style={{
           boxShadow: centered
             ? "inset 2px 1px 0 -0.5px rgb(225 210 255 / 0.95), inset 9px 5px 14px -6px rgb(170 130 255 / 0.9), inset 40px 22px 70px -30px rgb(120 70 250 / 0.55), inset 120px 60px 160px -90px rgb(90 40 220 / 0.3)"

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { START_TERMS } from "@core/profile";
 import { createClient } from "@/lib/supabase/server";
 
-export type ProfileState = { error: string | null };
+export type ProfileState = { error: string | null; savedAt?: number };
 
 const yesNo = z.enum(["yes", "no"]).transform((v) => v === "yes");
 
@@ -23,6 +23,7 @@ const Form = z.object({
   job_types: z.array(z.enum(["internship", "co-op", "new_grad"])).min(1, "Pick at least one job type."),
   locations: z.array(z.string().trim().min(1).max(80)).max(20, "Pick up to 20 cities."),
   remote_ok: z.literal("on").optional(),
+  stay: z.literal("1").optional(),
 });
 
 export async function saveProfile(_prev: ProfileState, form: FormData): Promise<ProfileState> {
@@ -61,5 +62,7 @@ export async function saveProfile(_prev: ProfileState, form: FormData): Promise<
   });
   if (error) return { error: "Couldn't save your profile. Try again." };
   revalidatePath("/", "layout");
+  // Editing one section on the profile page stays there; onboarding goes to the feed.
+  if (f.stay) return { error: null, savedAt: Date.now() };
   redirect("/feed");
 }

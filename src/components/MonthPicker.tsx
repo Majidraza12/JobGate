@@ -43,7 +43,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
         onClick={() => setOpen(!open)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className={`flex h-11 w-full items-center justify-between rounded-[12px] border-2 bg-sunken px-3 text-left font-medium ${open ? "border-lav" : "border-line hover:border-control"}`}
+        className={`flex h-11 w-full items-center justify-between rounded-[12px] border bg-black/25 px-3 text-left font-medium ${open ? "border-lavender/60" : "border-white/10 hover:border-white/20"}`}
       >
         <span className={value ? "" : "text-muted"}>{value ? label(value) : placeholder}</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-muted" aria-hidden="true">
@@ -53,7 +53,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
       </button>
 
       {open && (
-        <div role="dialog" aria-label="Choose a month" className="absolute left-0 z-20 mt-2 w-[296px] rounded-[18px] border-2 border-line bg-surface p-3 shadow-[6px_6px_0_var(--color-brand)]">
+        <div role="dialog" aria-label="Choose a month" className="absolute left-0 z-20 mt-2 w-[296px] animate-pop rounded-[16px] border border-white/10 bg-[#15121f]/95 p-3 shadow-[0_20px_50px_-12px_rgb(0_0_0/0.8)] backdrop-blur-xl">
           <div className="mb-2 flex items-center justify-between">
             <button type="button" onClick={() => setYear(year - 1)} className={arrow} aria-label="Previous year">
               ‹
@@ -74,7 +74,7 @@ export function MonthPicker({ name, id, defaultValue, placeholder = "Pick a mont
                   onClick={() => pick(i)}
                   aria-pressed={selected}
                   aria-label={`${LONG[i]} ${year}`}
-                  className={`h-9 rounded-control text-[14px] ${selected ? "bg-mint font-bold text-ground" : "font-medium text-ink hover:bg-hover"}`}
+                  className={`h-9 rounded-control text-[14px] ${selected ? "btn-lavender font-semibold" : "font-medium text-ink hover:bg-hover"}`}
                 >
                   {m}
                 </button>

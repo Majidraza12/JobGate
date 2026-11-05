@@ -50,11 +50,11 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
       {picked.map((c) => (
         <input key={c} type="hidden" name={name} value={c} />
       ))}
-      <div className="flex min-h-11 flex-wrap items-center gap-1.5 rounded-[12px] border-2 border-line bg-sunken px-2 py-1.5 focus-within:border-lav">
+      <div className="flex min-h-11 flex-wrap items-center gap-1.5 rounded-[12px] border border-white/10 bg-black/25 px-2 py-1.5 focus-within:border-lavender/60">
         {picked.map((c) => (
-          <span key={c} className="flex h-7 items-center gap-1 rounded-full bg-lav pl-3 pr-1 text-[13px] font-semibold text-ground">
+          <span key={c} className="flex h-7 items-center gap-1 rounded-full bg-white/[0.08] pl-3 pr-1 text-[13px] font-medium text-ink ring-1 ring-inset ring-white/10">
             {c}
-            <button type="button" onClick={() => remove(c)} aria-label={`Remove ${c}`} className="grid size-5 place-items-center rounded-full text-ground/70 hover:bg-ground hover:text-ink">
+            <button type="button" onClick={() => remove(c)} aria-label={`Remove ${c}`} className="grid size-5 place-items-center rounded-full text-muted hover:bg-white/10 hover:text-ink">
               ×
             </button>
           </span>
@@ -76,7 +76,7 @@ export function CityPicker({ name, options, defaultValue }: { name: string; opti
       </div>
 
       {show && (
-        <ul id={listId} role="listbox" className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-[16px] border-2 border-line bg-surface py-1 shadow-[6px_6px_0_var(--color-brand)]">
+        <ul id={listId} role="listbox" className="absolute left-0 right-0 z-20 mt-2 overflow-hidden animate-pop rounded-[14px] border border-white/10 bg-[#15121f]/95 py-1 shadow-[0_20px_50px_-12px_rgb(0_0_0/0.8)] backdrop-blur-xl">
           {matches.length === 0 && <li className="px-3 py-2 text-muted">No U.S. city matching &quot;{q.trim()}&quot;.</li>}
           {matches.map((o, i) => (
             <li
