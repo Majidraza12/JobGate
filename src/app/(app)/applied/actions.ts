@@ -16,3 +16,11 @@ export async function updateApplication(id: number, form: FormData) {
   await supabase.from("applications").update({ ...parsed.data, updated_at: new Date().toISOString() }).eq("id", id);
   revalidatePath("/applied");
 }
+
+export async function removeApplication(id: number) {
+  if (!Number.isInteger(id)) return;
+  const supabase = await createClient();
+  // RLS limits the delete to the signed-in user's own row.
+  await supabase.from("applications").delete().eq("id", id);
+  revalidatePath("/", "layout");
+}
