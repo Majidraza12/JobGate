@@ -7,6 +7,9 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakart
 export const metadata: Metadata = {
   title: "JobGate",
   description: "Which internship and new-grad postings you're eligible for, with the sentence that decides it.",
+  // The site is already dark. This tells the Dark Reader extension to leave it
+  // alone; its rewritten inline styles otherwise break React hydration.
+  other: { "darkreader-lock": "true" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
