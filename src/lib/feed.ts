@@ -7,6 +7,7 @@ import type { StoredExtraction } from "@core/requirements";
 import type { EligibilityProfile } from "@core/profile";
 import { PRODUCTION_MODEL } from "../../pipeline/extract/llm";
 import { PROMPT_VERSION } from "../../pipeline/extract/prompt";
+import { memo } from "./memo";
 
 export const LISTING_COLUMNS = "id, company, title, locations, job_type, posted_at, apply_url, jd_hash, jd_fetch_status, remote";
 
@@ -63,10 +64,22 @@ export function matchListing(l: ListingRow, reqs: Map<string, RequirementRow>, p
   return { ...l, ...result, rows: result.rows.map((row) => ({ ...row, explanation: why })), unchecked, roleFamily: null };
 }
 
+// Open listings and requirements are the same for every signed-in user (RLS
+// lets any of them read all of it) and change only when the pipeline runs,
+// every 2 hours. So they are cached for a few minutes instead of re-read from
+// the database on every request. Matching stays per request and per user.
+const OPEN_DATA_TTL = 5 * 60_000;
+
+function loadOpenData(supabase: SupabaseClient) {
+  return memo("open-listings", OPEN_DATA_TTL, () =>
+    Promise.all([
+      all<ListingRow>((from, to) => supabase.from("listings").select(LISTING_COLUMNS).eq("status", "open").order("id").range(from, to)),
+      loadRequirements(supabase),
+    ]),
+  );
+}
+
 export async function loadFeed(supabase: SupabaseClient, profile: EligibilityProfile): Promise<FeedItem[]> {
-  const [listings, reqs] = await Promise.all([
-    all<ListingRow>((from, to) => supabase.from("listings").select(LISTING_COLUMNS).eq("status", "open").order("id").range(from, to)),
-    loadRequirements(supabase),
-  ]);
+  const [listings, reqs] = await loadOpenData(supabase);
   return listings.map((l) => matchListing(l, reqs, profile));
 }
