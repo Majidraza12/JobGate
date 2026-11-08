@@ -12,3 +12,6 @@ next-env.d.ts
 /.taste-skill/
 /.playwright-mcp/
 /private/
+
+# Project notes, local only
+/CLAUDE.md
