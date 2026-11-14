@@ -32,6 +32,9 @@ const send = (res: import("node:http").ServerResponse, status: number, body: unk
 
 createServer(async (req, res) => {
   try {
+    // Answer only requests addressed to this machine. A web page that points
+    // its own domain at 127.0.0.1 (DNS rebinding) sends that domain as Host.
+    if (!/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(req.headers.host ?? "")) return send(res, 403, { error: "forbidden" });
     const url = new URL(req.url ?? "/", "http://localhost");
     if (req.method === "GET" && url.pathname === "/") return send(res, 200, readFileSync(new URL("label.html", root), "utf8"), "text/html; charset=utf-8");
     if (req.method === "GET" && url.pathname === "/api/state") return send(res, 200, { dataset, labels: loadLabels() });
@@ -40,7 +43,10 @@ createServer(async (req, res) => {
       const id = m[1]!;
       if (!ids.has(id)) return send(res, 404, { error: `unknown id ${id}` });
       let body = "";
-      for await (const chunk of req) body += chunk;
+      for await (const chunk of req) {
+        body += chunk;
+        if (body.length > 1_000_000) return send(res, 413, { error: "too large" });
+      }
       const parsed = Label.safeParse({ ...JSON.parse(body), id, datasetVersion: dataset.version, labeledAt: new Date().toISOString() });
       if (!parsed.success)
         return send(res, 400, { errors: parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`) });
