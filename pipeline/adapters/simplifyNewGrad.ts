@@ -13,7 +13,8 @@ const Listing = z.object({
   company_name: z.string().min(1),
   title: z.string().min(1),
   locations: z.array(z.string()),
-  url: z.url(),
+  // http(s) only: this becomes the Apply link, so "javascript:" must never get in.
+  url: z.url({ protocol: /^https?$/ }),
   date_posted: z.number().int().positive(),
   active: z.boolean(),
   is_visible: z.boolean().optional(),

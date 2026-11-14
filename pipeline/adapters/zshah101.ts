@@ -13,7 +13,8 @@ const Job = z.object({
   title: z.string().min(1),
   season: z.string().nullable(),
   location: z.string().nullable(),
-  url: z.url(),
+  // http(s) only: this becomes the Apply link, so "javascript:" must never get in.
+  url: z.url({ protocol: /^https?$/ }),
   posted_at: z.string().nullable(),
   posted_at_source: z.string().nullable().optional(),
   sponsorship: z.string().nullable(),
