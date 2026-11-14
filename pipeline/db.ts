@@ -11,12 +11,21 @@ const PIPELINE_LOCK = 7_243_001;
 
 const CHUNK = 1000;
 
-// Hosted Supabase requires TLS; the local CLI database has none. Certificate
-// checks are off (same as syncHosted.ts) because Supabase's CA is not in
-// Node's default store; the connection is still encrypted.
-export function sslFor(url: string): false | { rejectUnauthorized: false } {
+// Hosted Supabase requires TLS; the local CLI database has none.
+//
+// Supabase signs its database certificates with its own CA, which is not in
+// Node's default store. With DATABASE_SSL_CA set (the CA certificate itself,
+// PEM text, from the Supabase dashboard: Database settings > SSL), the server
+// certificate is verified. Without it the connection is encrypted but NOT
+// verified, so someone on the network path could impersonate the database and
+// read the password. Set it wherever the pipeline talks to hosted.
+export type Ssl = false | { rejectUnauthorized: false } | { rejectUnauthorized: true; ca: string };
+
+export function sslFor(url: string, ca: string | undefined = process.env.DATABASE_SSL_CA): Ssl {
   const host = new URL(url).hostname;
-  return host === "127.0.0.1" || host === "localhost" ? false : { rejectUnauthorized: false };
+  if (host === "127.0.0.1" || host === "localhost") return false;
+  const pem = ca?.trim();
+  return pem ? { rejectUnauthorized: true, ca: pem } : { rejectUnauthorized: false };
 }
 
 export async function connect(url = process.env.DATABASE_URL ?? LOCAL_DATABASE_URL) {

@@ -25,6 +25,10 @@ jobs:
     timeout-minutes: 30
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      # Optional: Supabase's CA certificate (PEM). When the secret exists, the
+      # database's TLS certificate is verified; when it doesn't, this is empty
+      # and the connection is encrypted but unverified.
+      DATABASE_SSL_CA: ${{ secrets.DATABASE_SSL_CA }}
       TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
     steps:
       - uses: actions/checkout@v5

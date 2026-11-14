@@ -7,7 +7,7 @@
 //   npm run sync:hosted     reads HOSTED_DATABASE_URL from .env
 
 import pg from "pg";
-import { connect } from "./db";
+import { connect, sslFor } from "./db";
 
 const TABLES = ["sources", "pipeline_runs", "raw_listings", "listings", "listing_sources", "possible_duplicates", "extraction_runs", "requirements"];
 const CHUNK = 500;
@@ -16,7 +16,7 @@ const hostedUrl = process.env.HOSTED_DATABASE_URL;
 if (!hostedUrl) throw new Error("HOSTED_DATABASE_URL is not set in .env");
 
 const local = await connect();
-const hosted = new pg.Client({ connectionString: hostedUrl, ssl: { rejectUnauthorized: false } });
+const hosted = new pg.Client({ connectionString: hostedUrl, ssl: sslFor(hostedUrl) });
 await hosted.connect();
 
 async function primaryKey(table: string): Promise<string[]> {
