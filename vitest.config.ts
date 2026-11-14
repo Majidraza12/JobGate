@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 
 export default defineConfig({
   resolve: {
-    alias: { "@core": fileURLToPath(new URL("./src/core", import.meta.url)) },
+    alias: { "@core": fileURLToPath(new URL("./src/core", import.meta.url)), "@": fileURLToPath(new URL("./src", import.meta.url)) },
   },
   test: {
     include: ["test/**/*.test.ts"],

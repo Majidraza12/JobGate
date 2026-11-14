@@ -17,8 +17,10 @@ export async function signIn(_prev: AuthState, form: FormData): Promise<AuthStat
 }
 
 export async function signUp(_prev: AuthState, form: FormData): Promise<AuthState> {
+  const creds = credentials(form);
+  if (creds.password.length < 8) return { error: "Use a password of at least 8 characters.", notice: null };
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signUp(credentials(form));
+  const { data, error } = await supabase.auth.signUp(creds);
   if (error) return { error: error.message, notice: null };
   // With "Confirm email" on, Supabase returns no session until the link is clicked.
   if (!data.session) return { error: null, notice: "Check your email for a confirmation link, then sign in." };

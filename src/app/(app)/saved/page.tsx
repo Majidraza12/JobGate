@@ -8,11 +8,12 @@ import { SavedView, type SavedCard } from "./SavedView";
 
 export default async function SavedPage() {
   const supabase = await createClient();
-  const [{ data: profile }, { data: saved }, { data: applied }] = await Promise.all([
+  const [{ data: profile, error: profileError }, { data: saved }, { data: applied }] = await Promise.all([
     supabase.from("profiles").select("*").maybeSingle<ProfileRow>(),
     supabase.from("saved_listings").select("listing_id, saved_at").order("saved_at", { ascending: false }),
     supabase.from("applications").select("listing_id"),
   ]);
+  if (profileError) throw new Error("Couldn't load your profile.");
   if (!profile) redirect("/profile");
 
   const savedAt = new Map((saved ?? []).map((s) => [s.listing_id as number, s.saved_at as string]));

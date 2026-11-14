@@ -51,6 +51,14 @@ describe("zshah101 adapter (snapshot 2026-10-27)", () => {
     expect(b.skipped.map((s) => s.externalId)).toEqual(["x:y:1", "x:y:2", null]);
   });
 
+  it("skips records whose link is not http(s), so a script URL can never become an Apply link", () => {
+    const good = feed.jobs[0];
+    const urls = ["javascript:alert(document.cookie)", "data:text/html,<script>alert(1)</script>", "file:///etc/passwd", "ftp://example.com/job"];
+    const b = parseZshah101({ count: 5, jobs: [good, ...urls.map((url, i) => ({ ...good, id: `x:y:${i}`, url }))] });
+    expect(b.listings).toHaveLength(1);
+    expect(b.skipped).toHaveLength(urls.length);
+  });
+
   it("throws when the wrapper itself is malformed, so the read counts as incomplete", async () => {
     expect(() => parseZshah101({ jobs: "nope" })).toThrow();
     await expect(zshah101Adapter(async () => ({})).fetch()).rejects.toThrow();
@@ -101,6 +109,13 @@ describe("Simplify new-grad adapter (snapshot 2026-10-27)", () => {
     expect(l!.baselineSponsorship).toBeNull();
     expect(Object.keys(l!.record as object).sort()).toEqual(["company_name", "date_posted", "id", "locations", "title", "url"]);
     expect(JSON.stringify(l)).not.toMatch(/Offers Sponsorship|degrees|category|notes/);
+  });
+
+  it("skips records whose link is not http(s)", () => {
+    const good = records.find((r: { active: boolean }) => r.active);
+    const b = parseSimplifyNewGrad([good, { ...good, id: "js", url: "javascript:alert(1)" }]);
+    expect(b.listings).toHaveLength(1);
+    expect(b.skipped.map((x) => x.externalId)).toEqual(["js"]);
   });
 
   it("logs and skips bad records", () => {

@@ -69,6 +69,9 @@ const send = (res: ServerResponse, status: number, body: unknown, type = "applic
 
 createServer(async (req, res) => {
   try {
+    // Answer only requests addressed to this machine. A web page that points
+    // its own domain at 127.0.0.1 (DNS rebinding) sends that domain as Host.
+    if (!/^(127\.0\.0\.1|localhost)(:\d+)?$/.test(req.headers.host ?? "")) return send(res, 403, { error: "forbidden" });
     const url = new URL(req.url ?? "/", "http://localhost");
     if (req.method === "GET" && url.pathname === "/")
       return send(res, 200, readFileSync(new URL("index.html", import.meta.url), "utf8"), "text/html; charset=utf-8");
@@ -78,7 +81,10 @@ createServer(async (req, res) => {
     }
     if (req.method === "POST" && url.pathname === "/api/match") {
       let body = "";
-      for await (const chunk of req) body += chunk;
+      for await (const chunk of req) {
+        body += chunk;
+        if (body.length > 100_000) return send(res, 413, { error: "too large" });
+      }
       const parsed = EligibilityProfile.safeParse(JSON.parse(body));
       if (!parsed.success) return send(res, 400, { errors: parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`) });
       const results = listings.map(({ jdText: _jd, req: r, ...l }) => ({ ...l, ...match(r, parsed.data, l.jobType) }));

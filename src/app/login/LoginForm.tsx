@@ -47,7 +47,8 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
           name="password"
           type={showPw ? "text" : "password"}
           required
-          minLength={6}
+          // New passwords need 8; sign-in stays open to older, shorter ones.
+          minLength={mode === "up" ? 8 : undefined}
           aria-describedby={mode === "up" ? "pw-rule" : undefined}
           autoComplete={mode === "in" ? "current-password" : "new-password"}
           className={`${input} pr-12`}
@@ -64,7 +65,7 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
       </div>
       {mode === "up" && (
         <p id="pw-rule" className="mt-1.5 text-[12.5px] text-muted">
-          At least 6 characters.
+          At least 8 characters.
         </p>
       )}
 

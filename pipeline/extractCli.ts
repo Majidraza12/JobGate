@@ -54,10 +54,13 @@ const llm = args["via-cli"]
     ? anthropicClient()
     : { model: MODEL, complete: () => Promise.reject(new Error("dry run makes no model calls")) };
 
+const limit = args.limit === undefined ? null : Number(args.limit);
+if (limit !== null && !(Number.isInteger(limit) && limit > 0)) throw new Error(`--limit must be a positive whole number, got "${args.limit}"`);
+
 const result = await runExtract({
   llm,
   capUsd: cap,
-  limit: args.limit === undefined ? null : Number.parseInt(args.limit, 10),
+  limit,
   dryRun: args["dry-run"],
   databaseUrl,
 });

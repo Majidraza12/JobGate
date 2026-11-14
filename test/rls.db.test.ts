@@ -136,4 +136,83 @@ describe.skipIf(!up)("RLS and grants", () => {
     );
     await expect(as("anon", null, () => db.query("select * from saved_listings"))).rejects.toThrow(/permission denied/);
   });
+
+  // Audit 2026-11-10: limits must hold in the database, because a signed-in
+  // user can call the REST API directly and skip the app's validation.
+  describe("database-side limits", () => {
+    const listing = async () => (await db.query("select id from listings limit 1")).rows[0].id as string;
+
+    it("caps note, comment, and field sizes and rejects unknown verdicts", async () => {
+      const id = await listing();
+      const big = "x".repeat(2001);
+      await expect(as("authenticated", A, () => db.query("insert into applications (listing_id, notes) values ($1, $2)", [id, big]))).rejects.toThrow(/applications_notes_len/);
+      await expect(as("authenticated", A, () => db.query("insert into verdict_feedback (listing_id, verdict_shown, comment) values ($1, 'eligible', $2)", [id, big]))).rejects.toThrow(
+        /verdict_feedback_comment_len/,
+      );
+      await expect(as("authenticated", A, () => db.query("insert into verdict_feedback (listing_id, verdict_shown) values ($1, $2)", [id, big]))).rejects.toThrow(/verdict_feedback_verdict_check/);
+      await expect(as("authenticated", A, () => db.query("insert into verdict_feedback (listing_id, verdict_shown, field) values ($1, 'check', $2)", [id, big]))).rejects.toThrow(
+        /verdict_feedback_field_len/,
+      );
+    });
+
+    it("stops one account from flooding feedback, without limiting anyone else", async () => {
+      const id = await listing();
+      await as("authenticated", A, async () => {
+        await db.query("insert into verdict_feedback (listing_id, verdict_shown) select $1, 'check' from generate_series(1, 50)", [id]);
+        await expect(db.query("insert into verdict_feedback (listing_id, verdict_shown) values ($1, 'check')", [id])).rejects.toThrow(/row-level security/);
+      });
+      // One bulk statement can't slip past the cap either.
+      await expect(as("authenticated", A, () => db.query("insert into verdict_feedback (listing_id, verdict_shown) select $1, 'check' from generate_series(1, 51)", [id]))).rejects.toThrow(
+        /row-level security/,
+      );
+      await db.query("begin");
+      try {
+        await db.query("insert into verdict_feedback (user_id, listing_id, verdict_shown) select $1, $2, 'check' from generate_series(1, 50)", [A, id]);
+        await db.query("set local role authenticated");
+        await db.query("select set_config('request.jwt.claim.sub', $1, true)", [B]);
+        await db.query("insert into verdict_feedback (listing_id, verdict_shown) values ($1, 'check')", [id]);
+      } finally {
+        await db.query("rollback");
+      }
+    });
+
+    it("still refuses feedback filed under another user's id", async () => {
+      const id = await listing();
+      await expect(as("authenticated", B, () => db.query("insert into verdict_feedback (user_id, listing_id, verdict_shown) values ($1, $2, 'check')", [A, id]))).rejects.toThrow(
+        /row-level security/,
+      );
+    });
+
+    it("bounds profile arrays and rejects unknown job types and empty start terms", async () => {
+      const set = (col: string, value: string[]) => as("authenticated", A, () => db.query(`update profiles set ${col} = $1 where id = $2`, [value, A]));
+      await expect(set("job_types", ["internship", "ceo"])).rejects.toThrow(/profiles_job_types_check/);
+      await expect(set("starts", [""])).rejects.toThrow(/profiles_starts_check/);
+      await expect(set("starts", Array(21).fill("Summer 2027"))).rejects.toThrow(/profiles_starts_check/);
+      await expect(set("locations", Array(21).fill("Chicago, IL"))).rejects.toThrow(/profiles_locations_check/);
+      await expect(set("locations", ["x".repeat(2001)])).rejects.toThrow(/profiles_locations_check/);
+      expect((await set("locations", ["Chicago, IL", "New York, NY"])).rowCount).toBe(1);
+    });
+
+    it("hides pipeline internals (error logs, costs) from signed-in users", async () => {
+      await as("authenticated", A, async () => {
+        await db.query("select id, status, started_at, finished_at from pipeline_runs");
+        await db.query("select jd_hash, prompt_version, model, extraction_status, extracted from requirements order by jd_hash");
+      });
+      await expect(as("authenticated", A, () => db.query("select errors from pipeline_runs"))).rejects.toThrow(/permission denied/);
+      await expect(as("authenticated", A, () => db.query("select counts from pipeline_runs"))).rejects.toThrow(/permission denied/);
+      await expect(as("authenticated", A, () => db.query("select error, cost_usd from requirements"))).rejects.toThrow(/permission denied/);
+      await expect(as("anon", null, () => db.query("select id from pipeline_runs"))).rejects.toThrow(/permission denied/);
+    });
+
+    it("refuses a listing whose apply link is not a web URL", async () => {
+      const insert = (url: string) =>
+        db.query(
+          `insert into listings (identity_key, identity_kind, company, title, apply_url, normalized_url, job_type, primary_source_id, primary_source_priority)
+           values ($1, 'url', 'Acme', 'Intern', $1, 'https://y', 'internship', 'zshah101', 1)`,
+          [url],
+        );
+      await expect(insert("javascript:alert(1)")).rejects.toThrow(/listings_apply_url_http/);
+      await expect(insert("data:text/html,x")).rejects.toThrow(/listings_apply_url_http/);
+    });
+  });
 });

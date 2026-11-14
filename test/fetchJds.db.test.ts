@@ -85,44 +85,44 @@ describe.skipIf(!up)("fetch-jds against Postgres", () => {
     (await db.query("select jd_fetch_status, jd_fetch_attempts, jd_hash, jd_text from listings where apply_url = $1", [url])).rows[0];
 
   it("saves text, hash, and status, and logs counts per kind on the run row", async () => {
-    await addListing("https://a.com/1");
-    await addListing("https://a.com/2");
-    await addListing("https://a.com/9", "closed");
-    routes = { "https://a.com/1": html(LONG), "https://a.com/2": status(403) };
+    await addListing("https://jobs.smartrecruiters.com/1");
+    await addListing("https://jobs.smartrecruiters.com/2");
+    await addListing("https://jobs.smartrecruiters.com/9", "closed");
+    routes = { "https://jobs.smartrecruiters.com/1": html(LONG), "https://jobs.smartrecruiters.com/2": status(403) };
     const r = await fetchJds();
     expect(r.counts).toEqual({ smartrecruiters: { ok: 1, blocked: 1 } });
-    expect(await row("https://a.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_fetch_attempts: 0 });
-    expect((await row("https://a.com/1")).jd_hash).toMatch(/^[0-9a-f]{64}$/);
-    expect(await row("https://a.com/2")).toMatchObject({ jd_fetch_status: "blocked", jd_fetch_attempts: 1 });
-    expect(await row("https://a.com/9")).toMatchObject({ jd_fetch_status: null });
+    expect(await row("https://jobs.smartrecruiters.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_fetch_attempts: 0 });
+    expect((await row("https://jobs.smartrecruiters.com/1")).jd_hash).toMatch(/^[0-9a-f]{64}$/);
+    expect(await row("https://jobs.smartrecruiters.com/2")).toMatchObject({ jd_fetch_status: "blocked", jd_fetch_attempts: 1 });
+    expect(await row("https://jobs.smartrecruiters.com/9")).toMatchObject({ jd_fetch_status: null });
     const run = await db.query("select status, counts from pipeline_runs where id = $1", [r.runId]);
     expect(run.rows[0]).toEqual({ status: "succeeded", counts: { step: "fetch_jd", byKind: { smartrecruiters: { ok: 1, blocked: 1 } } } });
   });
 
   it("is idempotent: a second run fetches nothing that already succeeded or failed for good", async () => {
-    await addListing("https://a.com/1");
-    await addListing("https://a.com/2");
-    routes = { "https://a.com/1": html(LONG), "https://a.com/2": status(404) };
+    await addListing("https://jobs.smartrecruiters.com/1");
+    await addListing("https://jobs.smartrecruiters.com/2");
+    routes = { "https://jobs.smartrecruiters.com/1": html(LONG), "https://jobs.smartrecruiters.com/2": status(404) };
     await fetchJds();
     expect((await fetchJds()).counts).toEqual({});
   });
 
   it("retries transient errors on later runs, up to three consecutive failures", async () => {
-    await addListing("https://a.com/1");
-    routes = { "https://a.com/1": status(503) };
+    await addListing("https://jobs.smartrecruiters.com/1");
+    routes = { "https://jobs.smartrecruiters.com/1": status(503) };
     for (let i = 0; i < 4; i++) await fetchJds();
-    expect(await row("https://a.com/1")).toMatchObject({ jd_fetch_status: "error", jd_fetch_attempts: 3 });
+    expect(await row("https://jobs.smartrecruiters.com/1")).toMatchObject({ jd_fetch_status: "error", jd_fetch_attempts: 3 });
   });
 
   it("keeps a good JD when a refresh fails transiently", async () => {
-    await addListing("https://a.com/1");
-    routes = { "https://a.com/1": html(LONG) };
+    await addListing("https://jobs.smartrecruiters.com/1");
+    routes = { "https://jobs.smartrecruiters.com/1": html(LONG) };
     await fetchJds();
-    const before = await row("https://a.com/1");
+    const before = await row("https://jobs.smartrecruiters.com/1");
     await db.query("update listings set jd_fetched_at = now() - interval '10 days'");
-    routes = { "https://a.com/1": status(503) };
+    routes = { "https://jobs.smartrecruiters.com/1": status(503) };
     expect((await fetchJds({ refreshDays: 7 })).counts).toEqual({ smartrecruiters: { error: 1 } });
-    expect(await row("https://a.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_hash: before.jd_hash, jd_text: before.jd_text });
+    expect(await row("https://jobs.smartrecruiters.com/1")).toMatchObject({ jd_fetch_status: "ok", jd_hash: before.jd_hash, jd_text: before.jd_text });
   });
 });
 

@@ -9,7 +9,7 @@ import { ProfileForm, type Recommended } from "./ProfileForm";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
-  const [{ data }, locations, { data: user }, { data: saved }] = await Promise.all([
+  const [{ data, error: profileError }, locations, { data: user }, { data: saved }] = await Promise.all([
     supabase.from("profiles").select("*").maybeSingle<ProfileRow>(),
     // Suggestions: cities in open listings (with counts), then Census cities with none yet.
     // Grouped in Postgres: one request instead of every listing's locations.
@@ -17,7 +17,10 @@ export default async function ProfilePage() {
     supabase.auth.getUser(),
     supabase.from("saved_listings").select("listing_id"),
   ]);
-  if (locations.error) throw new Error(locations.error.message);
+  // Never show the empty onboarding form because a read failed: saving it
+  // would overwrite the real profile.
+  if (profileError) throw new Error("Couldn't load your profile.");
+  if (locations.error) throw new Error("Couldn't load locations.");
 
   // The right column's live numbers: what this profile's feed looks like now.
   let counts: Record<Verdict, number> | null = null;

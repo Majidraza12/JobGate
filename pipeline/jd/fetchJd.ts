@@ -35,6 +35,23 @@ type Robots = { allowed(url: string): boolean; crawlDelayMs: number };
 const ALLOW_ALL: Robots = { allowed: () => true, crawlDelayMs: 0 };
 const DISALLOW_ALL: Robots = { allowed: () => false, crawlDelayMs: 0 };
 
+// Redirect targets must be ordinary public https hosts. This is a name check,
+// not a DNS check: it stops redirects to IP literals, localhost, and internal
+// names, which is what a hostile or misconfigured server would send.
+export function isPublicHttpsUrl(raw: string): boolean {
+  let u: URL;
+  try {
+    u = new URL(raw);
+  } catch {
+    return false;
+  }
+  const h = u.hostname;
+  if (u.protocol !== "https:" || u.username || u.password) return false;
+  if (h.startsWith("[") || /^[\d.]+$/.test(h) || /^0x/i.test(h)) return false; // IP literals
+  if (!h.includes(".") || /(^|\.)(localhost|local|internal|lan|home|corp|test|invalid)$/i.test(h)) return false;
+  return true;
+}
+
 class Failure extends Error {
   constructor(readonly status: JdFetchStatus, message: string) {
     super(message);
@@ -102,6 +119,7 @@ export class JdFetcher {
         const loc = res.headers.get("location");
         if (!loc) throw new Failure("error", `${res.status} without Location`);
         url = new URL(loc, url).toString();
+        if (!isPublicHttpsUrl(url)) throw new Failure("unsupported", `redirect to a non-public URL (${new URL(url).protocol}//${new URL(url).host})`);
         continue;
       }
       if (res.status === 401 || res.status === 403) throw new Failure("blocked", `GET ${url} returned ${res.status}`);

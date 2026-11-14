@@ -45,16 +45,20 @@ function SectionHead({ icon, children }: { icon: IconName; children: React.React
 }
 
 export default async function ListingPage({ params }: { params: Promise<{ id: string }> }) {
-  const id = Number((await params).id);
-  if (!Number.isInteger(id)) notFound();
+  const rawId = (await params).id;
+  const id = Number(rawId);
+  // Digits only: Number() also accepts "", "1e3", and "0x10".
+  if (!/^\d{1,15}$/.test(rawId) || id < 1) notFound();
   const supabase = await createClient();
 
-  const [{ data: profile }, { data: listing }, { data: application }, { data: saved }] = await Promise.all([
+  const [{ data: profile, error: profileError }, { data: listing, error: listingError }, { data: application }, { data: saved }] = await Promise.all([
     supabase.from("profiles").select("*").maybeSingle<ProfileRow>(),
     supabase.from("listings").select(`${LISTING_COLUMNS}, jd_text`).eq("id", id).maybeSingle<ListingRow & { jd_text: string | null }>(),
     supabase.from("applications").select("status, applied_at").eq("listing_id", id).maybeSingle(),
     supabase.from("saved_listings").select("listing_id").eq("listing_id", id).maybeSingle(),
   ]);
+  // A failed read is not "no profile" or "no such posting".
+  if (profileError || listingError) throw new Error("Couldn't load this posting.");
   if (!profile) redirect("/profile");
   if (!listing) notFound();
 

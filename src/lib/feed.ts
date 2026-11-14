@@ -46,10 +46,22 @@ export async function all<T>(query: (from: number, to: number) => PromiseLike<{ 
   }
 }
 
+// A hash is 64 characters and the filter travels in the URL, so a long list is
+// sent in pieces that stay well under URL length limits.
+export const HASH_CHUNK = 50;
+
 export async function loadRequirements(supabase: SupabaseClient, hashes?: string[]) {
-  let q = supabase.from("requirements").select("jd_hash, extraction_status, extracted").eq("prompt_version", PROMPT_VERSION).eq("model", PRODUCTION_MODEL);
-  if (hashes) q = q.in("jd_hash", hashes);
-  const rows = await all<RequirementRow>((from, to) => q.range(from, to));
+  const base = () => supabase.from("requirements").select("jd_hash, extraction_status, extracted").eq("prompt_version", PROMPT_VERSION).eq("model", PRODUCTION_MODEL);
+  // Ordered, because paging with range() over an unordered query can skip or
+  // repeat rows between pages. jd_hash is unique per prompt version and model.
+  const page = (hs?: string[]) => all<RequirementRow>((from, to) => (hs ? base().in("jd_hash", hs) : base()).order("jd_hash").range(from, to));
+  let rows: RequirementRow[];
+  if (!hashes) rows = await page();
+  else {
+    const unique = [...new Set(hashes)];
+    const parts = await Promise.all(Array.from({ length: Math.ceil(unique.length / HASH_CHUNK) }, (_, i) => page(unique.slice(i * HASH_CHUNK, (i + 1) * HASH_CHUNK))));
+    rows = parts.flat();
+  }
   return new Map(rows.map((r) => [r.jd_hash, r]));
 }
 

@@ -2,7 +2,7 @@
 // responses (captured 2026-10-28), and the polite runner against a fake fetch.
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { JdFetcher } from "../pipeline/jd/fetchJd";
+import { isPublicHttpsUrl, JdFetcher } from "../pipeline/jd/fetchJd";
 import { planFetch, type JdTarget } from "../pipeline/jd/plans";
 import { cleanText, decodeEntities, htmlToText, sha256 } from "../pipeline/jd/text";
 
@@ -201,10 +201,10 @@ const page = (url: string): JdTarget => ({ applyUrl: url, ats: "smartrecruiters"
 describe("JdFetcher", () => {
   it("fetches, cleans, and hashes a page that robots.txt allows", async () => {
     const { fetcher, calls } = fakeNet({
-      "https://a.com/robots.txt": ok("User-agent: *\nDisallow: /private/", "text/plain"),
-      "https://a.com/jobs/1": ok(`<html><body><article>${LONG}</article></body></html>`),
+      "https://jobs.smartrecruiters.com/robots.txt": ok("User-agent: *\nDisallow: /private/", "text/plain"),
+      "https://jobs.smartrecruiters.com/jobs/1": ok(`<html><body><article>${LONG}</article></body></html>`),
     });
-    const r = await fetcher.fetch(page("https://a.com/jobs/1"));
+    const r = await fetcher.fetch(page("https://jobs.smartrecruiters.com/jobs/1"));
     expect(r.status).toBe("ok");
     expect(r.text).toContain("Must be a U.S. citizen");
     expect(r.hash).toBe(sha256(r.text!));
@@ -213,65 +213,65 @@ describe("JdFetcher", () => {
 
   it("never requests a path robots.txt disallows", async () => {
     const { fetcher, calls } = fakeNet({
-      "https://a.com/robots.txt": ok("User-agent: *\nDisallow: /jobs/", "text/plain"),
+      "https://jobs.smartrecruiters.com/robots.txt": ok("User-agent: *\nDisallow: /jobs/", "text/plain"),
     });
-    expect((await fetcher.fetch(page("https://a.com/jobs/1"))).status).toBe("robots_disallowed");
-    expect(calls.map((c) => c.url)).toEqual(["https://a.com/robots.txt"]);
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/jobs/1"))).status).toBe("robots_disallowed");
+    expect(calls.map((c) => c.url)).toEqual(["https://jobs.smartrecruiters.com/robots.txt"]);
   });
 
   it("treats a 4xx robots.txt as allow-all and a 5xx as disallow-all (RFC 9309)", async () => {
     const { fetcher } = fakeNet({
-      "https://a.com/robots.txt": status(401),
-      "https://a.com/jobs/1": ok(LONG),
-      "https://b.com/robots.txt": status(503),
+      "https://jobs.smartrecruiters.com/robots.txt": status(401),
+      "https://jobs.smartrecruiters.com/jobs/1": ok(LONG),
+      "https://careers.smartrecruiters.com/robots.txt": status(503),
     });
-    expect((await fetcher.fetch(page("https://a.com/jobs/1"))).status).toBe("ok");
-    expect((await fetcher.fetch(page("https://b.com/jobs/1"))).status).toBe("robots_disallowed");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/jobs/1"))).status).toBe("ok");
+    expect((await fetcher.fetch(page("https://careers.smartrecruiters.com/jobs/1"))).status).toBe("robots_disallowed");
   });
 
   it("checks robots.txt again when a redirect goes to another host", async () => {
     const { fetcher } = fakeNet({
-      "https://a.com/robots.txt": status(404),
-      "https://a.com/jobs/1": status(302, { location: "https://b.com/careers/1" }),
-      "https://b.com/robots.txt": ok("User-agent: *\nDisallow: /careers/", "text/plain"),
+      "https://jobs.smartrecruiters.com/robots.txt": status(404),
+      "https://jobs.smartrecruiters.com/jobs/1": status(302, { location: "https://careers.smartrecruiters.com/careers/1" }),
+      "https://careers.smartrecruiters.com/robots.txt": ok("User-agent: *\nDisallow: /careers/", "text/plain"),
     });
-    expect((await fetcher.fetch(page("https://a.com/jobs/1"))).status).toBe("robots_disallowed");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/jobs/1"))).status).toBe("robots_disallowed");
   });
 
   it("maps HTTP failures to statuses", async () => {
     const { fetcher } = fakeNet({
-      "https://a.com/robots.txt": status(404),
-      "https://a.com/403": status(403),
-      "https://a.com/410": status(410),
-      "https://a.com/pdf": ok("%PDF", "application/pdf"),
-      "https://a.com/shell": ok("<html><body><div id=root></div></body></html>"),
+      "https://jobs.smartrecruiters.com/robots.txt": status(404),
+      "https://jobs.smartrecruiters.com/403": status(403),
+      "https://jobs.smartrecruiters.com/410": status(410),
+      "https://jobs.smartrecruiters.com/pdf": ok("%PDF", "application/pdf"),
+      "https://jobs.smartrecruiters.com/shell": ok("<html><body><div id=root></div></body></html>"),
     });
-    expect((await fetcher.fetch(page("https://a.com/403"))).status).toBe("blocked");
-    expect((await fetcher.fetch(page("https://a.com/410"))).status).toBe("not_found");
-    expect((await fetcher.fetch(page("https://a.com/pdf"))).status).toBe("unsupported");
-    expect((await fetcher.fetch(page("https://a.com/shell"))).status).toBe("empty");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/403"))).status).toBe("blocked");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/410"))).status).toBe("not_found");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/pdf"))).status).toBe("unsupported");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/shell"))).status).toBe("empty");
   });
 
   it("retries transient errors with backoff, then gives up cleanly", async () => {
     let n = 0;
     const { fetcher, sleeps } = fakeNet({
-      "https://a.com/robots.txt": status(404),
-      "https://a.com/flaky": () => (++n < 3 ? status(503)() : ok(LONG)()),
-      "https://a.com/down": status(502),
+      "https://jobs.smartrecruiters.com/robots.txt": status(404),
+      "https://jobs.smartrecruiters.com/flaky": () => (++n < 3 ? status(503)() : ok(LONG)()),
+      "https://jobs.smartrecruiters.com/down": status(502),
     });
-    expect((await fetcher.fetch(page("https://a.com/flaky"))).status).toBe("ok");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/flaky"))).status).toBe("ok");
     expect(sleeps).toEqual(expect.arrayContaining([2000, 4000]));
-    const down = await fetcher.fetch(page("https://a.com/down"));
-    expect(down).toMatchObject({ status: "error", error: "GET https://a.com/down returned 502" });
+    const down = await fetcher.fetch(page("https://jobs.smartrecruiters.com/down"));
+    expect(down).toMatchObject({ status: "error", error: "GET https://jobs.smartrecruiters.com/down returned 502" });
   });
 
   it("spaces requests to one host and honors a larger Crawl-delay", async () => {
     const { fetcher, sleeps } = fakeNet({
-      "https://a.com/robots.txt": ok("User-agent: *\nCrawl-delay: 3", "text/plain"),
-      "https://a.com/1": ok(LONG),
-      "https://a.com/2": ok(LONG),
+      "https://jobs.smartrecruiters.com/robots.txt": ok("User-agent: *\nCrawl-delay: 3", "text/plain"),
+      "https://jobs.smartrecruiters.com/1": ok(LONG),
+      "https://jobs.smartrecruiters.com/2": ok(LONG),
     });
-    await Promise.all([fetcher.fetch(page("https://a.com/1")), fetcher.fetch(page("https://a.com/2"))]);
+    await Promise.all([fetcher.fetch(page("https://jobs.smartrecruiters.com/1")), fetcher.fetch(page("https://jobs.smartrecruiters.com/2"))]);
     expect(sleeps).toContain(3000);
   });
 
@@ -303,6 +303,51 @@ describe("JdFetcher", () => {
       sleep: async () => {},
     });
     // robots.txt unreachable means disallow-all, so the page is never requested.
-    expect((await fetcher.fetch(page("https://a.com/1"))).status).toBe("robots_disallowed");
+    expect((await fetcher.fetch(page("https://jobs.smartrecruiters.com/1"))).status).toBe("robots_disallowed");
+  });
+});
+
+// A feed record can claim any ATS through its id hint while its URL points
+// somewhere else. Fetchers that request the apply URL's own host must refuse.
+describe("request targets are limited to the ATS's own hosts", () => {
+  const hinted = (ats: string, applyUrl: string): JdTarget => ({ applyUrl, ats, atsTenant: "acme", atsReqId: "123" });
+
+  it("plans nothing for an ATS hint on a foreign or internal host", () => {
+    expect(planFetch(hinted("smartrecruiters", "http://169.254.169.254/latest/meta-data/123"))).toBeNull();
+    expect(planFetch(hinted("smartrecruiters", "https://evil.example/acme/123"))).toBeNull();
+    expect(planFetch(hinted("smartrecruiters", "http://jobs.smartrecruiters.com/acme/123"))).toBeNull();
+    expect(planFetch(hinted("workday", "https://127.0.0.1/site/job/x/y_123"))).toBeNull();
+    expect(planFetch(hinted("workday", "https://myworkdayjobs.com.evil.example/site/job/x/y_123"))).toBeNull();
+    expect(planFetch(hinted("oracle", "https://localhost/hcmUI/sites/CX_1/job/123"))).toBeNull();
+  });
+
+  it("makes no request at all for such a listing", async () => {
+    const { fetcher, calls } = fakeNet({});
+    const r = await fetcher.fetch(hinted("smartrecruiters", "http://127.0.0.1:54321/rest/v1/123"));
+    expect(r.status).toBe("unsupported");
+    expect(calls).toHaveLength(0);
+  });
+
+  it("escapes hinted ids so they can't change the request path", () => {
+    const p = planFetch({ applyUrl: "https://example.com/x", ats: "greenhouse", atsTenant: "../../v2/admin", atsReqId: "1?x=1" })!;
+    expect(p.url).toBe("https://boards-api.greenhouse.io/v1/boards/..%2F..%2Fv2%2Fadmin/jobs/1%3Fx%3D1");
+  });
+
+  it("refuses redirects to IP literals, internal names, and plain http", async () => {
+    for (const location of ["http://169.254.169.254/latest/", "https://10.0.0.5/x", "https://[::1]/x", "https://localhost/x", "https://db.internal/x", "http://jobs.smartrecruiters.com/acme/1"]) {
+      const { fetcher, calls } = fakeNet({
+        "https://jobs.smartrecruiters.com/robots.txt": status(404),
+        "https://jobs.smartrecruiters.com/acme/1": status(302, { location }),
+      });
+      const r = await fetcher.fetch(page("https://jobs.smartrecruiters.com/acme/1"));
+      expect(r.status, location).toBe("unsupported");
+      expect(calls.map((c) => c.url)).toEqual(["https://jobs.smartrecruiters.com/robots.txt", "https://jobs.smartrecruiters.com/acme/1"]);
+    }
+  });
+
+  it("accepts ordinary public https URLs", () => {
+    expect(isPublicHttpsUrl("https://careers.example.com/jobs/1")).toBe(true);
+    expect(isPublicHttpsUrl("https://user:pw@careers.example.com/")).toBe(false);
+    expect(isPublicHttpsUrl("not a url")).toBe(false);
   });
 });
