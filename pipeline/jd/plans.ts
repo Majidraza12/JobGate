@@ -24,6 +24,20 @@ export interface Plan {
 
 type Json = Record<string, any>;
 
+// Tenant and requisition ids can come from a source feed's hint rather than a
+// URL we parsed, so they are escaped before going into a request path.
+const seg = (s: string | null) => encodeURIComponent(s ?? "");
+
+// The only hosts a fetcher that requests the apply URL's own host may contact.
+// A listing's ATS can come from a feed's id hint ("workday:acme:R1") while its
+// URL points anywhere, so without this check a bad feed record could make the
+// pipeline request an internal address and publish the response as a JD.
+const FETCH_HOSTS: Record<string, RegExp> = {
+  workday: /^[a-z0-9-]+\.wd\d+\.myworkdayjobs\.com$/,
+  oracle: /^[a-z0-9-]+(\.[a-z0-9-]+)*\.oraclecloud\.com$/,
+  smartrecruiters: /^(jobs|careers)\.smartrecruiters\.com$/,
+};
+
 // Join non-empty HTML sections, skipping exact repeats (Oracle often repeats
 // the same block in several fields).
 function sections(parts: (string | null | undefined)[]): string {
@@ -43,7 +57,7 @@ function sections(parts: (string | null | undefined)[]): string {
 function greenhouse(t: JdTarget): Plan {
   return {
     kind: "greenhouse",
-    url: `https://boards-api.greenhouse.io/v1/boards/${t.atsTenant}/jobs/${t.atsReqId}`,
+    url: `https://boards-api.greenhouse.io/v1/boards/${seg(t.atsTenant)}/jobs/${seg(t.atsReqId)}`,
     accept: "json",
     extract: (b) => {
       const content = (b as Json).content;
@@ -56,7 +70,7 @@ function lever(t: JdTarget, u: URL): Plan {
   const host = u.hostname === "jobs.eu.lever.co" ? "api.eu.lever.co" : "api.lever.co";
   return {
     kind: "lever",
-    url: `https://${host}/v0/postings/${t.atsTenant}/${t.atsReqId}`,
+    url: `https://${host}/v0/postings/${seg(t.atsTenant)}/${seg(t.atsReqId)}`,
     accept: "json",
     extract: (b) => {
       const j = b as Json;
@@ -108,7 +122,7 @@ function oracle(t: JdTarget, u: URL): Plan | null {
   const segs = u.pathname.split("/").filter(Boolean);
   const site = segs[segs.indexOf("sites") + 1];
   if (!segs.includes("sites") || !site) return null;
-  const finder = `ById;siteNumber=${site},Id=%22${t.atsReqId}%22`;
+  const finder = `ById;siteNumber=${seg(site)},Id=%22${seg(t.atsReqId)}%22`;
   return {
     kind: "oracle",
     url: `https://${u.hostname}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails?expand=all&onlyData=true&finder=${finder}`,
@@ -149,6 +163,8 @@ export function planFetch(t: JdTarget): Plan | null {
   const u = new URL(t.applyUrl);
   const hasIds = t.atsTenant !== null && t.atsReqId !== null;
   if (!hasIds) return null;
+  const allowed = t.ats ? FETCH_HOSTS[t.ats] : undefined;
+  if (allowed && (u.protocol !== "https:" || !allowed.test(u.hostname))) return null;
   switch (t.ats) {
     case "greenhouse":
       return greenhouse(t);
