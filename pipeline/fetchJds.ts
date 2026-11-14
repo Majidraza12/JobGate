@@ -21,7 +21,12 @@ const { values: args } = parseArgs({
 
 const trigger = args.trigger as "schedule" | "manual" | "local";
 if (!["schedule", "manual", "local"].includes(trigger)) throw new Error(`unknown --trigger ${args.trigger}`);
-const int = (s: string | undefined) => (s === undefined ? null : Number.parseInt(s, 10));
+const int = (s: string | undefined) => {
+  if (s === undefined) return null;
+  const n = Number(s);
+  if (!(Number.isInteger(n) && n > 0)) throw new Error(`expected a positive whole number, got "${s}"`);
+  return n;
+};
 
 const result = await runFetchJds({
   trigger,
