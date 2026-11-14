@@ -49,7 +49,9 @@ function checkedAgainst(p: ProfileRow): string {
 
 export default async function FeedPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const supabase = await createClient();
-  const { data: profile } = await supabase.from("profiles").select("*").maybeSingle<ProfileRow>();
+  const { data: profile, error: profileError } = await supabase.from("profiles").select("*").maybeSingle<ProfileRow>();
+  // A failed read is not "no profile": don't send a real user to onboarding.
+  if (profileError) throw new Error("Couldn't load your profile.");
   if (!profile) redirect("/profile");
 
   const [items, { data: applied }, { data: saved }, { data: lastRun }] = await Promise.all([

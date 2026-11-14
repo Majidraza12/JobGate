@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 
 // Bookmark or un-bookmark a posting. RLS scopes both to the signed-in user.
 export async function setSaved(listingId: number, saved: boolean) {
-  if (!Number.isInteger(listingId)) return;
+  if (!Number.isSafeInteger(listingId) || listingId <= 0 || typeof saved !== "boolean") return;
   const supabase = await createClient();
   const { error } = saved
     ? await supabase.from("saved_listings").upsert({ listing_id: listingId }, { onConflict: "user_id,listing_id", ignoreDuplicates: true })
