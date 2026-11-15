@@ -198,6 +198,12 @@ export default function Landing() {
               SimplifyJobs
             </a>
             .
+            <Link className="ml-4 text-soft hover:text-ink" href="/privacy">
+              Privacy
+            </Link>
+            <Link className="ml-3 text-soft hover:text-ink" href="/terms">
+              Terms
+            </Link>
           </p>
         </div>
       </footer>

@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/site";
 // account, so crawlers would only ever see a redirect to /login.
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: ["/", "/login"], disallow: ["/feed", "/listing/", "/applied", "/saved", "/profile", "/reset-password", "/auth/", "/login/forgot"] },
+    rules: { userAgent: "*", allow: ["/", "/login", "/privacy", "/terms"], disallow: ["/feed", "/listing/", "/applied", "/saved", "/profile", "/reset-password", "/auth/", "/login/forgot"] },
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,
   };

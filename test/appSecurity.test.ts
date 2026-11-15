@@ -148,7 +148,7 @@ describe("loadRequirements", () => {
 
 describe("public paths", () => {
   it("opens only the landing page, /login, and /auth/* to signed-out visitors", () => {
-    for (const p of ["/", "/login", "/login/", "/auth", "/auth/confirm"]) expect(isPublicPath(p), p).toBe(true);
+    for (const p of ["/", "/login", "/login/", "/auth", "/auth/confirm", "/privacy", "/terms"]) expect(isPublicPath(p), p).toBe(true);
     for (const p of ["/feed", "/profile", "/listing/1", "/login-admin", "/loginx", "/authx", "/authorize", "/applied", "/saved"]) expect(isPublicPath(p), p).toBe(false);
   });
 
