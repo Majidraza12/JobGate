@@ -9,6 +9,7 @@ const auth = {
   updateUser: vi.fn(),
   verifyOtp: vi.fn(),
   exchangeCodeForSession: vi.fn(),
+  signUp: vi.fn(),
 };
 vi.mock("@/lib/supabase/server", () => ({ createClient: async () => ({ auth }) }));
 vi.mock("next/headers", () => ({ headers: async () => new Headers({ origin: "https://jobgate.dev", host: "jobgate.dev" }) }));
@@ -23,7 +24,7 @@ vi.mock("next/navigation", () => ({
   },
 }));
 
-const { requestPasswordReset, updatePassword } = await import("../src/app/login/actions");
+const { requestPasswordReset, signUp, updatePassword } = await import("../src/app/login/actions");
 const { GET } = await import("../src/app/auth/confirm/route");
 const { NextRequest } = await import("next/server");
 
@@ -138,5 +139,19 @@ describe("GET /auth/confirm", () => {
     auth.exchangeCodeForSession.mockResolvedValue({ error: null });
     const res = await get("code=xyz&next=//evil.com");
     expect(res.headers.get("location")).toBe("/feed");
+  });
+});
+
+describe("signUp", () => {
+  it("needs the confirmation to match before creating the account", async () => {
+    const res = await signUp(empty, form({ email: "me@example.com", password: "longenough1", confirm: "longenough2" }));
+    expect(res.error).toMatch(/match/);
+    expect(auth.signUp).not.toHaveBeenCalled();
+  });
+
+  it("creates the account when they match", async () => {
+    auth.signUp.mockResolvedValue({ data: { session: {} }, error: null });
+    await expect(signUp(empty, form({ email: "me@example.com", password: "longenough1", confirm: "longenough1" }))).rejects.toMatchObject({ to: "/profile" });
+    expect(auth.signUp).toHaveBeenCalledWith({ email: "me@example.com", password: "longenough1" });
   });
 });

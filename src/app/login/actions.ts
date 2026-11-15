@@ -30,6 +30,7 @@ export async function signUp(_prev: AuthState, form: FormData): Promise<AuthStat
   const creds = credentials(form);
   const problem = passwordProblem(creds.password);
   if (problem) return { error: problem, notice: null };
+  if (creds.password !== String(form.get("confirm") ?? "")) return { error: "The two passwords don't match.", notice: null };
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signUp(creds);
   if (error) return { error: error.message, notice: null };

@@ -2,17 +2,15 @@
 
 import Link from "next/link";
 import { useActionState, useState } from "react";
-import { Icon } from "@/components/Icon";
 import { BUTTON } from "@/components/ui";
 import { signIn, signUp, type AuthState } from "./actions";
-import { INPUT, StateMessages } from "./fields";
+import { INPUT, PasswordField, StateMessages } from "./fields";
 
 const initial: AuthState = { error: null, notice: null };
 const LINK_ERROR: AuthState = { error: "That link has expired or was already used. Request a new one.", notice: null };
 
 export function LoginForm({ initialMode = "in", linkError = false }: { initialMode?: "in" | "up"; linkError?: boolean }) {
   const [mode, setMode] = useState<"in" | "up">(initialMode);
-  const [showPw, setShowPw] = useState(false);
   // Controlled, because React resets uncontrolled fields after every form
   // action, which would wipe the email after a wrong password.
   const [email, setEmail] = useState("");
@@ -45,35 +43,22 @@ export function LoginForm({ initialMode = "in", linkError = false }: { initialMo
       </label>
       <input id="email" name="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={INPUT} />
 
-      <label className="mt-4 block text-[14px] font-medium text-soft" htmlFor="password">
-        Password
-      </label>
-      <div className="relative">
-        <input
-          id="password"
-          name="password"
-          type={showPw ? "text" : "password"}
-          required
-          // New passwords need 8; sign-in stays open to older, shorter ones.
-          minLength={mode === "up" ? 8 : undefined}
-          aria-describedby={mode === "up" ? "pw-rule" : undefined}
-          autoComplete={mode === "in" ? "current-password" : "new-password"}
-          className={`${INPUT} pr-12`}
-        />
-        <button
-          type="button"
-          onClick={() => setShowPw(!showPw)}
-          aria-label={showPw ? "Hide password" : "Show password"}
-          aria-pressed={showPw}
-          className="absolute right-1.5 top-[calc(50%+4px)] grid size-9 -translate-y-1/2 place-items-center rounded-[10px] text-muted hover:bg-white/[0.06] hover:text-ink"
-        >
-          <Icon name={showPw ? "eyeOff" : "eye"} size={19} />
-        </button>
-      </div>
+      <PasswordField
+        key={mode}
+        id="password"
+        label="Password"
+        // New passwords need 8; sign-in stays open to older, shorter ones.
+        minLength={mode === "up" ? 8 : undefined}
+        aria-describedby={mode === "up" ? "pw-rule" : undefined}
+        autoComplete={mode === "in" ? "current-password" : "new-password"}
+      />
       {mode === "up" ? (
-        <p id="pw-rule" className="mt-1.5 text-[12.5px] text-muted">
-          At least 8 characters.
-        </p>
+        <>
+          <p id="pw-rule" className="mt-1.5 text-[12.5px] text-muted">
+            At least 8 characters.
+          </p>
+          <PasswordField id="confirm" label="Confirm password" minLength={8} autoComplete="new-password" />
+        </>
       ) : (
         <Link href="/login/forgot" className="mt-2 inline-block text-[13.5px] font-medium text-lavender hover:underline">
           Forgot password?
