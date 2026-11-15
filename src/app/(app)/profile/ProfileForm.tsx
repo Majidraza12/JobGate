@@ -86,7 +86,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`${open ? "glow" : "glass"} scroll-mt-6 rounded-[16px] transition-[background,border-color,box-shadow] duration-200`}>
+    <section id={id} className={`${open ? "glow" : "glass"} relative scroll-mt-6 rounded-[16px] has-[[role=dialog]]:z-30 transition-[background,border-color,box-shadow] duration-200`}>
       <div className="grid gap-4 p-5 md:grid-cols-[250px_minmax(0,1fr)_auto] md:items-center md:gap-6 md:px-7">
         <div className="flex gap-4">
           <Icon name={icon} size={26} className="mt-0.5 text-lavender" />
