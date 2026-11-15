@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { AuthShell } from "./AuthShell";
 import { LoginForm } from "./LoginForm";
+
+export const metadata: Metadata = { title: "Sign in or create an account", alternates: { canonical: "/login" } };
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ mode?: string; error?: string }> }) {
   const { mode, error } = await searchParams;

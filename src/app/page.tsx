@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { Ambient } from "@/components/Ambient";
 import { Icon, type IconName } from "@/components/Icon";
 import { Mark } from "@/components/Mark";
@@ -50,9 +51,22 @@ const WHY: { icon: IconName; tone: string; title: string; body: string }[] = [
   },
 ];
 
+// Structured data so search engines know this is a free web app, not an article.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Any",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
+
 export default function Landing() {
   return (
     <div className="relative min-h-screen overflow-x-clip">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <Ambient hero />
       <header className="relative z-20 mx-auto flex h-[60px] max-w-[1410px] items-center gap-2 px-4 md:px-8">
         <Link href="/" className="mr-10 flex items-center gap-2 text-[21px] font-bold tracking-[-0.02em]">

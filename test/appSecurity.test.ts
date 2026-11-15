@@ -151,6 +151,11 @@ describe("public paths", () => {
     for (const p of ["/", "/login", "/login/", "/auth", "/auth/confirm"]) expect(isPublicPath(p), p).toBe(true);
     for (const p of ["/feed", "/profile", "/listing/1", "/login-admin", "/loginx", "/authx", "/authorize", "/applied", "/saved"]) expect(isPublicPath(p), p).toBe(false);
   });
+
+  it("lets crawlers and link previews fetch robots.txt, the sitemap, and the preview image", () => {
+    for (const p of ["/robots.txt", "/sitemap.xml", "/opengraph-image"]) expect(isPublicPath(p), p).toBe(true);
+    for (const p of ["/robots.txtx", "/sitemap.xml.bak", "/opengraph-imagex"]) expect(isPublicPath(p), p).toBe(false);
+  });
 });
 
 describe("security headers", () => {
