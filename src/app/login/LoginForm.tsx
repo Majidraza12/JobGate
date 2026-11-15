@@ -1,19 +1,26 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useState } from "react";
 import { Icon } from "@/components/Icon";
 import { BUTTON } from "@/components/ui";
 import { signIn, signUp, type AuthState } from "./actions";
+import { INPUT, StateMessages } from "./fields";
 
 const initial: AuthState = { error: null, notice: null };
-const input = "mt-2 h-12 w-full rounded-[12px] border border-white/10 bg-black/25 px-4 font-medium outline-none hover:border-white/20 focus:border-lavender/60";
+const LINK_ERROR: AuthState = { error: "That link has expired or was already used. Request a new one.", notice: null };
 
-export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" }) {
+export function LoginForm({ initialMode = "in", linkError = false }: { initialMode?: "in" | "up"; linkError?: boolean }) {
   const [mode, setMode] = useState<"in" | "up">(initialMode);
   const [showPw, setShowPw] = useState(false);
+  // Controlled, because React resets uncontrolled fields after every form
+  // action, which would wipe the email after a wrong password.
+  const [email, setEmail] = useState("");
   const [inState, inAction, inPending] = useActionState(signIn, initial);
   const [upState, upAction, upPending] = useActionState(signUp, initial);
-  const state = mode === "in" ? inState : upState;
+  const acted = inState !== initial || upState !== initial;
+  // An expired email link lands here with ?error=link; show that until the form is used.
+  const state = !acted && linkError ? LINK_ERROR : mode === "in" ? inState : upState;
   const pending = inPending || upPending;
 
   return (
@@ -36,7 +43,7 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
       <label className="block text-[14px] font-medium text-soft" htmlFor="email">
         Email
       </label>
-      <input id="email" name="email" type="email" required autoComplete="email" className={input} />
+      <input id="email" name="email" type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={INPUT} />
 
       <label className="mt-4 block text-[14px] font-medium text-soft" htmlFor="password">
         Password
@@ -51,7 +58,7 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
           minLength={mode === "up" ? 8 : undefined}
           aria-describedby={mode === "up" ? "pw-rule" : undefined}
           autoComplete={mode === "in" ? "current-password" : "new-password"}
-          className={`${input} pr-12`}
+          className={`${INPUT} pr-12`}
         />
         <button
           type="button"
@@ -63,14 +70,17 @@ export function LoginForm({ initialMode = "in" }: { initialMode?: "in" | "up" })
           <Icon name={showPw ? "eyeOff" : "eye"} size={19} />
         </button>
       </div>
-      {mode === "up" && (
+      {mode === "up" ? (
         <p id="pw-rule" className="mt-1.5 text-[12.5px] text-muted">
           At least 8 characters.
         </p>
+      ) : (
+        <Link href="/login/forgot" className="mt-2 inline-block text-[13.5px] font-medium text-lavender hover:underline">
+          Forgot password?
+        </Link>
       )}
 
-      {state.error && <p className="mt-4 rounded-[12px] bg-rose/10 px-3.5 py-2.5 text-[13.5px] text-rose ring-1 ring-inset ring-rose/20">{state.error}</p>}
-      {state.notice && <p className="mt-4 rounded-[12px] bg-amber/10 px-3.5 py-2.5 text-[13.5px] text-amber ring-1 ring-inset ring-amber/20">{state.notice}</p>}
+      <StateMessages state={state} />
 
       <button disabled={pending} className={`${BUTTON.primary} mt-6 h-12 w-full text-[16px]`}>
         {pending ? "Working…" : mode === "in" ? "Sign in" : "Create account"}
