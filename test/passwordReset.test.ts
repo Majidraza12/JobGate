@@ -10,6 +10,7 @@ const auth = {
   verifyOtp: vi.fn(),
   exchangeCodeForSession: vi.fn(),
   signUp: vi.fn(),
+  signInWithOAuth: vi.fn(),
 };
 const rpc = vi.fn();
 vi.mock("@/lib/supabase/server", () => ({ createClient: async () => ({ auth, rpc }) }));
@@ -25,7 +26,7 @@ vi.mock("next/navigation", () => ({
   },
 }));
 
-const { requestPasswordReset, signUp, updatePassword } = await import("../src/app/login/actions");
+const { requestPasswordReset, signInWithGoogle, signUp, updatePassword } = await import("../src/app/login/actions");
 const { GET } = await import("../src/app/auth/confirm/route");
 const { NextRequest } = await import("next/server");
 
@@ -177,5 +178,18 @@ describe("signUp", () => {
     auth.signUp.mockResolvedValue({ data: { session: {} }, error: null });
     await expect(signUp(empty, form({ email: "me@example.com", password: "longenough1", confirm: "longenough1" }))).rejects.toMatchObject({ to: "/profile" });
     expect(auth.signUp).toHaveBeenCalledWith({ email: "me@example.com", password: "longenough1" });
+  });
+});
+
+describe("signInWithGoogle", () => {
+  it("sends the user to Google, coming back through /auth/confirm to the feed", async () => {
+    auth.signInWithOAuth.mockResolvedValue({ data: { url: "https://accounts.google.com/o/oauth2/auth?x=1" }, error: null });
+    await expect(signInWithGoogle(empty, form({}))).rejects.toMatchObject({ to: "https://accounts.google.com/o/oauth2/auth?x=1" });
+    expect(auth.signInWithOAuth).toHaveBeenCalledWith({ provider: "google", options: { redirectTo: "https://jobgate.dev/auth/confirm?next=/feed" } });
+  });
+
+  it("says so when Google sign-in can't start", async () => {
+    auth.signInWithOAuth.mockResolvedValue({ data: { url: null }, error: { message: "provider is not enabled" } });
+    expect((await signInWithGoogle(empty, form({}))).error).toMatch(/Couldn't open Google/);
   });
 });

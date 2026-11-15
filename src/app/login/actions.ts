@@ -39,6 +39,18 @@ export async function signUp(_prev: AuthState, form: FormData): Promise<AuthStat
   redirect("/profile");
 }
 
+// "Continue with Google": Supabase sends the user to Google, Google back to
+// Supabase, and Supabase to /auth/confirm with a one-time code that becomes
+// the session there. New users land on /feed, which sends them to onboarding.
+export async function signInWithGoogle(_prev: AuthState, _form: FormData): Promise<AuthState> {
+  const h = await headers();
+  const origin = h.get("origin") ?? `https://${h.get("host")}`;
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: `${origin}/auth/confirm?next=/feed` } });
+  if (error || !data.url) return { error: "Couldn't open Google sign-in. Try again, or use email.", notice: null };
+  redirect(data.url);
+}
+
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
