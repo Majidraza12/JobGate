@@ -13,7 +13,7 @@ import { Quote } from "@/components/Quote";
 import { SaveButton } from "@/components/SaveButton";
 import { BUTTON, CheckMark, TowerArt } from "@/components/ui";
 import { pageNumbers } from "@/lib/pages";
-import { feedHref, JOB_TYPE_VALUES, WITHIN_OPTIONS, type FeedFilters, type FeedPage, type FeedSort } from "@/lib/feedQuery";
+import { feedHref, JOB_TYPE_VALUES, WITHIN_OPTIONS, type CardGroup, type FeedFilters, type FeedPage, type FeedSort } from "@/lib/feedQuery";
 import { FIELD_NAMES, JOB_TYPES, VERDICTS, VERDICT_ORDER, VERDICT_STYLE } from "@/lib/labels";
 import { ROLES, type Role } from "@/lib/roles";
 
@@ -53,11 +53,13 @@ export function ago(iso: string | null, now: number) {
 const ROLE_ICONS: Record<string, IconName> = { "": "grid", swe: "code", ml: "sparkles", fullstack: "layers", data: "chart", quant: "sigma" };
 const WITHIN_LABELS: Record<number, string> = { 0: "Any time", 1: "Past 24 hours", 7: "Past week", 30: "Past month" };
 
-function Card({ c, now, index }: { c: FeedCard; now: number; index: number }) {
+function Card({ c, now, index }: { c: FeedCard & { group: CardGroup }; now: number; index: number }) {
   const v = VERDICTS[c.verdict];
   const st = VERDICT_STYLE[c.verdict];
   const when = ago(c.postedAt, now);
-  const place = c.locations[0] ?? "Location not listed";
+  const places = c.group.locations;
+  const place = places[0] ?? "Location not listed";
+  const more = places.length - 1;
   return (
     <article
       style={{ animationDelay: `${Math.min(index, 8) * 35}ms` }}
@@ -90,11 +92,17 @@ function Card({ c, now, index }: { c: FeedCard; now: number; index: number }) {
           </span>
           <span className="flex min-w-0 items-center gap-2">
             <Icon name="pin" size={16} className="text-muted" />
-            <span className="truncate">
+            <span className="truncate" title={more > 0 ? places.join(" · ") : undefined}>
               {place}
-              {c.locations.length > 1 ? ` +${c.locations.length - 1}` : ""}
+              {more > 0 ? ` +${more} more` : ""}
             </span>
           </span>
+          {c.group.size > 1 && (
+            <span className="flex items-center gap-2" title="The employer posted this job separately for each location. Open it to see every one.">
+              <Icon name="layers" size={16} className="text-muted" />
+              {c.group.size} openings
+            </span>
+          )}
           <span className={`flex items-center gap-2 ${st.text}`} title={v.tip}>
             <Icon name={st.icon} size={16} />
             {c.unchecked === "not_read_yet" ? "Not read yet" : v.label}
@@ -131,6 +139,7 @@ function Card({ c, now, index }: { c: FeedCard; now: number; index: number }) {
             <Icon name="arrowUpRight" size={14} />
           </a>
         </div>
+        {c.group.varies && <p className="mt-2 text-[12.5px] text-amber">Verdict varies by location. Open it to see each one.</p>}
         {c.note && <p className="mt-2 text-[12.5px] text-amber">{c.note}</p>}
       </div>
     </article>

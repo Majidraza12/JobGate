@@ -63,8 +63,29 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
   if (!profile) redirect("/profile");
   if (!listing) notFound();
 
-  const reqs = await loadRequirements(supabase, listing.jd_hash ? [listing.jd_hash] : []);
-  const item = matchListing(listing, reqs, toEligibility(profile));
+  // The same job posted separately for other locations (the feed shows them
+  // as one card). Each is its own requisition, so each gets its own verdict.
+  const { data: siblingRows, error: siblingError } = await supabase
+    .from("listings")
+    .select(LISTING_COLUMNS)
+    .eq("status", "open")
+    .eq("company", listing.company)
+    .eq("title", listing.title)
+    .eq("job_type", listing.job_type)
+    .neq("id", id)
+    .order("id")
+    .limit(60)
+    .returns<ListingRow[]>();
+  if (siblingError) throw new Error("Couldn't load this posting.");
+  const siblings = siblingRows ?? [];
+
+  const hashes = [listing, ...siblings].map((l) => l.jd_hash).filter((h): h is string => h !== null);
+  const reqs = await loadRequirements(supabase, hashes);
+  const eligibility = toEligibility(profile);
+  const item = matchListing(listing, reqs, eligibility);
+  const others = siblings
+    .map((l) => matchListing(l, reqs, eligibility))
+    .sort((a, b) => (a.locations[0] ?? "").localeCompare(b.locations[0] ?? ""));
   const v = VERDICTS[item.verdict];
   const st = VERDICT_STYLE[item.verdict];
   const role = roleOf(listing.title, item.roleFamily);
@@ -296,6 +317,32 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
               ))}
             </dl>
           </Panel>
+
+          {others.length > 0 && (
+            <Panel className="p-5">
+              <h2 className="text-[19px] font-semibold">Also open in</h2>
+              <p className="mt-1 text-[13.5px] leading-[1.45] text-soft">
+                {listing.company} posted this job separately for {others.length + 1} locations. Each one is checked on its own.
+              </p>
+              <ul className="mt-3 max-h-[360px] overflow-y-auto">
+                {others.map((o) => {
+                  const ost = VERDICT_STYLE[o.verdict];
+                  return (
+                    <li key={o.id} className="border-b border-white/[0.06] last:border-0">
+                      <Link href={`/listing/${o.id}`} className="flex items-center gap-3 py-[10px] text-[14px] hover:text-lavender">
+                        <Icon name="pin" size={16} className="flex-none text-soft" />
+                        <span className="min-w-0 flex-1 truncate">{o.locations.join(" · ") || "Location not listed"}</span>
+                        <span className={`flex flex-none items-center gap-1.5 text-[12.5px] ${ost.text}`}>
+                          <Icon name={ost.icon} size={14} />
+                          {o.unchecked === "not_read_yet" ? "Not read yet" : VERDICTS[o.verdict].label}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Panel>
+          )}
 
           <FeedbackForm listingId={id} verdictShown={item.verdict} fields={item.rows.map((r) => ({ value: r.field, label: FIELD_NAMES[r.field] }))} />
         </aside>

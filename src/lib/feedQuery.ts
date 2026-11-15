@@ -24,6 +24,18 @@ export type Filterable = {
 
 export type FeedSort = "relevant" | "newest";
 
+// Employers often open one requisition per location for the same job (one
+// company had 27, one per state). They stay separate listings (CLAUDE.md
+// section 8: never merge on similarity, and their requirements can differ),
+// but the feed shows them as one card. Same company, title, and job type.
+export const groupKey = (c: Pick<Filterable, "company" | "title" | "jobType">) => `${c.company}\u0000${c.title}\u0000${c.jobType}`;
+
+export type CardGroup = {
+  size: number; // matching postings in the group, this one included
+  locations: string[]; // every location across them, this card's first
+  varies: boolean; // the matching postings don't all have the same verdict
+};
+
 export type FeedFilters = {
   verdicts: Verdict[]; // shown verdicts, in VERDICT_ORDER
   jobType: string; // "" = everything, else comma-separated job types
@@ -104,7 +116,7 @@ export type FeedFacets = {
   within: Record<number, number>; // 0 = any time
 };
 
-export type FeedPage<T> = { counts: Record<Verdict, number>; facets: FeedFacets; total: number; pages: number; page: number; items: T[] };
+export type FeedPage<T> = { counts: Record<Verdict, number>; facets: FeedFacets; total: number; pages: number; page: number; items: (T & { group: CardGroup })[] };
 
 type Ctx = { cities: string[]; remoteOk: boolean; now: number };
 type Facet = "verdict" | "type" | "q" | "role" | "location" | "within" | "applied";
@@ -133,34 +145,51 @@ export function applyFeed<T extends Filterable>(cards: T[], f: FeedFilters, ctx:
   const facetsOf = Object.keys(test) as Facet[];
   const passesExcept = (c: T, skip: Facet) => facetsOf.every((k) => k === skip || test[k](c));
 
-  const facets: FeedFacets = {
-    verdicts: Object.fromEntries(VERDICT_ORDER.map((v) => [v, 0])) as Record<Verdict, number>,
-    jobTypes: { internship: 0, "co-op": 0, new_grad: 0 },
-    roles: Object.fromEntries([["", 0], ...ROLES.map((r) => [r.value, 0])]),
-    location: { remote: 0, mine: 0 },
-    within: Object.fromEntries([0, ...WITHIN_OPTIONS].map((d) => [d, 0])),
+  // Facet counts are of cards, so a group counts once per box it would fill.
+  const seen = new Map<string, Set<string>>();
+  const add = (bucket: string, key: string) => {
+    const set = seen.get(bucket) ?? new Set<string>();
+    set.add(key);
+    seen.set(bucket, set);
   };
-  const list: T[] = [];
+  const groups = new Map<string, T[]>();
   for (const c of cards) {
-    if (passesExcept(c, "verdict")) facets.verdicts[c.verdict]++;
-    if (passesExcept(c, "type")) facets.jobTypes[c.jobType]++;
+    const key = groupKey(c);
+    if (passesExcept(c, "verdict")) add(`v:${c.verdict}`, key);
+    if (passesExcept(c, "type")) add(`t:${c.jobType}`, key);
     if (passesExcept(c, "role")) {
-      facets.roles[""]!++;
-      if (c.role && c.role in facets.roles) facets.roles[c.role]!++;
+      add("r:", key);
+      if (c.role) add(`r:${c.role}`, key);
     }
     if (passesExcept(c, "location")) {
-      if (c.remote) facets.location.remote++;
-      if (inMine(c)) facets.location.mine++;
+      if (c.remote) add("l:remote", key);
+      if (inMine(c)) add("l:mine", key);
     }
     if (passesExcept(c, "within")) {
-      facets.within[0]!++;
-      for (const d of WITHIN_OPTIONS) if (recent(c, d)) facets.within[d]!++;
+      add("w:0", key);
+      for (const d of WITHIN_OPTIONS) if (recent(c, d)) add(`w:${d}`, key);
     }
-    if (facetsOf.every((k) => test[k](c))) list.push(c);
+    if (facetsOf.every((k) => test[k](c))) groups.set(key, [...(groups.get(key) ?? []), c]);
   }
+  const n = (bucket: string) => seen.get(bucket)?.size ?? 0;
+  const facets: FeedFacets = {
+    verdicts: Object.fromEntries(VERDICT_ORDER.map((v) => [v, n(`v:${v}`)])) as Record<Verdict, number>,
+    jobTypes: { internship: n("t:internship"), "co-op": n("t:co-op"), new_grad: n("t:new_grad") },
+    roles: Object.fromEntries([["", n("r:")], ...ROLES.map((r) => [r.value, n(`r:${r.value}`)])]),
+    location: { remote: n("l:remote"), mine: n("l:mine") },
+    within: Object.fromEntries([0, ...WITHIN_OPTIONS].map((d) => [d, n(`w:${d}`)])),
+  };
 
   const newest = (a: T, b: T) => (b.postedAt ?? "").localeCompare(a.postedAt ?? "");
-  list.sort(f.sort === "newest" ? newest : (a, b) => RANK[a.verdict] - RANK[b.verdict] || newest(a, b));
+  const best = (a: T, b: T) => RANK[a.verdict] - RANK[b.verdict] || newest(a, b);
+  // Each group is shown by its best posting, so a job the user can apply to
+  // somewhere is never hidden behind a worse verdict elsewhere.
+  const list = [...groups.values()].map((members) => {
+    const [lead, ...rest] = [...members].sort(best);
+    const locations = [...new Set([lead!, ...rest].flatMap((m) => m.locations))];
+    return { ...lead!, group: { size: members.length, locations, varies: rest.some((m) => m.verdict !== lead!.verdict) } };
+  });
+  list.sort(f.sort === "newest" ? newest : best);
 
   const pages = Math.max(1, Math.ceil(list.length / FEED_PAGE));
   // Clamp, in case a filter shrank the list while on a later page.

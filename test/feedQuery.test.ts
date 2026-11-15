@@ -144,3 +144,45 @@ describe("applyFeed", () => {
     expect(r.facets.within).toMatchObject({ 0: 1, 7: 1, 30: 1 });
   });
 });
+
+describe("applyFeed groups the same job across locations", () => {
+  const f = parseFeedParams({ v: "eligible,no_restrictions_found,check,not_checked,not_eligible" }, []);
+  const at = (city: string, over: Partial<Filterable> = {}) => card({ locations: [city], cities: [city], ...over });
+
+  it("shows one card per company, title, and job type, with every location", () => {
+    const res = applyFeed([at("Chicago, IL"), at("Austin, TX"), at("Boston, MA")], f, ctx);
+    expect(res.total).toBe(1);
+    expect(res.items[0]!.group).toEqual({ size: 3, locations: ["Chicago, IL", "Austin, TX", "Boston, MA"], varies: false });
+  });
+
+  it("keeps different titles, companies, and job types apart", () => {
+    const res = applyFeed([at("Chicago, IL"), at("Chicago, IL", { title: "Data Intern" }), at("Chicago, IL", { company: "Globex" }), at("Chicago, IL", { jobType: "co-op" })], f, ctx);
+    expect(res.total).toBe(4);
+    expect(res.items.every((c) => c.group.size === 1)).toBe(true);
+  });
+
+  it("leads with the best verdict, so a job you can apply to is never hidden", () => {
+    const res = applyFeed([at("Austin, TX", { verdict: "not_eligible" }), at("Chicago, IL", { verdict: "eligible" })], f, ctx);
+    expect(res.items[0]!.verdict).toBe("eligible");
+    expect(res.items[0]!.locations).toEqual(["Chicago, IL"]);
+    expect(res.items[0]!.group.locations[0]).toBe("Chicago, IL");
+    expect(res.items[0]!.group.varies).toBe(true);
+  });
+
+  it("groups only the postings that pass the filters", () => {
+    const hideNotEligible = parseFeedParams({}, []);
+    const res = applyFeed([at("Austin, TX", { verdict: "not_eligible" }), at("Chicago, IL")], hideNotEligible, ctx);
+    expect(res.items[0]!.group).toEqual({ size: 1, locations: ["Chicago, IL"], varies: false });
+    const mine = applyFeed([at("Austin, TX"), at("Chicago, IL")], { ...f, mine: true }, ctx);
+    expect(mine.items[0]!.locations).toEqual(["Chicago, IL"]);
+  });
+
+  it("counts facets and pages by card, not by posting", () => {
+    const many = Array.from({ length: FEED_PAGE + 5 }, (_, i) => at(`City ${i}, ST`));
+    const res = applyFeed(many, f, ctx);
+    expect(res.total).toBe(1);
+    expect(res.pages).toBe(1);
+    expect(res.facets.verdicts.eligible).toBe(1);
+    expect(res.facets.jobTypes.internship).toBe(1);
+  });
+});
