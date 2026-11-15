@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DISPLAY_TZ } from "@/lib/dates";
 import { notFound, redirect } from "next/navigation";
 import type { GateField } from "@core/requirements";
 import { createClient } from "@/lib/supabase/server";
@@ -32,7 +33,7 @@ function posted(iso: string | null) {
   const days = Math.floor((Date.now() - Date.parse(iso)) / 86_400_000);
   if (days <= 0) return "Posted today";
   if (days < 30) return `Posted ${days}d ago`;
-  return `Posted ${new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`;
+  return `Posted ${new Date(iso).toLocaleDateString("en-US", { timeZone: DISPLAY_TZ, month: "short", day: "numeric", year: "numeric" })}`;
 }
 
 function SectionHead({ icon, children }: { icon: IconName; children: React.ReactNode }) {
@@ -81,7 +82,7 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
     ["pin", "Location", listing.locations.length > 1 ? `${place} +${listing.locations.length - 1}` : place],
     ["globe", "Remote", listing.remote ? "Yes" : listing.remote === false ? "No" : "Not stated"],
     ["code", "Role track", roleLabel],
-    ["calendar", "Posted", listing.posted_at ? new Date(listing.posted_at).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "Not listed"],
+    ["calendar", "Posted", listing.posted_at ? new Date(listing.posted_at).toLocaleDateString("en-US", { timeZone: DISPLAY_TZ, month: "short", day: "numeric", year: "numeric" }) : "Not listed"],
   ];
 
   return (

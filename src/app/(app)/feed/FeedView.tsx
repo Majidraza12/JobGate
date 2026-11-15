@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DISPLAY_TZ } from "@/lib/dates";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, useTransition } from "react";
 import type { Verdict } from "@core/match";
@@ -46,7 +47,7 @@ export function ago(iso: string | null, now: number) {
   if (ms < DAY) return iso.length <= 10 ? "today" : `${Math.max(1, Math.floor(ms / HOUR))}h ago`;
   const days = Math.floor(ms / DAY);
   if (days < 30) return `${days}d ago`;
-  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  return new Date(iso).toLocaleDateString("en-US", { timeZone: DISPLAY_TZ, month: "short", day: "numeric" });
 }
 
 const ROLE_ICONS: Record<string, IconName> = { "": "grid", swe: "code", ml: "sparkles", fullstack: "layers", data: "chart", quant: "sigma" };

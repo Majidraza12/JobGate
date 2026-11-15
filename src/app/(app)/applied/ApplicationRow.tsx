@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { DISPLAY_TZ } from "@/lib/dates";
 import { useEffect, useMemo, useOptimistic, useRef, useState, useTransition } from "react";
 import { CompanyAvatar } from "@/components/CompanyAvatar";
 import { Dropdown } from "@/components/Dropdown";
@@ -20,7 +21,7 @@ export type Application = {
   listings: { company: string; title: string; apply_url: string; locations: string[]; job_type: string } | null;
 };
 
-const fmt = (iso: string) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const fmt = (iso: string) => new Date(iso).toLocaleDateString("en-US", { timeZone: DISPLAY_TZ, month: "short", day: "numeric", year: "numeric" });
 const stageLabel = (s: Stage) => STAGES.find((x) => x.value === s)!.label;
 
 function relative(iso: string, now: number) {
