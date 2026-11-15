@@ -216,3 +216,72 @@ describe.skipIf(!up)("RLS and grants", () => {
     });
   });
 });
+
+describe.skipIf(!up)("password reset limits", () => {
+  const RESET_DB = "jobgate_test_reset";
+  const url = LOCAL_DATABASE_URL.replace(/\/postgres$/, `/${RESET_DB}`);
+  let db: pg.Client;
+
+  beforeAll(async () => {
+    const admin = new pg.Client({ connectionString: LOCAL_DATABASE_URL });
+    await admin.connect();
+    await admin.query(`drop database if exists ${RESET_DB} with (force)`);
+    await admin.query(`create database ${RESET_DB}`);
+    await admin.end();
+    db = new pg.Client({ connectionString: url });
+    await db.connect();
+    await applyMigrations(db);
+  });
+
+  afterAll(async () => {
+    await db?.end();
+    const admin = new pg.Client({ connectionString: LOCAL_DATABASE_URL });
+    await admin.connect();
+    await admin.query(`drop database if exists ${RESET_DB} with (force)`);
+    await admin.end();
+  });
+
+  // As a signed-out visitor, the way the forgot-password form calls it.
+  const claim = async (email: string, ip: string) => {
+    await db.query("begin");
+    try {
+      await db.query("set local role anon");
+      return (await db.query("select public.claim_password_reset($1, $2) as r", [email, ip])).rows[0].r as string;
+    } finally {
+      await db.query("commit");
+    }
+  };
+
+  it("allows 3 requests per email address a day, case and spaces ignored", async () => {
+    expect(await claim("me@example.com", "1.1.1.1")).toBe("ok");
+    expect(await claim(" ME@example.com ", "2.2.2.2")).toBe("ok");
+    expect(await claim("me@example.com", "3.3.3.3")).toBe("ok");
+    expect(await claim("me@example.com", "4.4.4.4")).toBe("email_limit");
+    expect(await claim("other@example.com", "4.4.4.4")).toBe("ok");
+  });
+
+  it("allows 10 requests per IP address an hour, across different emails", async () => {
+    for (let n = 0; n < 10; n++) expect(await claim(`spray${n}@example.com`, "9.9.9.9")).toBe("ok");
+    expect(await claim("spray10@example.com", "9.9.9.9")).toBe("ip_limit");
+  });
+
+  it("stores only hashes, and visitors can't read the log", async () => {
+    const rows = (await db.query("select email_hash, ip_hash from password_reset_requests")).rows;
+    expect(rows.length).toBeGreaterThan(0);
+    for (const r of rows) {
+      expect(r.email_hash).toMatch(/^[0-9a-f]{64}$/);
+      expect(r.ip_hash).toMatch(/^[0-9a-f]{64}$/);
+    }
+    await db.query("begin");
+    try {
+      await db.query("set local role anon");
+      await expect(db.query("select * from password_reset_requests")).rejects.toThrow(/permission denied/);
+    } finally {
+      await db.query("rollback");
+    }
+  });
+
+  it("rejects oversized input", async () => {
+    await expect(claim(`${"x".repeat(321)}@a.b`, "1.1.1.1")).rejects.toThrow(/too long/);
+  });
+});

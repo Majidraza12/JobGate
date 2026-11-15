@@ -11,8 +11,9 @@ const auth = {
   exchangeCodeForSession: vi.fn(),
   signUp: vi.fn(),
 };
-vi.mock("@/lib/supabase/server", () => ({ createClient: async () => ({ auth }) }));
-vi.mock("next/headers", () => ({ headers: async () => new Headers({ origin: "https://jobgate.dev", host: "jobgate.dev" }) }));
+const rpc = vi.fn();
+vi.mock("@/lib/supabase/server", () => ({ createClient: async () => ({ auth, rpc }) }));
+vi.mock("next/headers", () => ({ headers: async () => new Headers({ origin: "https://jobgate.dev", host: "jobgate.dev", "x-forwarded-for": "203.0.113.7, 10.0.0.1" }) }));
 class Redirect extends Error {
   constructor(public to: string) {
     super(`redirect ${to}`);
@@ -37,6 +38,8 @@ const form = (fields: Record<string, string>) => {
 
 beforeEach(() => {
   for (const fn of Object.values(auth)) fn.mockReset();
+  rpc.mockReset();
+  rpc.mockResolvedValue({ data: "ok", error: null });
 });
 
 describe("safeNext", () => {
@@ -77,10 +80,31 @@ describe("requestPasswordReset", () => {
     expect(known.notice).toMatch(/If that email has an account/);
   });
 
-  it("says so when rate limited", async () => {
-    auth.resetPasswordForEmail.mockResolvedValue({ error: { status: 429, message: "rate limit" } });
-    const res = await requestPasswordReset(empty, form({ email: "me@example.com" }));
-    expect(res.error).toMatch(/Too many/);
+  it("checks our limits with the email and the client's IP before sending", async () => {
+    auth.resetPasswordForEmail.mockResolvedValue({ error: null });
+    await requestPasswordReset(empty, form({ email: "me@example.com" }));
+    expect(rpc).toHaveBeenCalledWith("claim_password_reset", { p_email: "me@example.com", p_ip: "203.0.113.7" });
+  });
+
+  it("stops at 3 a day per address, or 10 an hour per network, without sending", async () => {
+    rpc.mockResolvedValue({ data: "email_limit", error: null });
+    expect((await requestPasswordReset(empty, form({ email: "me@example.com" }))).error).toMatch(/3 reset links today/);
+    rpc.mockResolvedValue({ data: "ip_limit", error: null });
+    expect((await requestPasswordReset(empty, form({ email: "me@example.com" }))).error).toMatch(/this network/);
+    expect(auth.resetPasswordForEmail).not.toHaveBeenCalled();
+  });
+
+  it("doesn't send when the limit check itself fails", async () => {
+    rpc.mockResolvedValue({ data: null, error: { message: "db down" } });
+    expect((await requestPasswordReset(empty, form({ email: "me@example.com" }))).error).toMatch(/Couldn't send/);
+    expect(auth.resetPasswordForEmail).not.toHaveBeenCalled();
+  });
+
+  it("tells apart Supabase's per-minute limit and the project-wide cap", async () => {
+    auth.resetPasswordForEmail.mockResolvedValue({ error: { status: 429, message: "For security purposes, you can only request this after 42 seconds." } });
+    expect((await requestPasswordReset(empty, form({ email: "me@example.com" }))).error).toMatch(/Wait a minute/);
+    auth.resetPasswordForEmail.mockResolvedValue({ error: { status: 429, message: "email rate limit exceeded" } });
+    expect((await requestPasswordReset(empty, form({ email: "me@example.com" }))).error).toMatch(/lot of emails/);
   });
 });
 

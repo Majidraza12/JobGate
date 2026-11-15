@@ -47,21 +47,48 @@ export async function signOut() {
 
 const RESET_SENT = "If that email has an account, a reset link is on its way. Check your inbox and spam folder.";
 
+// What the visitor sees when a limit stops a reset email. Honest about what
+// happened and what to do; never "under maintenance".
+const RESET_LIMIT_MESSAGES = {
+  email_limit: "You've asked for 3 reset links today. Use the newest one in your inbox (check spam too), or try again tomorrow.",
+  ip_limit: "Too many reset requests from this network. Wait an hour and try again.",
+  wait: "A reset link was just sent. Wait a minute before asking for another one.",
+  busy: "We're sending a lot of emails right now. Try again in an hour.",
+  failed: "Couldn't send a reset link right now. Try again in a few minutes.",
+} as const;
+
+// Vercel sets x-real-ip and puts the client first in x-forwarded-for.
+function clientIp(h: Headers) {
+  return (h.get("x-real-ip") ?? h.get("x-forwarded-for")?.split(",")[0] ?? "").trim().slice(0, 100);
+}
+
 export async function requestPasswordReset(_prev: AuthState, form: FormData): Promise<AuthState> {
   const email = z.email().max(320).safeParse(String(form.get("email") ?? "").trim());
   if (!email.success) return { error: "Enter a valid email address.", notice: null };
 
+  const h = await headers();
+  const supabase = await createClient();
+
+  // Our own limits first (3 per address a day, 10 per network an hour), so
+  // one person can't use up the project's email quota for everyone else.
+  const { data, error: slotError } = await supabase.rpc("claim_password_reset", { p_email: email.data, p_ip: clientIp(h) });
+  const slot = data as "ok" | "email_limit" | "ip_limit" | null;
+  if (slotError) return { error: RESET_LIMIT_MESSAGES.failed, notice: null };
+  if (slot === "email_limit" || slot === "ip_limit") return { error: RESET_LIMIT_MESSAGES[slot], notice: null };
+
   // Next.js checks that a server action's Origin matches the host, and
   // Supabase only accepts redirect URLs on its allowlist, so this can't be
   // pointed at another site.
-  const h = await headers();
   const origin = h.get("origin") ?? `https://${h.get("host")}`;
-  const supabase = await createClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email.data, { redirectTo: `${origin}/auth/confirm?next=/reset-password` });
 
   // The same answer whether or not the account exists, so this form can't be
-  // used to find out who has signed up. Only rate limiting is surfaced.
-  if (error?.status === 429) return { error: "Too many reset requests. Wait a few minutes and try again.", notice: null };
+  // used to find out who has signed up. Only rate limits are surfaced:
+  // Supabase's one-per-minute per address, or the project-wide email cap.
+  if (error?.status === 429) {
+    const perAddress = /seconds|security purposes/i.test(error.message);
+    return { error: perAddress ? RESET_LIMIT_MESSAGES.wait : RESET_LIMIT_MESSAGES.busy, notice: null };
+  }
   return { error: null, notice: RESET_SENT };
 }
 
