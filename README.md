@@ -1,5 +1,7 @@
 # JobGate
 
+**Live:** https://jobgate-three.vercel.app
+
 JobGate tells a student whether they are actually eligible for an internship or new-grad posting. It reads each job description, extracts the eligibility rules (graduation window, return to school, class year, degree level, work authorization), checks them against the student's profile, and shows the exact sentence from the posting behind every verdict.
 
 ## Why
@@ -100,7 +102,7 @@ npm run dev                 # http://localhost:3000
 
 Working: ingestion, JD fetching, extraction, eval harness, matching engine, and the app (auth, onboarding, feed with server-side filters, listing detail with quotes, applied tracker, saved jobs, "Wrong verdict?" feedback).
 
-Not done yet: public deployment, a held-out eval set, a verdict-level eval (wrongful-hide rate over synthetic profiles), pipeline run log, stale-data banner, password reset, Google sign-in.
+Not done yet: a held-out eval set, a verdict-level eval (wrongful-hide rate over synthetic profiles), pipeline run log, stale-data banner, password reset, Google sign-in.
 
 ## Credits
 
