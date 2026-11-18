@@ -4,6 +4,10 @@
 
 JobGate tells a student whether they are actually eligible for an internship or new-grad posting. It reads each job description, extracts the eligibility rules (graduation window, return to school, class year, degree level, work authorization), checks them against the student's profile, and shows the exact sentence from the posting behind every verdict.
 
+![JobGate landing page with the interactive demo](docs/screenshots/landing.png)
+
+![JobGate feed: each posting shows its verdict and the quoted requirement behind it](docs/screenshots/feed.png)
+
 ## Why
 
 Eligibility rules are buried in posting text: "graduating between December 2027 and June 2028", "must be returning to school after the internship", "must be a U.S. person as defined by ITAR", "no visa sponsorship now or in the future". A student graduating in May 2027 is ineligible for most Summer 2027 internships, but only finds out after opening each posting. Job aggregators already collect listings well. None of them reason about eligibility for a specific person.
